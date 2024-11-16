@@ -1,0 +1,77 @@
+﻿<Window x:Class="TatehamaInterlockinglConsole.Views.StationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TatehamaInterlockinglConsole.ViewModels"
+        xmlns:custom="clr-namespace:TatehamaInterlockinglConsole.CustomControl"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type local:StationViewModel}, IsDesignTimeCreatable=False}"
+        UseLayoutRounding="True"
+        Width="{Binding WindowWidth}" 
+        Height="{Binding WindowHeight}"
+        Title="{Binding Title}"
+        Background="#FF4C6666">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding ClosingCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <ContentControl>
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Style.Triggers>
+                        <!-- フィット表示 -->
+                        <DataTrigger Binding="{Binding IsFitMode}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <Viewbox Stretch="Uniform">
+                                        <ItemsControl ItemsSource="{Binding StationElements}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Canvas Width="{Binding DrawingWidth}" Height="{Binding DrawingHeight}" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </Viewbox>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+
+                        <!-- 原寸大表示 -->
+                        <DataTrigger Binding="{Binding IsFitMode}" Value="False">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto" CanContentScroll="True" VerticalScrollBarVisibility="Auto">
+                                        <ItemsControl ItemsSource="{Binding StationElements}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Canvas Width="{Binding DrawingWidth}" Height="{Binding DrawingHeight}" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+
+        <!-- 切り替えボタン -->
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                <custom:CustomButton Content="{Binding ToggleButtonText}" Command="{Binding ToggleModeCommand}" Width="140" Height="25"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
