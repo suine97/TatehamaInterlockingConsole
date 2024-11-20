@@ -86,7 +86,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
         {
             IsFitMode = !IsFitMode;
             ToggleButtonText = IsFitMode ? "原寸大表示に切り替え" : "フィット表示に切り替え";
-            _sound.SoundPlay("switch", false);
+            //_sound.SoundPlay("switch", false);
         }
     }
 }

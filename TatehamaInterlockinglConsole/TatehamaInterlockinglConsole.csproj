@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="CustomControl\CustomButton.cs" />
     <Compile Include="Manager\DataManager.cs" />
+    <Compile Include="Models\InterlockingData.cs" />
     <Compile Include="Services\Data.cs" />
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="Services\UIElementLoader.cs" />

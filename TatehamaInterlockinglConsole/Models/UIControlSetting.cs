@@ -2,6 +2,9 @@
 
 namespace TatehamaInterlockinglConsole.Models
 {
+    /// <summary>
+    /// UI設定用データクラス
+    /// </summary>
     public class UIControlSetting
     {
         public string ControlType { get; set; }
