@@ -42,6 +42,11 @@ namespace TatehamaInterlockinglConsole.Services
                     continue;
                 }
 
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    continue;
+                }
+
                 var columns = line.Split('\t');
                 settings.Add(new UIControlSetting
                 {
