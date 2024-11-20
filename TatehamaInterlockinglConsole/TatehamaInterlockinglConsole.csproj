@@ -60,8 +60,10 @@
     </ApplicationDefinition>
     <Compile Include="CustomControl\CustomButton.cs" />
     <Compile Include="Manager\DataManager.cs" />
+    <Compile Include="Services\Data.cs" />
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="Services\UIElementLoader.cs" />
+    <Compile Include="Services\Sound.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Services\Clock.cs" />
     <Compile Include="ViewModels\ImageDrawing.cs" />
@@ -131,6 +133,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
       <Version>1.1.135</Version>
+    </PackageReference>
+    <PackageReference Include="NAudio">
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

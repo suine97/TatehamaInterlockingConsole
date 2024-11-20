@@ -21,9 +21,15 @@ namespace TatehamaInterlockinglConsole.Factories
         public static double BackImageWidth { get; private set; }
         public static double BackImageHeight { get; private set; }
         public static DateTime CurrentTime { get; set; }
-
+        /// <summary> 全コントロールリスト </summary>
         private static List<UIControlSetting> AllSettings = new List<UIControlSetting>();
 
+        /// <summary>
+        /// 種類別コントロール作成処理
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <param name="allSettings"></param>
+        /// <returns></returns>
         public static UIElement CreateControl(UIControlSetting setting, List<UIControlSetting> allSettings)
         {
             AllSettings = allSettings;
@@ -40,11 +46,18 @@ namespace TatehamaInterlockinglConsole.Factories
                     return CreateBackImageControl(setting);
                 case "ClockImage":
                     return CreateClockImageControl(setting);
+                case "LeverImage":
+                    return CreateLeverImageControl(setting);
                 default:
                     return null;
             }
         }
 
+        /// <summary>
+        /// Buttonコントロール作成処理
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         private static Button CreateButtonControl(UIControlSetting setting)
         {
             var button = new CustomButton
@@ -75,6 +88,11 @@ namespace TatehamaInterlockinglConsole.Factories
             return button;
         }
 
+        /// <summary>
+        /// Labelコントロール作成処理
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         private static Label CreateLabelControl(UIControlSetting setting)
         {
             var label = new Label
@@ -105,6 +123,12 @@ namespace TatehamaInterlockinglConsole.Factories
             return label;
         }
 
+        /// <summary>
+        /// Imageコントロール作成処理
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private static Image CreateImageControl(UIControlSetting setting, int index = 0)
         {
             var bitmapImage = new BitmapImage(new Uri(setting.ImagePaths[index], UriKind.RelativeOrAbsolute));
@@ -133,6 +157,11 @@ namespace TatehamaInterlockinglConsole.Factories
             return image;
         }
 
+        /// <summary>
+        /// BackImageコントロール作成処理
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         private static UIElement CreateBackImageControl(UIControlSetting setting)
         {
             var backImage = CreateImageControl(setting);
@@ -143,6 +172,11 @@ namespace TatehamaInterlockinglConsole.Factories
             return backImage;
         }
 
+        /// <summary>
+        /// ClockImageコントロール作成処理
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         private static UIElement CreateClockImageControl(UIControlSetting setting)
         {
             var canvas = new Canvas();
@@ -187,11 +221,40 @@ namespace TatehamaInterlockinglConsole.Factories
             return canvas;
         }
 
+        /// <summary>
+        /// LeverImageコントロール作成処理
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
+        private static UIElement CreateLeverImageControl(UIControlSetting setting)
+        {
+            var canvas = new Canvas();
+            // Lever各画像を取得
+            var baseImage = CreateImageControl(setting, 0);
+            var leverImage = CreateImageControl(setting, 1);
+
+            // CanvasにLever要素を追加
+            canvas.Children.Add(baseImage);
+            canvas.Children.Add(leverImage);
+
+            return canvas;
+        }
+
+        /// <summary>
+        /// コントロールリストから指定名称のコントロールを検索
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         private static UIControlSetting FindControlByName(string name)
         {
             return AllSettings.FirstOrDefault(control => control.UniqueName == name);
         }
 
+        /// <summary>
+        /// 親子関係を考慮した座標設定処理
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="setting"></param>
         private static void SetPosition(UIElement element, UIControlSetting setting)
         {
             if (!string.IsNullOrEmpty(setting.ParentName))

@@ -69,7 +69,6 @@ namespace TatehamaInterlockinglConsole.Services
                     TextColor = columns[(int)ColumnIndex.TextColor],
                     ClickEventName = columns[(int)ColumnIndex.ClickEventName],
                     ImagePaths = columns[(int)ColumnIndex.ImagePath].Split(',').Select(path => AppDomain.CurrentDomain.BaseDirectory + path.Trim('"').Trim()).ToList(),
-                    SelectedImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)ColumnIndex.ImagePath].Split(',')[0].Trim('"').Trim(),
                 });
             }
             return settings;

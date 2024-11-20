@@ -1,12 +1,10 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
-using System.Linq;
 using TatehamaInterlockinglConsole.Factories;
-using TatehamaInterlockinglConsole.Models;
 using TatehamaInterlockinglConsole.Services;
 using TatehamaInterlockinglConsole.Manager;
-using System.IO;
 
 namespace TatehamaInterlockinglConsole.ViewModels
 {
@@ -17,6 +15,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
     {
         private readonly UIElementLoader _uiElementLoader;
         private readonly DataManager _dataManager;
+        private readonly Sound _sound;
 
         public ICommand ToggleModeCommand { get; }
         public ICommand ClosingCommand { get; }
@@ -55,6 +54,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
         {
             _uiElementLoader = uiElementLoader;
             _dataManager = dataManager;
+            _sound = new Sound();
             Initialize(filePath);
 
             IsFitMode = false;
@@ -86,20 +86,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
         {
             IsFitMode = !IsFitMode;
             ToggleButtonText = IsFitMode ? "原寸大表示に切り替え" : "フィット表示に切り替え";
-        }
-
-        public void ChangeImagePathByIdentifiers(string uniqueName, int imageIndex)
-        {
-            var setting = StationElements
-                .OfType<UIControlSetting>()
-                .FirstOrDefault(s => s.UniqueName == uniqueName);
-
-            if (setting != null && setting.ImagePaths.Count > imageIndex)
-            {
-                // 指定インデックスの画像パスに切り替え
-                setting.SelectedImagePath = setting.ImagePaths[imageIndex];
-                OnPropertyChanged(nameof(StationElements));
-            }
+            _sound.SoundPlay("switch", false);
         }
     }
 }
