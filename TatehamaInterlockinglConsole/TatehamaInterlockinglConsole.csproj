@@ -61,6 +61,7 @@
     <Compile Include="CustomControl\CustomButton.cs" />
     <Compile Include="Manager\DataManager.cs" />
     <Compile Include="Models\InterlockingData.cs" />
+    <Compile Include="Models\ServerData.cs" />
     <Compile Include="Services\Data.cs" />
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="Services\UIElementLoader.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Services\Clock.cs" />
     <Compile Include="ViewModels\ImageDrawing.cs" />
     <Compile Include="Services\LoadTSV.cs" />
-    <Compile Include="ViewModels\InterlockingViewModel.cs" />
     <Compile Include="ViewModels\WindowAction.cs" />
     <Compile Include="ViewModels\StationViewModel.cs" />
     <Compile Include="Views\StationWindow.xaml.cs">

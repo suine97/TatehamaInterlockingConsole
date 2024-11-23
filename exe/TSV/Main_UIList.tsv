@@ -1,10 +1,10 @@
-Type	UniqueName	ServerName	ParentName	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePath
-Button	Button_W01	Button_W01		50	100	200	80				ŠÙ•l‰w	24	#FFE0FFFF	#FF000000	W01_ŠÙ•l‰w	
-Button	Button_W02	Button_W02		286	100	200	80				‹î–ì‰w	24	#FFE0FFFF	#FF000000	W02_‹î–ì‰w	
-Button	Button_W06	Button_W06		522	100	200	80				’Ãè‰w	24	#FFE0FFFF	#FF000000	W06_’Ãè‰w	
-Button	Button_W07	Button_W07		758	100	200	80				•l‰€‰w	24	#FFE0FFFF	#FF000000	W07_•l‰€‰w	
-Button	Button_W10	Button_W10		50	275	200	80				V–ìè‰w	24	#FFE0FFFF	#FF000000	W10_V–ìè‰w	
-Button	Button_W11	Button_W11		286	275	200	80				]ƒmŒ´ŒŸÔ‹æ	24	#FFE0FFFF	#FF000000	W11_]ƒmŒ´ŒŸÔ‹æ	
-Button	Button_W12	Button_W12		522	275	200	80				‘å“¹›‰w	24	#FFE0FFFF	#FF000000	W12_‘å“¹›‰w	
-Button	Button_W16	Button_W16		758	275	200	80				“ú–ìX‰w	24	#FFE0FFFF	#FF000000	W16_“ú–ìX‰w	
-Button	Button_W19	Button_W19		50	450	200	80				ÔR’¬‰w	24	#FFE0FFFF	#FF000000	W19_ÔR’¬‰w	
+Type	UniqueName	ServerName	ParentName	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImagePath
+Button	Button_W01	Button_W01		50	100	200	80				ŠÙ•l‰w	24	#FFE0FFFF	#FF000000	W01_ŠÙ•l‰w		
+Button	Button_W02	Button_W02		286	100	200	80				‹î–ì‰w	24	#FFE0FFFF	#FF000000	W02_‹î–ì‰w		
+Button	Button_W06	Button_W06		522	100	200	80				’Ãè‰w	24	#FFE0FFFF	#FF000000	W06_’Ãè‰w		
+Button	Button_W07	Button_W07		758	100	200	80				•l‰€‰w	24	#FFE0FFFF	#FF000000	W07_•l‰€‰w		
+Button	Button_W10	Button_W10		50	275	200	80				V–ìè‰w	24	#FFE0FFFF	#FF000000	W10_V–ìè‰w		
+Button	Button_W11	Button_W11		286	275	200	80				]ƒmŒ´ŒŸÔ‹æ	24	#FFE0FFFF	#FF000000	W11_]ƒmŒ´ŒŸÔ‹æ		
+Button	Button_W12	Button_W12		522	275	200	80				‘å“¹›‰w	24	#FFE0FFFF	#FF000000	W12_‘å“¹›‰w		
+Button	Button_W16	Button_W16		758	275	200	80				“ú–ìX‰w	24	#FFE0FFFF	#FF000000	W16_“ú–ìX‰w		
+Button	Button_W19	Button_W19		50	450	200	80				ÔR’¬‰w	24	#FFE0FFFF	#FF000000	W19_ÔR’¬‰w		

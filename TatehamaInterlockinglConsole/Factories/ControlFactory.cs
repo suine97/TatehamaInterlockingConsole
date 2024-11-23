@@ -229,14 +229,37 @@ namespace TatehamaInterlockinglConsole.Factories
         private static UIElement CreateLeverImageControl(UIControlSetting setting)
         {
             var canvas = new Canvas();
-            // Lever各画像を取得
+
+            // Base画像の読み込み
             var baseImage = CreateImageControl(setting, 0);
-            var leverImage = CreateImageControl(setting, 1);
-
-            // CanvasにLever要素を追加
             canvas.Children.Add(baseImage);
-            canvas.Children.Add(leverImage);
 
+            // 切り替え用画像のパターン判別
+            if (!string.IsNullOrEmpty(setting.ImagePattern))
+            {
+                var imagePattern = setting.ImagePattern.Split('+');
+                foreach (var pattern in imagePattern)
+                {
+                    Image image = null;
+                    switch (pattern.Trim())
+                    {
+                        case "Left":
+                            image = CreateImageControl(setting, 1);
+                            break;
+                        case "Center":
+                            image = CreateImageControl(setting, 2);
+                            break;
+                        case "Right":
+                            image = CreateImageControl(setting, 3);
+                            break;
+                    }
+
+                    if (image != null)
+                    {
+                        canvas.Children.Add(image);
+                    }
+                }
+            }
             return canvas;
         }
 

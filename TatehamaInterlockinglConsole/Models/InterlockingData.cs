@@ -8,7 +8,7 @@ namespace TatehamaInterlockinglConsole.Models
     public class InterlockingData
     {
         public List<InterlockingTrackCircuit> TrackCircuits { get; set; } = new List<InterlockingTrackCircuit>();
-        public List<InterlockingTurnout> Turnouts { get; set; } = new List<InterlockingTurnout>();
+        public List<InterlockingPoint> Points { get; set; } = new List<InterlockingPoint>();
         public List<InterlockingSignal> Signals { get; set; } = new List<InterlockingSignal>();
         public List<InterlockingLamp> Lamps { get; set; } = new List<InterlockingLamp>();
     }
@@ -24,9 +24,9 @@ namespace TatehamaInterlockinglConsole.Models
     }
 
     /// <summary>
-    /// 連動装置・転轍機情報クラス
+    /// 連動装置・転てつ器情報クラス
     /// </summary>
-    public class InterlockingTurnout
+    public class InterlockingPoint
     {
         public string Name { get; set; }
         public bool NormalPosition { get; set; }
