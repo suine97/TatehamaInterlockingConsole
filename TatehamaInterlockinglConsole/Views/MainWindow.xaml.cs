@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Threading;
 using TatehamaInterlockinglConsole.ViewModels;
 
 namespace TatehamaInterlockinglConsole.Views
@@ -9,11 +11,21 @@ namespace TatehamaInterlockinglConsole.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly DispatcherTimer _timer;
+
         public MainWindow(MainViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;
             Loaded += OnLoaded;
+
+            // タイマーの初期化
+            _timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(100)
+            };
+            _timer.Tick += OnTimerTick;
+            _timer.Start();
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -23,6 +35,15 @@ namespace TatehamaInterlockinglConsole.Views
             {
                 Width = viewModel.WindowWidth;
                 Height = viewModel.WindowHeight;
+            }
+        }
+
+        private void OnTimerTick(object sender, EventArgs e)
+        {
+            if (DataContext is MainViewModel viewModel)
+            {
+                // タイマーイベントをViewModelに通知
+                viewModel.OnTimerElapsed();
             }
         }
 
@@ -36,6 +57,9 @@ namespace TatehamaInterlockinglConsole.Views
                     e.Cancel = true;
                     return;
                 }
+
+                // タイマーを停止
+                _timer.Stop();
 
                 // アプリケーション全体を終了
                 Application.Current.Shutdown();

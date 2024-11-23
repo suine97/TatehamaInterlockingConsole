@@ -27,8 +27,9 @@ namespace TatehamaInterlockinglConsole.Services
             BackgroundColor = 13,
             TextColor = 14,
             ClickEventName = 15,
-            ImagePattern = 16,
-            ImagePath = 17
+            Label = 16,
+            ImagePattern = 17,
+            ImagePath = 18
         }
 
         public static List<UIControlSetting> LoadSettings(string filePath)
@@ -69,6 +70,7 @@ namespace TatehamaInterlockinglConsole.Services
                     BackgroundColor = columns[(int)ColumnIndex.BackgroundColor],
                     TextColor = columns[(int)ColumnIndex.TextColor],
                     ClickEventName = columns[(int)ColumnIndex.ClickEventName],
+                    Label = columns[(int)ColumnIndex.Label],
                     ImagePattern = columns[(int)ColumnIndex.ImagePattern],
                     ImagePaths = columns[(int)ColumnIndex.ImagePath].Split(',').Select(path => AppDomain.CurrentDomain.BaseDirectory + path.Trim('"').Trim()).ToList(),
                 });

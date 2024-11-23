@@ -42,7 +42,7 @@ namespace TatehamaInterlockinglConsole.Services
             {
                 foreach (var setting in settings)
                 {
-                    var control = ControlFactory.CreateControl(setting, settings);
+                    var control = ControlFactory.CreateControl(setting, settings, false);
                     if (control != null)
                     {
                         elements.Add(control);

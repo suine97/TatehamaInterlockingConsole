@@ -59,7 +59,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CustomControl\CustomButton.cs" />
+    <Compile Include="Handlers\TimerHandler.cs" />
     <Compile Include="Manager\DataManager.cs" />
+    <Compile Include="Manager\ServerAddress.cs" />
     <Compile Include="Models\InterlockingData.cs" />
     <Compile Include="Models\ServerData.cs" />
     <Compile Include="Services\Data.cs" />

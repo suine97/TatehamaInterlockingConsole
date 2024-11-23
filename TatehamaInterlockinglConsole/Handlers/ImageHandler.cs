@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using TatehamaInterlockinglConsole.Models;
 
 namespace TatehamaInterlockinglConsole.Handlers
 {
@@ -8,14 +9,23 @@ namespace TatehamaInterlockinglConsole.Handlers
     /// </summary>
     public class ImageHandler
     {
-        public void AttachImageClick(Image image, string clickEventName)
+        public void AttachImageClick(Image image, UIControlSetting setting)
         {
-            image.MouseDown += (s, e) =>
+            image.MouseLeftButtonDown += (s, e) =>
             {
-                switch (clickEventName)
+                switch (setting.ClickEventName)
                 {
                     default:
-                        MessageBox.Show($"Click event {clickEventName}");
+                        MessageBox.Show($"Left Click event {setting.ClickEventName} | {setting.UniqueName}");
+                        break;
+                }
+            };
+            image.MouseRightButtonDown += (s, e) =>
+            {
+                switch (setting.ClickEventName)
+                {
+                    default:
+                        MessageBox.Show($"Right Click event {setting.ClickEventName} | {setting.UniqueName}");
                         break;
                 }
             };

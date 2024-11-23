@@ -17,6 +17,7 @@ namespace TatehamaInterlockinglConsole.Models
         private ClientWebSocket _webSocket = new ClientWebSocket();
         private readonly Stopwatch _stopwatch = new Stopwatch();
         private static readonly Encoding _encoding = Encoding.UTF8;
+        //private readonly string _connectUri = ServerAddress.SignalAddress;
         private readonly string _connectUri = "https://localhost:7232";
 
         // キャッシュ用の静的辞書

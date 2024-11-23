@@ -30,7 +30,7 @@ namespace TatehamaInterlockinglConsole.Factories
         /// <param name="setting"></param>
         /// <param name="allSettings"></param>
         /// <returns></returns>
-        public static UIElement CreateControl(UIControlSetting setting, List<UIControlSetting> allSettings)
+        public static UIElement CreateControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool drawing = true)
         {
             AllSettings = allSettings;
 
@@ -45,9 +45,9 @@ namespace TatehamaInterlockinglConsole.Factories
                 case "BackImage":
                     return CreateBackImageControl(setting);
                 case "ClockImage":
-                    return CreateClockImageControl(setting);
+                    return CreateClockImageControl(setting, drawing);
                 case "LeverImage":
-                    return CreateLeverImageControl(setting);
+                    return CreateLeverImageControl(setting, drawing);
                 default:
                     return null;
             }
@@ -129,7 +129,7 @@ namespace TatehamaInterlockinglConsole.Factories
         /// <param name="setting"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        private static Image CreateImageControl(UIControlSetting setting, int index = 0)
+        private static Image CreateImageControl(UIControlSetting setting, int index = 0, bool clickEvent = true)
         {
             var bitmapImage = new BitmapImage(new Uri(setting.ImagePaths[index], UriKind.RelativeOrAbsolute));
             var image = new Image
@@ -146,7 +146,12 @@ namespace TatehamaInterlockinglConsole.Factories
             // イベントが設定されている場合は、イベントをアタッチ
             if (setting.ClickEventName != string.Empty)
             {
-                new ImageHandler().AttachImageClick(image, setting.ClickEventName);
+                // クリックイベントが不要なら設定しない
+                if (!clickEvent)
+                {
+                    image.IsHitTestVisible = false;
+                }
+                new ImageHandler().AttachImageClick(image, setting);
             }
 
             RotateTransform rotateTransform = new RotateTransform();
@@ -177,7 +182,7 @@ namespace TatehamaInterlockinglConsole.Factories
         /// </summary>
         /// <param name="setting"></param>
         /// <returns></returns>
-        private static UIElement CreateClockImageControl(UIControlSetting setting)
+        private static UIElement CreateClockImageControl(UIControlSetting setting, bool drawing)
         {
             var canvas = new Canvas();
             // 時計の各画像を取得 (Base, 短針, 長針, 秒針, カバー)
@@ -212,11 +217,14 @@ namespace TatehamaInterlockinglConsole.Factories
             timer.Start();
 
             // Canvasに時計の要素を追加
-            canvas.Children.Add(baseImage);
-            canvas.Children.Add(hourHandImage);
-            canvas.Children.Add(minuteHandImage);
-            canvas.Children.Add(secondHandImage);
-            canvas.Children.Add(coverImage);
+            if (drawing)
+            {
+                canvas.Children.Add(baseImage);
+                canvas.Children.Add(hourHandImage);
+                canvas.Children.Add(minuteHandImage);
+                canvas.Children.Add(secondHandImage);
+                canvas.Children.Add(coverImage);
+            }
 
             return canvas;
         }
@@ -226,40 +234,101 @@ namespace TatehamaInterlockinglConsole.Factories
         /// </summary>
         /// <param name="setting"></param>
         /// <returns></returns>
-        private static UIElement CreateLeverImageControl(UIControlSetting setting)
+        private static UIElement CreateLeverImageControl(UIControlSetting setting, bool drawing)
         {
             var canvas = new Canvas();
 
             // Base画像の読み込み
             var baseImage = CreateImageControl(setting, 0);
-            canvas.Children.Add(baseImage);
+            // 切り替え用画像の読み込み
+            var changeImage = CreateImageControl(setting, 1);
+            // Label生成
+            var labelNumber = CreateLeverLabelControl(setting, drawing);
 
-            // 切り替え用画像のパターン判別
-            if (!string.IsNullOrEmpty(setting.ImagePattern))
+            if (drawing)
             {
-                var imagePattern = setting.ImagePattern.Split('+');
-                foreach (var pattern in imagePattern)
-                {
-                    Image image = null;
-                    switch (pattern.Trim())
-                    {
-                        case "Left":
-                            image = CreateImageControl(setting, 1);
-                            break;
-                        case "Center":
-                            image = CreateImageControl(setting, 2);
-                            break;
-                        case "Right":
-                            image = CreateImageControl(setting, 3);
-                            break;
-                    }
-
-                    if (image != null)
-                    {
-                        canvas.Children.Add(image);
-                    }
-                }
+                canvas.Children.Add(baseImage);
+                canvas.Children.Add(changeImage);
+                canvas.Children.Add(labelNumber);
             }
+
+            return canvas;
+        }
+
+        /// <summary>
+        /// LeverNumberコントロール作成処理
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
+        private static UIElement CreateLeverLabelControl(UIControlSetting setting, bool drawing)
+        {
+            var canvas = new Canvas();
+
+            // 設定されていなければ生成しない
+            if (setting.Label.Length < 1)
+            {
+                return null;
+            }
+
+            // Gridの作成と初期設定
+            var grid = new Grid
+            {
+                Height = 5,
+                Width = 9,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+
+            // ケタ数の取得
+            int digitNumber = setting.Label.Length;
+            if (digitNumber < 1)
+                digitNumber = 1;
+            else if (digitNumber > 2)
+                digitNumber = 2;
+
+            // 取得した文字からImagePathを生成
+            var character = setting.Label.ToCharArray();
+            string[] Paths = new string[character.Length];
+            for (int i = 0; i < character.Length; i++)
+            {
+                Paths[i] = AppDomain.CurrentDomain.BaseDirectory + "Image/Character/White_4x5/" + character[i] + ".png";
+            }
+
+            UIControlSetting numberSetting = new UIControlSetting
+            {
+                UniqueName = setting.UniqueName + "_Number",
+                RelativeX = 15,
+                RelativeY = 23,
+                ClickEventName = setting.ClickEventName,
+                ImagePaths = Paths.ToList(),
+            };
+
+            // 列定義を設定（コントロール数に応じて列を作成）
+            for (int i = 0; i < digitNumber; i++)
+            {
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+                if (i < digitNumber - 1) // 隙間用列
+                    grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1) });
+            }
+
+            // Imageコントロールを作成してGridに追加
+            for (int i = 0; i < digitNumber; i++)
+            {
+                var image = CreateImageControl(numberSetting, i, false);
+                Grid.SetColumn(image, i * 2); // 隙間列を考慮
+                grid.Children.Add(image);
+            }
+
+            // 親コントロールが設定されている場合は、相対座標に変換
+            numberSetting.ParentName = setting.UniqueName;
+            SetPosition(grid, numberSetting);
+
+            // CanvasにGridを追加
+            if (drawing)
+            {
+                canvas.Children.Add(grid);
+            }
+
             return canvas;
         }
 

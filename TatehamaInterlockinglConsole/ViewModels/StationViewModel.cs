@@ -16,6 +16,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
         private readonly UIElementLoader _uiElementLoader;
         private readonly DataManager _dataManager;
         private readonly Sound _sound;
+        private string _fileName;
 
         public ICommand ToggleModeCommand { get; }
         public ICommand ClosingCommand { get; }
@@ -73,8 +74,8 @@ namespace TatehamaInterlockinglConsole.ViewModels
 
         private void Initialize(string filePath)
         {
-            var fileName = Path.GetFileNameWithoutExtension(filePath);
-            StationElements = _uiElementLoader.GetElementsFromSettings(_dataManager.AllTsvDictionary, fileName);
+            _fileName = Path.GetFileNameWithoutExtension(filePath);
+            StationElements = _uiElementLoader.GetElementsFromSettings(_dataManager.AllTsvDictionary, _fileName);
         }
 
         private void OnClosing()
@@ -86,7 +87,6 @@ namespace TatehamaInterlockinglConsole.ViewModels
         {
             IsFitMode = !IsFitMode;
             ToggleButtonText = IsFitMode ? "原寸大表示に切り替え" : "フィット表示に切り替え";
-            //_sound.SoundPlay("switch", false);
         }
     }
 }

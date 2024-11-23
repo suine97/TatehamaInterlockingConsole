@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 using TatehamaInterlockinglConsole.Services;
 using TatehamaInterlockinglConsole.Manager;
+using TatehamaInterlockinglConsole.Handlers;
 
 namespace TatehamaInterlockinglConsole.ViewModels
 {
@@ -12,6 +13,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
         private readonly TimeService _timeService;
         private readonly UIElementLoader _uiElementLoader;
         private readonly DataManager _dataManager;
+        private TimerHandler _timerHandler;
         private static bool _isConstructorExecuted = false;
 
         public ICommand IncreaseTimeCommand { get; }
@@ -48,7 +50,14 @@ namespace TatehamaInterlockinglConsole.ViewModels
             _dataManager.AllTsvDictionary = _uiElementLoader.LoadSettingsFromFolderAsDictionary(folderPath);
             // Main_UIListのみ取得
             MainElements = _uiElementLoader.GetElementsFromSettings(_dataManager.AllTsvDictionary, "Main_UIList");
+
             _timeService.Start();
+            _timerHandler = new TimerHandler();
+        }
+
+        public void OnTimerElapsed()
+        {
+            _timerHandler.HandleTimerEvent();
         }
 
         public bool ConfirmClose()
