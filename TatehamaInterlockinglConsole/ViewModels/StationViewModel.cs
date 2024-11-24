@@ -68,8 +68,8 @@ namespace TatehamaInterlockinglConsole.ViewModels
             StationElements = LoadTSV.LoadUIFromTSV(filePath);
             WindowWidth = 1280;
             WindowHeight = 720;
-            DrawingWidth = ControlFactory.BackImageWidth;
-            DrawingHeight = ControlFactory.BackImageHeight;
+            DrawingWidth = BackImageFactory.BackImageWidth;
+            DrawingHeight = BackImageFactory.BackImageHeight;
         }
 
         private void Initialize(string filePath)

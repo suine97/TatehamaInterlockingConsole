@@ -16,7 +16,7 @@ namespace TatehamaInterlockinglConsole.Handlers
                 switch (setting.ClickEventName)
                 {
                     default:
-                        MessageBox.Show($"Left Click event {setting.ClickEventName} | {setting.UniqueName}");
+                        MessageBox.Show($"Image Left Click event {setting.ClickEventName} | {setting.UniqueName}");
                         break;
                 }
             };
@@ -25,7 +25,7 @@ namespace TatehamaInterlockinglConsole.Handlers
                 switch (setting.ClickEventName)
                 {
                     default:
-                        MessageBox.Show($"Right Click event {setting.ClickEventName} | {setting.UniqueName}");
+                        MessageBox.Show($"Image Right Click event {setting.ClickEventName} | {setting.UniqueName}");
                         break;
                 }
             };

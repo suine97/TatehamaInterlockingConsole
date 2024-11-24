@@ -23,7 +23,6 @@ namespace TatehamaInterlockinglConsole.Models
         public string BackgroundColor { get; set; }
         public string TextColor { get; set; }
         public string ClickEventName { get; set; }
-        public string Label { get; set; }
         public string ImagePattern { get; set; }
         public List<string> ImagePaths { get; set; } = new List<string>();
         public double RelativeX { get; set; }

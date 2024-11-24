@@ -24,7 +24,7 @@ namespace TatehamaInterlockinglConsole.Manager
         {
             _timeService = timeService;
             _timeService.TimeUpdated += (currentTime) => OnTimeUpdated();
-            TimeUpdated += (currentTime) => ControlFactory.CurrentTime = currentTime;
+            TimeUpdated += (currentTime) => ClockImageFactory.CurrentTime = currentTime;
         }
 
         private void OnTimeUpdated()

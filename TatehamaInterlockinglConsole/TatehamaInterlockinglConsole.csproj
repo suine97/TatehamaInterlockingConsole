@@ -59,6 +59,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CustomControl\CustomButton.cs" />
+    <Compile Include="Factories\BackImageFactory.cs" />
+    <Compile Include="Factories\ButtonFactory.cs" />
+    <Compile Include="Factories\ButtonImageFactory.cs" />
+    <Compile Include="Factories\ClockImageFactory.cs" />
+    <Compile Include="Factories\ImageFactory.cs" />
+    <Compile Include="Factories\KeyImageFactory.cs" />
+    <Compile Include="Factories\LabelFactory.cs" />
+    <Compile Include="Factories\TextBlockFactory.cs" />
+    <Compile Include="Factories\LeverImageFactory.cs" />
+    <Compile Include="Handlers\LabelHandler.cs" />
     <Compile Include="Handlers\TimerHandler.cs" />
     <Compile Include="Manager\DataManager.cs" />
     <Compile Include="Manager\ServerAddress.cs" />
@@ -68,6 +78,7 @@
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="Services\UIElementLoader.cs" />
     <Compile Include="Services\Sound.cs" />
+    <Compile Include="Utilities\PositionUtilities.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Services\Clock.cs" />
     <Compile Include="ViewModels\ImageDrawing.cs" />
@@ -93,7 +104,7 @@
     <Compile Include="Factories\ControlFactory.cs" />
     <Compile Include="Handlers\ButtonHandler.cs" />
     <Compile Include="Handlers\ImageHandler.cs" />
-    <Compile Include="Handlers\LabelHandler.cs" />
+    <Compile Include="Handlers\TextBlockHandler.cs" />
     <Compile Include="Models\UIControlSetting.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
