@@ -34,8 +34,9 @@ namespace TatehamaInterlockinglConsole.Factories
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 FontSize = setting.FontSize,
+                FontFamily = new FontFamily("BIZ UDゴシック"),
                 Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(setting.TextColor)),
-                Padding = new Thickness(0.5), // 微調整
+                Padding = new Thickness(0.5),
                 SnapsToDevicePixels = true
             };
 
@@ -82,8 +83,8 @@ namespace TatehamaInterlockinglConsole.Factories
             if (textWidth > availableWidth)
             {
                 double scale = availableWidth / textWidth;
-                textBlock.RenderTransformOrigin = new Point(0.5, 0.5); // 中央を基準
-                textBlock.LayoutTransform = new ScaleTransform(scale, scale); // 縦横比を一定に
+                textBlock.RenderTransformOrigin = new Point(0.5, 0.5);
+                textBlock.LayoutTransform = new ScaleTransform(scale, 1.0);
             }
             else
             {

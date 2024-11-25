@@ -41,7 +41,7 @@ namespace TatehamaInterlockinglConsole.Factories
                 case "ButtonImage":
                     return ButtonImageFactory.CreateButtonImageControl(list, setting, allSettings, drawing);
                 case "Retsuban":
-                    return null;
+                    return ImageFactory.CreateImageControl(list, setting, allSettings);
                 default:
                     return null;
             }

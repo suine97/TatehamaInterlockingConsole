@@ -1,6 +1,6 @@
 Type	UniqueName	ServerName	ParentName	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	DefaultImage	BaseImagePath	ImagePath	Remark								
-BackImage	˜A“®”Õ			0	0	1280	720												Image/BackImage/W07_•l‰€‰w.png									
-Image	Clock_Base			768	10	71	102												Image/Clock/Clock_Border.png									
+BackImage	˜A“®”Õ			0	0														Image/BackImage/W07_•l‰€‰w.png									
+Image	Clock_Base			850	10	71	102												Image/Clock/Clock_Border.png									
 ClockImage	Clock_Meter		Clock_Base	4	35	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
 																												
 																												

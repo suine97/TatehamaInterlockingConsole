@@ -23,6 +23,7 @@ namespace TatehamaInterlockinglConsole.Factories
                 Width = setting.Width,
                 Height = setting.Height,
                 FontSize = setting.FontSize,
+                FontFamily = new FontFamily("BIZ UDゴシック"),
                 Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(setting.BackgroundColor)),
                 Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(setting.TextColor)),
                 RenderTransform = new RotateTransform(setting.Angle)
