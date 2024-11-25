@@ -7,6 +7,7 @@ namespace TatehamaInterlockinglConsole.Models
     /// </summary>
     public class UIControlSetting
     {
+        public string StationNumber { get; set; }
         public string ControlType { get; set; }
         public string UniqueName { get; set; }
         public string ServerName { get; set; }
@@ -23,9 +24,12 @@ namespace TatehamaInterlockinglConsole.Models
         public string BackgroundColor { get; set; }
         public string TextColor { get; set; }
         public string ClickEventName { get; set; }
-        public string ImagePattern { get; set; }
+        public List<string> ImagePattern { get; set; }
+        public int DefaultImage { get; set; }
+        public string BaseImagePath { get; set; }
         public List<string> ImagePaths { get; set; } = new List<string>();
         public double RelativeX { get; set; }
         public double RelativeY { get; set; }
+        public string Remark { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace TatehamaInterlockinglConsole.Factories
                 VerticalAlignment = VerticalAlignment.Center,
                 FontSize = setting.FontSize,
                 Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(setting.TextColor)),
-                Padding = new Thickness(0), // 微調整
+                Padding = new Thickness(0.5), // 微調整
                 SnapsToDevicePixels = true
             };
 
@@ -67,27 +67,27 @@ namespace TatehamaInterlockinglConsole.Factories
 
         private static void AdjustTextWidth(TextBlock textBlock, double availableWidth)
         {
-            // フォーマットされたテキストの幅を計算
+            var dpi = VisualTreeHelper.GetDpi(textBlock).PixelsPerDip;
             var formattedText = new FormattedText(
                 textBlock.Text,
                 CultureInfo.CurrentCulture,
                 FlowDirection.LeftToRight,
                 new Typeface(textBlock.FontFamily, textBlock.FontStyle, textBlock.FontWeight, textBlock.FontStretch),
                 textBlock.FontSize,
-                Brushes.Black,
-                VisualTreeHelper.GetDpi(textBlock).PixelsPerDip);
+                textBlock.Foreground,
+                dpi);
 
             double textWidth = formattedText.Width;
 
-            // テキスト幅がGrid幅を超えた場合、スケールを調整
             if (textWidth > availableWidth)
             {
                 double scale = availableWidth / textWidth;
-                textBlock.LayoutTransform = new ScaleTransform(scale, 1); // 横幅のみスケールダウン
+                textBlock.RenderTransformOrigin = new Point(0.5, 0.5); // 中央を基準
+                textBlock.LayoutTransform = new ScaleTransform(scale, scale); // 縦横比を一定に
             }
             else
             {
-                textBlock.LayoutTransform = Transform.Identity; // 元のスケールにリセット
+                textBlock.LayoutTransform = Transform.Identity;
             }
         }
     }

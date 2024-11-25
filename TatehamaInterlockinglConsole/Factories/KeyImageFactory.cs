@@ -12,14 +12,14 @@ namespace TatehamaInterlockinglConsole.Factories
         /// </summary>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static UIElement CreateKeyImageControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool drawing)
+        public static UIElement CreateKeyImageControl(List<UIAllImagePaths> imagePaths, UIControlSetting setting, List<UIControlSetting> allSettings, bool drawing)
         {
             var canvas = new Canvas();
 
             // Base画像の読み込み
-            var baseImage = ImageFactory.CreateImageControl(setting, allSettings, 0);
+            var baseImage = BaseImageFactory.CreateBaseImageControl(setting, allSettings);
             // 切り替え用画像の読み込み
-            var changeImage = ImageFactory.CreateImageControl(setting, allSettings, 1);
+            var changeImage = ImageFactory.CreateImageControl(imagePaths, setting, allSettings);
 
             if (drawing)
             {

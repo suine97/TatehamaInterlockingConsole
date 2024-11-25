@@ -22,11 +22,11 @@ namespace TatehamaInterlockinglConsole.Factories
         {
             var canvas = new Canvas();
             // 時計の各画像を取得 (Base, 短針, 長針, 秒針, カバー)
-            var baseImage = ImageFactory.CreateImageControl(setting, allSettings, 0);
-            var hourHandImage = ImageFactory.CreateImageControl(setting, allSettings, 1);
-            var minuteHandImage = ImageFactory.CreateImageControl(setting, allSettings, 2);
-            var secondHandImage = ImageFactory.CreateImageControl(setting, allSettings, 3);
-            var coverImage = ImageFactory.CreateImageControl(setting, allSettings, 4);
+            var baseImage = BaseImageFactory.CreateBaseImageControl(setting, allSettings);
+            var hourHandImage = ImageFactory.CreateImageControl(setting, allSettings, 0);
+            var minuteHandImage = ImageFactory.CreateImageControl(setting, allSettings, 1);
+            var secondHandImage = ImageFactory.CreateImageControl(setting, allSettings, 2);
+            var coverImage = ImageFactory.CreateImageControl(setting, allSettings, 3);
 
             // 針の回転用 Transform
             var hourRotateTransform = new RotateTransform();

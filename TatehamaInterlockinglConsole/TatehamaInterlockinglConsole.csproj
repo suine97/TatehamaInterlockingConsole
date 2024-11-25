@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="CustomControl\CustomButton.cs" />
     <Compile Include="Factories\BackImageFactory.cs" />
+    <Compile Include="Factories\BaseImageFactory.cs" />
     <Compile Include="Factories\ButtonFactory.cs" />
     <Compile Include="Factories\ButtonImageFactory.cs" />
     <Compile Include="Factories\ClockImageFactory.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Manager\ServerAddress.cs" />
     <Compile Include="Models\InterlockingData.cs" />
     <Compile Include="Models\ServerData.cs" />
+    <Compile Include="Models\UIAllImagePaths.cs" />
     <Compile Include="Services\Data.cs" />
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="Services\UIElementLoader.cs" />

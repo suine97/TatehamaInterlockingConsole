@@ -10,6 +10,8 @@ namespace TatehamaInterlockinglConsole.Services
         {
             var elements = new ObservableCollection<UIElement>();
             var settings = UIControlSettingLoader.LoadSettings(filePath);
+
+            // コントロール作成
             foreach (var setting in settings)
             {
                 var control = ControlFactory.CreateControl(setting, settings);

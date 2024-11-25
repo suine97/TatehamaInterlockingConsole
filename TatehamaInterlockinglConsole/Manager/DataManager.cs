@@ -9,15 +9,21 @@ namespace TatehamaInterlockinglConsole.Manager
     public class DataManager
     {
         private static DataManager _instance = new DataManager();
-        public static DataManager Instance => _instance;
-        public DateTime CurrentTime => _timeService?.CurrentTime ?? DateTime.MinValue;
-        public Dictionary<string, List<UIControlSetting>> AllTsvDictionary { get; set; }
         private TimeService _timeService;
         public event Action<DateTime> TimeUpdated;
 
+        public static DataManager Instance => _instance;
+        public DateTime CurrentTime => _timeService?.CurrentTime ?? DateTime.MinValue;
+
+        /// <summary> 全コントロール設定データ </summary>
+        public List<UIControlSetting> AllControlSettingList { get; set; }
+        /// <summary> 全コントロールImagePathデータ </summary>
+        public List<UIAllImagePaths> AllControlImagePathList { get; set; }
+
         private DataManager()
         {
-            AllTsvDictionary = new Dictionary<string, List<UIControlSetting>>();
+            AllControlSettingList = new List<UIControlSetting>();
+            AllControlImagePathList = new List<UIAllImagePaths>();
         }
 
         public void Initialize(TimeService timeService)

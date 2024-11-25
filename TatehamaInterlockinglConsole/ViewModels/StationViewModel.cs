@@ -16,7 +16,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
         private readonly UIElementLoader _uiElementLoader;
         private readonly DataManager _dataManager;
         private readonly Sound _sound;
-        private string _fileName;
+        private string _stationNumber;
 
         public ICommand ToggleModeCommand { get; }
         public ICommand ClosingCommand { get; }
@@ -74,8 +74,8 @@ namespace TatehamaInterlockinglConsole.ViewModels
 
         private void Initialize(string filePath)
         {
-            _fileName = Path.GetFileNameWithoutExtension(filePath);
-            StationElements = _uiElementLoader.GetElementsFromSettings(_dataManager.AllTsvDictionary, _fileName);
+            _stationNumber = Path.GetFileNameWithoutExtension(filePath).Split('_')[0];
+            StationElements = _uiElementLoader.GetElementsFromSettings(_dataManager.AllControlSettingList, _stationNumber);
         }
 
         private void OnClosing()

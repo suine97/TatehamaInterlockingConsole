@@ -46,10 +46,12 @@ namespace TatehamaInterlockinglConsole.ViewModels
         private void Initialize()
         {
             var folderPath = "TSV";
-            // 全TSVデータをDictionaryに格納
-            _dataManager.AllTsvDictionary = _uiElementLoader.LoadSettingsFromFolderAsDictionary(folderPath);
+            // 全コントロールの設定データをListに格納
+            _dataManager.AllControlSettingList = _uiElementLoader.LoadSettingsFromFolderAsDictionary(folderPath);
+            // 全コントロールのImagePathをListに格納
+            _dataManager.AllControlImagePathList = _uiElementLoader.GetAllImagePathsFromSettings(_dataManager.AllControlSettingList);
             // Main_UIListのみ取得
-            MainElements = _uiElementLoader.GetElementsFromSettings(_dataManager.AllTsvDictionary, "Main_UIList");
+            MainElements = _uiElementLoader.GetElementsFromSettings(_dataManager.AllControlSettingList, "Main");
 
             _timeService.Start();
             _timerHandler = new TimerHandler();
