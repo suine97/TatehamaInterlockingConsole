@@ -16,7 +16,7 @@ namespace TatehamaInterlockinglConsole.Services
         /// </summary>
         /// <param name="folderPath"></param>
         /// <returns></returns>
-        public List<UIControlSetting> LoadSettingsFromFolderAsDictionary(string folderPath)
+        public List<UIControlSetting> LoadSettingsFromFolderAsList(string folderPath)
         {
             var allSettings = new List<UIControlSetting>();
             foreach (var filePath in Directory.EnumerateFiles(folderPath, "*.tsv"))
@@ -30,18 +30,18 @@ namespace TatehamaInterlockinglConsole.Services
         /// <summary>
         /// 指定されたStationNumberのUIControlSettingリストをObservableCollection<UIElement>に変換して返す
         /// </summary>
-        /// <param name="settingsList"></param>
+        /// <param name="allSettings"></param>
         /// <param name="stationNumber"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public ObservableCollection<UIElement> GetElementsFromSettings(List<UIControlSetting> settingsList, string stationNumber)
+        public ObservableCollection<UIElement> GetElementsFromSettings(List<UIControlSetting> allSettings, string stationNumber)
         {
             var elements = new ObservableCollection<UIElement>();
 
             // 指定されたStationNumberがListに存在するか確認
-            if (settingsList.Any(list => list.StationNumber == stationNumber))
+            if (allSettings.Any(list => list.StationName == stationNumber))
             {
-                var stationList = settingsList.Where(list => list.StationNumber == stationNumber).ToList();
+                var stationList = allSettings.Where(list => list.StationName == stationNumber).ToList();
                 foreach (var setting in stationList)
                 {
                     var control = ControlFactory.CreateControl(setting, stationList, false);
@@ -56,38 +56,6 @@ namespace TatehamaInterlockinglConsole.Services
                 throw new ArgumentException($"指定されたファイル名 '{stationNumber}' の設定データが見つかりません。");
             }
             return elements;
-        }
-
-        /// <summary>
-        /// 全コントロールのImagePathをList<UIAllImagePaths>に格納して返す
-        /// </summary>
-        /// <param name="settingsList"></param>
-        /// <returns></returns>
-        public List<UIAllImagePaths> GetAllImagePathsFromSettings(List<UIControlSetting> settingsList)
-        {
-            var list = new List<UIAllImagePaths>();
-
-            foreach (var imagePaths in settingsList)
-            {
-                // ImagePatternが設定されていなければスキップ
-                if (imagePaths.ImagePattern.Count <= 1)
-                    continue;
-
-                var dictionary = new Dictionary<int, string>();
-                for (int i = 0; i < imagePaths.ImagePattern.Count; i++)
-                {
-                    dictionary[int.Parse(imagePaths.ImagePattern[i])] = imagePaths.ImagePaths[i];
-                }
-
-                list.Add(new UIAllImagePaths
-                {
-                    StationNumber = imagePaths.StationNumber,
-                    UniqueName = imagePaths.UniqueName,
-                    DefaultImage = imagePaths.DefaultImage,
-                    ImagePaths = dictionary
-                });
-            }
-            return list;
         }
     }
 }

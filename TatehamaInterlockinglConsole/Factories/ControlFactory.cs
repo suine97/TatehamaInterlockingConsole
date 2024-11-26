@@ -10,8 +10,6 @@ namespace TatehamaInterlockinglConsole.Factories
     /// </summary>
     public static class ControlFactory
     {
-        private static readonly List<UIAllImagePaths> list = DataManager.Instance.AllControlImagePathList;
-
         /// <summary>
         /// 種類別コントロール作成処理
         /// </summary>
@@ -29,19 +27,19 @@ namespace TatehamaInterlockinglConsole.Factories
                 case "TextBlock":
                     return TextBlockFactory.CreateTextBlockControl(setting, allSettings, false);
                 case "Image":
-                    return ImageFactory.CreateImageControl(list, setting, allSettings);
+                    return ImageFactory.CreateImageControl(setting, allSettings, true);
                 case "BackImage":
                     return BackImageFactory.CreateBackImageControl(setting, allSettings);
                 case "ClockImage":
                     return ClockImageFactory.CreateClockImageControl(setting, allSettings, drawing);
                 case "LeverImage":
-                    return LeverImageFactory.CreateLeverImageControl(list, setting, allSettings, drawing);
+                    return LeverImageFactory.CreateLeverImageControl(setting, allSettings, drawing);
                 case "KeyImage":
-                    return KeyImageFactory.CreateKeyImageControl(list, setting, allSettings, drawing);
+                    return KeyImageFactory.CreateKeyImageControl(setting, allSettings, drawing);
                 case "ButtonImage":
-                    return ButtonImageFactory.CreateButtonImageControl(list, setting, allSettings, drawing);
+                    return ButtonImageFactory.CreateButtonImageControl(setting, allSettings, drawing);
                 case "Retsuban":
-                    return ImageFactory.CreateImageControl(list, setting, allSettings);
+                    return ImageFactory.CreateImageControl(setting, allSettings, true);
                 default:
                     return null;
             }

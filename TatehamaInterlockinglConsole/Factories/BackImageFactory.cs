@@ -16,7 +16,7 @@ namespace TatehamaInterlockinglConsole.Factories
         /// <returns></returns>
         public static UIElement CreateBackImageControl(UIControlSetting setting, List<UIControlSetting> allSettings)
         {
-            var backImage = ImageFactory.CreateImageControl(setting, allSettings);
+            var backImage = ImageFactory.CreateImageControl(setting, allSettings, 0);
 
             BackImageWidth = backImage.Width;
             BackImageHeight = backImage.Height;

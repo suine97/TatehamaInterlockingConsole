@@ -7,6 +7,7 @@ using TatehamaInterlockinglConsole.Handlers;
 using TatehamaInterlockinglConsole.Models;
 using System.Windows.Controls;
 using TatehamaInterlockinglConsole.Utilities;
+using System.Linq;
 
 namespace TatehamaInterlockinglConsole.Factories
 {
@@ -57,12 +58,13 @@ namespace TatehamaInterlockinglConsole.Factories
         /// <param name="setting"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        public static Image CreateImageControl(List<UIAllImagePaths> imagePaths, UIControlSetting setting, List<UIControlSetting> allSettings, double angle = 0.0d, bool clickEvent = true)
+        public static Image CreateImageControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool clickEvent = true, double angle = 0.0d)
         {
-            string imagePath = setting.ImagePaths[0];
-            imagePaths.Find(i => i.StationNumber == setting.StationNumber
-                        && i.UniqueName == setting.UniqueName
-                        && i.ImagePaths.TryGetValue(setting.DefaultImage, out imagePath));
+            string imagePath = setting.ImagePaths.FirstOrDefault().Value;
+
+            // DefaultImageに対応したImagePathを抽出
+            setting.ImagePaths.TryGetValue(setting.DefaultImage, out imagePath);
+
             var bitmapImage = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));
             var image = new Image
             {

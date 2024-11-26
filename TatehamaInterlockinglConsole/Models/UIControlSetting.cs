@@ -7,7 +7,7 @@ namespace TatehamaInterlockinglConsole.Models
     /// </summary>
     public class UIControlSetting
     {
-        public string StationNumber { get; set; }
+        public string StationName { get; set; }
         public string ControlType { get; set; }
         public string UniqueName { get; set; }
         public string ServerName { get; set; }
@@ -27,7 +27,7 @@ namespace TatehamaInterlockinglConsole.Models
         public List<string> ImagePattern { get; set; }
         public int DefaultImage { get; set; }
         public string BaseImagePath { get; set; }
-        public List<string> ImagePaths { get; set; } = new List<string>();
+        public Dictionary<int, string> ImagePaths { get; set; }
         public double RelativeX { get; set; }
         public double RelativeY { get; set; }
         public string Remark { get; set; }

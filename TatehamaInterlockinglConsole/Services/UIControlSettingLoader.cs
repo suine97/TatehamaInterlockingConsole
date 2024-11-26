@@ -43,24 +43,33 @@ namespace TatehamaInterlockinglConsole.Services
                 bool header = false;
                 foreach (var line in File.ReadAllLines(filePath, Encoding.GetEncoding("shift_jis")))
                 {
+                    // ヘッダー行はスキップ
                     if (!header)
                     {
                         header = true;
                         continue;
                     }
 
+                    // 行に何も無ければスキップ
                     if (string.IsNullOrWhiteSpace(line))
                     {
                         continue;
                     }
 
-                    // 駅番号抽出
-                    var stationNumber = Path.GetFileNameWithoutExtension(filePath).Split('_')[0];
-
                     var columns = line.Split('\t');
+
+                    // ControlTypeが未定義ならスキップ
+                    if (string.IsNullOrWhiteSpace(columns[(int)ColumnIndex.ControlType]))
+                    {
+                        continue;
+                    }
+
+                    // 駅名称抽出
+                    var stationName = Data.GetStatinNameFromFilePath(filePath);
+
                     settings.Add(new UIControlSetting
                     {
-                        StationNumber = stationNumber,
+                        StationName = stationName,
                         ControlType = columns[(int)ColumnIndex.ControlType] != string.Empty ? columns[(int)ColumnIndex.ControlType] : string.Empty,
                         UniqueName = columns[(int)ColumnIndex.UniqueName],
                         ServerName = columns[(int)ColumnIndex.ServerName],
@@ -82,7 +91,7 @@ namespace TatehamaInterlockinglConsole.Services
                         ImagePattern = columns[(int)ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList(),
                         DefaultImage = int.TryParse(columns[(int)ColumnIndex.DefaultImage], out var defaultImage) ? defaultImage : 0,
                         BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)ColumnIndex.BaseImagePath].Trim('"').Trim(),
-                        ImagePaths = columns[(int)ColumnIndex.ImagePath].Split(',').Select(path => AppDomain.CurrentDomain.BaseDirectory + path.Trim('"').Trim()).ToList(),
+                        ImagePaths = CreateImagePaths(columns[(int)ColumnIndex.ImagePattern], columns[(int)ColumnIndex.ImagePath]),
                         Remark = columns[(int)ColumnIndex.Remark],
                     });
                 }
@@ -93,6 +102,36 @@ namespace TatehamaInterlockinglConsole.Services
                 MessageBox.Show(ex.ToString());
                 return null;
             }
+        }
+
+        private static Dictionary<int, string> CreateImagePaths(string imagePatternColumn, string imagePathColumn)
+        {
+            var imagePaths = new Dictionary<int, string>();
+
+            // ImagePatternとImagePathをそれぞれ分割して処理
+            var patterns = imagePatternColumn
+                .Split(',')
+                .Select(p => p.Trim('"').Trim())
+                .Where(p => int.TryParse(p, out _))
+                .Select(int.Parse)
+                .ToList();
+
+            var paths = imagePathColumn
+                .Split(',')
+                .Select(p => p.Trim('"').Trim())
+                .ToList();
+
+            // パターンとパスの個数が多い方を取得
+            var maxCount = Math.Max(patterns.Count, paths.Count);
+
+            for (int i = 0; i < maxCount; i++)
+            {
+                // patternsとpathsを対応付け、インデックス範囲外の場合はデフォルト値を使用
+                var pattern = i < patterns.Count ? patterns[i] : i;
+                var path = i < paths.Count ? paths[i] : string.Empty;
+                imagePaths[pattern] = AppDomain.CurrentDomain.BaseDirectory + path;
+            }
+            return imagePaths;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace TatehamaInterlockinglConsole.Services
 {
@@ -20,8 +21,20 @@ namespace TatehamaInterlockinglConsole.Services
         /// <returns></returns>
         public static string GetAppPath()
         {
-            return System.IO.Path.GetDirectoryName(
+            return Path.GetDirectoryName(
                 System.Reflection.Assembly.GetExecutingAssembly().Location);
+        }
+
+        /// <summary>
+        /// ファイル名から駅名を取得
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static string GetStatinNameFromFilePath(string filePath)
+        {
+            return Path.GetFileNameWithoutExtension(filePath).Split('_')[0]
+                   + "_"
+                   + Path.GetFileNameWithoutExtension(filePath).Split('_')[1];
         }
     }
 

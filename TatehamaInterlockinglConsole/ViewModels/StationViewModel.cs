@@ -16,7 +16,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
         private readonly UIElementLoader _uiElementLoader;
         private readonly DataManager _dataManager;
         private readonly Sound _sound;
-        private string _stationNumber;
+        private string _stationName;
 
         public ICommand ToggleModeCommand { get; }
         public ICommand ClosingCommand { get; }
@@ -56,7 +56,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
             _uiElementLoader = uiElementLoader;
             _dataManager = dataManager;
             _sound = new Sound();
-            Initialize(filePath);
+            _stationName = Data.GetStatinNameFromFilePath(filePath);
 
             IsFitMode = false;
             ToggleButtonText = "フィット表示に切り替え";
@@ -65,17 +65,12 @@ namespace TatehamaInterlockinglConsole.ViewModels
             ClosingCommand = new RelayCommand(OnClosing);
             ToggleModeCommand = new RelayCommand(ToggleMode);
 
-            StationElements = LoadTSV.LoadUIFromTSV(filePath);
+            var stationSettingList = _dataManager.AllControlSettingList.FindAll(list => list.StationName == _stationName);
+            StationElements = CreateUIControl.CreateUIControlAsUIElement(stationSettingList);
             WindowWidth = 1280;
             WindowHeight = 720;
             DrawingWidth = BackImageFactory.BackImageWidth;
             DrawingHeight = BackImageFactory.BackImageHeight;
-        }
-
-        private void Initialize(string filePath)
-        {
-            _stationNumber = Path.GetFileNameWithoutExtension(filePath).Split('_')[0];
-            StationElements = _uiElementLoader.GetElementsFromSettings(_dataManager.AllControlSettingList, _stationNumber);
         }
 
         private void OnClosing()
