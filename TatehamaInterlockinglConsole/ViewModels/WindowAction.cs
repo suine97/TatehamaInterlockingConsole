@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using TatehamaInterlockinglConsole.Manager;
-using TatehamaInterlockinglConsole.Services;
+using TatehamaInterlockinglConsole.Helpers;
 using TatehamaInterlockinglConsole.Views;
 
 namespace TatehamaInterlockinglConsole.ViewModels

@@ -30,7 +30,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <Viewbox Stretch="Uniform">
-                                        <ItemsControl ItemsSource="{Binding StationElements}">
+                                        <ItemsControl ItemsSource="{Binding AllStationElements}">
                                             <ItemsControl.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <Canvas Width="{Binding DrawingWidth}" Height="{Binding DrawingHeight}" />
@@ -47,7 +47,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <ScrollViewer HorizontalScrollBarVisibility="Auto" CanContentScroll="True" VerticalScrollBarVisibility="Auto">
-                                        <ItemsControl ItemsSource="{Binding StationElements}">
+                                        <ItemsControl ItemsSource="{Binding AllStationElements}">
                                             <ItemsControl.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <Canvas Width="{Binding DrawingWidth}" Height="{Binding DrawingHeight}" />

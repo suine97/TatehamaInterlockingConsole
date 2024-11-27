@@ -4,7 +4,7 @@ using TatehamaInterlockinglConsole.Factories;
 using System.Collections.Generic;
 using TatehamaInterlockinglConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Services
+namespace TatehamaInterlockinglConsole.Helpers
 {
     public static class CreateUIControl
     {

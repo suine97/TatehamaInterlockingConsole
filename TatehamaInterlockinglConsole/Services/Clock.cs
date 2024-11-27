@@ -1,10 +1,17 @@
 ﻿using System;
 using System.Windows.Media;
 
-namespace TatehamaInterlockinglConsole.Services
+namespace TatehamaInterlockinglConsole.Helpers
 {
     public static class Clock
     {
+        /// <summary>
+        /// 時計コントロール設定メソッド
+        /// </summary>
+        /// <param name="time"></param>
+        /// <param name="hourRotate"></param>
+        /// <param name="minuteRotate"></param>
+        /// <param name="secondRotate"></param>
         public static void SetClockHands(DateTime time, RotateTransform hourRotate, RotateTransform minuteRotate, RotateTransform secondRotate)
         {
             // 短針、長針、秒針の角度を計算

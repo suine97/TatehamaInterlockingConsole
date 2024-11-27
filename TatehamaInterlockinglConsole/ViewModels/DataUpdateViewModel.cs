@@ -4,6 +4,9 @@ using TatehamaInterlockinglConsole.Models;
 
 namespace TatehamaInterlockinglConsole.ViewModels
 {
+    /// <summary>
+    /// UIControlSettingList更新クラス
+    /// </summary>
     public class DataUpdateViewModel : BaseViewModel
     {
         private readonly DataManager _dataManager = DataManager.Instance;
@@ -32,29 +35,28 @@ namespace TatehamaInterlockinglConsole.ViewModels
                 {
                     case "Image":
                         {
-                            // 軌道回路状態から在線ランプ画像更新
-                            // 転てつ器開通方向が指定されていたらその条件を判定
+                            // 軌道回路状態・転てつ器開通方向を基に在線ランプ画像更新
                         }
                         break;
                     case "LeverImage":
                         {
-                            // 転てつ器状態からてこ画像更新
-                            // てこTextBox角度更新
+                            // 転てつ器状態を基にてこ画像更新
+                            // てこTextBlock角度更新
                         }
                         break;
                     case "KeyImage":
                         {
-
+                            // 鍵挿入状態を基に鍵てこ画像更新
                         }
                         break;
                     case "ButtonImage":
                         {
-
+                            // クリック状態を基にボタン画像更新
                         }
                         break;
                     case "Retsuban":
                         {
-
+                            // 列番文字列を基に列番画像更新
                         }
                         break;
                     case "Button":

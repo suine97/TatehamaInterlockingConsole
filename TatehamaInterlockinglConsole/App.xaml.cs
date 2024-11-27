@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using TatehamaInterlockinglConsole.Manager;
-using TatehamaInterlockinglConsole.Services;
+using TatehamaInterlockinglConsole.Helpers;
 using TatehamaInterlockinglConsole.ViewModels;
 using TatehamaInterlockinglConsole.Views;
 

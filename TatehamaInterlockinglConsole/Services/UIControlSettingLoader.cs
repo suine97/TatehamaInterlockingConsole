@@ -5,11 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using TatehamaInterlockinglConsole.Models;
+using TatehamaInterlockingConsole.Helpers;
 
-namespace TatehamaInterlockinglConsole.Services
+namespace TatehamaInterlockinglConsole.Helpers
 {
+    /// <summary>
+    /// UIControlSettingList読込クラス
+    /// </summary>
     public static class UIControlSettingLoader
     {
+        /// <summary>
+        /// TSVファイルの列要素番号
+        /// </summary>
         public enum ColumnIndex
         {
             ControlType = 0,
@@ -35,6 +42,11 @@ namespace TatehamaInterlockinglConsole.Services
             Remark = 20
         }
 
+        /// <summary>
+        /// TSVファイルを読み込みUIControlSettingListを作成する
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public static List<UIControlSetting> LoadSettings(string filePath)
         {
             try
@@ -65,7 +77,7 @@ namespace TatehamaInterlockinglConsole.Services
                     }
 
                     // 駅名称抽出
-                    var stationName = Data.GetStatinNameFromFilePath(filePath);
+                    var stationName = DataHelper.ExtractStationNameFromFilePath(filePath);
 
                     settings.Add(new UIControlSetting
                     {
@@ -90,6 +102,7 @@ namespace TatehamaInterlockinglConsole.Services
                         ClickEventName = columns[(int)ColumnIndex.ClickEventName],
                         ImagePattern = columns[(int)ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList(),
                         DefaultImage = int.TryParse(columns[(int)ColumnIndex.DefaultImage], out var defaultImage) ? defaultImage : 0,
+                        CurrentImage = int.TryParse(columns[(int)ColumnIndex.DefaultImage], out var currentImage) ? currentImage : 0,
                         BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)ColumnIndex.BaseImagePath].Trim('"').Trim(),
                         ImagePaths = CreateImagePaths(columns[(int)ColumnIndex.ImagePattern], columns[(int)ColumnIndex.ImagePath]),
                         Remark = columns[(int)ColumnIndex.Remark],
@@ -104,6 +117,12 @@ namespace TatehamaInterlockinglConsole.Services
             }
         }
 
+        /// <summary>
+        /// ImagePaths作成処理
+        /// </summary>
+        /// <param name="imagePatternColumn"></param>
+        /// <param name="imagePathColumn"></param>
+        /// <returns></returns>
         private static Dictionary<int, string> CreateImagePaths(string imagePatternColumn, string imagePathColumn)
         {
             var imagePaths = new Dictionary<int, string>();

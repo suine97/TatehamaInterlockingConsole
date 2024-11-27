@@ -5,7 +5,7 @@ using System.Windows.Media;
 using System.Windows;
 using TatehamaInterlockinglConsole.Models;
 using System.Windows.Controls;
-using TatehamaInterlockinglConsole.Utilities;
+using TatehamaInterlockinglConsole.Helpers;
 
 namespace TatehamaInterlockinglConsole.Factories
 {
@@ -29,7 +29,7 @@ namespace TatehamaInterlockinglConsole.Factories
             };
 
             // 親コントロールが設定されている場合は、相対座標に変換
-            PositionUtilities.SetPosition(image, setting, allSettings);
+            ControlHelper.SetPosition(image, setting, allSettings);
 
             RotateTransform rotateTransform = new RotateTransform();
             image.RenderTransform = rotateTransform;

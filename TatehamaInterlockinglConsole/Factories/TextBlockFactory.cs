@@ -1,11 +1,12 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 using System.Windows.Controls;
+using System.Linq;
 using System.Collections.Generic;
-using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Utilities;
 using System.Globalization;
+using TatehamaInterlockinglConsole.Models;
 using TatehamaInterlockinglConsole.Handlers;
+using TatehamaInterlockinglConsole.Helpers;
 
 namespace TatehamaInterlockinglConsole.Factories
 {
@@ -41,7 +42,7 @@ namespace TatehamaInterlockinglConsole.Factories
             };
 
             // 親コントロールが設定されている場合は、相対座標に変換
-            PositionUtilities.SetPosition(grid, setting, allSettings);
+            ControlHelper.SetPosition(grid, setting, allSettings);
 
             // イベントが設定されている場合は、イベントをアタッチ
             if (setting.ClickEventName != string.Empty)
@@ -63,9 +64,34 @@ namespace TatehamaInterlockinglConsole.Factories
                 AdjustTextWidth(textBlock, grid.ActualWidth);
             };
 
+            // 親ControlTypeがLeverImageなら角度を設定
+            if (!string.IsNullOrWhiteSpace(setting.ParentName))
+            {
+                var parentsetting = allSettings.FirstOrDefault(all => all.UniqueName == setting.ParentName);
+
+                if (parentsetting.ControlType.Contains("LeverImage"))
+                {
+                    RotateTransform rotateTransform = new RotateTransform();
+                    grid.RenderTransform = rotateTransform;
+                    grid.RenderTransformOrigin = new Point(setting.AngleOriginX, setting.AngleOriginY);
+
+                    if (parentsetting.CurrentImage < 0)
+                        rotateTransform.Angle = -40;
+                    else if (parentsetting.CurrentImage > 0)
+                        rotateTransform.Angle = 40;
+                    else
+                        rotateTransform.Angle = 0;
+                }
+            }
+
             return grid;
         }
 
+        /// <summary>
+        /// Textに応じてTextBlockの幅を調整
+        /// </summary>
+        /// <param name="textBlock"></param>
+        /// <param name="availableWidth"></param>
         private static void AdjustTextWidth(TextBlock textBlock, double availableWidth)
         {
             var dpi = VisualTreeHelper.GetDpi(textBlock).PixelsPerDip;

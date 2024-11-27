@@ -38,7 +38,7 @@
         </StackPanel>
 
         <Viewbox Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="1">
-            <ItemsControl ItemsSource="{Binding MainElements}">
+            <ItemsControl ItemsSource="{Binding AllMainElements}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas Width="1008" Height="630"/>

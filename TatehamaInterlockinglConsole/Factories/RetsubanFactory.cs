@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace TatehamaInterlockinglConsole.ViewModels
+namespace TatehamaInterlockinglConsole.Factories
 {
-    public static class ImageDrawing
+    public static class RetsubanFactory
     {
-        public static void RetsubanDrawing(string retsuban)
+        /// <summary>
+        /// Retsubanコントロール作成処理
+        /// </summary>
+        /// <param name="retsuban"></param>
+        public static void CreateRetsubanControl(string retsuban)
         {
             // 正規表現パターンの定義
             var pattern = @"([回試臨]?)([0-9]{0,4})(A|B|C|K|X|AX|BX|CX|KX)?$";

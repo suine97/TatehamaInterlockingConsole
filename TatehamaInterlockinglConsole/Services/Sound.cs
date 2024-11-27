@@ -4,14 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using TatehamaInterlockingConsole.Helpers;
 
-namespace TatehamaInterlockinglConsole.Services
+namespace TatehamaInterlockinglConsole.Helpers
 {
     /// <summary>
     /// 音声クラス
     /// </summary>
     public class Sound
     {
+        private static Sound _instance = new Sound();
+        /// <summary>
+        /// インスタンス生成
+        /// </summary>
+        public static Sound Instance => _instance;
+
         /// <summary>
         /// 音声リスト
         /// </summary>
@@ -23,14 +30,9 @@ namespace TatehamaInterlockinglConsole.Services
         public ConcurrentQueue<SoundPlayArgument> SoundQueue = new ConcurrentQueue<SoundPlayArgument>();
 
         /// <summary>
-        /// 音声再生用の出力デバイス
+        /// 再生中のデバイスリスト
         /// </summary>
-        private WaveOutEvent outputDevice;
-
-        /// <summary>
-        /// 音声読み込み
-        /// </summary>
-        private AudioFileReader audioFile;
+        private readonly List<WaveOutEvent> activeDevices = new List<WaveOutEvent>();
 
         /// <summary>
         /// 音声処理スレッドループ判定
@@ -42,7 +44,7 @@ namespace TatehamaInterlockinglConsole.Services
         /// </summary>
         public Sound()
         {
-            //音声ファイル読み込み
+            // 音声ファイル読み込み
             SoundList = ReadAudioFile();
         }
 
@@ -53,18 +55,14 @@ namespace TatehamaInterlockinglConsole.Services
         {
             while (IsSoundThreadLoop)
             {
-                //50msごとに処理
+                // 50msごとに処理
                 await Task.Delay(50);
 
-                //Queueに処理が積まれた時に実行
-                if (SoundQueue.Count() == 0)
+                // Queueに処理が積まれた時に実行
+                if (SoundQueue.Count == 0)
                     continue;
 
-                //何も再生されていない時に処理
-                if (outputDevice != null)
-                    continue;
-
-                //Queueからデータ取得
+                // Queueからデータ取得
                 if (SoundQueue.TryDequeue(out SoundPlayArgument s))
                 {
                     SoundPlay(s.sFileName, s.IsLoop);
@@ -73,56 +71,69 @@ namespace TatehamaInterlockinglConsole.Services
         }
 
         /// <summary>
-        /// 音声再生メソッド
+        /// 音声再生メソッド（複数音声対応）
         /// </summary>
         public void SoundPlay(string soundFileName, bool isLoop)
         {
             try
             {
-                if (outputDevice == null)
+                // 音声ファイルの検索
+                SoundFile sFile = SoundList.First(s => s.sFileName == soundFileName);
+                AudioFileReader audioReader = new AudioFileReader(sFile.sFilePath);
+
+                // 出力デバイスの生成
+                WaveOutEvent device = new WaveOutEvent();
+                device.PlaybackStopped += (sender, e) =>
                 {
-                    //出力デバイスの生成
-                    outputDevice = new WaveOutEvent();
-                    //stop()を実行すると発生　クリーンアップ処理等を行う
-                    outputDevice.PlaybackStopped += OnPlaybackStopped;
-                    if (audioFile == null)
+                    // 再生停止後にリソース解放
+                    device.Dispose();
+                    audioReader.Dispose();
+                    lock (activeDevices)
                     {
-                        //音声ファイルの検索
-                        SoundFile sFile = SoundList.First(s => s.sFileName == soundFileName);
-                        //音声ファイルの読み込み
-                        audioFile = new AudioFileReader(sFile.sFilePath);
-                        //ループ用処理
-                        if (isLoop)
-                        {
-                            //ループ設定取得
-                            LoopStream loop = new LoopStream(audioFile);
-                            //出力デバイスに渡す
-                            outputDevice.Init(loop);
-                        }
-                        else
-                        {
-                            //出力デバイスに渡す
-                            outputDevice.Init(audioFile);
-                        }
+                        activeDevices.Remove(device);
                     }
-                    //再生実行
-                    outputDevice.Play();
+                };
+
+                if (isLoop)
+                {
+                    LoopStream loop = new LoopStream(audioReader);
+                    device.Init(loop);
+                }
+                else
+                {
+                    device.Init(audioReader);
+                }
+
+                // 再生実行
+                device.Play();
+
+                // 再生中のデバイスを管理
+                lock (activeDevices)
+                {
+                    activeDevices.Add(device);
                 }
             }
             catch
             {
-                SoundStop();
-                //Queteに再設定
+                // エラー時のリソース解放処理
+                SoundStopAll();
                 SoundQueue.Enqueue(new SoundPlayArgument() { sFileName = soundFileName, IsLoop = isLoop });
             }
         }
 
         /// <summary>
-        /// 音声停止メソッド
+        /// 全ての音声を停止
         /// </summary>
-        public void SoundStop()
+        public void SoundStopAll()
         {
-            outputDevice?.Stop();
+            lock (activeDevices)
+            {
+                foreach (var device in activeDevices)
+                {
+                    device.Stop();
+                }
+                activeDevices.Clear();
+            }
         }
 
         /// <summary>
@@ -130,10 +141,10 @@ namespace TatehamaInterlockinglConsole.Services
         /// </summary>
         private List<SoundFile> ReadAudioFile()
         {
-            //Sound配下のwavファイルのパスを全取得
-            string[] filePaths = Directory.GetFiles(Data.GetAppPath() + "\\Sound", "*.wav", SearchOption.TopDirectoryOnly);
+            // Sound配下のwavファイルのパスを全取得
+            string[] filePaths = Directory.GetFiles(DataHelper.GetApplicationDirectory() + "\\Sound", "*.wav", SearchOption.TopDirectoryOnly);
 
-            //音声ファイル情報を読み込んでListに入れる
+            // 音声ファイル情報を読み込んでListに入れる
             List<SoundFile> soundList = new List<SoundFile>();
             foreach (string filePath in filePaths)
             {
@@ -148,102 +159,81 @@ namespace TatehamaInterlockinglConsole.Services
         }
 
         /// <summary>
-        /// 音声停止イベント
+        /// 音声ファイルクラス
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnPlaybackStopped(object sender, StoppedEventArgs e)
+        public class SoundFile
         {
-            //出力デバイス破棄
-            outputDevice.Dispose();
-            outputDevice = null;
-            //オーディオファイル破棄
-            audioFile.Dispose();
-            audioFile = null;
-        }
-    }
+            /// <summary>
+            /// ファイル名
+            /// </summary>
+            public string sFileName { get; set; }
 
-    /// <summary>
-    /// 音声ファイルクラス
-    /// </summary>
-    public class SoundFile
-    {
-        /// <summary>
-        /// ファイル名
-        /// </summary>
-        public string sFileName { get; set; }
+            /// <summary>
+            /// ファイルパス
+            /// </summary>
+            public string sFilePath { get; set; }
+        }
 
         /// <summary>
-        /// ファイルパス
+        /// 音声再生用クラス
         /// </summary>
-        public string sFilePath { get; set; }
-    }
+        public class SoundPlayArgument
+        {
+            /// <summary>
+            /// ファイル名
+            /// </summary>
+            public string sFileName { get; set; }
 
-    /// <summary>
-    /// 音声再生用クラス
-    /// </summary>
-    public class SoundPlayArgument
-    {
+            /// <summary>
+            /// ループ判定
+            /// </summary>
+            public bool IsLoop { get; set; }
+        }
+
         /// <summary>
-        /// ファイル名
+        /// ループ再生用クラス
         /// </summary>
-        public string sFileName { get; set; }
-
-        /// <summary>
-        /// ループ判定
-        /// </summary>
-        public bool IsLoop { get; set; }
-    }
-
-    /// <summary>
-    /// ループ再生用クラス
-    /// </summary>
-    public class LoopStream : WaveStream
-    {
-        WaveStream sourceStream;
-
-        public LoopStream(WaveStream sourceStream)
+        public class LoopStream : WaveStream
         {
-            this.sourceStream = sourceStream;
-            this.EnableLooping = true;
-        }
+            private readonly WaveStream sourceStream;
 
-        public bool EnableLooping { get; set; }
-
-        public override WaveFormat WaveFormat
-        {
-            get { return sourceStream.WaveFormat; }
-        }
-
-        public override long Length
-        {
-            get { return sourceStream.Length; }
-        }
-
-        public override long Position
-        {
-            get { return sourceStream.Position; }
-            set { sourceStream.Position = value; }
-        }
-
-        public override int Read(byte[] buffer, int offset, int count)
-        {
-            int totalBytesRead = 0;
-
-            while (totalBytesRead < count)
+            public LoopStream(WaveStream sourceStream)
             {
-                int bytesRead = sourceStream.Read(buffer, offset + totalBytesRead, count - totalBytesRead);
-                if (bytesRead == 0)
-                {
-                    if (sourceStream.Position == 0 || !EnableLooping)
-                    {
-                        break;
-                    }
-                    sourceStream.Position = 0;
-                }
-                totalBytesRead += bytesRead;
+                this.sourceStream = sourceStream;
+                this.EnableLooping = true;
             }
-            return totalBytesRead;
+
+            public bool EnableLooping { get; set; }
+
+            public override WaveFormat WaveFormat => sourceStream.WaveFormat;
+
+            public override long Length => sourceStream.Length;
+
+            public override long Position
+            {
+                get => sourceStream.Position;
+                set => sourceStream.Position = value;
+            }
+
+            public override int Read(byte[] buffer, int offset, int count)
+            {
+                int totalBytesRead = 0;
+
+                while (totalBytesRead < count)
+                {
+                    int bytesRead = sourceStream.Read(buffer, offset + totalBytesRead, count - totalBytesRead);
+                    if (bytesRead == 0)
+                    {
+                        if (sourceStream.Position == 0 || !EnableLooping)
+                        {
+                            break;
+                        }
+                        sourceStream.Position = 0;
+                    }
+                    totalBytesRead += bytesRead;
+                }
+                return totalBytesRead;
+            }
         }
     }
 }

@@ -7,12 +7,12 @@ using TatehamaInterlockinglConsole.Models;
 using TatehamaInterlockinglConsole.Factories;
 using System.Linq;
 
-namespace TatehamaInterlockinglConsole.Services
+namespace TatehamaInterlockinglConsole.Helpers
 {
     public class UIElementLoader
     {
         /// <summary>
-        /// フォルダ内の全てのTSVファイルからUIControlSettingリストをロードし、Listとして返す
+        /// フォルダ内の全てのTSVファイルからUIControlSettingListを読み込み、Listに変換して返す
         /// </summary>
         /// <param name="folderPath"></param>
         /// <returns></returns>
@@ -28,7 +28,7 @@ namespace TatehamaInterlockinglConsole.Services
         }
 
         /// <summary>
-        /// 指定されたStationNumberのUIControlSettingリストをObservableCollection<UIElement>に変換して返す
+        /// 指定されたStationNumberのUIControlSettingListを、ObservableCollection<UIElement>に変換して返す
         /// </summary>
         /// <param name="allSettings"></param>
         /// <param name="stationNumber"></param>

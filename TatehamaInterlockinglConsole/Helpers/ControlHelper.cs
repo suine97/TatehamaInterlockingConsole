@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows;
+using System.Collections.Generic;
+using System.Linq;
 using TatehamaInterlockinglConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Utilities
+namespace TatehamaInterlockinglConsole.Helpers
 {
-    public static class PositionUtilities
+    /// <summary>
+    /// 汎用コントロール操作ヘルパークラス
+    /// </summary>
+    public static class ControlHelper
     {
         /// <summary>
         /// 親子関係を考慮した座標設定処理

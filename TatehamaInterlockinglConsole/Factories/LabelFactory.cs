@@ -4,7 +4,7 @@ using System.Windows.Media;
 using System.Windows;
 using TatehamaInterlockinglConsole.Handlers;
 using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Utilities;
+using TatehamaInterlockinglConsole.Helpers;
 
 namespace TatehamaInterlockinglConsole.Factories
 {
@@ -30,7 +30,7 @@ namespace TatehamaInterlockinglConsole.Factories
             };
 
             // 親コントロールが設定されている場合は、相対座標に変換
-            PositionUtilities.SetPosition(label, setting, allSettings);
+            ControlHelper.SetPosition(label, setting, allSettings);
 
             // イベントが設定されている場合は、イベントをアタッチ
             if (setting.ClickEventName != string.Empty)

@@ -14,6 +14,8 @@ namespace TatehamaInterlockinglConsole.Models
         public string ParentName { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
+        public double RelativeX { get; set; }
+        public double RelativeY { get; set; }
         public double Width { get; set; }
         public double Height { get; set; }
         public double Angle { get; set; }
@@ -26,10 +28,9 @@ namespace TatehamaInterlockinglConsole.Models
         public string ClickEventName { get; set; }
         public List<string> ImagePattern { get; set; }
         public int DefaultImage { get; set; }
+        public int CurrentImage { get; set; }
         public string BaseImagePath { get; set; }
         public Dictionary<int, string> ImagePaths { get; set; }
-        public double RelativeX { get; set; }
-        public double RelativeY { get; set; }
         public string Remark { get; set; }
     }
 }

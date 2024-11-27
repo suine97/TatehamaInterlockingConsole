@@ -5,7 +5,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using System.Windows;
 using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Services;
+using TatehamaInterlockinglConsole.Helpers;
 
 namespace TatehamaInterlockinglConsole.Factories
 {
