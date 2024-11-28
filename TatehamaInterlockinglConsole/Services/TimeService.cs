@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Threading;
 
-namespace TatehamaInterlockinglConsole.Helpers
+namespace TatehamaInterlockingConsole.Services
 {
     /// <summary>
     /// 時刻を管理および更新するためのサービスクラス

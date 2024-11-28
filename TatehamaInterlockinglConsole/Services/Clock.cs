@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
 
-namespace TatehamaInterlockinglConsole.Helpers
+namespace TatehamaInterlockingConsole.Services
 {
     public static class Clock
     {

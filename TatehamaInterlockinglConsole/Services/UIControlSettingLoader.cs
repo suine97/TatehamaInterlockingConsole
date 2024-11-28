@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
-using TatehamaInterlockinglConsole.Models;
 using TatehamaInterlockingConsole.Helpers;
+using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Helpers
+namespace TatehamaInterlockingConsole.Services
 {
     /// <summary>
     /// UIControlSettingList読込クラス
@@ -23,23 +23,25 @@ namespace TatehamaInterlockinglConsole.Helpers
             UniqueName = 1,
             ServerName = 2,
             ParentName = 3,
-            X = 4,
-            Y = 5,
-            Width = 6,
-            Height = 7,
-            Angle = 8,
-            AngleOriginX = 9,
-            AngleOriginY = 10,
-            Text = 11,
-            FontSize = 12,
-            BackgroundColor = 13,
-            TextColor = 14,
-            ClickEventName = 15,
-            ImagePattern = 16, 
-            DefaultImage = 17,
-            BaseImagePath = 18,
-            ImagePath = 19,
-            Remark = 20
+            PointName = 4,
+            PointValue = 5,
+            X = 6,
+            Y = 7,
+            Width = 8,
+            Height = 9,
+            Angle = 10,
+            AngleOriginX = 11,
+            AngleOriginY = 12,
+            Text = 13,
+            FontSize = 14,
+            BackgroundColor = 15,
+            TextColor = 16,
+            ClickEventName = 17,
+            ImagePattern = 18, 
+            ImageIndex = 19,
+            BaseImagePath = 20,
+            ImagePath = 21,
+            Remark = 22
         }
 
         /// <summary>
@@ -86,6 +88,8 @@ namespace TatehamaInterlockinglConsole.Helpers
                         UniqueName = columns[(int)ColumnIndex.UniqueName],
                         ServerName = columns[(int)ColumnIndex.ServerName],
                         ParentName = columns[(int)ColumnIndex.ParentName],
+                        PointName = columns[(int)ColumnIndex.PointName],
+                        PointValue = bool.TryParse(columns[(int)ColumnIndex.PointValue], out var pointvalue) && pointvalue,
                         X = double.TryParse(columns[(int)ColumnIndex.X], out var x) ? x : 0,
                         Y = double.TryParse(columns[(int)ColumnIndex.Y], out var y) ? y : 0,
                         RelativeX = double.TryParse(columns[(int)ColumnIndex.X], out var relativeX) ? relativeX : 0,
@@ -101,8 +105,7 @@ namespace TatehamaInterlockinglConsole.Helpers
                         TextColor = columns[(int)ColumnIndex.TextColor],
                         ClickEventName = columns[(int)ColumnIndex.ClickEventName],
                         ImagePattern = columns[(int)ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList(),
-                        DefaultImage = int.TryParse(columns[(int)ColumnIndex.DefaultImage], out var defaultImage) ? defaultImage : 0,
-                        CurrentImage = int.TryParse(columns[(int)ColumnIndex.DefaultImage], out var currentImage) ? currentImage : 0,
+                        ImageIndex = int.TryParse(columns[(int)ColumnIndex.ImageIndex], out var defaultImage) ? defaultImage : 0,
                         BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)ColumnIndex.BaseImagePath].Trim('"').Trim(),
                         ImagePaths = CreateImagePaths(columns[(int)ColumnIndex.ImagePattern], columns[(int)ColumnIndex.ImagePath]),
                         Remark = columns[(int)ColumnIndex.Remark],

@@ -1,12 +1,12 @@
 ﻿using NAudio.Wave;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using TatehamaInterlockingConsole.Helpers;
 
-namespace TatehamaInterlockinglConsole.Helpers
+namespace TatehamaInterlockingConsole.Services
 {
     /// <summary>
     /// 音声クラス

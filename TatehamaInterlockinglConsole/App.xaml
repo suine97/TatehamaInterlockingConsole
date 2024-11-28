@@ -1,7 +1,7 @@
-﻿<Application x:Class="TatehamaInterlockinglConsole.App"
+﻿<Application x:Class="TatehamaInterlockingConsole.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:TatehamaInterlockinglConsole.ViewModels">
+             xmlns:local="clr-namespace:TatehamaInterlockingConsole.ViewModels">
     <Application.Resources>
 
     </Application.Resources>

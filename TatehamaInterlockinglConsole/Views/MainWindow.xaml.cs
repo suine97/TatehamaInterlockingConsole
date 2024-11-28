@@ -2,9 +2,9 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
-using TatehamaInterlockinglConsole.ViewModels;
+using TatehamaInterlockingConsole.ViewModels;
 
-namespace TatehamaInterlockinglConsole.Views
+namespace TatehamaInterlockingConsole.Views
 {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック

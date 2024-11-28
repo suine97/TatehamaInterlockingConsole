@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace TatehamaInterlockinglConsole.CustomControl
+namespace TatehamaInterlockingConsole.CustomControl
 {
     public class CustomButton : Button
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows;
-using TatehamaInterlockinglConsole.Models;
+using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Factories
+namespace TatehamaInterlockingConsole.Factories
 {
     public static class LeverImageFactory
     {

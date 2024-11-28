@@ -1,22 +1,22 @@
 ﻿using System;
 using System.IO;
-using System.Windows;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Factories;
 using System.Linq;
+using System.Windows;
+using TatehamaInterlockingConsole.Models;
+using TatehamaInterlockingConsole.Factories;
 
-namespace TatehamaInterlockinglConsole.Helpers
+namespace TatehamaInterlockingConsole.Services
 {
-    public class UIElementLoader
+    public static class UIElementLoader
     {
         /// <summary>
-        /// フォルダ内の全てのTSVファイルからUIControlSettingListを読み込み、Listに変換して返す
+        /// フォルダ内の全てのTSVファイルを読み込み、UIControlSettingに変換して返す
         /// </summary>
         /// <param name="folderPath"></param>
         /// <returns></returns>
-        public List<UIControlSetting> LoadSettingsFromFolderAsList(string folderPath)
+        public static List<UIControlSetting> LoadSettingsFromFolderAsUIControlSetting(string folderPath)
         {
             var allSettings = new List<UIControlSetting>();
             foreach (var filePath in Directory.EnumerateFiles(folderPath, "*.tsv"))
@@ -28,32 +28,50 @@ namespace TatehamaInterlockinglConsole.Helpers
         }
 
         /// <summary>
-        /// 指定されたStationNumberのUIControlSettingListを、ObservableCollection<UIElement>に変換して返す
+        /// UIControlSettingを読み込みUIElementModelを返す
         /// </summary>
         /// <param name="allSettings"></param>
-        /// <param name="stationNumber"></param>
         /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
-        public ObservableCollection<UIElement> GetElementsFromSettings(List<UIControlSetting> allSettings, string stationNumber)
+        public static ObservableCollection<UIElement> CreateUIControlModels(List<UIControlSetting> allSettings, bool drawing = true)
+        {
+            var elements = new ObservableCollection<UIElement>();
+
+            foreach (var setting in allSettings)
+            {
+                var element = ControlFactory.CreateControl(setting, allSettings, drawing);
+                if (element != null)
+                {
+                    elements.Add(element);
+                }
+            }
+            return elements;
+        }
+
+        /// <summary>
+        /// UIControlSettingを読み込みUIElementModelを返す
+        /// </summary>
+        /// <param name="allSettings"></param>
+        /// <returns></returns>
+        public static ObservableCollection<UIElement> CreateUIControlModels(List<UIControlSetting> allSettings, string stationName, bool drawing = true)
         {
             var elements = new ObservableCollection<UIElement>();
 
             // 指定されたStationNumberがListに存在するか確認
-            if (allSettings.Any(list => list.StationName == stationNumber))
+            if (allSettings.Any(list => list.StationName == stationName))
             {
-                var stationList = allSettings.Where(list => list.StationName == stationNumber).ToList();
-                foreach (var setting in stationList)
+                var stationList = allSettings.Where(list => list.StationName == stationName).ToList();
+                foreach (var setting in allSettings)
                 {
-                    var control = ControlFactory.CreateControl(setting, stationList, false);
-                    if (control != null)
+                    var element = ControlFactory.CreateControl(setting, stationList, drawing);
+                    if (element != null)
                     {
-                        elements.Add(control);
+                        elements.Add(element);
                     }
                 }
             }
             else
             {
-                throw new ArgumentException($"指定されたファイル名 '{stationNumber}' の設定データが見つかりません。");
+                throw new ArgumentException($"指定されたファイル名 '{stationName}' の設定データが見つかりません。");
             }
             return elements;
         }

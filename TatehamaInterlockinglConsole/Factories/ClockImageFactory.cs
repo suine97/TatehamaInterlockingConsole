@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
-using System.Windows;
-using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Helpers;
+using System.Collections.Generic;
+using TatehamaInterlockingConsole.Models;
+using TatehamaInterlockingConsole.Services;
 
-namespace TatehamaInterlockinglConsole.Factories
+namespace TatehamaInterlockingConsole.Factories
 {
     internal class ClockImageFactory
     {

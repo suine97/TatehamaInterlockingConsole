@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TatehamaInterlockinglConsole.Models
+namespace TatehamaInterlockingConsole.Models
 {
     /// <summary>
     /// 連動装置サーバーデータ格納クラス

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
-using TatehamaInterlockinglConsole.ViewModels;
+using TatehamaInterlockingConsole.ViewModels;
 
-namespace TatehamaInterlockinglConsole.Handlers
+namespace TatehamaInterlockingConsole.Handlers
 {
     /// <summary>
     /// Buttonクリックイベントハンドラー

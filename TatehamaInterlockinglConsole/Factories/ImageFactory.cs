@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
-using System.Windows;
-using TatehamaInterlockinglConsole.Handlers;
-using TatehamaInterlockinglConsole.Models;
-using System.Windows.Controls;
-using TatehamaInterlockinglConsole.Helpers;
 using System.Linq;
+using System.Collections.Generic;
+using TatehamaInterlockingConsole.Handlers;
+using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Factories
+namespace TatehamaInterlockingConsole.Factories
 {
     public static class ImageFactory
     {
@@ -29,9 +28,6 @@ namespace TatehamaInterlockinglConsole.Factories
                 Height = setting.Height != 0 ? setting.Height : bitmapImage.PixelHeight,
                 RenderTransform = new RotateTransform(setting.Angle)
             };
-
-            // 親コントロールが設定されている場合は、相対座標に変換
-            ControlHelper.SetPosition(image, setting, allSettings);
 
             // イベントが設定されている場合は、イベントをアタッチ
             if (setting.ClickEventName != string.Empty)
@@ -63,7 +59,7 @@ namespace TatehamaInterlockinglConsole.Factories
             string imagePath = setting.ImagePaths.FirstOrDefault().Value;
 
             // DefaultImageに対応したImagePathを抽出
-            setting.ImagePaths.TryGetValue(setting.DefaultImage, out imagePath);
+            setting.ImagePaths.TryGetValue(setting.ImageIndex, out imagePath);
 
             var bitmapImage = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));
             var image = new Image
@@ -73,9 +69,6 @@ namespace TatehamaInterlockinglConsole.Factories
                 Height = setting.Height != 0 ? setting.Height : bitmapImage.PixelHeight,
                 RenderTransform = new RotateTransform(angle)
             };
-
-            // 親コントロールが設定されている場合は、相対座標に変換
-            ControlHelper.SetPosition(image, setting, allSettings);
 
             // イベントが設定されている場合は、イベントをアタッチ
             if (setting.ClickEventName != string.Empty)

@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using System.Collections.ObjectModel;
-using TatehamaInterlockinglConsole.Helpers;
-using TatehamaInterlockinglConsole.Manager;
-using System.Windows.Data;
+using TatehamaInterlockingConsole.Manager;
+using TatehamaInterlockingConsole.Services;
 
-namespace TatehamaInterlockinglConsole.ViewModels
+namespace TatehamaInterlockingConsole.ViewModels
 {
     /// <summary>
     /// メイン画面を管理するViewModelクラス
@@ -14,7 +13,6 @@ namespace TatehamaInterlockinglConsole.ViewModels
     public class MainViewModel : WindowViewModel
     {
         private readonly TimeService _timeService; // 時間管理サービス
-        private readonly UIElementLoader _uiElementLoader; // UI要素の読み込みを担当するヘルパークラス
         private readonly DataManager _dataManager; // データ管理を担当するクラス
         private DataUpdateViewModel _dataUpdate; // データ更新処理を管理するViewModel
         private static bool _isConstructorExecuted = false; // コンストラクタが一度だけ実行されることを保証するフラグ
@@ -30,36 +28,19 @@ namespace TatehamaInterlockinglConsole.ViewModels
         public ICommand DecreaseTimeCommand { get; }
 
         /// <summary>
+        /// メイン画面に表示されるUI要素List
+        /// </summary>
+        public ObservableCollection<UIElement> MainElements { get; set; }
+
+        /// <summary>
         /// 現在時刻を取得
         /// </summary>
         public DateTime CurrentTime => _dataManager.CurrentTime;
 
         /// <summary>
-        /// メイン画面に表示されるUI要素のコレクション
-        /// </summary>
-        public ObservableCollection<UIElement> MainElements { get; private set; }
-
-        /// <summary>
         /// ウィンドウのタイトル
         /// </summary>
         public string Title { get; set; }
-
-        private CompositeCollection _allMainElements;
-        /// <summary>
-        /// メイン画面に関連付けられた全UI要素のコレクション
-        /// </summary>
-        public CompositeCollection AllMainElements
-        {
-            get => _allMainElements;
-            set
-            {
-                if (_allMainElements != value)
-                {
-                    _allMainElements = value;
-                    OnPropertyChanged(nameof(AllMainElements));
-                }
-            }
-        }
 
         /// <summary>
         /// コンストラクタ
@@ -67,7 +48,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
         /// <param name="timeService">時間管理サービス</param>
         /// <param name="uiElementLoader">UI要素ローダー</param>
         /// <param name="dataManager">データ管理クラス</param>
-        public MainViewModel(TimeService timeService, UIElementLoader uiElementLoader, DataManager dataManager)
+        public MainViewModel(TimeService timeService, DataManager dataManager)
         {
             // 初回呼び出し時のみコンストラクタ処理を実行
             if (!_isConstructorExecuted)
@@ -75,7 +56,6 @@ namespace TatehamaInterlockinglConsole.ViewModels
                 _isConstructorExecuted = true;
 
                 _timeService = timeService;
-                _uiElementLoader = uiElementLoader;
                 _dataManager = dataManager;
                 _dataManager.Initialize(timeService);
 
@@ -96,16 +76,10 @@ namespace TatehamaInterlockinglConsole.ViewModels
         {
             var folderPath = "TSV";
             // 設定データをリストに格納
-            _dataManager.AllControlSettingList = _uiElementLoader.LoadSettingsFromFolderAsList(folderPath);
+            _dataManager.AllControlSettingList = UIElementLoader.LoadSettingsFromFolderAsUIControlSetting(folderPath);
             // メイン画面用のUI要素を取得
-            MainElements = _uiElementLoader.GetElementsFromSettings(_dataManager.AllControlSettingList, "Main_UIList");
-
-            // UI要素をコレクションに追加
-            var mainElements = new CollectionContainer { Collection = MainElements };
-            AllMainElements = new CompositeCollection
-            {
-                mainElements
-            };
+            var mainControlSettingList = _dataManager.AllControlSettingList.FindAll(list => list.StationName == "Main_UIList");
+            MainElements = UIElementLoader.CreateUIControlModels(mainControlSettingList);
 
             // タイマー開始
             _timeService.Start();

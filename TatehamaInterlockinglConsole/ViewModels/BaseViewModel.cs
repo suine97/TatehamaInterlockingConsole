@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace TatehamaInterlockinglConsole.ViewModels
+namespace TatehamaInterlockingConsole.ViewModels
 {
     /// <summary>
     /// ViewModelクラスの基底クラスとしてプロパティ変更通知をサポート

@@ -2,9 +2,9 @@
 using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Linq;
-using TatehamaInterlockinglConsole.Models;
+using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Helpers
+namespace TatehamaInterlockingConsole.Helpers
 {
     /// <summary>
     /// 汎用コントロール操作ヘルパークラス

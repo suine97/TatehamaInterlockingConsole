@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using TatehamaInterlockinglConsole.Models;
+using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Handlers
+namespace TatehamaInterlockingConsole.Handlers
 {
     /// <summary>
     /// Labelクリックイベントハンドラー

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Helpers;
+using TatehamaInterlockingConsole.Manager;
+using TatehamaInterlockingConsole.Models;
+using TatehamaInterlockingConsole.Services;
 
-namespace TatehamaInterlockinglConsole.Handlers
+namespace TatehamaInterlockingConsole.Handlers
 {
     /// <summary>
     /// Imageクリックイベントハンドラー
@@ -13,6 +15,7 @@ namespace TatehamaInterlockinglConsole.Handlers
     {
         private readonly Sound _sound = Sound.Instance;
         private Random _random = new Random();
+        private DataManager _dataManager = DataManager.Instance;
 
         public void AttachImageClick(Image image, UIControlSetting setting)
         {
@@ -22,8 +25,14 @@ namespace TatehamaInterlockinglConsole.Handlers
                 {
                     case "LeverImage":
                         {
-                            var num = _random.Next(1, 7);
+                            var num = _random.Next(1, 5);
                             _sound.SoundPlay($"switch_0{num}", false);
+                        }
+                        break;
+                    case "ButtonImage":
+                        {
+                            var num = _random.Next(1, 3);
+                            _sound.SoundPlay($"button_0{num}", false);
                         }
                         break;
                     default:
@@ -37,8 +46,14 @@ namespace TatehamaInterlockinglConsole.Handlers
                 {
                     case "LeverImage":
                         {
-                            var num = _random.Next(1, 7);
+                            var num = _random.Next(1, 5);
                             _sound.SoundPlay($"switch_0{num}", false);
+                        }
+                        break;
+                    case "ButtonImage":
+                        {
+                            var num = _random.Next(1, 3);
+                            _sound.SoundPlay($"button_0{num}", false);
                         }
                         break;
                     default:

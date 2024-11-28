@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-using TatehamaInterlockinglConsole.Manager;
-using TatehamaInterlockinglConsole.Helpers;
-using TatehamaInterlockinglConsole.Views;
+using TatehamaInterlockingConsole.Manager;
+using TatehamaInterlockingConsole.Views;
 
-namespace TatehamaInterlockinglConsole.ViewModels
+namespace TatehamaInterlockingConsole.ViewModels
 {
     public static class WindowAction
     {
@@ -29,7 +28,7 @@ namespace TatehamaInterlockinglConsole.ViewModels
                 }
 
                 // ウィンドウが存在しない場合、新しく作成して表示
-                var viewModel = new StationViewModel(titleText, $"TSV/{stationName}_UIList.tsv", new UIElementLoader(), DataManager.Instance);
+                var viewModel = new StationViewModel(titleText, $"TSV/{stationName}_UIList.tsv", DataManager.Instance);
                 var window = new StationWindow(viewModel)
                 {
                     DataContext = viewModel,

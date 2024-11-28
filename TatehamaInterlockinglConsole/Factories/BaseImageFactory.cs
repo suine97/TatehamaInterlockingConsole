@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using System.Windows;
-using TatehamaInterlockinglConsole.Models;
 using System.Windows.Controls;
-using TatehamaInterlockinglConsole.Helpers;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Collections.Generic;
+using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Factories
+namespace TatehamaInterlockingConsole.Factories
 {
     public static class BaseImageFactory
     {
@@ -27,9 +26,6 @@ namespace TatehamaInterlockinglConsole.Factories
                 Height = setting.Height != 0 ? setting.Height : bitmapImage.PixelHeight,
                 RenderTransform = new RotateTransform(setting.Angle)
             };
-
-            // 親コントロールが設定されている場合は、相対座標に変換
-            ControlHelper.SetPosition(image, setting, allSettings);
 
             RotateTransform rotateTransform = new RotateTransform();
             image.RenderTransform = rotateTransform;

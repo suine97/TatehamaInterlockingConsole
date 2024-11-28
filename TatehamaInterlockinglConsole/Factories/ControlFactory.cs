@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using TatehamaInterlockinglConsole.Manager;
-using TatehamaInterlockinglConsole.Models;
+﻿using System.Windows;
+using System.Collections.Generic;
+using TatehamaInterlockingConsole.Models;
+using TatehamaInterlockingConsole.Helpers;
 
-namespace TatehamaInterlockinglConsole.Factories
+namespace TatehamaInterlockingConsole.Factories
 {
     /// <summary>
     /// UIコントロール生成クラス
@@ -18,31 +18,50 @@ namespace TatehamaInterlockinglConsole.Factories
         /// <returns></returns>
         public static UIElement CreateControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool drawing = true)
         {
+            UIElement control = null;
+
             switch (setting.ControlType)
             {
                 case "Button":
-                    return ButtonFactory.CreateButtonControl(setting, allSettings);
+                    control = ButtonFactory.CreateButtonControl(setting, allSettings);
+                    break;
                 case "Label":
-                    return LabelFactory.CreateLabelControl(setting, allSettings);
+                    control = LabelFactory.CreateLabelControl(setting, allSettings);
+                    break;
                 case "TextBlock":
-                    return TextBlockFactory.CreateTextBlockControl(setting, allSettings, false);
+                    control = TextBlockFactory.CreateTextBlockControl(setting, allSettings, false);
+                    break;
                 case "Image":
-                    return ImageFactory.CreateImageControl(setting, allSettings, true);
+                    control = ImageFactory.CreateImageControl(setting, allSettings, true);
+                    break;
                 case "BackImage":
-                    return BackImageFactory.CreateBackImageControl(setting, allSettings);
+                    control = BackImageFactory.CreateBackImageControl(setting, allSettings);
+                    break;
                 case "ClockImage":
-                    return ClockImageFactory.CreateClockImageControl(setting, allSettings, drawing);
+                    control = ClockImageFactory.CreateClockImageControl(setting, allSettings, drawing);
+                    break;
                 case "LeverImage":
-                    return LeverImageFactory.CreateLeverImageControl(setting, allSettings, drawing);
+                    control = LeverImageFactory.CreateLeverImageControl(setting, allSettings, drawing);
+                    break;
                 case "KeyImage":
-                    return KeyImageFactory.CreateKeyImageControl(setting, allSettings, drawing);
+                    control = KeyImageFactory.CreateKeyImageControl(setting, allSettings, drawing);
+                    break;
                 case "ButtonImage":
-                    return ButtonImageFactory.CreateButtonImageControl(setting, allSettings, drawing);
+                    control = ButtonImageFactory.CreateButtonImageControl(setting, allSettings, drawing);
+                    break;
                 case "Retsuban":
-                    return ImageFactory.CreateImageControl(setting, allSettings, true);
+                    control = ImageFactory.CreateImageControl(setting, allSettings, true);
+                    break;
                 default:
-                    return null;
+                    break;
             }
+
+            if (control != null)
+            {
+                // 親コントロールが設定されている場合は、相対座標に変換
+                ControlHelper.SetPosition(control, setting, allSettings);
+            }
+            return control;
         }
     }
 }

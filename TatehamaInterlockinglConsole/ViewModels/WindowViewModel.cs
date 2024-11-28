@@ -1,4 +1,4 @@
-﻿namespace TatehamaInterlockinglConsole.ViewModels
+﻿namespace TatehamaInterlockingConsole.ViewModels
 {
     public class WindowViewModel : BaseViewModel
     {

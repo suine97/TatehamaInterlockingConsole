@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace TatehamaInterlockinglConsole.Handlers
+namespace TatehamaInterlockingConsole.Handlers
 {
     /// <summary>
     /// TextBlockクリックイベントハンドラー

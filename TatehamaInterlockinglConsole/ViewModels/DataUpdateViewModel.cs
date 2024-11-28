@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using TatehamaInterlockinglConsole.Manager;
-using TatehamaInterlockinglConsole.Models;
+using TatehamaInterlockingConsole.Manager;
+using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockinglConsole.ViewModels
+namespace TatehamaInterlockingConsole.ViewModels
 {
     /// <summary>
     /// UIControlSettingList更新クラス
@@ -21,13 +21,12 @@ namespace TatehamaInterlockinglConsole.ViewModels
         }
 
         /// <summary>
-        /// サーバー情報を基に全コントロールの状態更新
+        /// サーバー情報を基にコントロールの状態更新
         /// </summary>
         /// <returns></returns>
         private List<UIControlSetting> UpdateControlsetting()
         {
-            var allSettingList = _dataManager.AllControlSettingList;
-            var settingList = new List<UIControlSetting>();
+            var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
 
             foreach (var item in allSettingList)
             {
@@ -49,27 +48,16 @@ namespace TatehamaInterlockinglConsole.ViewModels
                             // 鍵挿入状態を基に鍵てこ画像更新
                         }
                         break;
-                    case "ButtonImage":
-                        {
-                            // クリック状態を基にボタン画像更新
-                        }
-                        break;
                     case "Retsuban":
                         {
                             // 列番文字列を基に列番画像更新
                         }
                         break;
-                    case "Button":
-                    case "Label":
-                    case "BackImage":
-                    case "ClockImage":
-                    case "TextBlock":
-                        break;
                     default:
                         break;
                 }
             }
-            return settingList;
+            return allSettingList;
         }
     }
 }

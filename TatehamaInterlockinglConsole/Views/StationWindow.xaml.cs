@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using TatehamaInterlockinglConsole.ViewModels;
+using TatehamaInterlockingConsole.ViewModels;
 
-namespace TatehamaInterlockinglConsole.Views
+namespace TatehamaInterlockingConsole.Views
 {
     /// <summary>
     /// StationWindow.xaml の相互作用ロジック

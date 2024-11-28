@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace TatehamaInterlockinglConsole.ViewModels
+namespace TatehamaInterlockingConsole.ViewModels
 {
     /// <summary>
     /// パラメータなしでコマンドを実行するための汎用的なICommand実装

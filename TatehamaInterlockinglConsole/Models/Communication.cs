@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TatehamaInterlockinglConsole.Models
+namespace TatehamaInterlockingConsole.Models
 {
     internal class Communication
     {

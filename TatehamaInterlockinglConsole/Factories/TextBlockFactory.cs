@@ -4,11 +4,10 @@ using System.Windows.Controls;
 using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
-using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Handlers;
-using TatehamaInterlockinglConsole.Helpers;
+using TatehamaInterlockingConsole.Models;
+using TatehamaInterlockingConsole.Handlers;
 
-namespace TatehamaInterlockinglConsole.Factories
+namespace TatehamaInterlockingConsole.Factories
 {
     public static class TextBlockFactory
     {
@@ -41,9 +40,6 @@ namespace TatehamaInterlockinglConsole.Factories
                 SnapsToDevicePixels = true
             };
 
-            // 親コントロールが設定されている場合は、相対座標に変換
-            ControlHelper.SetPosition(grid, setting, allSettings);
-
             // イベントが設定されている場合は、イベントをアタッチ
             if (setting.ClickEventName != string.Empty)
             {
@@ -75,9 +71,9 @@ namespace TatehamaInterlockinglConsole.Factories
                     grid.RenderTransform = rotateTransform;
                     grid.RenderTransformOrigin = new Point(setting.AngleOriginX, setting.AngleOriginY);
 
-                    if (parentsetting.CurrentImage < 0)
+                    if (parentsetting.ImageIndex < 0)
                         rotateTransform.Angle = -40;
-                    else if (parentsetting.CurrentImage > 0)
+                    else if (parentsetting.ImageIndex > 0)
                         rotateTransform.Angle = 40;
                     else
                         rotateTransform.Angle = 0;

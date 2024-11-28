@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows;
-using TatehamaInterlockinglConsole.Handlers;
-using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Helpers;
+using System.Collections.Generic;
+using TatehamaInterlockingConsole.Handlers;
+using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Factories
+namespace TatehamaInterlockingConsole.Factories
 {
     public static class LabelFactory
     {
@@ -28,9 +27,6 @@ namespace TatehamaInterlockinglConsole.Factories
                 Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(setting.TextColor)),
                 RenderTransform = new RotateTransform(setting.Angle)
             };
-
-            // 親コントロールが設定されている場合は、相対座標に変換
-            ControlHelper.SetPosition(label, setting, allSettings);
 
             // イベントが設定されている場合は、イベントをアタッチ
             if (setting.ClickEventName != string.Empty)

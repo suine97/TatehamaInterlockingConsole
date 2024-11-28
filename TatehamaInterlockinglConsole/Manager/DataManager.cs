@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using TatehamaInterlockinglConsole.Factories;
-using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Helpers;
+using TatehamaInterlockingConsole.Factories;
+using TatehamaInterlockingConsole.Models;
+using TatehamaInterlockingConsole.Services;
 
-namespace TatehamaInterlockinglConsole.Manager
+namespace TatehamaInterlockingConsole.Manager
 {
     /// <summary>
     /// GlobalData管理クラス

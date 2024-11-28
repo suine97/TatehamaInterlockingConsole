@@ -82,7 +82,6 @@
     <Compile Include="Services\Clock.cs" />
     <Compile Include="ViewModels\DataUpdateViewModel.cs" />
     <Compile Include="Factories\RetsubanFactory.cs" />
-    <Compile Include="Services\CreateUIControl.cs" />
     <Compile Include="ViewModels\WindowAction.cs" />
     <Compile Include="ViewModels\StationViewModel.cs" />
     <Compile Include="Views\StationWindow.xaml.cs">

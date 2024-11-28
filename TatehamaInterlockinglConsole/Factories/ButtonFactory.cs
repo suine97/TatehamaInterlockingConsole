@@ -1,13 +1,12 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Media;
-using System.Windows;
-using TatehamaInterlockinglConsole.CustomControl;
-using TatehamaInterlockinglConsole.Handlers;
-using TatehamaInterlockinglConsole.Models;
-using TatehamaInterlockinglConsole.Helpers;
+using System.Windows.Controls;
 using System.Collections.Generic;
+using TatehamaInterlockingConsole.CustomControl;
+using TatehamaInterlockingConsole.Handlers;
+using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockinglConsole.Factories
+namespace TatehamaInterlockingConsole.Factories
 {
     public static class ButtonFactory
     {
@@ -29,9 +28,6 @@ namespace TatehamaInterlockinglConsole.Factories
                 Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(setting.TextColor)),
                 RenderTransform = new RotateTransform(setting.Angle)
             };
-
-            // 親コントロールが設定されている場合は、相対座標に変換
-            ControlHelper.SetPosition(button, setting, allSettings);
 
             // イベントが設定されている場合は、イベントをアタッチ
             if (setting.ClickEventName != string.Empty)
