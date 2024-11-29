@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using TatehamaInterlockingConsole.Manager;
+using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.Views;
 
 namespace TatehamaInterlockingConsole.ViewModels
@@ -28,7 +29,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                 }
 
                 // ウィンドウが存在しない場合、新しく作成して表示
-                var viewModel = new StationViewModel(titleText, $"TSV/{stationName}_UIList.tsv", DataManager.Instance);
+                var viewModel = new StationViewModel(titleText, $"TSV/{stationName}_UIList.tsv", DataManager.Instance, Sound.Instance, new DataUpdateViewModel());
                 var window = new StationWindow(viewModel)
                 {
                     DataContext = viewModel,

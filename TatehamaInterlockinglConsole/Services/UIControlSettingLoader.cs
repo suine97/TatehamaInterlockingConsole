@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Models;
+using TrainCrewAPI_WPF.Properties;
 
 namespace TatehamaInterlockingConsole.Services
 {
@@ -80,6 +81,8 @@ namespace TatehamaInterlockingConsole.Services
 
                     // 駅名称抽出
                     var stationName = DataHelper.ExtractStationNameFromFilePath(filePath);
+                    // ImagePattern生成
+                    var imagePattern = columns[(int)ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList();
 
                     settings.Add(new UIControlSetting
                     {
@@ -104,7 +107,8 @@ namespace TatehamaInterlockingConsole.Services
                         BackgroundColor = columns[(int)ColumnIndex.BackgroundColor],
                         TextColor = columns[(int)ColumnIndex.TextColor],
                         ClickEventName = columns[(int)ColumnIndex.ClickEventName],
-                        ImagePattern = columns[(int)ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList(),
+                        ImagePattern = imagePattern,
+                        ImagePatternSymbol = MapImagePatternsToSymbols(imagePattern),
                         ImageIndex = int.TryParse(columns[(int)ColumnIndex.ImageIndex], out var defaultImage) ? defaultImage : 0,
                         BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)ColumnIndex.BaseImagePath].Trim('"').Trim(),
                         ImagePaths = CreateImagePaths(columns[(int)ColumnIndex.ImagePattern], columns[(int)ColumnIndex.ImagePath]),
@@ -154,6 +158,47 @@ namespace TatehamaInterlockingConsole.Services
                 imagePaths[pattern] = AppDomain.CurrentDomain.BaseDirectory + path;
             }
             return imagePaths;
+        }
+
+        private static readonly Dictionary<string, string> PatternToSymbolMap = new Dictionary<string, string>()
+        {
+            { "0,1", "NR" },
+            { "-1,0", "LN" },
+            { "-1,1", "LR" },
+            { "-1,0,1", "LNR" },
+            { "0,1,10,11", "KeyNR" },
+            { "-1,0,-11,10", "KeyLN" },
+            { "-1,1,-11,11", "KeyLR" },
+            { "-1,0,1,-11,10,11", "KeyLNR" }
+        };
+
+        /// <summary>
+        /// ImagePatternをImagePatternSymbolに変換するメソッド
+        /// </summary>
+        /// <param name="settings">UIControlSettingのリスト</param>
+        public static string MapImagePatternsToSymbols(List<string> imagePattern)
+        {
+            string imagePatternSymbol;
+
+            if (imagePattern == null || !imagePattern.Any())
+            {
+                return string.Empty;
+            }
+
+            // ImagePatternをカンマ区切りの文字列に変換
+            var patternKey = string.Join(",", imagePattern);
+
+            // 対照表を使用して変換
+            if (PatternToSymbolMap.TryGetValue(patternKey, out var symbol))
+            {
+                imagePatternSymbol = symbol;
+            }
+            else
+            {
+                // 対応するシンボルがない場合は未設定
+                imagePatternSymbol = string.Empty;
+            }
+            return imagePatternSymbol;
         }
     }
 }

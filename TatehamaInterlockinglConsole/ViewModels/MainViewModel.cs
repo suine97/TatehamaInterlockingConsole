@@ -43,6 +43,11 @@ namespace TatehamaInterlockingConsole.ViewModels
         public string Title { get; set; }
 
         /// <summary>
+        /// 通信状態ステータス
+        /// </summary>
+        public bool ConnectionStatus { get; set; } = false;
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="timeService">時間管理サービス</param>
@@ -50,22 +55,31 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="dataManager">データ管理クラス</param>
         public MainViewModel(TimeService timeService, DataManager dataManager)
         {
-            // 初回呼び出し時のみコンストラクタ処理を実行
-            if (!_isConstructorExecuted)
+            try
             {
-                _isConstructorExecuted = true;
+                // 初回呼び出し時のみコンストラクタ処理を実行
+                if (!_isConstructorExecuted)
+                {
+                    _isConstructorExecuted = true;
 
-                _timeService = timeService;
-                _dataManager = dataManager;
-                _dataManager.Initialize(timeService);
+                    _timeService = timeService;
+                    _dataManager = dataManager;
+                    _dataManager.Initialize(timeService);
 
-                Title = "連動盤選択 | 連動盤 - ダイヤ運転会";
-                IncreaseTimeCommand = new RelayCommand(() => _timeService.IncreaseTime());
-                DecreaseTimeCommand = new RelayCommand(() => _timeService.DecreaseTime());
+                    Title = "連動盤選択 | 連動盤 - ダイヤ運転会";
+                    IncreaseTimeCommand = new RelayCommand(() => _timeService.IncreaseTime());
+                    DecreaseTimeCommand = new RelayCommand(() => _timeService.DecreaseTime());
 
-                // 時間更新イベントを購読
-                _dataManager.TimeUpdated += (currentTime) => OnPropertyChanged(nameof(CurrentTime));
-                Initialize();
+                    // 時間更新イベントを購読
+                    _dataManager.TimeUpdated += (currentTime) => OnPropertyChanged(nameof(CurrentTime));
+                    // 初期化処理
+                    Initialize();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw ex;
             }
         }
 

@@ -15,6 +15,12 @@
         Background="#FF4C6666"
         ResizeMode="CanMinimize">
 
+    <Window.Resources>
+        <custom:BoolToTextConverter x:Key="BoolToTextConverter"/>
+        <custom:BoolToBackColorConverter x:Key="BoolToBackColorConverter"/>
+        <custom:BoolToForeColorConverter x:Key="BoolToForeColorConverter"/>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -35,6 +41,14 @@
                        FontSize="20" VerticalAlignment="Center" Margin="10" Foreground="#FFF7F7F7"/>
             <!-- プラス1時間ボタン -->
             <custom:CustomButton  Content="+1h" Command="{Binding IncreaseTimeCommand}" Width="60" Height="30" Margin="20,5,5,5" FontSize="18"/>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Center" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
+            <!-- 通信ステータス -->
+            <TextBlock Text="{Binding ConnectionStatus, Converter={StaticResource BoolToTextConverter}}"
+                       Width="150" Height="30" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="10"
+                       Foreground="{Binding ConnectionStatus, Converter={StaticResource BoolToForeColorConverter}}"
+                       Background="{Binding ConnectionStatus, Converter={StaticResource BoolToBackColorConverter}}"/>
         </StackPanel>
 
         <Viewbox Stretch="Uniform" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="1">

@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomControl\BoolToBackColorConverter.cs" />
+    <Compile Include="CustomControl\BoolToForeColorConverter.cs" />
+    <Compile Include="CustomControl\BoolToTextConverter.cs" />
     <Compile Include="CustomControl\CustomButton.cs" />
     <Compile Include="Factories\BackImageFactory.cs" />
     <Compile Include="Factories\BaseImageFactory.cs" />

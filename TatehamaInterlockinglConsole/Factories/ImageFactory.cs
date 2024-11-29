@@ -58,7 +58,7 @@ namespace TatehamaInterlockingConsole.Factories
         {
             string imagePath = setting.ImagePaths.FirstOrDefault().Value;
 
-            // DefaultImageに対応したImagePathを抽出
+            // ImageIndexに対応したImagePathを抽出
             setting.ImagePaths.TryGetValue(setting.ImageIndex, out imagePath);
 
             var bitmapImage = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));

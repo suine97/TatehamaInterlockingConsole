@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TatehamaInterlockingConsole.Models
 {
@@ -96,6 +98,10 @@ namespace TatehamaInterlockingConsole.Models
         /// ImagePathのIndexパターン
         /// </summary>
         public List<string> ImagePattern { get; set; }
+        /// <summary>
+        /// 文字列に置き換えたImagePathのIndexパターン
+        /// </summary>
+        public string ImagePatternSymbol { get; set; }
         /// <summary>
         /// ImagePathのIndex
         /// </summary>

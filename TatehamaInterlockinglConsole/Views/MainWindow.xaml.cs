@@ -35,6 +35,7 @@ namespace TatehamaInterlockingConsole.Views
             {
                 Width = viewModel.WindowWidth;
                 Height = viewModel.WindowHeight;
+                Topmost = true;
             }
         }
 

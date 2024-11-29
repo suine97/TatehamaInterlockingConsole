@@ -1,8 +1,8 @@
 Type	UniqueName	ServerName	ParentName	PointName	PointValue	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	DefaultImage	BaseImagePath	ImagePath	Remark								
 BackImage	˜A“®”Õ					0	0														Image/BackImage/W02_‹î–ì‰w.png									
-Image	Clock_Base					850	78	79	110												Image/Clock/Clock_Border.png									
+Image	Clock_Base					1400	78	79	110												Image/Clock/Clock_Border.png									
 ClockImage	Clock_Meter		Clock_Base			6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
-Image	Hook					861	10														Image/Hook/Hook_Base.png									
+Image	Hook					1411	10														Image/Hook/Hook_Base.png									
 																														
 																														
 																														

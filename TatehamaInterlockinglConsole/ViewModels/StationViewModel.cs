@@ -1,10 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Services;
+using TatehamaInterlockingConsole.Models;
 
 namespace TatehamaInterlockingConsole.ViewModels
 {
@@ -15,6 +18,7 @@ namespace TatehamaInterlockingConsole.ViewModels
     {
         private readonly DataManager _dataManager; // データ管理クラス
         private readonly Sound _sound; // サウンド管理クラスのインスタンス
+        private readonly DataUpdateViewModel _dataUpdateViewModel;
         private string _stationName; // 駅名
 
         /// <summary>
@@ -78,28 +82,49 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="filePath">駅データのファイルパス</param>
         /// <param name="uiElementLoader">UI 要素ローダー</param>
         /// <param name="dataManager">データ管理クラス</param>
-        public StationViewModel(string title, string filePath, DataManager dataManager)
+        public StationViewModel(string title, string filePath, DataManager dataManager, Sound sound, DataUpdateViewModel dataUpdateViewModel)
         {
-            _dataManager = dataManager;
-            _sound = Sound.Instance;
-            _stationName = DataHelper.ExtractStationNameFromFilePath(filePath); // ファイルパスから駅名を抽出
+            try
+            {
+                _dataManager = dataManager;
+                _sound = sound;
+                _dataUpdateViewModel = dataUpdateViewModel;
+                _dataUpdateViewModel.NotifyUpdateControlEvent += OnNotifyUpdateControlEvent;
+                _stationName = DataHelper.ExtractStationNameFromFilePath(filePath); // ファイルパスから駅名を抽出
 
-            IsFitMode = false;
-            ToggleButtonText = "フィット表示に切り替え";
-            Title = title;
+                IsFitMode = false;
+                ToggleButtonText = "フィット表示に切り替え";
+                Title = title;
 
-            ClosingCommand = new RelayCommand(OnClosing);
-            ToggleModeCommand = new RelayCommand(ToggleMode);
+                ClosingCommand = new RelayCommand(OnClosing);
+                ToggleModeCommand = new RelayCommand(ToggleMode);
 
+                // 駅毎の連動盤に対応する設定データを取得
+                var stationSettingList = _dataManager.AllControlSettingList.FindAll(list => list.StationName == _stationName);
+                StationElements = UIElementLoader.CreateUIControlModels(stationSettingList);
+
+                // ウィンドウサイズと描画領域の設定
+                WindowWidth = 1280;
+                WindowHeight = 720;
+                DrawingWidth = BackImageFactory.BackImageWidth;
+                DrawingHeight = BackImageFactory.BackImageHeight;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// OnNotifyUpdateControlEven受け取り処理
+        /// </summary>
+        /// <param name="updateList"></param>
+        private void OnNotifyUpdateControlEvent(List<UIControlSetting> updateList)
+        {
             // 駅毎の連動盤に対応する設定データを取得
-            var stationSettingList = _dataManager.AllControlSettingList.FindAll(list => list.StationName == _stationName);
-            StationElements = UIElementLoader.CreateUIControlModels(stationSettingList);
-
-            // ウィンドウサイズと描画領域の設定
-            WindowWidth = 1280;
-            WindowHeight = 720;
-            DrawingWidth = BackImageFactory.BackImageWidth;
-            DrawingHeight = BackImageFactory.BackImageHeight;
+            var stationSettingList = updateList.FindAll(list => list.StationName == _stationName);
+            StationElements = UIElementLoader.CreateUIControlModels(stationSettingList, false);
         }
 
         /// <summary>

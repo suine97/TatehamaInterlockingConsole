@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 
@@ -9,7 +11,20 @@ namespace TatehamaInterlockingConsole.ViewModels
     /// </summary>
     public class DataUpdateViewModel : BaseViewModel
     {
-        private readonly DataManager _dataManager = DataManager.Instance;
+        private readonly DataManager _dataManager; // データ管理を担当するクラス
+
+        /// <summary>
+        /// 変更通知イベント
+        /// </summary>
+        public event Action<List<UIControlSetting>> NotifyUpdateControlEvent;
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public DataUpdateViewModel()
+        {
+            _dataManager = DataManager.Instance;
+        }
 
         /// <summary>
         /// タイマー周期毎に呼び出し
@@ -18,6 +33,9 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             // コントロール更新処理
             var updateList = UpdateControlsetting();
+
+            // 変更通知イベント発火
+            NotifyUpdateControlEvent?.Invoke(updateList);
         }
 
         /// <summary>
@@ -40,12 +58,37 @@ namespace TatehamaInterlockingConsole.ViewModels
                     case "LeverImage":
                         {
                             // 転てつ器状態を基にてこ画像更新
-                            // てこTextBlock角度更新
+                            switch (item.ImagePatternSymbol)
+                            {
+                                case "NR":
+                                    break;
+                                case "LN":
+                                    break;
+                                case "LR":
+                                    break;
+                                case "LNR":
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                         break;
                     case "KeyImage":
                         {
                             // 鍵挿入状態を基に鍵てこ画像更新
+                            switch (item.ImagePatternSymbol)
+                            {
+                                case "KeyNR":
+                                    break;
+                                case "KeyLN":
+                                    break;
+                                case "KeyLR":
+                                    break;
+                                case "KeyLNR":
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                         break;
                     case "Retsuban":
