@@ -53,7 +53,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="timeService">時間管理サービス</param>
         /// <param name="uiElementLoader">UI要素ローダー</param>
         /// <param name="dataManager">データ管理クラス</param>
-        public MainViewModel(TimeService timeService, DataManager dataManager)
+        public MainViewModel(TimeService timeService, DataManager dataManager, DataUpdateViewModel dataUpdateViewModel)
         {
             try
             {
@@ -63,6 +63,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                     _isConstructorExecuted = true;
 
                     _timeService = timeService;
+                    _dataUpdate = dataUpdateViewModel;
                     _dataManager = dataManager;
                     _dataManager.Initialize(timeService);
 
@@ -97,7 +98,6 @@ namespace TatehamaInterlockingConsole.ViewModels
 
             // タイマー開始
             _timeService.Start();
-            _dataUpdate = new DataUpdateViewModel();
         }
 
         /// <summary>

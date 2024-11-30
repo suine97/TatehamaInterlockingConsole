@@ -11,7 +11,10 @@ namespace TatehamaInterlockingConsole.ViewModels
     /// </summary>
     public class DataUpdateViewModel : BaseViewModel
     {
+        private static readonly DataUpdateViewModel _instance = new DataUpdateViewModel();
         private readonly DataManager _dataManager; // データ管理を担当するクラス
+
+        public static DataUpdateViewModel Instance => _instance;
 
         /// <summary>
         /// 変更通知イベント
@@ -35,7 +38,35 @@ namespace TatehamaInterlockingConsole.ViewModels
             var updateList = UpdateControlsetting();
 
             // 変更通知イベント発火
-            NotifyUpdateControlEvent?.Invoke(updateList);
+            var handler = NotifyUpdateControlEvent;
+            handler?.Invoke(updateList);
+        }
+
+        /// <summary>
+        /// 指定したUIControlSettingをコントロールに反映
+        /// </summary>
+        /// <param name="setting"></param>
+        public void SetControlsetting(UIControlSetting setting)
+        {
+            try
+            {
+                var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
+
+                int index = allSettingList.FindIndex(list => list.StationName == setting.StationName && list.UniqueName == setting.UniqueName);
+                if (index >= 0)
+                {
+                    allSettingList[index].ImageIndex = setting.ImageIndex;
+
+                    // 変更通知イベント発火
+                    var handler = NotifyUpdateControlEvent;
+                    handler?.Invoke(allSettingList);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw ex;
+            }
         }
 
         /// <summary>

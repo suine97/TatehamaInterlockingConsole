@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace TatehamaInterlockingConsole.Models
 {
@@ -114,6 +112,11 @@ namespace TatehamaInterlockingConsole.Models
         /// 画像のPath
         /// </summary>
         public Dictionary<int, string> ImagePaths { get; set; }
+        /// <summary>
+        /// 鍵てこの鍵挿入判定
+        /// (true=鍵挿入, false=鍵抜取)
+        /// </summary>
+        public bool KeyInserted { get; set; }
         /// <summary>
         /// 備考欄
         /// </summary>

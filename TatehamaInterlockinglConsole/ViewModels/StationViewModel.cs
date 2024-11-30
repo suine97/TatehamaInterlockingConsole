@@ -8,6 +8,7 @@ using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.Models;
+using System.Xml.Linq;
 
 namespace TatehamaInterlockingConsole.ViewModels
 {
@@ -32,14 +33,26 @@ namespace TatehamaInterlockingConsole.ViewModels
         public ICommand ClosingCommand { get; }
 
         /// <summary>
-        /// 駅毎の連動盤のUI要素のコレクション
-        /// </summary>
-        public ObservableCollection<UIElement> StationElements { get; set; }
-
-        /// <summary>
         /// ウィンドウのタイトル
         /// </summary>
         public string Title { get; set; }
+
+        private ObservableCollection<UIElement> _stationElements = new ObservableCollection<UIElement>();
+        /// <summary>
+        /// 駅毎の連動盤のUI要素のコレクション
+        /// </summary>
+        public ObservableCollection<UIElement> StationElements
+        {
+            get => _stationElements;
+            set
+            {
+                if (_stationElements != value)
+                {
+                    _stationElements = value;
+                    OnPropertyChanged(nameof(StationElements));
+                }
+            }
+        }
 
         private bool _isFitMode = true;
         /// <summary>
@@ -117,14 +130,18 @@ namespace TatehamaInterlockingConsole.ViewModels
         }
 
         /// <summary>
-        /// OnNotifyUpdateControlEven受け取り処理
+        /// DataUpdateViewModelでの変更通知受け取り処理
         /// </summary>
         /// <param name="updateList"></param>
         private void OnNotifyUpdateControlEvent(List<UIControlSetting> updateList)
         {
             // 駅毎の連動盤に対応する設定データを取得
             var stationSettingList = updateList.FindAll(list => list.StationName == _stationName);
-            StationElements = UIElementLoader.CreateUIControlModels(stationSettingList, false);
+            var newElements = UIElementLoader.CreateUIControlModels(stationSettingList);
+            var newCollection = new ObservableCollection<UIElement>(newElements);
+
+            // UI用コレクションに反映
+            StationElements = newCollection;
         }
 
         /// <summary>

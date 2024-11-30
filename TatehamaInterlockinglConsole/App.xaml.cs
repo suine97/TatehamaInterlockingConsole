@@ -12,7 +12,7 @@ namespace TatehamaInterlockingConsole
         {
             base.OnStartup(e);
 
-            var viewModel = new MainViewModel(new TimeService(), DataManager.Instance);
+            var viewModel = new MainViewModel(new TimeService(), DataManager.Instance, DataUpdateViewModel.Instance);
             var mainWindow = new MainWindow(viewModel);
             mainWindow.Show();
         }

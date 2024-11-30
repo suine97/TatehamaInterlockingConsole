@@ -11,7 +11,7 @@ namespace TatehamaInterlockingConsole.Manager
     /// </summary>
     public class DataManager
     {
-        private static DataManager _instance = new DataManager();
+        private static readonly DataManager _instance = new DataManager();
         private TimeService _timeService;
         public event Action<DateTime> TimeUpdated;
 

@@ -6,7 +6,6 @@ using System.Text;
 using System.Windows;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Models;
-using TrainCrewAPI_WPF.Properties;
 
 namespace TatehamaInterlockingConsole.Services
 {
@@ -112,6 +111,7 @@ namespace TatehamaInterlockingConsole.Services
                         ImageIndex = int.TryParse(columns[(int)ColumnIndex.ImageIndex], out var defaultImage) ? defaultImage : 0,
                         BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)ColumnIndex.BaseImagePath].Trim('"').Trim(),
                         ImagePaths = CreateImagePaths(columns[(int)ColumnIndex.ImagePattern], columns[(int)ColumnIndex.ImagePath]),
+                        KeyInserted = false,
                         Remark = columns[(int)ColumnIndex.Remark],
                     });
                 }

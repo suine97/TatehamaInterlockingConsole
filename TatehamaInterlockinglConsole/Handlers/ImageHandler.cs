@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
+using TatehamaInterlockingConsole.ViewModels;
 
 namespace TatehamaInterlockingConsole.Handlers
 {
@@ -16,17 +16,62 @@ namespace TatehamaInterlockingConsole.Handlers
         private readonly Sound _sound = Sound.Instance;
         private Random _random = new Random();
         private DataManager _dataManager = DataManager.Instance;
+        private DataUpdateViewModel _dataUpdateViewModel = DataUpdateViewModel.Instance;
 
         public void AttachImageClick(Image image, UIControlSetting setting)
         {
+            var control = setting;
+
+            // 左クリックイベント
             image.MouseLeftButtonDown += (s, e) =>
             {
-                switch (setting.ControlType)
+                switch (control.ControlType)
                 {
                     case "LeverImage":
                         {
                             var num = _random.Next(1, 5);
-                            _sound.SoundPlay($"switch_0{num}", false);
+                            switch (control.ImagePatternSymbol)
+                            {
+                                case "NR":
+                                    if (control.ImageIndex != 0)
+                                    {
+                                        control.ImageIndex--;
+                                        _dataUpdateViewModel.SetControlsetting(control);
+                                        _sound.SoundPlay($"switch_0{num}", false);
+                                    }
+                                    break;
+                                case "LN":
+                                    if (control.ImageIndex != -1)
+                                    {
+                                        control.ImageIndex--;
+                                        _dataUpdateViewModel.SetControlsetting(control);
+                                        _sound.SoundPlay($"switch_0{num}", false);
+                                    }
+                                    break;
+                                case "LR":
+                                    if (control.ImageIndex != -1)
+                                    {
+                                        control.ImageIndex = -1;
+                                        _dataUpdateViewModel.SetControlsetting(control);
+                                        _sound.SoundPlay($"switch_0{num}", false);
+                                    }
+                                    break;
+                                case "LNR":
+                                    if (control.ImageIndex != -1)
+                                    {
+                                        control.ImageIndex--;
+                                        _dataUpdateViewModel.SetControlsetting(control);
+                                        _sound.SoundPlay($"switch_0{num}", false);
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        break;
+                    case "KeyImage":
+                        {
+
                         }
                         break;
                     case "ButtonImage":
@@ -40,6 +85,7 @@ namespace TatehamaInterlockingConsole.Handlers
                         break;
                 }
             };
+            // 右クリックイベント
             image.MouseRightButtonDown += (s, e) =>
             {
                 switch (setting.ControlType)
@@ -47,7 +93,43 @@ namespace TatehamaInterlockingConsole.Handlers
                     case "LeverImage":
                         {
                             var num = _random.Next(1, 5);
-                            _sound.SoundPlay($"switch_0{num}", false);
+                            switch (control.ImagePatternSymbol)
+                            {
+                                case "NR":
+                                    if (control.ImageIndex != 1)
+                                    {
+                                        control.ImageIndex++;
+                                        _dataUpdateViewModel.SetControlsetting(control);
+                                        _sound.SoundPlay($"switch_0{num}", false);
+                                    }
+                                    break;
+                                case "LN":
+                                    if (control.ImageIndex != 0)
+                                    {
+                                        control.ImageIndex++;
+                                        _dataUpdateViewModel.SetControlsetting(control);
+                                        _sound.SoundPlay($"switch_0{num}", false);
+                                    }
+                                    break;
+                                case "LR":
+                                    if (control.ImageIndex != 1)
+                                    {
+                                        control.ImageIndex = 1;
+                                        _dataUpdateViewModel.SetControlsetting(control);
+                                        _sound.SoundPlay($"switch_0{num}", false);
+                                    }
+                                    break;
+                                case "LNR":
+                                    if (control.ImageIndex != 1)
+                                    {
+                                        control.ImageIndex++;
+                                        _dataUpdateViewModel.SetControlsetting(control);
+                                        _sound.SoundPlay($"switch_0{num}", false);
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                         break;
                     case "ButtonImage":
