@@ -24,11 +24,17 @@ namespace TatehamaInterlockingConsole.Manager
         public List<UIControlSetting> AllControlSettingList { get; set; }
 
         /// <summary>
+        /// 列番表示画像Pathを格納した辞書データ
+        /// </summary>
+        public Dictionary<string, string> RetsubanImagePathDictionary { get; set; }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         private DataManager()
         {
             AllControlSettingList = new List<UIControlSetting>();
+            RetsubanImagePathDictionary = new Dictionary<string, string>();
         }
 
         /// <summary>

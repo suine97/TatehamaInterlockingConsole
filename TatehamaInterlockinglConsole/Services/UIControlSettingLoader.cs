@@ -112,6 +112,7 @@ namespace TatehamaInterlockingConsole.Services
                         BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)ColumnIndex.BaseImagePath].Trim('"').Trim(),
                         ImagePaths = CreateImagePaths(columns[(int)ColumnIndex.ImagePattern], columns[(int)ColumnIndex.ImagePath]),
                         KeyInserted = false,
+                        Retsuban = string.Empty,
                         Remark = columns[(int)ColumnIndex.Remark],
                     });
                 }

@@ -42,10 +42,10 @@ LeverImage	29L					1700	371										29L	"-1,0"	0	Image/Lever/てこBase_LN.png	"I
 LeverImage	29LZ					1748	371										29LZ	"-1,0"	0	Image/Lever/てこBase_LN.png	"Image/Lever/てこ_黄_L.png,Image/Lever/てこ_黄_N.png"									
 LeverImage	30R					1898	371										30R	"0,1"	0	Image/Lever/てこBase_NR.png	"Image/Lever/てこ_緑_N.png,Image/Lever/てこ_緑_R.png"									
 LeverImage	30RZ					1850	371										30RZ	"0,1"	0	Image/Lever/てこBase_NR.png	"Image/Lever/てこ_黄_N.png,Image/Lever/てこ_黄_R.png"									
-LeverImage	31R					2050	311										31R	"0,1"	0	Image/Lever/てこBase_NR.png	"Image/Lever/てこ_緑_N.png,Image/Lever/てこ_緑_R.png"									
-LeverImage	31RZ					2098	311										31RZ	"0,1"	0	Image/Lever/てこBase_NR.png	"Image/Lever/てこ_黄_N.png,Image/Lever/てこ_黄_R.png"									
-LeverImage	32R					2050	371										32R	"0,1"	0	Image/Lever/てこBase_NR.png	"Image/Lever/てこ_緑_N.png,Image/Lever/てこ_緑_R.png"									
-LeverImage	32RZ					2098	371										32RZ	"0,1"	0	Image/Lever/てこBase_NR.png	"Image/Lever/てこ_黄_N.png,Image/Lever/てこ_黄_R.png"									
+LeverImage	31L					2050	311										31L	"-1,0"	0	Image/Lever/てこBase_LN.png	"Image/Lever/てこ_緑_L.png,Image/Lever/てこ_緑_N.png"									
+LeverImage	31LZ					2098	311										31LZ	"-1,0"	0	Image/Lever/てこBase_LN.png	"Image/Lever/てこ_黄_L.png,Image/Lever/てこ_黄_N.png"									
+LeverImage	32L					2050	371										32L	"-1,0"	0	Image/Lever/てこBase_LN.png	"Image/Lever/てこ_緑_L.png,Image/Lever/てこ_緑_N.png"									
+LeverImage	32LZ					2098	371										32LZ	"-1,0"	0	Image/Lever/てこBase_LN.png	"Image/Lever/てこ_黄_L.png,Image/Lever/てこ_黄_N.png"									
 ButtonImage	T					365	384										T	"0,1"	0	Image/Button/着点ボタンBase.png	"Image/Button/着点ボタン_白_OFF.png,Image/Button/着点ボタン_白_ON.png"									
 ButtonImage	TA					560	324										TA	"0,1"	0	Image/Button/着点ボタンBase.png	"Image/Button/着点ボタン_白_OFF.png,Image/Button/着点ボタン_白_ON.png"									
 ButtonImage	TB					560	384										TB	"0,1"	0	Image/Button/着点ボタンBase.png	"Image/Button/着点ボタン_白_OFF.png,Image/Button/着点ボタン_白_ON.png"									
@@ -343,10 +343,10 @@ TextBlock	Label_29L		29L			14	20	11	11				29	10	Transparent	#FFBCBCBC	29L
 TextBlock	Label_29LZ		29LZ			14	20	11	11				29Z	10	Transparent	#FFBCBCBC	29LZ													
 TextBlock	Label_30R		30R			14	20	11	11				30	10	Transparent	#FFBCBCBC	30R													
 TextBlock	Label_30RZ		30RZ			14	20	11	11				30Z	10	Transparent	#FFBCBCBC	30RZ													
-TextBlock	Label_31R		31R			14	20	11	11				31	10	Transparent	#FFBCBCBC	31R													
-TextBlock	Label_31RZ		31RZ			14	20	11	11				31Z	10	Transparent	#FFBCBCBC	31RZ													
-TextBlock	Label_32R		32R			14	20	11	11				32	10	Transparent	#FFBCBCBC	32R													
-TextBlock	Label_32RZ		32RZ			14	20	11	11				32Z	10	Transparent	#FFBCBCBC	32RZ													
+TextBlock	Label_31L		31L			14	20	11	11				31	10	Transparent	#FFBCBCBC	31L													
+TextBlock	Label_31LZ		31LZ			14	20	11	11				31Z	10	Transparent	#FFBCBCBC	31LZ													
+TextBlock	Label_32L		32L			14	20	11	11				32	10	Transparent	#FFBCBCBC	32L													
+TextBlock	Label_32LZ		32LZ			14	20	11	11				32Z	10	Transparent	#FFBCBCBC	32LZ													
 TextBlock	Label_T		T			5	23	15	12				T	10	Transparent	#FFBCBCBC	T													
 TextBlock	Label_TA		TA			5	23	15	12				TA	10	Transparent	#FFBCBCBC	TA													
 TextBlock	Label_TB		TB			5	23	15	12				TB	10	Transparent	#FFBCBCBC	TB													

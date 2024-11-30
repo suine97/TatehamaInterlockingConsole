@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.Models;
-using System.Xml.Linq;
-using System.Windows.Media;
-using System.Windows.Threading;
-using System.Windows.Controls;
 
 namespace TatehamaInterlockingConsole.ViewModels
 {
@@ -148,8 +146,12 @@ namespace TatehamaInterlockingConsole.ViewModels
             var newElements = UIElementLoader.CreateUIControlModels(stationSettingList);
             var newCollection = new ObservableCollection<UIElement>(newElements);
 
-            // UI用コレクションに反映
-            StationElements = newCollection;
+            // 差分比較
+            if (!DataHelper.AreCollectionsEqual(StationElements, newCollection))
+            {
+                // 差分がある場合のみ更新
+                StationElements = newCollection;
+            }
         }
 
         /// <summary>

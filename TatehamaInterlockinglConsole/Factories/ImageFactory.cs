@@ -30,7 +30,7 @@ namespace TatehamaInterlockingConsole.Factories
             };
 
             // イベントが設定されている場合は、イベントをアタッチ
-            if (setting.ClickEventName != string.Empty)
+            if (!string.IsNullOrEmpty(setting.ClickEventName))
             {
                 // クリックイベントが不要なら設定しない
                 if (!clickEvent)
@@ -71,7 +71,7 @@ namespace TatehamaInterlockingConsole.Factories
             };
 
             // イベントが設定されている場合は、イベントをアタッチ
-            if (setting.ClickEventName != string.Empty)
+            if (!string.IsNullOrEmpty(setting.ClickEventName))
             {
                 // クリックイベントが不要なら設定しない
                 if (!clickEvent)

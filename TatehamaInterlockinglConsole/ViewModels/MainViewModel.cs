@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Services;
 
@@ -89,9 +90,13 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// </summary>
         private void Initialize()
         {
-            var folderPath = "TSV";
+            var tsvFolderPath = "TSV";
+            var retsubanFolderPath = "Image/Retsuban";
+
             // 設定データをリストに格納
-            _dataManager.AllControlSettingList = UIElementLoader.LoadSettingsFromFolderAsUIControlSetting(folderPath);
+            _dataManager.AllControlSettingList = UIElementLoader.LoadSettingsFromFolderAsUIControlSetting(tsvFolderPath);
+            // 列番表示画像Pathを辞書に格納
+            _dataManager.RetsubanImagePathDictionary = RetsubanFactory.GetRetsubanImagePath(retsubanFolderPath);
             // メイン画面用のUI要素を取得
             var mainControlSettingList = _dataManager.AllControlSettingList.FindAll(list => list.StationName == "Main_UIList");
             MainElements = UIElementLoader.CreateUIControlModels(mainControlSettingList);

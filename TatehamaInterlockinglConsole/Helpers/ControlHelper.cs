@@ -18,28 +18,25 @@ namespace TatehamaInterlockingConsole.Helpers
         /// <param name="setting"></param>
         public static void SetPosition(UIElement element, UIControlSetting setting, List<UIControlSetting> allSettings)
         {
-            Application.Current.Dispatcher.InvokeAsync(() =>
+            if (!string.IsNullOrEmpty(setting.ParentName))
             {
-                if (!string.IsNullOrEmpty(setting.ParentName))
+                var parentControl = FindControlByName(allSettings, setting.ParentName);
+                if (parentControl != null)
                 {
-                    var parentControl = FindControlByName(allSettings, setting.ParentName);
-                    if (parentControl != null)
-                    {
-                        Canvas.SetLeft(element, parentControl.X + setting.RelativeX);
-                        Canvas.SetTop(element, parentControl.Y + setting.RelativeY);
-                    }
-                    else
-                    {
-                        Canvas.SetLeft(element, setting.X);
-                        Canvas.SetTop(element, setting.Y);
-                    }
+                    Canvas.SetLeft(element, parentControl.X + setting.RelativeX);
+                    Canvas.SetTop(element, parentControl.Y + setting.RelativeY);
                 }
                 else
                 {
                     Canvas.SetLeft(element, setting.X);
                     Canvas.SetTop(element, setting.Y);
                 }
-            });
+            }
+            else
+            {
+                Canvas.SetLeft(element, setting.X);
+                Canvas.SetTop(element, setting.Y);
+            }
         }
 
         /// <summary>

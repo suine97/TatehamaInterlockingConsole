@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
@@ -62,7 +61,7 @@ namespace TatehamaInterlockingConsole.Handlers
                     HandleButtonImageMouseDown(control);
                     break;
                 default:
-                    MessageBox.Show($"Image {(isLeftClick ? "Left" : "Right")} Click event {control.ClickEventName} | {control.UniqueName}");
+                    // MessageBox.Show($"Image {(isLeftClick ? "Left" : "Right")} MouseDown event {control.ClickEventName} | {control.UniqueName}");
                     break;
             }
         }
@@ -79,6 +78,7 @@ namespace TatehamaInterlockingConsole.Handlers
                     HandleButtonImageMouseUp(control);
                     break;
                 default:
+                    // MessageBox.Show($"Image {(isLeftClick ? "Left" : "Right")} MouseUp event {control.ClickEventName} | {control.UniqueName}");
                     break;
             }
         }

@@ -50,7 +50,7 @@ namespace TatehamaInterlockingConsole.Factories
                     control = ButtonImageFactory.CreateButtonImageControl(setting, allSettings, drawing);
                     break;
                 case "Retsuban":
-                    control = ImageFactory.CreateImageControl(setting, allSettings, true);
+                    control = RetsubanFactory.CreateRetsubanImageControl(setting, allSettings, drawing);
                     break;
                 default:
                     break;

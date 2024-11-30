@@ -118,6 +118,10 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public bool KeyInserted { get; set; }
         /// <summary>
+        /// 列番文字列
+        /// </summary>
+        public string Retsuban { get; set; }
+        /// <summary>
         /// 備考欄
         /// </summary>
         public string Remark { get; set; }
