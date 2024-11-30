@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Threading;
 using System.Collections.Generic;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
@@ -46,15 +45,6 @@ namespace TatehamaInterlockingConsole.Factories
 
             // 現在時刻を取得して針を設定
             Clock.SetClockHands(CurrentTime, hourRotateTransform, minuteRotateTransform, secondRotateTransform);
-
-            //// 秒針の更新タイマー
-            //var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
-            //timer.Tick += (sender, e) =>
-            //{
-            //    DateTime now = CurrentTime;
-            //    Clock.SetClockHands(now, hourRotateTransform, minuteRotateTransform, secondRotateTransform);
-            //};
-            //timer.Start();
 
             // Canvasに時計の要素を追加
             if (drawing)
