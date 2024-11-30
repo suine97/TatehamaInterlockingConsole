@@ -28,6 +28,10 @@ namespace TatehamaInterlockingConsole.Factories
             var secondHandImage = ImageFactory.CreateImageControl(setting, allSettings, 2);
             var coverImage = ImageFactory.CreateImageControl(setting, allSettings, 3);
 
+            hourHandImage.Tag = "HourHand";
+            minuteHandImage.Tag = "MinuteHand";
+            secondHandImage.Tag = "SecondHand";
+
             // 針の回転用 Transform
             var hourRotateTransform = new RotateTransform();
             var minuteRotateTransform = new RotateTransform();
@@ -43,14 +47,14 @@ namespace TatehamaInterlockingConsole.Factories
             // 現在時刻を取得して針を設定
             Clock.SetClockHands(CurrentTime, hourRotateTransform, minuteRotateTransform, secondRotateTransform);
 
-            // 秒針の更新タイマー
-            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
-            timer.Tick += (sender, e) =>
-            {
-                DateTime now = CurrentTime;
-                Clock.SetClockHands(now, hourRotateTransform, minuteRotateTransform, secondRotateTransform);
-            };
-            timer.Start();
+            //// 秒針の更新タイマー
+            //var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+            //timer.Tick += (sender, e) =>
+            //{
+            //    DateTime now = CurrentTime;
+            //    Clock.SetClockHands(now, hourRotateTransform, minuteRotateTransform, secondRotateTransform);
+            //};
+            //timer.Start();
 
             // Canvasに時計の要素を追加
             if (drawing)
@@ -63,6 +67,36 @@ namespace TatehamaInterlockingConsole.Factories
             }
 
             return canvas;
+        }
+
+        /// <summary>
+        /// 時計の各針更新処理
+        /// </summary>
+        /// <param name="clockCanvas"></param>
+        public static void UpdateClockHands(Canvas clockCanvas)
+        {
+            // 時計の各針を更新
+            foreach (var child in clockCanvas.Children)
+            {
+                if (child is Image image && image.RenderTransform is RotateTransform rotateTransform)
+                {
+                    if (image.Tag is string tag)
+                    {
+                        switch (tag)
+                        {
+                            case "HourHand":
+                                rotateTransform.Angle = (CurrentTime.Hour % 12) * 30 + CurrentTime.Minute * 0.5;
+                                break;
+                            case "MinuteHand":
+                                rotateTransform.Angle = CurrentTime.Minute * 6 + CurrentTime.Second * 0.1;
+                                break;
+                            case "SecondHand":
+                                rotateTransform.Angle = CurrentTime.Second * 6;
+                                break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

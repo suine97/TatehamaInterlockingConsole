@@ -9,6 +9,9 @@ using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.Models;
 using System.Xml.Linq;
+using System.Windows.Media;
+using System.Windows.Threading;
+using System.Windows.Controls;
 
 namespace TatehamaInterlockingConsole.ViewModels
 {
@@ -20,6 +23,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         private readonly DataManager _dataManager; // データ管理クラス
         private readonly Sound _sound; // サウンド管理クラスのインスタンス
         private readonly DataUpdateViewModel _dataUpdateViewModel;
+        private readonly DispatcherTimer _clockUpdateTimer;
         private string _stationName; // 駅名
 
         /// <summary>
@@ -105,6 +109,10 @@ namespace TatehamaInterlockingConsole.ViewModels
                 _dataUpdateViewModel.NotifyUpdateControlEvent += OnNotifyUpdateControlEvent;
                 _stationName = DataHelper.ExtractStationNameFromFilePath(filePath); // ファイルパスから駅名を抽出
 
+                _clockUpdateTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+                _clockUpdateTimer.Tick += OnClockUpdate;
+                _clockUpdateTimer.Start();
+
                 IsFitMode = false;
                 ToggleButtonText = "フィット表示に切り替え";
                 Title = title;
@@ -142,6 +150,23 @@ namespace TatehamaInterlockingConsole.ViewModels
 
             // UI用コレクションに反映
             StationElements = newCollection;
+        }
+
+        /// <summary>
+        /// 時計更新処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClockUpdate(object sender, EventArgs e)
+        {
+            // 時計UI要素の更新処理
+            foreach (var element in StationElements)
+            {
+                if (element is Canvas clockCanvas)
+                {
+                    ClockImageFactory.UpdateClockHands(clockCanvas);
+                }
+            }
         }
 
         /// <summary>
