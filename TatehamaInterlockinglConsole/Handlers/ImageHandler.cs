@@ -134,42 +134,51 @@ namespace TatehamaInterlockingConsole.Handlers
         {
             string randomKeyInsertSoundIndex = _random.Next(1, 6).ToString("00");
             string randomKeyChainSoundIndex = _random.Next(1, 10).ToString("00");
+            string randomKeyRemoveSoundIndex = _random.Next(1, 6).ToString("00");
             string randomKeyRejectSoundIndex = _random.Next(1, 4).ToString("00");
             string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
 
             // Shiftキーが押されているかを判定
             bool isShiftPressed = (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Shift) == System.Windows.Input.ModifierKeys.Shift;
+            // Controlキーが押されているかを判定
+            bool isControlPressed = (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Control) == System.Windows.Input.ModifierKeys.Control;
 
             if (isShiftPressed)
             {
                 // Shiftキーが押されている場合、KeyInsertedを切り替え
-                control.KeyInserted = !control.KeyInserted;
                 if (control.KeyInserted)
                 {
                     if (control.ImageIndex >= 0)
                     {
-                        control.ImageIndex += 10;
+                        control.ImageIndex -= 10;
                     }
                     else
                     {
-                        control.ImageIndex -= 10;
+                        control.ImageIndex += 10;
                     }
                     _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
-                    _sound.SoundPlay($"reject_{randomKeyRejectSoundIndex}", false);
+                    _sound.SoundPlay($"remove_{randomKeyRemoveSoundIndex}", false);
                 }
                 else
                 {
                     if (control.ImageIndex >= 0)
                     {
-                        control.ImageIndex -= 10;
+                        control.ImageIndex += 10;
                     }
                     else
                     {
-                        control.ImageIndex += 10;
+                        control.ImageIndex -= 10;
                     }
                     _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
                     _sound.SoundPlay($"insert_{randomKeyInsertSoundIndex}", false);
                 }
+                control.KeyInserted = !control.KeyInserted;
+            }
+            else if (isControlPressed)
+            {
+                // (デバッグ) Controlが押されている場合、権限無効判定
+                _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
+                _sound.SoundPlay($"reject_{randomKeyRejectSoundIndex}", false);
             }
             else if (control.KeyInserted)
             {
