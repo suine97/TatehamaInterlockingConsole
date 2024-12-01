@@ -6,9 +6,9 @@ Button	Button_W07	Button_W07				758	80	200	80				•l‰€‰w	24	#FFE0FFFF	#FF000000	W
 Button	Button_W10	Button_W10				50	210	200	80				V–ìè‰w	24	#FFE0FFFF	#FF000000	W10_V–ìè‰w					
 Button	Button_W11	Button_W11				286	210	200	80				]ƒmŒ´ŒŸÔ‹æ	24	#FFE0FFFF	#FF000000	W11_]ƒmŒ´ŒŸÔ‹æ					
 Button	Button_W12	Button_W12				522	210	200	80				‘å“¹›‰w	24	#FFE0FFFF	#FF000000	W12_‘å“¹›‰w					
-Button	Button_W13	Button_W13				758	210	200	80				“¡]‰w	24	#FFE0FFFF	#FF000000						
-Button	Button_W14	Button_W14				50	340	200	80				…‰z‰w	24	#FFE0FFFF	#FF000000						
-Button	Button_W15	Button_W15				286	340	200	80				‚Œ©‘ò‰w	24	#FFE0FFFF	#FF000000						
+Button	Button_W13	Button_W13				758	210	200	80				“¡]‰w	24	#FFE0FFFF	#FF000000	W13_“¡]‰w					
+Button	Button_W14	Button_W14				50	340	200	80				…‰z‰w	24	#FFE0FFFF	#FF000000	W14_…‰z‰w					
+Button	Button_W15	Button_W15				286	340	200	80				‚Œ©‘ò‰w	24	#FFE0FFFF	#FF000000	W15_‚Œ©‘ò‰w					
 Button	Button_W16	Button_W16				522	340	200	80				“ú–ìX‰w	24	#FFE0FFFF	#FF000000	W16_“ú–ìX‰w					
-Button	Button_W18	Button_W18				758	340	200	80				¼ÔR‰w	24	#FFE0FFFF	#FF000000						
+Button	Button_W18	Button_W18				758	340	200	80				¼ÔR‰w	24	#FFE0FFFF	#FF000000	W18_¼ÔR‰w					
 Button	Button_W19	Button_W19				50	470	200	80				ÔR’¬‰w	24	#FFE0FFFF	#FF000000	W19_ÔR’¬‰w					

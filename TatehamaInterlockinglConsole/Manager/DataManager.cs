@@ -29,12 +29,18 @@ namespace TatehamaInterlockingConsole.Manager
         public Dictionary<string, string> RetsubanImagePathDictionary { get; set; }
 
         /// <summary>
+        /// 駅名対照表辞書データ
+        /// </summary>
+        public Dictionary<string, string> StationNameDictionary { get; set; }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         private DataManager()
         {
             AllControlSettingList = new List<UIControlSetting>();
             RetsubanImagePathDictionary = new Dictionary<string, string>();
+            StationNameDictionary  = new Dictionary<string, string>();
         }
 
         /// <summary>

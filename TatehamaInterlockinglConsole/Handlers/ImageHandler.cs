@@ -47,15 +47,13 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="isLeftClick"></param>
         private void HandleMouseDown(UIControlSetting control, bool isLeftClick)
         {
-            int randomLeverSoundIndex = _random.Next(1, 5);
-
             switch (control.ControlType)
             {
                 case "LeverImage":
-                    HandleLeverImageMouseDown(control, isLeftClick, randomLeverSoundIndex);
+                    HandleLeverImageMouseDown(control, isLeftClick);
                     break;
                 case "KeyImage":
-                    HandleKeyImageMouseDown(control, isLeftClick, randomLeverSoundIndex);
+                    HandleKeyImageMouseDown(control, isLeftClick);
                     break;
                 case "ButtonImage":
                     HandleButtonImageMouseDown(control);
@@ -89,9 +87,10 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="control"></param>
         /// <param name="isLeftClick"></param>
         /// <param name="soundIndex"></param>
-        private void HandleLeverImageMouseDown(UIControlSetting control, bool isLeftClick, int soundIndex)
+        private void HandleLeverImageMouseDown(UIControlSetting control, bool isLeftClick)
         {
             int newIndex;
+            string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
 
             // LRパターンのみ別処理
             if (control.ImagePatternSymbol == "LR")
@@ -122,7 +121,7 @@ namespace TatehamaInterlockingConsole.Handlers
 
             control.ImageIndex = newIndex;
             _dataUpdateViewModel.SetControlsetting(control);
-            _sound.SoundPlay($"switch_0{soundIndex}", false);
+            _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
         }
 
         /// <summary>
@@ -131,8 +130,13 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="control"></param>
         /// <param name="isLeftClick"></param>
         /// <param name="soundIndex"></param>
-        private void HandleKeyImageMouseDown(UIControlSetting control, bool isLeftClick, int soundIndex)
+        private void HandleKeyImageMouseDown(UIControlSetting control, bool isLeftClick)
         {
+            string randomKeyInsertSoundIndex = _random.Next(1, 6).ToString("00");
+            string randomKeyChainSoundIndex = _random.Next(1, 10).ToString("00");
+            string randomKeyRejectSoundIndex = _random.Next(1, 4).ToString("00");
+            string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
+
             // Shiftキーが押されているかを判定
             bool isShiftPressed = (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Shift) == System.Windows.Input.ModifierKeys.Shift;
 
@@ -150,6 +154,8 @@ namespace TatehamaInterlockingConsole.Handlers
                     {
                         control.ImageIndex -= 10;
                     }
+                    _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
+                    _sound.SoundPlay($"reject_{randomKeyRejectSoundIndex}", false);
                 }
                 else
                 {
@@ -161,6 +167,8 @@ namespace TatehamaInterlockingConsole.Handlers
                     {
                         control.ImageIndex += 10;
                     }
+                    _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
+                    _sound.SoundPlay($"insert_{randomKeyInsertSoundIndex}", false);
                 }
             }
             else if (control.KeyInserted)
@@ -196,7 +204,7 @@ namespace TatehamaInterlockingConsole.Handlers
 
                 control.ImageIndex = newIndex;
                 _dataUpdateViewModel.SetControlsetting(control);
-                _sound.SoundPlay($"switch_0{soundIndex}", false);
+                _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
             }
         }
 
@@ -208,11 +216,13 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseDown(UIControlSetting control)
         {
+            string randomPushSoundIndex = _random.Next(1, 4).ToString("00");
+            
             if (control.ImageIndex != 1)
             {
                 control.ImageIndex = 1;
                 _dataUpdateViewModel.SetControlsetting(control);
-                _sound.SoundPlay("button_01", false);
+                _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
             }
         }
 
@@ -224,11 +234,13 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseUp(UIControlSetting control)
         {
+            string randomPullSoundIndex = _random.Next(1, 4).ToString("00");
+
             if (control.ImageIndex != 0)
             {
                 control.ImageIndex = 0;
                 _dataUpdateViewModel.SetControlsetting(control);
-                _sound.SoundPlay("button_02", false);
+                _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
             }
         }
 

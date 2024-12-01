@@ -147,7 +147,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             var newCollection = new ObservableCollection<UIElement>(newElements);
 
             // 差分比較
-            if (!DataHelper.AreCollectionsEqual(StationElements, newCollection))
+            if (!UIElementLoader.AreCollectionsEqual(StationElements, newCollection))
             {
                 // 差分がある場合のみ更新
                 StationElements = newCollection;

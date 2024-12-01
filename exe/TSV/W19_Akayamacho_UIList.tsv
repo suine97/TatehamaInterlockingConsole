@@ -1,0 +1,170 @@
+Type	UniqueName	ServerName	ParentName	PointName	PointValue	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImageIndex	BaseImagePath	ImagePath	Remark								
+BackImage	連動盤					0	0														Image/BackImage/W19_Akayamacho.png									
+Image	Clock_Base					1035	78	79	110												Image/Clock/Clock_Border.png									
+ClockImage	Clock_Meter		Clock_Base			6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
+Image	Hook					1046	10														Image/Hook/Hook_Base.png									
+LeverImage	1L					322	323										1L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	1Lは方向てこ　白LR								
+LeverImage	2R					387	323										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0代X=てこ赤(X)N(X)　例：2R=てこ赤NR								
+LeverImage	3L					680	243										3L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	4L					738	323										4L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	5L					738	403										5L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	6R					1034	243										6R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	7R					1034	323										7R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	8R					1092	403										8R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	9L					1447	323										9L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	10L					1512	323										10L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	10Lは方向てこ　白LR								
+LeverImage	31R					976	243										31R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"	30代X=てこ緑(X)N(X)　例：31R=てこ緑NR								
+LeverImage	32L					1287	183										32L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+LeverImage	33L					1287	243										33L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+ButtonImage	T					462	336										T	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	A					932	256										A	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	B					990	336										B	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	C					1048	416										C	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	D					1539	196										D	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	E					1539	256										E	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	S					1355	336										S	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+LeverImage	P21					555	64										P21	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	転てつ器単独てこはNCR								
+Image	P21_PG					553	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"	"Y,Gは灯色"								
+Image	P21_PY					587	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+LeverImage	P22					623	64										P22	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P22_PG					621	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P22_PY					655	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+LeverImage	P23					1115	64										P23	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P23_PG					1113	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P23_PY					1147	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+LeverImage	P24					1183	64										P24	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P24_PG					1181	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P24_PY					1215	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+LeverImage	P25					1251	64										P25	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P25_PG					1249	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P25_PY					1283	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+KeyImage	駅扱切換					1729	64										駅扱切換	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	駅扱切換はLR								
+Image	駅扱_PY					1727	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	集中_PG					1761	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+KeyImage	解放98					54	64										解放98	"0,1,10,11"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/KeyLever_KeyOFF_N.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_N.png,Image/Lever/KeyLever_KeyON_R.png"	方向てこ解放はNR								
+Image	解放98_PY					69	31											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+KeyImage	解放99					1827	64										解放99	"0,1,10,11"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/KeyLever_KeyOFF_N.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_N.png,Image/Lever/KeyLever_KeyON_R.png"	方向てこ解放はNR								
+Image	解放99_PY					1842	31											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+Image	2R_G					453	321											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	3L_G					644	249											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	4L_G					702	359											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	5L_G					702	439											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	6R_G					1111	241											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	7R_G					1100	329											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	8R_G					1158	439											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	9L_G					1411	302											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	31R_Y					1093	240											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	32L_Y					1258	223											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	33L_Y					1258	280											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	TH59_11RT_1					83	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0度※以下0度省略								
+Image	TH59_11RT_2					165	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_21イT_P21N_1					221	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_21イT_P21R_1					221	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_21イT_P21R_2					233	301											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH59_21ロT_P21R_1					243	326											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH59_21ロT_P21R_2					251	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_21ロT_P21N_1					221	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_21ロT_P21N_2					251	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA1T_1					276	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA2T_1					306	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA2T_2					366	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA2T_1L_1					307	323											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	NA2T_1L_2					307	365											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	NA2T_1R_1					367	323											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	NA2T_1R_2					367	365											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	2RT_1					444	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	2RT_2					494	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	21T_P21N_1					522	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	21T_P21N_2					564	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	21T_P21R_1					522	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	21T_P21R_2					581	289											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	21T_P21R_3					651	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	22イT_P22イN_1					592	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	22イT_P22イN_2					650	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	22イT_P22イN_3					709	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	22イT_P22イR_1					592	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	22イT_P22イR_2					626	374											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	22ロT_P22ロR_1					646	394											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	22ロT_P22ロR_2					709	426											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	22ロT_P22ロN_1					709	426											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	2RAT_1					720	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	2RAT_2					964	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	2RBT_1					778	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	2RBT_2					1022	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	9RCT_1					836	426											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	9RCT_2					1080	426											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	23イT_P23イN_1					1091	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	23イT_P23イN_2					1164	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	23イT_P23イR_1					1091	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	23イT_P23イR_2					1156	294											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	23ロT_P23ロR_1					1176	314											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	23ロT_P23ロR_2					1208	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	23ロT_P23ロN_1					1091	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	23ロT_P23ロN_2					1149	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	23ロT_P23ロN_3					1208	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	24T_P24N_1					1192	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	24T_P24N_2					1258	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	24T_P24R_1					1192	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	24T_P24R_2					1240	220											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	25T_P25N_1					1236	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	25T_P25N_2					1278	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	25T_P25R_1					1149	426											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	25T_P25R_2					1221	399											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	25T_P25R_3					1278	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	9LT_1					1327	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	9LT_2					1397	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	10LT_1					1496	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	10LT_2					1556	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	10LT_10L_1					1497	323											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	10LT_10L_2					1497	365											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	10LT_10R_1					1557	323											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	10LT_10R_2					1557	365											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	DT_1					1327	206											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	DT_2					1571	206											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	ET_1					1327	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	ET_2					1571	266											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+ButtonImage	警報上り接近					304	551										警報上り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
+ButtonImage	警報下り接近					1591	551										警報下り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
+Retsuban	列番1番線					782	255														Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番2番線					840	335														Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番3番線					898	415														Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番4番線					1389	195														Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番5番線					1389	255														Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番下り第1接近					1425	422														Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番下り第2接近					1575	422														Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番上り第1接近					364	188														Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番上り第2接近					214	188														Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番西赤山1番線					64	188														Image/Retsuban/Retsuban-Window.png									
+Image	鎖錠30秒					974	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	鎖錠・停電・故障はR灯								
+Image	鎖錠60秒					936	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	停電					152	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTC故障灯					200	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+TextBlock	Label_1L		1L			14	20	11	11				1	10	Transparent	#FFBCBCBC	1L													
+TextBlock	Label_2R		2R			14	20	11	11				2	10	Transparent	#FFBCBCBC	2R													
+TextBlock	Label_3L		3L			14	20	11	11				3	10	Transparent	#FFBCBCBC	3L													
+TextBlock	Label_4L		4L			14	20	11	11				4	10	Transparent	#FFBCBCBC	4L													
+TextBlock	Label_5L		5L			14	20	11	11				5	10	Transparent	#FFBCBCBC	5L													
+TextBlock	Label_6R		6R			14	20	11	11				6	10	Transparent	#FFBCBCBC	6R													
+TextBlock	Label_7R		7R			14	20	11	11				7	10	Transparent	#FFBCBCBC	7R													
+TextBlock	Label_8R		8R			14	20	11	11				8	10	Transparent	#FFBCBCBC	8R													
+TextBlock	Label_9L		9L			14	20	11	11				9	10	Transparent	#FFBCBCBC	9L													
+TextBlock	Label_10L		10L			14	20	11	11				10	10	Transparent	#FFBCBCBC	10L													
+TextBlock	Label_31R		31R			14	20	11	11				31	10	Transparent	#FFBCBCBC	31R													
+TextBlock	Label_32L		32L			14	20	11	11				32	10	Transparent	#FFBCBCBC	32L													
+TextBlock	Label_33L		33L			14	20	11	11				33	10	Transparent	#FFBCBCBC	33L													
+TextBlock	Label_T		T			5	23	15	12				T	10	Transparent	#FFBCBCBC	T													
+TextBlock	Label_A		A			5	23	15	12				A	10	Transparent	#FFBCBCBC	A													
+TextBlock	Label_B		B			5	23	15	12				B	10	Transparent	#FFBCBCBC	B													
+TextBlock	Label_C		C			5	23	15	12				C	10	Transparent	#FFBCBCBC	C													
+TextBlock	Label_D		D			5	23	15	12				D	10	Transparent	#FFBCBCBC	D													
+TextBlock	Label_E		E			5	23	15	12				E	10	Transparent	#FFBCBCBC	E													
+TextBlock	Label_S		S			5	23	15	12				S	10	Transparent	#FFBCBCBC	S													
+TextBlock	Label_P21		P21			14	20	11	11				21	10	Transparent	#FFBCBCBC	P21													
+TextBlock	Label_P22		P22			14	20	11	11				22	10	Transparent	#FFBCBCBC	P22													
+TextBlock	Label_P23		P23			14	20	11	11				23	10	Transparent	#FFBCBCBC	P23													
+TextBlock	Label_P24		P24			14	20	11	11				24	10	Transparent	#FFBCBCBC	P24													
+TextBlock	Label_P25		P25			14	20	11	11				25	10	Transparent	#FFBCBCBC	P25													
+																														
+																														
+																														
+																														

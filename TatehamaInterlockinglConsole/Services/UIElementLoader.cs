@@ -6,20 +6,31 @@ using System.Linq;
 using System.Windows;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Factories;
+using System.Windows.Controls;
 
 namespace TatehamaInterlockingConsole.Services
 {
     public static class UIElementLoader
     {
         /// <summary>
-        /// フォルダ内の全てのTSVファイルを読み込み、UIControlSettingに変換して返す
+        /// フォルダ内のUI設定用TSVファイルを読み込み、UIControlSettingに変換して返す
         /// </summary>
         /// <param name="folderPath"></param>
         /// <returns></returns>
         public static List<UIControlSetting> LoadSettingsFromFolderAsUIControlSetting(string folderPath)
         {
             var allSettings = new List<UIControlSetting>();
-            foreach (var filePath in Directory.EnumerateFiles(folderPath, "*.tsv"))
+
+            // 条件に一致するファイルを取得
+            IEnumerable<string> matchingFiles = Directory.EnumerateFiles(folderPath, "*", SearchOption.TopDirectoryOnly)
+                .Where(file =>
+                {
+                    string fileName = Path.GetFileName(file);
+                    return (fileName.StartsWith("Main") || fileName.StartsWith("W")) && fileName.EndsWith(".tsv", StringComparison.OrdinalIgnoreCase);
+                });
+
+            // UIContolSettingに変換
+            foreach (var filePath in matchingFiles)
             {
                 var settings = UIControlSettingLoader.LoadSettings(filePath);
                 allSettings.AddRange(settings);
@@ -74,6 +85,75 @@ namespace TatehamaInterlockingConsole.Services
                 throw new ArgumentException($"指定されたファイル名 '{stationName}' の設定データが見つかりません。");
             }
             return elements;
+        }
+
+        /// <summary>
+        /// UIElementコレクション差分比較メソッド
+        /// </summary>
+        /// <param name="collection1"></param>
+        /// <param name="collection2"></param>
+        /// <returns></returns>
+        public static bool AreCollectionsEqual(ObservableCollection<UIElement> collection1, ObservableCollection<UIElement> collection2)
+        {
+            if (collection1.Count != collection2.Count)
+                return false;
+
+            for (int i = 0; i < collection1.Count; i++)
+            {
+                if (!AreUIElementsEqual(collection1[i], collection2[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        private static bool AreUIElementsEqual(UIElement element1, UIElement element2)
+        {
+            // カスタムロジックを使用してUIElementを比較
+            if (element1 == null || element2 == null)
+                return element1 == element2;
+
+            if (element1 is Canvas canvas1 && element2 is Canvas canvas2)
+            {
+                return canvas1.Children.Count == canvas2.Children.Count &&
+                       CompareCanvasChildren(canvas1.Children, canvas2.Children);
+            }
+
+            if (element1 is Grid grid1 && element2 is Grid grid2)
+            {
+                return grid1.Children.Count == grid2.Children.Count;
+            }
+
+            if (element1 is TextBlock text1 && element2 is TextBlock text2)
+            {
+                return text1.Text.ToString() == text2.Text.ToString();
+            }
+
+            if (element1 is Image image1 && element2 is Image imate2)
+            {
+                return image1.Source.ToString() == imate2.Source.ToString();
+            }
+
+            if (element1 is Label label1 && element2 is Label label2)
+            {
+                return label1.Content.ToString() == label2.Content.ToString();
+            }
+
+            return false;
+        }
+        private static bool CompareCanvasChildren(UIElementCollection children1, UIElementCollection children2)
+        {
+            if (children1.Count != children2.Count)
+                return false;
+
+            for (int i = 0; i < children1.Count; i++)
+            {
+                if (!AreUIElementsEqual(children1[i], children2[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

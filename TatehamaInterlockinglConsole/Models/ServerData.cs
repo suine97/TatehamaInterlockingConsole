@@ -21,10 +21,19 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class InterlockingData
         {
+            public List<InterlockingAuthentication> Authentications { get; set; } = new List<InterlockingAuthentication>();
             public List<InterlockingTrackCircuit> TrackCircuits { get; set; } = new List<InterlockingTrackCircuit>();
             public List<InterlockingPoint> Points { get; set; } = new List<InterlockingPoint>();
             public List<InterlockingSignal> Signals { get; set; } = new List<InterlockingSignal>();
             public List<InterlockingLamp> Lamps { get; set; } = new List<InterlockingLamp>();
+        }
+
+        /// <summary>
+        /// 連動装置・認証情報クラス
+        /// </summary>
+        public class InterlockingAuthentication
+        {
+            public bool OperableUser { get; set; }
         }
 
         /// <summary>
