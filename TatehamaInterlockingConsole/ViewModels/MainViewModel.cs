@@ -136,6 +136,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             // リソース解放処理
             MainElements.Clear();
             _timeService.Stop();
+            ImageCacheManager.ClearCache();
             return true;
         }
     }

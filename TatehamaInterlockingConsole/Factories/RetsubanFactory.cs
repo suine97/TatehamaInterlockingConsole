@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -38,52 +37,33 @@ namespace TatehamaInterlockingConsole.Factories
                 ("_TailSymbol", 104, 1, imagePathList[5])
             };
 
-            var images = new List<UIElement>();
-
             foreach (var control in controls)
             {
-                var uiControlSetting = CreateUIControlSetting(setting, control.UniqueNameSuffix, control.X, control.Y, control.ImagePath);
-                var image = ImageFactory.CreateImageControl(uiControlSetting, allSettings, 0);
+                if (control.ImagePath == null) continue;
 
-                Canvas.SetLeft(image, control.X);
-                Canvas.SetTop(image, control.Y);
-                images.Add(image);
-            }
-
-            // ベースイメージを作成
-            var baseImage = ImageFactory.CreateImageControl(setting, allSettings, 0);
-            if (drawing)
-            {
-                canvas.Children.Add(baseImage);
-                foreach (var image in images)
+                var imageSource = ImageCacheManager.GetImage(control.ImagePath);
+                if (imageSource != null)
                 {
+                    var image = new Image
+                    {
+                        Source = imageSource,
+                        Width = setting.Width,
+                        Height = setting.Height
+                    };
+
+                    Canvas.SetLeft(image, control.X);
+                    Canvas.SetTop(image, control.Y);
                     canvas.Children.Add(image);
                 }
             }
-            return canvas;
-        }
 
-        /// <summary>
-        /// UIControlSettingを生成するヘルパーメソッド
-        /// </summary>
-        /// <param name="baseSetting"></param>
-        /// <param name="uniqueNameSuffix"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="imagePath"></param>
-        /// <returns></returns>
-        private static UIControlSetting CreateUIControlSetting(UIControlSetting baseSetting, string uniqueNameSuffix, int x, int y, string imagePath)
-        {
-            return new UIControlSetting
+            // ベースイメージを追加
+            if (drawing)
             {
-                StationName = baseSetting.StationName,
-                ControlType = baseSetting.ControlType,
-                UniqueName = baseSetting.UniqueName + uniqueNameSuffix,
-                ParentName = baseSetting.UniqueName,
-                X = x,
-                Y = y,
-                ImagePaths = new Dictionary<int, string> { [0] = imagePath }
-            };
+                var baseImage = ImageFactory.CreateImageControl(setting, allSettings, true);
+                canvas.Children.Insert(0, baseImage);
+            }
+            return canvas;
         }
 
         /// <summary>
@@ -101,21 +81,30 @@ namespace TatehamaInterlockingConsole.Factories
 
             if (!match.Success) return imagePaths;
 
-            // 先頭文字を取得し対応するパスを検索
+            // 先頭文字の画像
             var headSymbolKey = GetHeadSymbolKey(match.Groups[1].Value);
-            _dataManager.RetsubanImagePathDictionary.TryGetValue(headSymbolKey, out imagePaths[0]);
+            if (_dataManager.RetsubanImagePathDictionary.TryGetValue(headSymbolKey, out var headKey))
+            {
+                imagePaths[0] = headKey;
+            }
 
-            // 数字部分を取得し各桁に対応するパスを検索（空白埋め対応）
-            var digits = match.Groups[2].Value.PadLeft(4, ' '); // 空白埋め
+            // 数字部分の画像
+            var digits = match.Groups[2].Value.PadLeft(4, ' ');
             for (int i = 0; i < digits.Length; i++)
             {
                 var charKey = digits[i] == ' ' ? "7seg_Null" : $"7seg_{digits[i]}";
-                _dataManager.RetsubanImagePathDictionary.TryGetValue(charKey, out imagePaths[i + 1]);
+                if (_dataManager.RetsubanImagePathDictionary.TryGetValue(charKey, out var digitKey))
+                {
+                    imagePaths[i + 1] = digitKey;
+                }
             }
 
-            // 接尾文字を取得し対応するパスを検索
+            // 接尾文字の画像
             var tailSymbolKey = GetTailSymbolKey(match.Groups[3].Value);
-            _dataManager.RetsubanImagePathDictionary.TryGetValue(tailSymbolKey, out imagePaths[5]);
+            if (_dataManager.RetsubanImagePathDictionary.TryGetValue(tailSymbolKey, out var tailKey))
+            {
+                imagePaths[5] = tailKey;
+            }
 
             return imagePaths;
         }
@@ -162,7 +151,8 @@ namespace TatehamaInterlockingConsole.Factories
 
             foreach (var filePath in Directory.EnumerateFiles(folderPath, "*.png"))
             {
-                retsubanDictionary.Add(Path.GetFileNameWithoutExtension(filePath), AppDomain.CurrentDomain.BaseDirectory + filePath);
+                var normalizedPath = Path.GetFullPath(filePath).Replace('\\', '/');
+                retsubanDictionary.Add(Path.GetFileNameWithoutExtension(filePath), normalizedPath);
             }
             return retsubanDictionary;
         }

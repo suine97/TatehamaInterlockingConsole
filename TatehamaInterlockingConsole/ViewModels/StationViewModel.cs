@@ -174,8 +174,9 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <summary>
         /// ウィンドウを閉じる際の処理
         /// </summary>
-        private void OnClosing()
+        public void OnClosing()
         {
+            // UI要素をクリア
             StationElements.Clear();
         }
 

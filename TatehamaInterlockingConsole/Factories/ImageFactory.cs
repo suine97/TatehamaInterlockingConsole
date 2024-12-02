@@ -1,12 +1,10 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using System.Windows.Media;
-using System.Linq;
 using System.Collections.Generic;
 using TatehamaInterlockingConsole.Handlers;
 using TatehamaInterlockingConsole.Models;
+using TatehamaInterlockingConsole.Manager;
 
 namespace TatehamaInterlockingConsole.Factories
 {
@@ -20,12 +18,19 @@ namespace TatehamaInterlockingConsole.Factories
         /// <returns></returns>
         public static Image CreateImageControl(UIControlSetting setting, List<UIControlSetting> allSettings, int index = 0, bool clickEvent = true)
         {
-            var bitmapImage = new BitmapImage(new Uri(setting.ImagePaths[index], UriKind.RelativeOrAbsolute));
+            if (!setting.ImagePaths.ContainsKey(index))
+            {
+                throw new KeyNotFoundException($"Index {index} に対応する画像パスが見つかりません。");
+            }
+
+            var imagePath = setting.ImagePaths[setting.ImageIndex];
+            var imageSource = ImageCacheManager.GetImage(imagePath);
+
             var image = new Image
             {
-                Source = bitmapImage,
-                Width = setting.Width != 0 ? setting.Width : bitmapImage.PixelWidth,
-                Height = setting.Height != 0 ? setting.Height : bitmapImage.PixelHeight,
+                Source = imageSource,
+                Width = setting.Width != 0 ? setting.Width : imageSource.Width,
+                Height = setting.Height != 0 ? setting.Height : imageSource.Height,
                 RenderTransform = new RotateTransform(setting.Angle)
             };
 
@@ -56,17 +61,19 @@ namespace TatehamaInterlockingConsole.Factories
         /// <returns></returns>
         public static Image CreateImageControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool clickEvent = true, double angle = 0.0d)
         {
-            string imagePath = setting.ImagePaths.FirstOrDefault().Value;
+            if (!setting.ImagePaths.ContainsKey(setting.ImageIndex))
+            {
+                throw new KeyNotFoundException($"ImageIndex {setting.ImageIndex} に対応する画像パスが見つかりません。");
+            }
 
-            // ImageIndexに対応したImagePathを抽出
-            setting.ImagePaths.TryGetValue(setting.ImageIndex, out imagePath);
+            var imagePath = setting.ImagePaths[setting.ImageIndex];
+            var imageSource = ImageCacheManager.GetImage(imagePath);
 
-            var bitmapImage = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));
             var image = new Image
             {
-                Source = bitmapImage,
-                Width = setting.Width != 0 ? setting.Width : bitmapImage.PixelWidth,
-                Height = setting.Height != 0 ? setting.Height : bitmapImage.PixelHeight,
+                Source = imageSource,
+                Width = setting.Width != 0 ? setting.Width : imageSource.Width,
+                Height = setting.Height != 0 ? setting.Height : imageSource.Height,
                 RenderTransform = new RotateTransform(angle)
             };
 

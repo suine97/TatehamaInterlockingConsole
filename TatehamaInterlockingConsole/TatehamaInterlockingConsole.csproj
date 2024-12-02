@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{27695515-2DEB-4164-928A-801BC7246A82}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TatehamaInterlockinglConsole</RootNamespace>
-    <AssemblyName>TatehamaInterlockinglConsole</AssemblyName>
+    <RootNamespace>TatehamaInterlockingConsole</RootNamespace>
+    <AssemblyName>TatehamaInterlockingConsole</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -74,6 +74,7 @@
     <Compile Include="Factories\LeverImageFactory.cs" />
     <Compile Include="Handlers\LabelHandler.cs" />
     <Compile Include="Manager\DataManager.cs" />
+    <Compile Include="Manager\ImageCacheManager.cs" />
     <Compile Include="Manager\ServerAddress.cs" />
     <Compile Include="Models\ServerData.cs" />
     <Compile Include="Helpers\DataHelper.cs" />

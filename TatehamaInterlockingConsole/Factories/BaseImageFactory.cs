@@ -1,10 +1,9 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Collections.Generic;
 using TatehamaInterlockingConsole.Models;
+using TatehamaInterlockingConsole.Manager;
 
 namespace TatehamaInterlockingConsole.Factories
 {
@@ -18,12 +17,14 @@ namespace TatehamaInterlockingConsole.Factories
         /// <returns></returns>
         public static Image CreateBaseImageControl(UIControlSetting setting, List<UIControlSetting> allSettings)
         {
-            var bitmapImage = new BitmapImage(new Uri(setting.BaseImagePath, UriKind.RelativeOrAbsolute));
+            var imagePath = setting.BaseImagePath;
+            var imageSource = ImageCacheManager.GetImage(imagePath);
+
             var image = new Image
             {
-                Source = bitmapImage,
-                Width = setting.Width != 0 ? setting.Width : bitmapImage.PixelWidth,
-                Height = setting.Height != 0 ? setting.Height : bitmapImage.PixelHeight,
+                Source = imageSource,
+                Width = setting.Width != 0 ? setting.Width : imageSource.Width,
+                Height = setting.Height != 0 ? setting.Height : imageSource.Height,
                 RenderTransform = new RotateTransform(setting.Angle)
             };
 
