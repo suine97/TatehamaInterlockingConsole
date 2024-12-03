@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Manager;
@@ -139,8 +140,10 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// DataUpdateViewModelでの変更通知受け取り処理
         /// </summary>
         /// <param name="updateList"></param>
-        private void OnNotifyUpdateControlEvent(List<UIControlSetting> updateList)
+        public void OnNotifyUpdateControlEvent(List<UIControlSetting> updateList)
         {
+            ClearStationCache();
+
             // 駅毎の連動盤に対応する設定データを取得
             var stationSettingList = updateList.FindAll(list => list.StationName == _stationName);
             var newElements = UIElementLoader.CreateUIControlModels(stationSettingList);
@@ -176,8 +179,29 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// </summary>
         public void OnClosing()
         {
+            ClearStationCache();
             // UI要素をクリア
             StationElements.Clear();
+            // キャッシュをクリア
+            ImageCacheManager.ClearCache();
+            // イベント解除
+            _dataUpdateViewModel.NotifyUpdateControlEvent -= OnNotifyUpdateControlEvent;
+            _clockUpdateTimer.Tick -= OnClockUpdate;
+        }
+
+        /// <summary>
+        /// UI要素のキャッシュを削除
+        /// </summary>
+        private void ClearStationCache()
+        {
+            foreach (var setting in StationElements)
+            {
+                if (setting is Image image && image.Source is BitmapImage bitmapImage)
+                {
+                    string imagePath = bitmapImage.UriSource.ToString();
+                    ImageCacheManager.RemoveImage(imagePath); // キャッシュから削除
+                }
+            }
         }
 
         /// <summary>

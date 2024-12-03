@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using TatehamaInterlockingConsole.ViewModels;
 
 namespace TatehamaInterlockingConsole.Views
@@ -9,12 +8,14 @@ namespace TatehamaInterlockingConsole.Views
     /// </summary>
     public partial class StationWindow : Window
     {
+        private StationViewModel _viewModel;
+
         public StationWindow(StationViewModel viewModel)
         {
             InitializeComponent();
-            DataContext = viewModel;
+            _viewModel = viewModel;
+            DataContext = _viewModel;
             Loaded += OnLoaded;
-            Closing += OnClosing;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -24,14 +25,6 @@ namespace TatehamaInterlockingConsole.Views
             {
                 Width = viewModel.WindowWidth;
                 Height = viewModel.WindowHeight;
-            }
-        }
-
-        private void OnClosing(object sender, EventArgs e)
-        {
-            if (DataContext is StationViewModel viewModel)
-            {
-                viewModel.OnClosing();
             }
         }
     }

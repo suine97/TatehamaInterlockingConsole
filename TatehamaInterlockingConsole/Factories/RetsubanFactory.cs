@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 
@@ -44,6 +46,12 @@ namespace TatehamaInterlockingConsole.Factories
                 var imageSource = ImageCacheManager.GetImage(control.ImagePath);
                 if (imageSource != null)
                 {
+                    imageSource = new BitmapImage(new Uri(control.ImagePath, UriKind.RelativeOrAbsolute))
+                    {
+                        CacheOption = BitmapCacheOption.OnLoad
+                    };
+                    ImageCacheManager.AddImage(control.ImagePath, imageSource); // キャッシュに追加
+
                     var image = new Image
                     {
                         Source = imageSource,

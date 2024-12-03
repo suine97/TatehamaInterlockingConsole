@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Helpers;
+using TatehamaInterlockingConsole.Manager;
 
 namespace TatehamaInterlockingConsole.Factories
 {

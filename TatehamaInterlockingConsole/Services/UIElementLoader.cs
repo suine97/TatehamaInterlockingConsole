@@ -22,7 +22,7 @@ namespace TatehamaInterlockingConsole.Services
             var allSettings = new List<UIControlSetting>();
 
             // 条件に一致するファイルを取得
-            IEnumerable<string> matchingFiles = Directory.EnumerateFiles(folderPath, "*", SearchOption.TopDirectoryOnly)
+            IEnumerable<string> matchingFiles = Directory.EnumerateFiles(folderPath, "*", SearchOption.AllDirectories)
                 .Where(file =>
                 {
                     string fileName = Path.GetFileName(file);
@@ -129,9 +129,11 @@ namespace TatehamaInterlockingConsole.Services
                 return text1.Text.ToString() == text2.Text.ToString();
             }
 
-            if (element1 is Image image1 && element2 is Image imate2)
+            if (element1 is Image image1 && element2 is Image image2)
             {
-                return image1.Source.ToString() == imate2.Source.ToString();
+                var source1 = image1.Source?.ToString();
+                var source2 = image2.Source?.ToString();
+                return source1 == source2;
             }
 
             if (element1 is Label label1 && element2 is Label label2)

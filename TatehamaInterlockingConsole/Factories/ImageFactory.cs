@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using TatehamaInterlockingConsole.Handlers;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Manager;
+using System.Windows.Media.Imaging;
+using System;
+using System.IO;
 
 namespace TatehamaInterlockingConsole.Factories
 {
@@ -23,8 +26,17 @@ namespace TatehamaInterlockingConsole.Factories
                 throw new KeyNotFoundException($"Index {index} に対応する画像パスが見つかりません。");
             }
 
-            var imagePath = setting.ImagePaths[setting.ImageIndex];
+            var imagePath = setting.ImagePaths[index];
             var imageSource = ImageCacheManager.GetImage(imagePath);
+
+            if (imageSource == null)
+            {
+                imageSource = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute))
+                {
+                    CacheOption = BitmapCacheOption.OnLoad
+                };
+                ImageCacheManager.AddImage(imagePath, imageSource);
+            }
 
             var image = new Image
             {
@@ -68,6 +80,15 @@ namespace TatehamaInterlockingConsole.Factories
 
             var imagePath = setting.ImagePaths[setting.ImageIndex];
             var imageSource = ImageCacheManager.GetImage(imagePath);
+
+            if (imageSource == null)
+            {
+                imageSource = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute))
+                {
+                    CacheOption = BitmapCacheOption.OnLoad
+                };
+                ImageCacheManager.AddImage(imagePath, imageSource); // キャッシュに追加
+            }
 
             var image = new Image
             {

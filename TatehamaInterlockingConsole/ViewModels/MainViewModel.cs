@@ -137,6 +137,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             MainElements.Clear();
             _timeService.Stop();
             ImageCacheManager.ClearCache();
+            _dataManager.TimeUpdated -= (currentTime) => OnPropertyChanged(nameof(CurrentTime));
             return true;
         }
     }
