@@ -1,497 +1,127 @@
 Type	UniqueName	ServerName	ParentName	PointName	PointValue	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImageIndex	BaseImagePath	ImagePath	Remark								
 BackImage	òAìÆî’					0	0														Image/BackImage/W06_Tsuzaki.png									
-Image	Clock_Base					850	78	79	110												Image/Clock/Clock_Border.png									
+Image	Clock_Base					1050	78	79	110												Image/Clock/Clock_Border.png									
 ClockImage	Clock_Meter		Clock_Base			6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
-Image	Hook					861	10														Image/Hook/Hook_Base.png									
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
-																														
+Image	Hook					1061	10														Image/Hook/Hook_Base.png									
+LeverImage	1R					167	266										1R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0ë„X=ÇƒÇ±ê‘(X)N(X)Å@ó·ÅF1R=ÇƒÇ±ê‘NR								
+LeverImage	2L					467	326										2L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	3L					467	440										3L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	4R					763	152										4R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	5R					763	266										5R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	6L					1063	326										6L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+ButtonImage	A					719	165										A	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	B					719	279										B	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	C					719	339										C	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	D					719	453										D	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	S					1030	279										S	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	T					214	339										T	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+Image	1RA_G					225	246											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"Y,GÇÕìîêF"								
+Image	1RB_G					233	264											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	2L_G					431	362											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	3L_G					431	446											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	4R_G					829	188											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	5R_G					829	272											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	6LC_G					1027	362											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	6LD_G					1035	380											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+LeverImage	P21					245	64										P21	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	ì]ÇƒÇ¬äÌíPì∆ÇƒÇ±ÇÕNCR								
+Image	P21_PG					243	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P21_PY					277	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+LeverImage	P22					313	64										P22	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P22_PG					311	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P22_PY					345	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+LeverImage	P23					917	64										P23	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P23_PG					915	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P23_PY					949	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+LeverImage	P24					985	64										P24	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P24_PG					983	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P24_PY					1017	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+KeyImage	âwàµêÿë÷					1347	64										âwàµêÿë÷	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	âwàµêÿä∑ÇÕLR								
+Image	âwàµêÿë÷_PG					1379	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	âwàµêÿë÷_PY					1345	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+Image	56T_1					52	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	à»â∫ÉâÉCÉìÉâÉCÉgÅBì¡ãLÇ»Ç´å¿ÇË0ìxÅB								
+Image	62T_1					82	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	68T_1					112	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	74T_1					144	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	89T_1					1114	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	103T_1					1347	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	105T_1					1377	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH70_2LT_1					1147	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH70_5LBT_1					1176	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH70_5LBT_2					1258	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH70_21ÉCT_1					1287	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH70_5LT_1					1317	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_1RT_1					226	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_1RT_2					258	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_1RAT_1					507	175											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_1RAT_2					751	175											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_1RBT_1					507	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_1RBT_2					751	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_SST_1					1011	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_SST_2					1063	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_6LT_1					1000	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_6LT_2					1032	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_6LCT_1					507	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_6LCT_2					751	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_6LDT_1					507	463											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_6LDT_2					751	463											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_TST_1					195	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_TST_2					247	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_21T_P21N_1					288	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_21T_P21N_2					363	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_21T_P21N_3					438	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_21T_P21R_1					288	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_21T_P21R_2					359	220											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45								
+Image	TH71_21T_P21R_3					438	175											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_22T_P22N_1					288	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_22T_P22N_2					363	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_22T_P22N_3					438	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_22T_P22R_1					288	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_22T_P22R_2					359	414											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135								
+Image	TH71_22T_P22R_3					438	463											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_23T_P23N_1					820	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_23T_P23N_2					895	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_23T_P23N_3					970	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_23T_P23R_1					820	175											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_23T_P23R_2					901	220											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135								
+Image	TH71_23T_P23R_3					970	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_24T_P24N_1					820	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_24T_P24N_2					895	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_24T_P24N_3					970	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_24T_P24R_1					820	463											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH71_24T_P24R_2					901	414											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45								
+Image	TH71_24T_P24R_3					970	349											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	ÉâÉCÉìÉâÉCÉgÇ±Ç±Ç‹Ç≈								
+ButtonImage	åxïÒè„ÇËê⁄ãﬂ					304	551										åxïÒè„ÇËê⁄ãﬂ	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
+ButtonImage	åxïÒâ∫ÇËê⁄ãﬂ					1111	551										åxïÒâ∫ÇËê⁄ãﬂ	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
+Retsuban	óÒî‘è„ÇËëÊ1ê⁄ãﬂ					174	191														Image/Retsuban/Retsuban-Window.png									
+Retsuban	óÒî‘è„ÇËëÊ2ê⁄ãﬂ					24	191														Image/Retsuban/Retsuban-Window.png									
+Retsuban	óÒî‘1î‘ê¸					569	164														Image/Retsuban/Retsuban-Window.png									
+Retsuban	óÒî‘2î‘ê¸					569	278														Image/Retsuban/Retsuban-Window.png									
+Retsuban	óÒî‘3î‘ê¸					569	338														Image/Retsuban/Retsuban-Window.png									
+Retsuban	óÒî‘4î‘ê¸					569	452														Image/Retsuban/Retsuban-Window.png									
+Retsuban	óÒî‘â∫ÇËëÊ1ê⁄ãﬂ					985	425														Image/Retsuban/Retsuban-Window.png									
+Retsuban	óÒî‘â∫ÇËëÊ2ê⁄ãﬂ					985	471														Image/Retsuban/Retsuban-Window.png									
+Retsuban	óÒî‘ïlâÄ2î‘ê¸					1135	425														Image/Retsuban/Retsuban-Window.png									
+Retsuban	óÒî‘ïlâÄëÊ1ê⁄ãﬂ					1285	425														Image/Retsuban/Retsuban-Window.png									
+Image	çΩè˘30ïb					734	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	çΩè˘ÅEí‚ìdÅEåÃè·ÇÕRìî								
+Image	çΩè˘60ïb					696	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	í‚ìd					54	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTCåÃè·					102	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+TextBlock	Label_1R		1R			14	20	11	11				1	10	Transparent	#FFBCBCBC	1R													
+TextBlock	Label_2L		2L			14	20	11	11				2	10	Transparent	#FFBCBCBC	2L													
+TextBlock	Label_3L		3L			14	20	11	11				3	10	Transparent	#FFBCBCBC	3L													
+TextBlock	Label_4R		4R			14	20	11	11				4	10	Transparent	#FFBCBCBC	4R													
+TextBlock	Label_5R		5R			14	20	11	11				5	10	Transparent	#FFBCBCBC	5R													
+TextBlock	Label_6L		6L			14	20	11	11				6	10	Transparent	#FFBCBCBC	6L													
+TextBlock	Label_A		A			5	23	15	12				A	10	Transparent	#FFBCBCBC	A													
+TextBlock	Label_B		B			5	23	15	12				B	10	Transparent	#FFBCBCBC	B													
+TextBlock	Label_C		C			5	23	15	12				C	10	Transparent	#FFBCBCBC	C													
+TextBlock	Label_D		D			5	23	15	12				D	10	Transparent	#FFBCBCBC	D													
+TextBlock	Label_S		S			5	23	15	12				S	10	Transparent	#FFBCBCBC	S													
+TextBlock	Label_T		T			5	23	15	12				T	10	Transparent	#FFBCBCBC	T													
+TextBlock	Label_P21		P21			14	20	11	11				21	10	Transparent	#FFBCBCBC	P21													
+TextBlock	Label_P22		P22			14	20	11	11				22	10	Transparent	#FFBCBCBC	P22													
+TextBlock	Label_P23		P23			14	20	11	11				23	10	Transparent	#FFBCBCBC	P23													
+TextBlock	Label_P24		P24			14	20	11	11				24	10	Transparent	#FFBCBCBC	P24													
 																														
 																														
 																														
