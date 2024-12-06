@@ -14,9 +14,9 @@ namespace TatehamaInterlockingConsole.Handlers
             {
                 switch (clickEventName)
                 {
-                    case "W11_江ノ原検車区":
-                        WindowAction.ShowStationWindow("W11_江ノ原検車区表示盤");
-                        WindowAction.ShowStationWindow("W11_江ノ原検車区操作盤");
+                    case "TH66_Enohara-Inspection":
+                        WindowAction.ShowStationWindow("TH66_Enohara-Inspection-Indicater");
+                        WindowAction.ShowStationWindow("TH66_Enohara-Inspection-Switchboard");
                         break;
                     default:
                         WindowAction.ShowStationWindow(clickEventName);

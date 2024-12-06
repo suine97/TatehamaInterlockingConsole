@@ -38,11 +38,19 @@ namespace TatehamaInterlockingConsole.Factories
                 ImageCacheManager.AddImage(imagePath, imageSource);
             }
 
+            int pixelWidth = 0;
+            int pixelHeight = 0;
+            if (imageSource is BitmapSource bitmapSource)
+            {
+                pixelWidth = bitmapSource.PixelWidth;
+                pixelHeight = bitmapSource.PixelHeight;
+            }
+
             var image = new Image
             {
                 Source = imageSource,
-                Width = setting.Width != 0 ? setting.Width : imageSource.Width,
-                Height = setting.Height != 0 ? setting.Height : imageSource.Height,
+                Width = setting.Width != 0 ? setting.Width : pixelWidth,
+                Height = setting.Height != 0 ? setting.Height : pixelHeight,
                 RenderTransform = new RotateTransform(setting.Angle)
             };
 
@@ -90,11 +98,19 @@ namespace TatehamaInterlockingConsole.Factories
                 ImageCacheManager.AddImage(imagePath, imageSource); // キャッシュに追加
             }
 
+            int pixelWidth = 0;
+            int pixelHeight = 0;
+            if (imageSource is BitmapSource bitmapSource)
+            {
+                pixelWidth = bitmapSource.PixelWidth;
+                pixelHeight = bitmapSource.PixelHeight;
+            }
+
             var image = new Image
             {
                 Source = imageSource,
-                Width = setting.Width != 0 ? setting.Width : imageSource.Width,
-                Height = setting.Height != 0 ? setting.Height : imageSource.Height,
+                Width = setting.Width != 0 ? setting.Width : pixelWidth,
+                Height = setting.Height != 0 ? setting.Height : pixelHeight,
                 RenderTransform = new RotateTransform(angle)
             };
 

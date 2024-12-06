@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.Views;
@@ -14,8 +15,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             try
             {
                 // ウィンドウタイトルを設定
-                int i = stationName.IndexOf('_');
-                var station = i > 0 ? stationName.Substring(i + 1) : stationName;
+                var station = DataHelper.GetStationNameFromEnglishName(stationName);
                 var titleText = $"{station} | 連動盤 - ダイヤ運転会";
 
                 // 既に同じタイトルのウィンドウが存在するかチェック

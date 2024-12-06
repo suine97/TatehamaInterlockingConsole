@@ -1,15 +1,15 @@
-FileName	ViewName
-W01_Tatehama_UIList	W01_ŠÙ•l‰w_UIList
-W02_Komano_UIList	W02_‹î–ì‰w_UIList
-W06_Tsuzaki_UIList	W06_’Ãè‰w_UIList
-W07_Hamazono_UIList	W07_•l‰€‰w_UIList
-W10_Shin-Nozaki_UIList	W10_V–ìè‰w_UIList
-W11_Enohara-Inspection-Switchboard_UIList	W11_]ƒmŒ´ŒŸÔ‹æ‘€ì”Õ_UIList
-W11_Enohara-Inspection-Indicater_UIList	W11_]ƒmŒ´ŒŸÔ‹æ•\¦”Õ_UIList
-W12_Daidoji_UIList	W12_‘å“¹›‰w_UIList
-W13_Fujie_UIList	W13_“¡]‰w_UIList
-W14_Mizukoshi_UIList	W14_…‰z‰w_UIList
-W15_Takamizawa_UIList	W15_‚Œ©‘ò‰w_UIList
-W16_Hinomori_UIList	W16_“ú–ìX‰w_UIList
-W18_Nishi-Akayama_UIList	W18_¼ÔR‰w_UIList
-W19_Akayamacho_UIList	W19_ÔR’¬‰w_UIList
+FileName	ViewName	StationName	ApproachingAlarm_UpSide	ApproachingAlarm_DownSide
+TH76_Tatehama_UIList	TH76_ŠÙ•l‰w_UIList	ŠÙ•l‰w	bz_high_long	bz_low_long
+TH75_Komano_UIList	TH75_‹î–ì‰w_UIList	‹î–ì‰w	bz_high_long	bz_low_long
+TH71_Tsuzaki_UIList	TH71_’Ãè‰w_UIList	’Ãè‰w	bz_high_long	bz_low_long
+TH70_Hamazono_UIList	TH70_•l‰€‰w_UIList	•l‰€‰w	bz_high_long	bz_low_long
+TH67_Shin-Nozaki_UIList	TH67_V–ìè‰w_UIList	V–ìè‰w	bz_high_long	bz_low_long
+TH66_Enohara-Inspection-Switchboard_UIList	TH66_]ƒmŒ´ŒŸÔ‹æ‘€ì”Õ_UIList	]ƒmŒ´ŒŸÔ‹æ‘€ì”Õ	bz_high_long	bz_low_long
+TH66_Enohara-Inspection-Indicater_UIList	TH66_]ƒmŒ´ŒŸÔ‹æ•\¦”Õ_UIList	]ƒmŒ´ŒŸÔ‹æ•\¦”Õ	bz_high_long	bz_low_long
+TH65_Daidoji_UIList	TH65_‘å“¹›‰w_UIList	‘å“¹›‰w	bz_high_long	bz_low_long
+TH64_Fujie_UIList	TH64_“¡]‰w_UIList	“¡]‰w	bz_high_short	bz_low_short
+TH63_Mizukoshi_UIList	TH63_…‰z‰w_UIList	…‰z‰w	bz_high_short	bz_low_short
+TH62_Takamizawa_UIList	TH62_‚Œ©‘ò‰w_UIList	‚Œ©‘ò‰w	bz_high_short	bz_low_short
+TH61_Hinomori_UIList	TH61_“ú–ìX‰w_UIList	“ú–ìX‰w	bz_high_short	bz_low_short
+TH59_Nishi-Akayama_UIList	TH59_¼ÔR‰w_UIList	¼ÔR‰w	bz_high_short	bz_low_short
+TH58_Akayamacho_UIList	TH58_ÔR’¬‰w_UIList	ÔR’¬‰w	bz_high_short	bz_low_short

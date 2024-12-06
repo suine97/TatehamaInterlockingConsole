@@ -58,6 +58,9 @@ namespace TatehamaInterlockingConsole.Handlers
                 case "ButtonImage":
                     HandleButtonImageMouseDown(control);
                     break;
+                case "Retsuban":
+                    HandleRetsubanMouseDown(control, isLeftClick);
+                    break;
                 default:
                     // MessageBox.Show($"Image {(isLeftClick ? "Left" : "Right")} MouseDown event {control.ClickEventName} | {control.UniqueName}");
                     break;
@@ -250,6 +253,26 @@ namespace TatehamaInterlockingConsole.Handlers
                 control.ImageIndex = 0;
                 _dataUpdateViewModel.SetControlsetting(control);
                 _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
+            }
+        }
+
+        /// <summary>
+        /// Retsubanマウスダウン処理
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="isLeftClick"></param>
+        /// <param name="soundIndex"></param>
+        private void HandleRetsubanMouseDown(UIControlSetting control, bool isLeftClick)
+        {
+            if (string.IsNullOrEmpty(control.Retsuban))
+            {
+                control.Retsuban = "回1234A";
+                _dataUpdateViewModel.SetControlsetting(control);
+            }
+            else if (!string.IsNullOrEmpty(control.Retsuban))
+            {
+                control.Retsuban = string.Empty;
+                _dataUpdateViewModel.SetControlsetting(control);
             }
         }
 

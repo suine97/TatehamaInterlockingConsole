@@ -122,6 +122,37 @@ namespace TatehamaInterlockingConsole.Services
         }
 
         /// <summary>
+        /// 指定した音声を停止
+        /// </summary>
+        public void SoundStop(string soundFileName)
+        {
+            lock (activeDevices)
+            {
+                // 対応するデバイスを検索
+                var deviceToStop = activeDevices.FirstOrDefault(device =>
+                {
+                    if (device.PlaybackState == PlaybackState.Playing)
+                    {
+                        // 音声ファイルパスを確認
+                        var reader = ((WaveStream)device.GetType()
+                            .GetField("waveStream", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?
+                            .GetValue(device)) as AudioFileReader;
+                        return reader?.FileName == SoundList.FirstOrDefault(s => s.sFileName == soundFileName)?.sFilePath;
+                    }
+                    return false;
+                });
+
+                if (deviceToStop != null)
+                {
+                    // 停止してリストから削除
+                    deviceToStop.Stop();
+                    deviceToStop.Dispose();
+                    activeDevices.Remove(deviceToStop);
+                }
+            }
+        }
+
+        /// <summary>
         /// 全ての音声を停止
         /// </summary>
         public void SoundStopAll()

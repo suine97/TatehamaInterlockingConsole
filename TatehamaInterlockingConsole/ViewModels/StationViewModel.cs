@@ -122,6 +122,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                 // 駅毎の連動盤に対応する設定データを取得
                 var stationSettingList = _dataManager.AllControlSettingList.FindAll(list => list.StationName == _stationName);
                 StationElements = UIElementLoader.CreateUIControlModels(stationSettingList);
+                // 列番表示画像Pathをキャッシュに追加
+                RetsubanFactory.SetRetsubanImagePathToCache(_dataManager.RetsubanImagePathDictionary);
 
                 // ウィンドウサイズと描画領域の設定
                 WindowWidth = 1280;
@@ -190,7 +192,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         }
 
         /// <summary>
-        /// UI要素のキャッシュを削除
+        /// キャッシュからUI要素の画像を削除
         /// </summary>
         private void ClearStationCache()
         {

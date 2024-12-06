@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using TatehamaInterlockingConsole.Handlers;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 
@@ -44,25 +45,39 @@ namespace TatehamaInterlockingConsole.Factories
                 if (control.ImagePath == null) continue;
 
                 var imageSource = ImageCacheManager.GetImage(control.ImagePath);
-                if (imageSource != null)
+
+                if (imageSource == null)
                 {
                     imageSource = new BitmapImage(new Uri(control.ImagePath, UriKind.RelativeOrAbsolute))
                     {
                         CacheOption = BitmapCacheOption.OnLoad
                     };
                     ImageCacheManager.AddImage(control.ImagePath, imageSource); // キャッシュに追加
-
-                    var image = new Image
-                    {
-                        Source = imageSource,
-                        Width = setting.Width,
-                        Height = setting.Height
-                    };
-
-                    Canvas.SetLeft(image, control.X);
-                    Canvas.SetTop(image, control.Y);
-                    canvas.Children.Add(image);
                 }
+                int pixelWidth = 0;
+                int pixelHeight = 0;
+                if (imageSource is BitmapSource bitmapSource)
+                {
+                    pixelWidth = bitmapSource.PixelWidth;
+                    pixelHeight = bitmapSource.PixelHeight;
+                }
+
+                var image = new Image
+                {
+                    Source = imageSource,
+                    Width = pixelWidth,
+                    Height = pixelHeight
+                };
+
+                // イベントが設定されている場合は、イベントをアタッチ
+                if (!string.IsNullOrEmpty(setting.ClickEventName))
+                {
+                    new ImageHandler().AttachImageClick(image, setting);
+                }
+
+                Canvas.SetLeft(image, control.X);
+                Canvas.SetTop(image, control.Y);
+                canvas.Children.Add(image);
             }
 
             // ベースイメージを追加
@@ -163,6 +178,22 @@ namespace TatehamaInterlockingConsole.Factories
                 retsubanDictionary.Add(Path.GetFileNameWithoutExtension(filePath), normalizedPath);
             }
             return retsubanDictionary;
+        }
+
+        /// <summary>
+        /// 列番表示画像Pathの一覧をキャッシュに追加
+        /// </summary>
+        /// <param name="retsubanDictionary"></param>
+        public static void SetRetsubanImagePathToCache(Dictionary<string, string> retsubanDictionary)
+        {
+            foreach (var path in retsubanDictionary.Values)
+            {
+                var imageSource = new BitmapImage(new Uri(path, UriKind.RelativeOrAbsolute))
+                {
+                    CacheOption = BitmapCacheOption.OnLoad
+                };
+                ImageCacheManager.AddImage(path, imageSource); // キャッシュに追加
+            }
         }
     }
 }

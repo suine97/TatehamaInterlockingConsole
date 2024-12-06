@@ -31,7 +31,7 @@ namespace TatehamaInterlockingConsole.Manager
         /// <summary>
         /// 駅名対照表辞書データ
         /// </summary>
-        public Dictionary<string, string> StationNameDictionary { get; set; }
+        public Dictionary<string, List<string>> StationNameDictionary { get; set; }
 
         /// <summary>
         /// コンストラクタ
@@ -40,7 +40,7 @@ namespace TatehamaInterlockingConsole.Manager
         {
             AllControlSettingList = new List<UIControlSetting>();
             RetsubanImagePathDictionary = new Dictionary<string, string>();
-            StationNameDictionary  = new Dictionary<string, string>();
+            StationNameDictionary  = new Dictionary<string, List<string>>();
         }
 
         /// <summary>

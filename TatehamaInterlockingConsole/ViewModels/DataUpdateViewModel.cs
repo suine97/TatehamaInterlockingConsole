@@ -56,6 +56,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                 if (index >= 0)
                 {
                     allSettingList[index].ImageIndex = setting.ImageIndex;
+                    allSettingList[index].Retsuban = setting.Retsuban;
 
                     // 変更通知イベント発火
                     var handler = NotifyUpdateControlEvent;

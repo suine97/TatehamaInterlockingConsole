@@ -100,7 +100,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             _dataManager.AllControlSettingList = UIElementLoader.LoadSettingsFromFolderAsUIControlSetting(tsvFolderPath);
             // 列番表示画像Pathを辞書に格納
             _dataManager.RetsubanImagePathDictionary = RetsubanFactory.GetRetsubanImagePath(retsubanFolderPath);
-            
+
             // メイン画面用のUI要素を取得
             var mainControlSettingList = _dataManager.AllControlSettingList.FindAll(list => list.StationName == "Main_UIList");
             MainElements = UIElementLoader.CreateUIControlModels(mainControlSettingList);

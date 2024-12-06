@@ -26,7 +26,7 @@ namespace TatehamaInterlockingConsole.Services
                 .Where(file =>
                 {
                     string fileName = Path.GetFileName(file);
-                    return (fileName.StartsWith("Main") || fileName.StartsWith("W")) && fileName.EndsWith(".tsv", StringComparison.OrdinalIgnoreCase);
+                    return (fileName.StartsWith("Main") || fileName.StartsWith("TH")) && fileName.EndsWith(".tsv", StringComparison.OrdinalIgnoreCase);
                 });
 
             // UIContolSettingに変換

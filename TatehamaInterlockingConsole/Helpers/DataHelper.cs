@@ -41,13 +41,27 @@ namespace TatehamaInterlockingConsole.Helpers
             DataManager _dataManager = DataManager.Instance;
 
             var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
-            _dataManager.StationNameDictionary.TryGetValue(fileNameWithoutExtension, out var stationName);
-
-            if (stationName == null)
+            if (_dataManager.StationNameDictionary.TryGetValue(fileNameWithoutExtension, out var stationData))
             {
-                return fileNameWithoutExtension;
+                return stationData.Count > 0 ? stationData[1] : fileNameWithoutExtension;
             }
-            return stationName;
+            return fileNameWithoutExtension;
+        }
+
+        /// <summary>
+        /// 英語駅名を基に駅名対照表から日本語駅名を返す
+        /// </summary>
+        /// <param name="filePath">対象のファイルパス</param>
+        /// <returns>駅名</returns>
+        public static string GetStationNameFromEnglishName(string englishName)
+        {
+            DataManager _dataManager = DataManager.Instance;
+
+            if (_dataManager.StationNameDictionary.TryGetValue(englishName + "_UIList", out var stationData))
+            {
+                return stationData[1];
+            }
+            return string.Empty;
         }
 
         /// <summary>
@@ -56,9 +70,9 @@ namespace TatehamaInterlockingConsole.Helpers
         /// <param name="folderPath">フォルダ名</param>
         /// <param name="fileName">読み込むファイル名</param>
         /// <returns></returns>
-        public static Dictionary<string, string> LoadStationNameFromTSVAsDictionary(string folderPath, string fileName)
+        public static Dictionary<string, List<string>> LoadStationNameFromTSVAsDictionary(string folderPath, string fileName)
         {
-            var stationNameDictionary = new Dictionary<string, string>();
+            var stationNameDictionary = new Dictionary<string, List<string>>();
 
             // ファイルパスを組み立てる
             string filePath = Path.Combine(folderPath, fileName);
@@ -94,10 +108,14 @@ namespace TatehamaInterlockingConsole.Helpers
                     }
 
                     string key = parts[0].Trim();
-                    string value = parts[1].Trim();
+                    var values = new List<string>();
+                    for (int i = 1; i < parts.Length; i++)
+                    {
+                        values.Add(parts[i].Trim());
+                    }
 
-                    // 辞書に追加
-                    stationNameDictionary[key] = value;
+                    // 辞書に登録
+                    stationNameDictionary[key] = values;
                 }
             }
             catch (Exception ex)
