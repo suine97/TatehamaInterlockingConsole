@@ -34,6 +34,11 @@ namespace TatehamaInterlockingConsole.Manager
         public Dictionary<string, List<string>> StationNameDictionary { get; set; }
 
         /// <summary>
+        /// 信号操作管理者判定
+        /// </summary>
+        public bool Administrator { get; set; }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         private DataManager()
@@ -41,6 +46,7 @@ namespace TatehamaInterlockingConsole.Manager
             AllControlSettingList = new List<UIControlSetting>();
             RetsubanImagePathDictionary = new Dictionary<string, string>();
             StationNameDictionary  = new Dictionary<string, List<string>>();
+            Administrator = false;
         }
 
         /// <summary>

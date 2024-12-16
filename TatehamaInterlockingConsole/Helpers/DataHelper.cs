@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using TatehamaInterlockingConsole.Manager;
 
@@ -62,6 +63,23 @@ namespace TatehamaInterlockingConsole.Helpers
                 return stationData[1];
             }
             return string.Empty;
+        }
+
+        /// <summary>
+        /// 日本語駅名を基に駅名対照表からリストを返す
+        /// </summary>
+        /// <param name="stationName"></param>
+        /// <returns></returns>
+        public static List<string> GetDictionaryValuesFromStationName(string stationName)
+        {
+            DataManager _dataManager = DataManager.Instance;
+
+            var matchingLists = _dataManager.StationNameDictionary.Values
+                .Where(list => list.Contains(stationName))
+                .First()
+                .ToList();
+
+            return matchingLists;
         }
 
         /// <summary>

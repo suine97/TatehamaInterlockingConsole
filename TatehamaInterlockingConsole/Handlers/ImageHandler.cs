@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
@@ -92,6 +93,9 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleLeverImageMouseDown(UIControlSetting control, bool isLeftClick)
         {
+            // 鍵位置「駅扱」判定
+            if (!IsKeyPositionManuals(control)) return;
+
             int newIndex;
             string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
 
@@ -218,6 +222,8 @@ namespace TatehamaInterlockingConsole.Handlers
                 _dataUpdateViewModel.SetControlsetting(control);
                 _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
             }
+            // 鍵位置設定
+            control.KeyManuals = ((control.UniqueName == "駅扱切換") && (control.ImageIndex < 0));
         }
 
         /// <summary>
@@ -228,6 +234,9 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseDown(UIControlSetting control)
         {
+            // 鍵位置「駅扱」判定
+            if (!IsKeyPositionManuals(control)) return;
+
             string randomPushSoundIndex = _random.Next(1, 4).ToString("00");
             
             if (control.ImageIndex != 1)
@@ -246,6 +255,9 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseUp(UIControlSetting control)
         {
+            // 鍵位置「駅扱」判定
+            if (!IsKeyPositionManuals(control)) return;
+
             string randomPullSoundIndex = _random.Next(1, 4).ToString("00");
 
             if (control.ImageIndex != 0)
@@ -305,6 +317,27 @@ namespace TatehamaInterlockingConsole.Handlers
                 default:
                     return false;
             }
+        }
+
+        /// <summary>
+        /// 鍵てこ位置が「駅扱」になっているか判定
+        /// </summary>
+        /// <returns></returns>
+        private bool IsKeyPositionManuals(UIControlSetting control)
+        {
+            var list = _dataManager.AllControlSettingList
+                .Where(key => key.StationName == control.StationName)
+                .ToList();
+
+            var keyControl = list
+                .Where(key => key.UniqueName == control.KeyName)
+                .FirstOrDefault();
+
+            if (keyControl.KeyManuals)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

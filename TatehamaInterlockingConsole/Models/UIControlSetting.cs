@@ -37,6 +37,14 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public bool PointValue { get; set; }
         /// <summary>
+        /// 操作可能判定に用いる鍵名称
+        /// </summary>
+        public string KeyName { get; set; }
+        /// <summary>
+        /// 鍵位置「駅扱」判定
+        /// </summary>
+        public bool KeyManuals { get; set; }
+        /// <summary>
         /// X座標
         /// </summary>
         public double X { get; set; }
