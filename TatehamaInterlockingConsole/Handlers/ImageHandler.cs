@@ -93,9 +93,6 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleLeverImageMouseDown(UIControlSetting control, bool isLeftClick)
         {
-            // 鍵位置「駅扱」判定
-            if (!IsKeyPositionManuals(control)) return;
-
             int newIndex;
             string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
 
@@ -129,6 +126,12 @@ namespace TatehamaInterlockingConsole.Handlers
             control.ImageIndex = newIndex;
             _dataUpdateViewModel.SetControlsetting(control);
             _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+
+            // 鍵位置「駅扱」判定
+            if (!IsKeyPositionManuals(control))
+            {
+                // サーバーへリクエスト送信
+            }
         }
 
         /// <summary>
@@ -234,9 +237,6 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseDown(UIControlSetting control)
         {
-            // 鍵位置「駅扱」判定
-            if (!IsKeyPositionManuals(control)) return;
-
             string randomPushSoundIndex = _random.Next(1, 4).ToString("00");
             
             if (control.ImageIndex != 1)
@@ -244,6 +244,12 @@ namespace TatehamaInterlockingConsole.Handlers
                 control.ImageIndex = 1;
                 _dataUpdateViewModel.SetControlsetting(control);
                 _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
+
+                // 鍵位置「駅扱」判定
+                if (!IsKeyPositionManuals(control))
+                {
+                    // サーバーへリクエスト送信
+                }
             }
         }
 
@@ -255,9 +261,6 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseUp(UIControlSetting control)
         {
-            // 鍵位置「駅扱」判定
-            if (!IsKeyPositionManuals(control)) return;
-
             string randomPullSoundIndex = _random.Next(1, 4).ToString("00");
 
             if (control.ImageIndex != 0)
@@ -265,6 +268,12 @@ namespace TatehamaInterlockingConsole.Handlers
                 control.ImageIndex = 0;
                 _dataUpdateViewModel.SetControlsetting(control);
                 _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
+            }
+
+            // 鍵位置「駅扱」判定
+            if (!IsKeyPositionManuals(control))
+            {
+                // サーバーへリクエスト送信
             }
         }
 

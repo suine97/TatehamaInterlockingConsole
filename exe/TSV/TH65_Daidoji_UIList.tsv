@@ -132,7 +132,7 @@ TextBlock	32L_Label		32L			駅扱切換	14	20	11	11				32	10	Transparent	#FFBCBCBC	3
 LeverImage	32LZ					駅扱切換	2098	448										32LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
 Image	32LZ_Y						2113	437											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	32LZ_Label		32LZ			駅扱切換	14	20	11	11				32Z	10	Transparent	#FFBCBCBC	32LZ													
-ButtonImage	T					駅扱切換	366	461										T	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	T					駅扱切換	358	461										T	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	T_Label		T			駅扱切換	5	23	15	12				T	10	Transparent	#FFBCBCBC	T													
 ButtonImage	TA					駅扱切換	560	401										TA	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	TA_Label		TA			駅扱切換	5	23	15	12				TA	10	Transparent	#FFBCBCBC	TA													
@@ -233,8 +233,8 @@ Image	156T_1						282	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0
 Image	TH65_1RT_1						361	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH65_1RT_2						391	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH65_TST_1						266	471											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_TST_2						347	471											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_TST_3						419	488											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH65_TST_2						339	471											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_TST_3						409	478											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
 Image	TH65_41T_P41N_P43N_1						420	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH65_41T_P41N_P43N_2						504	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH65_41T_P41N_P43N_3						592	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
@@ -243,17 +243,17 @@ Image	TH65_41T_P41N_P43R_2						504	411											"0,1,2"	0		"Image/Light/0N.png
 Image	TH65_41T_P41N_P43R_3						545	446											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
 Image	TH65_41T_P41N_P43R_4						592	471											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH65_41T_P41R_1						420	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_41T_P41R_2						461	446											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH65_42イT_P42イN_1						439	508											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH65_42イT_P42イN_2						513	582											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH65_41T_P41R_2						451	436											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH65_42イT_P42イN_1						429	498											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH65_42イT_P42イN_2						508	577											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
 Image	TH65_42イT_P42イN_3						592	645											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42イT_P42イR_1						439	508											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH65_42イT_P42イR_2						467	511											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ロT_P42ロN_1						481	466											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH65_42ロT_P42ロN_2						525	510											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH65_42イT_P42イR_1						429	498											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH65_42イT_P42イR_2						457	501											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ロT_P42ロN_1						471	456											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH65_42ロT_P42ロN_2						515	500											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
 Image	TH65_42ロT_P42ロN_3						592	531											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ロT_P42ロR_1						495	511											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ロT_P42ロR_2						525	510											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH65_42ロT_P42ロR_1						485	501											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ロT_P42ロR_2						515	500											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
 Image	TH65_42ロT_P42ロR_3						592	531											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH65_2RT_1						750	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH65_2RT_2						994	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
