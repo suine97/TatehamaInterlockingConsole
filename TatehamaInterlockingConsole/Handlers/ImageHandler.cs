@@ -128,7 +128,7 @@ namespace TatehamaInterlockingConsole.Handlers
             _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
             // 鍵位置「駅扱」判定
-            if (!IsKeyPositionManuals(control))
+            if (!IsKeyLeverManual(control))
             {
                 // サーバーへリクエスト送信
             }
@@ -226,7 +226,8 @@ namespace TatehamaInterlockingConsole.Handlers
                 _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
             }
             // 鍵位置設定
-            control.KeyManuals = ((control.UniqueName == "駅扱切換") && (control.ImageIndex < 0));
+            control.KeyManual = ((control.ControlType == "KeyImage") && (control.UniqueName == "駅扱切換") && (control.ImageIndex < 0))
+                || ((control.ControlType == "KeyImage") && (control.UniqueName.Contains("解放")) && (control.ImageIndex > 0));
         }
 
         /// <summary>
@@ -246,7 +247,7 @@ namespace TatehamaInterlockingConsole.Handlers
                 _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
 
                 // 鍵位置「駅扱」判定
-                if (!IsKeyPositionManuals(control))
+                if (!IsKeyLeverManual(control))
                 {
                     // サーバーへリクエスト送信
                 }
@@ -271,7 +272,7 @@ namespace TatehamaInterlockingConsole.Handlers
             }
 
             // 鍵位置「駅扱」判定
-            if (!IsKeyPositionManuals(control))
+            if (!IsKeyLeverManual(control))
             {
                 // サーバーへリクエスト送信
             }
@@ -332,19 +333,53 @@ namespace TatehamaInterlockingConsole.Handlers
         /// 鍵てこ位置が「駅扱」になっているか判定
         /// </summary>
         /// <returns></returns>
-        private bool IsKeyPositionManuals(UIControlSetting control)
+        private bool IsKeyLeverManual(UIControlSetting control)
         {
-            var list = _dataManager.AllControlSettingList
+            try
+            {
+                var list = _dataManager.AllControlSettingList
                 .Where(key => key.StationName == control.StationName)
                 .ToList();
 
-            var keyControl = list
-                .Where(key => key.UniqueName == control.KeyName)
-                .FirstOrDefault();
+                var keyControl = list
+                    .Where(key => key.UniqueName == control.KeyName)
+                    .FirstOrDefault();
 
-            if (keyControl.KeyManuals)
+                if (keyControl.KeyManual)
+                {
+                    return true;
+                }
+            }
+            catch
             {
-                return true;
+                return false;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 2つの解放てこがどちらも「駅扱」になっているか判定
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        private bool IsBothReleaseLeversManual(UIControlSetting control)
+        {
+            try
+            {
+                var mainReleaseLeverManual = control.KeyManual;
+                var subReleaseLeverManual = _dataManager.AllControlSettingList
+                    .Where(key => key.StationName == control.LinkedStationName && key.UniqueName == control.LinkedUniqueName)
+                    .FirstOrDefault()
+                    .KeyManual;
+
+                if (mainReleaseLeverManual && subReleaseLeverManual)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
             }
             return false;
         }

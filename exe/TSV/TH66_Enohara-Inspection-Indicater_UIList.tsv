@@ -1,217 +1,215 @@
-Type	UniqueName	ServerName	ParentName	PointName	PointValue	KeyName	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImageIndex	BaseImagePath	ImagePath	Remark								
-BackImage	表示盤						0	0														Image/BackImage/TH66_Enohara-Inspection-Indicater.png									
-Image	1RA_G						520	693											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PYは灯色"								
-Image	1RB_G						520	712											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	1RC_G						528	730											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	2R_G						1164	662											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	3L_G						1273	602											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	4L_G						1273	700											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	5LD_G						1258	820											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	5LE_G						1250	838											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	11R_Y						816	669											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	12L_Y						880	671											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	13R_Y						1146	661											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	14R_Y						1240	601											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	15L_Y						1291	603											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	15LZ_Y						1313	602											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	16L_Y						1291	701											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	16LZ_Y						1313	700											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-	21R_Y																														
-	22R_Y																														
-	23R_Y																														
-	24R_Y																														
-	25R_Y																														
-	26R_Y																														
-	27R_Y																														
-	28R_Y																														
-	29R_Y																														
-	31R_Y																														
-	32R_Y																														
-	33R_Y																														
-	34L_Y																														
-	35L_Y																														
-	36L_Y																														
-	37L_Y																														
-	38L_Y																														
-	39L_Y																														
-	40L_Y																														
-	41L_Y																														
-	41LZ_Y																														
-	42L_Y																														
-	42LZ_Y																														
-	43R_Y																														
-	43RZ_Y																														
-Image	TH67_1RT_1						52	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0度※以下0度省略								
-Image	TH67_32T_P32N_1						77	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_32T_P32N_2						107	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_32T_P32R_1						77	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_32T_P32R_2						99	702											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH67_1RAT_1						131	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_1RAT_2						213	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_1RBT_1						131	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_1RBT_2						213	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_4LT_1						131	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_4LT_2						213	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_5LT_1						131	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_5LT_2						213	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33イT_P33イN_1						237	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33イT_P33イN_2						295	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33イT_P33イR_1						237	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33イT_P33イR_2						277	702											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
-Image	TH67_33ロT_P33ロN_1						237	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33ロT_P33ロN_2						295	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33ロT_P33ロR_1						287	727											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
-Image	TH67_33ロT_P33ロR_2						295	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_34T_P34N_1						237	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_34T_P34N_2						295	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_34T_P34R_1						237	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_34T_P34R_2						277	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH67_34T_P34R_3						295	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35イT_P35イN_1						315	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35イT_P35イN_2						345	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35イT_P35イR_1						315	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35イT_P35イR_2						327	787											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH67_35ロT_P35ロN_1						315	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35ロT_P35ロN_2						345	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35ロT_P35ロR_1						337	762											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH67_35ロT_P35ロR_2						345	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_36イT_1						370	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_SST_1						400	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	136T_1						430	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	142T_1						460	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	146T_1						490	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RT_1						554	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RT_2						652	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RT_3						751	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LET_1						583	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LET_2						707	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LET_3						831	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LDT_1						578	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LDT_2						786	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51イT_P51イ_N_1						814	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51イT_P51イ_N_2						880	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51イT_P51イ_R_1						814	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51イT_P51イ_R_2						838	705											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH66_51ロT_P51ロ_N_1						814	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51ロT_P51ロ_N_2						880	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51ロT_P51ロ_R_1						858	725											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH66_51ロT_P51ロ_R_2						880	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_13T_1						908	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_13T_2						1116	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52イ_N_P53ロ_N_1						934	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52イ_N_P53ロ_N_2						1012	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52イ_N_P53ロ_N_3						1090	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52イ_N_P53ロ_R_1						1027	761											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH66_52T_P52イ_N_P53ロ_R_2						1090	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52イ_R_P53ロ_N_1						934	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52イ_R_P53ロ_N_2						999	761											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH66_53T_P53イ_N_P52ロ_N_1						934	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53イ_N_P52ロ_N_2						1012	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53イ_N_P52ロ_N_3						1090	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53イ_N_P52ロ_R_1						1027	789											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH66_53T_P53イ_N_P52ロ_R_2						1090	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53イ_R_P52ロ_N_1						934	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53イ_R_P52ロ_N_2						999	789											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH66_54T_P54イ_N_P55ロ_N_1						1144	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54イ_N_P55ロ_N_2						1177	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54イ_N_P55ロ_N_3						1210	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54イ_N_P55ロ_R_1						1192	701											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH66_54T_P54イ_N_P55ロ_R_2						1210	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54イ_R_P55ロ_N_1						1144	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54イ_R_P55ロ_N_2						1164	701											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH66_55T_P55イ_N_P54ロ_N_1						1144	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55イ_N_P54ロ_N_2						1177	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55イ_N_P54ロ_N_3						1210	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55イ_N_P54ロ_R_1						1192	729											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH66_55T_P55イ_N_P54ロ_R_2						1210	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55イ_R_P54ロ_N_1						1144	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55イ_R_P54ロ_N_2						1164	729											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH66_56T_P56イ_N_P57ロ_N_1						1238	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56イ_N_P57ロ_N_2						1271	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56イ_N_P57ロ_N_3						1304	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56イ_N_P57ロ_R_1						1286	641											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH66_56T_P56イ_N_P57ロ_R_2						1304	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56イ_R_P57ロ_N_1						1238	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56イ_R_P57ロ_N_2						1258	641											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH66_57T_P57イ_N_P56ロ_N_1						1238	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57イ_N_P56ロ_N_2						1271	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57イ_N_P56ロ_N_3						1304	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57イ_N_P56ロ_R_1						1286	669											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH66_57T_P57イ_N_P56ロ_R_2						1304	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57イ_R_P56ロ_N_1						1238	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57イ_R_P56ロ_N_2						1258	669											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH66_1RCT_1						1248	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RCT_2						1295	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LT_1						1165	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LT_2						1236	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RAT_1						1332	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RAT_2						1540	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RBT_1						1332	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RBT_2						1540	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_TST_1						1305	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_TST_2						1361	822											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
-Image	TH65_TST_3						1395	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42イT_P42イ_N_1						1439	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42イT_P42イ_N_2						1500	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42イT_P42イ_R_1						1439	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42イT_P42イ_R_2						1451	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH65_42ロT_P42ロ_N_1						1439	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ロT_P42ロ_N_2						1500	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ロT_P42ロ_R_1						1461	822											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH65_42ロT_P42ロ_R_2						1500	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_11LT_1						1524	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_11LT_2						1606	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_12LT_1						1524	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_12LT_2						1606	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_44T_1						1667	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_45T_1						1667	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47イ_N_P48ロ_N_1						1692	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47イ_N_P48ロ_N_2						1722	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47イ_N_P48ロ_R_1						1714	822											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH65_47T_P47イ_N_P48ロ_R_2						1722	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47イ_R_P48ロ_N_1						1692	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47イ_R_P48ロ_N_2						1704	822											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
-Image	TH65_48T_P48イ_N_P47ロ_N_1						1692	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_48T_P48イ_N_P47ロ_N_2						1722	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_48T_P48イ_N_P47ロ_R_1						1714	847											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
-Image	TH65_48T_P48イ_N_P47ロ_R_2						1722	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_48T_P48イ_R_P47ロ_N_1						1692	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_48T_P48イ_R_P47ロ_N_2						1704	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH65_49T_P49_N_1						1742	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_49T_P49_N_2						1772	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_49T_P49_R_1						1754	787											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH65_49T_P49_R_2						1772	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_50イT_1						1797	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_XT_1						1827	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_DF1T_1						1857	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	停電_1_R						773	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	停電灯左上								
-Image	停電_2_R						783	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	停電灯右上								
-Image	停電_3_R						773	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	停電灯左下								
-Image	停電_4_R						783	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	停電灯右下								
-Image	CTC故障_1_R						821	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTC故障灯右上								
-Image	CTC故障_2_R						831	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTC故障灯左上								
-Image	CTC故障_3_R						821	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTC故障灯左下								
-Image	CTC故障_4_R						831	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTC故障灯右下								
-Image	鎖錠60秒_1_R						1079	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	鎖錠60秒_2_R						1089	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	鎖錠30秒_1_R						1117	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	鎖錠30秒_2_R						1127	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Retsuban	列番新野崎1番線						112	491										列番新野崎1番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番新野崎2番線						112	537										列番新野崎2番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番新野崎3番線						112	583										列番新野崎3番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番新野崎4番線						112	629										列番新野崎4番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番江ノ原検車区上り第2接近						262	537										列番江ノ原検車区上り第2接近				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番江ノ原検車区上り第1接近						412	537										列番江ノ原検車区上り第1接近				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番江ノ原検車区10番線						622	676										列番江ノ原検車区10番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番江ノ原検車区13番線						952	676										列番江ノ原検車区13番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番江ノ原検車区11番線						1376	616										列番江ノ原検車区11番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番江ノ原検車区12番線						1376	676										列番江ノ原検車区12番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番江ノ原検車区下り第1接近						1315	903										列番江ノ原検車区下り第1接近				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番大道寺3番線						1465	903										列番大道寺3番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番大道寺4番線						1465	949										列番大道寺4番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番大道寺下り場内						1615	903										列番大道寺下り場内				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番大道寺下り第1接近						1765	903										列番大道寺下り第1接近				Image/Retsuban/Retsuban-Window.png									
-																															
-																															
-																															
-																															
+Type	UniqueName	ServerName	ParentName	PointName	PointValue	LeverType	KeyName	LinkedStationName	LinkedUniqueName	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImageIndex	BaseImagePath	ImagePath	Remark								
+BackImage	表示盤									0	0														Image/BackImage/TH66_Enohara-Inspection-Indicater.png									
+Image	1RA_G									520	693											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PYは灯色"								
+Image	1RB_G									520	712											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	1RC_G									528	730											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	2R_G									1164	662											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	3L_G									1273	602											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	4L_G									1273	700											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	5LD_G									1273	820											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	5LE_G									1265	838											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	11R_Y									816	669											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	12L_Y									880	671											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	13R_Y									1146	661											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	14R_Y									1240	601											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	15L_Y									1291	603											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	15LZ_Y									1313	602											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	16L_Y									1291	701											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	16LZ_Y									1313	700											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+	21R_Y																																	
+	22R_Y																																	
+	23R_Y																																	
+	24R_Y																																	
+	25R_Y																																	
+	26R_Y																																	
+	27R_Y																																	
+	28R_Y																																	
+	29R_Y																																	
+	31R_Y																																	
+	32R_Y																																	
+	33R_Y																																	
+	34L_Y																																	
+	35L_Y																																	
+	36L_Y																																	
+	37L_Y																																	
+	38L_Y																																	
+	39L_Y																																	
+	40L_Y																																	
+	41L_Y																																	
+	41LZ_Y																																	
+	42L_Y																																	
+	42LZ_Y																																	
+	43R_Y																																	
+	43RZ_Y																																	
+Image	TH67_1RT_1									52	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0度※以下0度省略								
+Image	TH67_32T_P32N_1									77	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_32T_P32N_2									107	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_32T_P32R_1									77	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_32T_P32R_2									99	702											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH67_1RAT_1									131	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_1RAT_2									213	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_1RBT_1									131	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_1RBT_2									213	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_4LT_1									131	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_4LT_2									213	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_5LT_1									131	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_5LT_2									213	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33イT_P33イN_1									237	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33イT_P33イN_2									295	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33イT_P33イR_1									237	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33イT_P33イR_2									277	702											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH67_33ロT_P33ロN_1									237	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33ロT_P33ロN_2									295	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33ロT_P33ロR_1									287	727											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH67_33ロT_P33ロR_2									295	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_34T_P34N_1									237	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_34T_P34N_2									295	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_34T_P34R_1									237	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_34T_P34R_2									277	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH67_34T_P34R_3									295	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35イT_P35イN_1									315	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35イT_P35イN_2									345	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35イT_P35イR_1									315	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35イT_P35イR_2									327	787											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH67_35ロT_P35ロN_1									315	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35ロT_P35ロN_2									345	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35ロT_P35ロR_1									337	762											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH67_35ロT_P35ロR_2									345	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_36イT_1									370	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_SST_1									400	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	136T_1									430	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	142T_1									460	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	146T_1									490	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RT_1									554	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RT_2									652	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RT_3									751	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LET_1									583	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LET_2									707	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LET_3									831	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LDT_1									578	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LDT_2									786	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51イT_P51イ_N_1									814	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51イT_P51イ_N_2									880	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51イT_P51イ_R_1									814	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51イT_P51イ_R_2									838	705											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH66_51ロT_P51ロ_N_1									814	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51ロT_P51ロ_N_2									880	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51ロT_P51ロ_R_1									858	725											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH66_51ロT_P51ロ_R_2									880	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_13T_1									908	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_13T_2									1116	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52イ_N_P53ロ_N_1									934	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52イ_N_P53ロ_N_2									1012	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52イ_N_P53ロ_N_3									1090	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52イ_N_P53ロ_R_1									1027	761											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH66_52T_P52イ_N_P53ロ_R_2									1090	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52イ_R_P53ロ_N_1									934	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52イ_R_P53ロ_N_2									999	761											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH66_53T_P53イ_N_P52ロ_N_1									934	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53イ_N_P52ロ_N_2									1012	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53イ_N_P52ロ_N_3									1090	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53イ_N_P52ロ_R_1									1027	789											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH66_53T_P53イ_N_P52ロ_R_2									1090	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53イ_R_P52ロ_N_1									934	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53イ_R_P52ロ_N_2									999	789											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH66_54T_P54イ_N_P55ロ_N_1									1144	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54イ_N_P55ロ_N_2									1177	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54イ_N_P55ロ_N_3									1210	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54イ_N_P55ロ_R_1									1192	701											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH66_54T_P54イ_N_P55ロ_R_2									1210	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54イ_R_P55ロ_N_1									1144	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54イ_R_P55ロ_N_2									1164	701											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH66_55T_P55イ_N_P54ロ_N_1									1144	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55イ_N_P54ロ_N_2									1177	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55イ_N_P54ロ_N_3									1210	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55イ_N_P54ロ_R_1									1192	729											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH66_55T_P55イ_N_P54ロ_R_2									1210	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55イ_R_P54ロ_N_1									1144	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55イ_R_P54ロ_N_2									1164	729											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH66_56T_P56イ_N_P57ロ_N_1									1238	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56イ_N_P57ロ_N_2									1271	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56イ_N_P57ロ_N_3									1304	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56イ_N_P57ロ_R_1									1286	641											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH66_56T_P56イ_N_P57ロ_R_2									1304	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56イ_R_P57ロ_N_1									1238	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56イ_R_P57ロ_N_2									1258	641											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH66_57T_P57イ_N_P56ロ_N_1									1238	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57イ_N_P56ロ_N_2									1271	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57イ_N_P56ロ_N_3									1304	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57イ_N_P56ロ_R_1									1286	669											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH66_57T_P57イ_N_P56ロ_R_2									1304	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57イ_R_P56ロ_N_1									1238	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57イ_R_P56ロ_N_2									1258	669											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH66_1RCT_1									1255	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RCT_2									1318	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LT_1									1169	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LT_2									1247	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RAT_1									1332	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RAT_2									1540	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RBT_1									1332	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RBT_2									1540	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_TST_1									1321	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_TST_2									1389	817											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH65_TST_3									1424	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42イT_P42イ_N_1									1469	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42イT_P42イ_N_2									1530	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42イT_P42イ_R_1									1469	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42イT_P42イ_R_2									1481	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH65_42ロT_P42ロ_N_1									1469	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ロT_P42ロ_N_2									1530	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ロT_P42ロ_R_1									1491	822											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH65_42ロT_P42ロ_R_2									1530	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_11LT_1									1554	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_11LT_2									1636	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_12LT_1									1554	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_12LT_2									1636	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_44T_1									1697	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_45T_1									1697	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47イ_N_P48ロ_N_1									1722	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47イ_N_P48ロ_N_2									1752	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47イ_N_P48ロ_R_1									1744	822											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH65_47T_P47イ_N_P48ロ_R_2									1752	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47イ_R_P48ロ_N_1									1722	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47イ_R_P48ロ_N_2									1734	822											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH65_48T_P48イ_N_P47ロ_N_1									1722	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_48T_P48イ_N_P47ロ_N_2									1752	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_48T_P48イ_N_P47ロ_R_1									1744	847											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH65_48T_P48イ_N_P47ロ_R_2									1752	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_48T_P48イ_R_P47ロ_N_1									1722	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_48T_P48イ_R_P47ロ_N_2									1734	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH65_49T_P49_N_1									1772	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_49T_P49_N_2									1802	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_49T_P49_R_1									1784	787											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH65_49T_P49_R_2									1802	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_50イT_1									1827	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_XT_1									1857	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	停電_1_R									773	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	停電灯左上								
+Image	停電_2_R									783	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	停電灯右上								
+Image	停電_3_R									773	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	停電灯左下								
+Image	停電_4_R									783	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	停電灯右下								
+Image	CTC故障_1_R									821	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTC故障灯右上								
+Image	CTC故障_2_R									831	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTC故障灯左上								
+Image	CTC故障_3_R									821	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTC故障灯左下								
+Image	CTC故障_4_R									831	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTC故障灯右下								
+Image	鎖錠60秒_1_R									1079	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	鎖錠60秒_2_R									1089	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	鎖錠30秒_1_R									1117	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	鎖錠30秒_2_R									1127	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Retsuban	列番新野崎1番線									112	491										列番新野崎1番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番新野崎2番線									112	537										列番新野崎2番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番新野崎3番線									112	583										列番新野崎3番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番新野崎4番線									112	629										列番新野崎4番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番江ノ原検車区上り第2接近									262	537										列番江ノ原検車区上り第2接近				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番江ノ原検車区上り第1接近									412	537										列番江ノ原検車区上り第1接近				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番江ノ原検車区10番線									622	676										列番江ノ原検車区10番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番江ノ原検車区13番線									952	676										列番江ノ原検車区13番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番江ノ原検車区11番線									1376	616										列番江ノ原検車区11番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番江ノ原検車区12番線									1376	676										列番江ノ原検車区12番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番江ノ原検車区下り第1接近									1385	949										列番江ノ原検車区下り第1接近				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番大道寺3番線									1535	903										列番大道寺3番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番大道寺4番線									1535	949										列番大道寺4番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番大道寺下り場内									1685	926										列番大道寺下り場内				Image/Retsuban/Retsuban-Window.png									
+																																		
+																																		
+																																		
+																																		

@@ -1,181 +1,181 @@
-Type	UniqueName	ServerName	ParentName	PointName	PointValue	KeyName	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImageIndex	BaseImagePath	ImagePath	Remark								
-BackImage	連動盤						0	0														Image/BackImage/TH76_Tatehama.png									
-Image	Clock_Base						850	78	79	110												Image/Clock/Clock_Border.png									
-ClockImage	Clock_Meter		Clock_Base				6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
-Image	Hook						861	10														Image/Hook/Hook_Base.png									
-LeverImage	1R					駅扱切換	423	323										1R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0代X=てこ赤(X)N(X)　例：1R=てこ赤NR								
-Image	1R_G						489	359											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PYは灯色"								
-TextBlock	1R_Label		1R			駅扱切換	14	20	11	11				1	10	Transparent	#FFBCBCBC	1R													
-LeverImage	2R					駅扱切換	423	443										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
-Image	2R_G						489	479											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-TextBlock	2R_Label		2R			駅扱切換	14	20	11	11				2	10	Transparent	#FFBCBCBC	2R													
-LeverImage	3R					駅扱切換	397	503										3R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
-Image	3R_G						489	501											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-TextBlock	3R_Label		3R			駅扱切換	14	20	11	11				3	10	Transparent	#FFBCBCBC	3R													
-LeverImage	4R					駅扱切換	423	563										4R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
-Image	4R_G						489	599											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-TextBlock	4R_Label		4R			駅扱切換	14	20	11	11				4	10	Transparent	#FFBCBCBC	4R													
-LeverImage	5L					駅扱切換	832	383										5L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
-Image	5L_G						796	419											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-TextBlock	5L_Label		5L			駅扱切換	14	20	11	11				5	10	Transparent	#FFBCBCBC	5L													
-ButtonImage	A					駅扱切換	185	336										A	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
-TextBlock	A_Label		A			駅扱切換	5	23	15	12				A	10	Transparent	#FFBCBCBC	A													
-ButtonImage	B					駅扱切換	185	456										B	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
-TextBlock	B_Label		B			駅扱切換	5	23	15	12				B	10	Transparent	#FFBCBCBC	B													
-ButtonImage	C					駅扱切換	159	516										C	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
-TextBlock	C_Label		C			駅扱切換	5	23	15	12				C	10	Transparent	#FFBCBCBC	C													
-ButtonImage	D					駅扱切換	159	576										D	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
-TextBlock	D_Label		D			駅扱切換	5	23	15	12				D	10	Transparent	#FFBCBCBC	D													
-ButtonImage	S					駅扱切換	766	336										S	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
-TextBlock	S_Label		S			駅扱切換	5	23	15	12				S	10	Transparent	#FFBCBCBC	S													
-ButtonImage	警報下り接近					駅扱切換	1111	731										警報下り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
-LeverImage	P21					駅扱切換	168	64										P21	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	転てつ器単独てこはNCR								
-Image	P21_PG						166	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	P21_PY						200	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	P21_Label		P21			駅扱切換	14	20	11	11				21	10	Transparent	#FFBCBCBC	P21													
-LeverImage	P22					駅扱切換	236	64										P22	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
-Image	P22_PG						234	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	P22_PY						268	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	P22_Label		P22			駅扱切換	14	20	11	11				22	10	Transparent	#FFBCBCBC	P22													
-LeverImage	P23					駅扱切換	304	64										P23	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
-Image	P23_PG						302	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	P23_PY						336	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	P23_Label		P23			駅扱切換	14	20	11	11				23	10	Transparent	#FFBCBCBC	P23													
-LeverImage	P24					駅扱切換	372	64										P24	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
-Image	P24_PG						370	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	P24_PY						404	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	P24_Label		P24			駅扱切換	14	20	11	11				24	10	Transparent	#FFBCBCBC	P24													
-LeverImage	P25					駅扱切換	440	64										P25	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
-Image	P25_PG						438	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	P25_PY						472	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	P25_Label		P25			駅扱切換	14	20	11	11				25	10	Transparent	#FFBCBCBC	P25													
-LeverImage	P26					駅扱切換	508	64										P26	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
-Image	P26_PG						506	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	P26_PY						540	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	P26_Label		P26			駅扱切換	14	20	11	11				26	10	Transparent	#FFBCBCBC	P26													
-LeverImage	P27					駅扱切換	576	64										P27	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
-Image	P27_PG						574	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	P27_PY						608	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	P27_Label		P27			駅扱切換	14	20	11	11				27	10	Transparent	#FFBCBCBC	P27													
-KeyImage	駅扱切換						1347	64										駅扱切換	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	駅扱切換はLR								
-Image	駅扱切換_PY						1345	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-Image	駅扱切換_PG						1379	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	TH76_5LAT_1						167	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0度※以下0度省略								
-Image	TH76_5LAT_2						411	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_5LBT_1						167	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_5LBT_2						411	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_5LCT_1						141	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_5LCT_2						385	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_5LDT_1						141	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_5LDT_2						385	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21イT_P21イN_1						454	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21イT_P21イN_2						530	508											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_21イT_P21イR_1						454	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21イT_P21イR_2						478	544											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH76_21ロT_P21ロN_1						480	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21ロT_P21ロN_2						520	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21ロT_P21ロN_3						572	550											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_21ロT_P21ロR_1						498	564											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH76_21ロT_P21ロR_2						520	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21ロT_P21ロR_3						572	550											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_22T_P22N_1						480	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_22T_P22N_2						549	379											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH76_22T_P22R_1						480	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_22T_P22R_2						562	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_22T_P22R_3						645	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_23T_P23N_P24ロN_1						550	488											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_23T_P23N_P24ロN_2						594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_23T_P23R_P24ロN_1						480	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_23T_P23R_P24ロN_2						539	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_23T_P23R_P24ロN_3						594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_23T_P24ロR_1						595	472											"0,1,2"	0		"Image/Light/90N.png,Image/Light/90Y.png,Image/Light/90R.png"	90度								
-Image	TH76_23T_P24ロR_2						594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24イT_P24イN_1						592	530											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24イT_P24イN_2						649	473											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24イT_P24イN_3						721	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24イT_P24イR_1						592	530											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24イT_P24イR_2						595	500											"0,1,2"	0		"Image/Light/90N.png,Image/Light/90Y.png,Image/Light/90R.png"	90度								
-Image	TH76_25T_P25N_1						614	424											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_25T_P25N_2						645	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_25T_P25R_1						604	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_25T_P25R_2						645	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26イT_P26イN_1						673	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26イT_P26イN_2						704	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26イT_P26イR_1						673	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26イT_P26イR_2						697	384											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_26ロT_P26ロN_1						673	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26ロT_P26ロN_2						739	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26ロT_P26ロR_1						717	364											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_26ロT_P26ロR_2						739	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_27T_P27N_1						741	424											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_27T_P27N_2						803	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_27T_P27R_1						732	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_27T_P27R_2						803	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	7T_1						881	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	9T_1						911	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_TST_1						941	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41イT_P41イN_1						966	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41イT_P41イN_2						996	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41イT_P41イR_1						966	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41イT_P41イR_2						978	386											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_41ロT_P41ロN_1						966	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41ロT_P41ロN_2						996	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41ロT_P41ロR_1						988	361											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_41ロT_P41ロR_2						996	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43イT_P43イN_1						1016	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43イT_P43イN_2						1046	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43イT_P43イR_1						1016	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43イT_P43イR_2						1028	326											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_43ロT_P43ロN_1						1016	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43ロT_P43ロN_2						1046	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43ロT_P43ロR_1						1038	301											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_43ロT_P43ロR_2						1046	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_P44イN_P45ロN_1						1066	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_P44イN_P45ロN_2						1096	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_P44イN_P45ロN_3						1126	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_P44イN_P45ロR_1						1088	241											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_44T_P44イN_P45ロR_2						1096	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_P44イN_P45ロR_3						1126	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_P44イR_P45ロN_1						1066	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_P44イR_P45ロN_2						1078	241											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
-Image	TH75_45T_P44ロN_P45イN_1						1066	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_P44ロN_P45イN_2						1096	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_P44ロN_P45イN_3						1126	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_P44ロN_P45イR_1						1088	266											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
-Image	TH75_45T_P44ロN_P45イR_2						1096	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_P44ロN_P45イR_3						1126	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_P44ロR_P45イN_1						1066	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_P44ロR_P45イN_2						1078	266											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_6LT_1						1040	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_6LT_2						1106	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_5T_1						1154	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_5T_2						1236	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_6T_1						1154	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_6T_2						1236	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_9LCT_1						1154	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_9LCT_2						1236	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_50ロT_1						1265	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_9LT_1						1295	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_27T_1						1331	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_27T_2						1371	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	停電_R						54	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	CTC故障_R						102	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	鎖錠60秒_R						696	747											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	鎖錠30秒_R						734	747											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Retsuban	列番館浜1番線						229	335										列番館浜1番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番館浜2番線						229	455										列番館浜2番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番館浜3番線						203	515										列番館浜3番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番館浜4番線						203	575										列番館浜4番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番館浜下り第1接近						685	574										列番館浜下り第1接近				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番館浜下り第2接近						835	574										列番館浜下り第2接近				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番駒野下り出発						985	574										列番駒野下り出発				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番駒野5番線						1135	482										列番駒野5番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番駒野6番線						1135	528										列番駒野6番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番駒野3番線						1135	574										列番駒野3番線				Image/Retsuban/Retsuban-Window.png									
-Retsuban	列番駒野下り第1接近						1285	574										列番駒野下り第1接近				Image/Retsuban/Retsuban-Window.png									
-																															
-																															
-																															
-																															
-																															
-																															
+Type	UniqueName	ServerName	ParentName	PointName	PointValue	LeverType	KeyName	LinkedStationName	LinkedUniqueName	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImageIndex	BaseImagePath	ImagePath	Remark								
+BackImage	連動盤									0	0														Image/BackImage/TH76_Tatehama.png									
+Image	Clock_Base									850	78	79	110												Image/Clock/Clock_Border.png									
+ClockImage	Clock_Meter		Clock_Base							6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
+Image	Hook									861	10														Image/Hook/Hook_Base.png									
+LeverImage	1R						駅扱切換			423	323										1R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0代X=てこ赤(X)N(X)　例：1R=てこ赤NR								
+Image	1R_G									489	359											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PYは灯色"								
+TextBlock	1R_Label		1R				駅扱切換			14	20	11	11				1	10	Transparent	#FFBCBCBC	1R													
+LeverImage	2R						駅扱切換			423	443										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+Image	2R_G									489	479											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+TextBlock	2R_Label		2R				駅扱切換			14	20	11	11				2	10	Transparent	#FFBCBCBC	2R													
+LeverImage	3R						駅扱切換			397	503										3R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+Image	3R_G									489	501											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+TextBlock	3R_Label		3R				駅扱切換			14	20	11	11				3	10	Transparent	#FFBCBCBC	3R													
+LeverImage	4R						駅扱切換			423	563										4R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+Image	4R_G									489	599											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+TextBlock	4R_Label		4R				駅扱切換			14	20	11	11				4	10	Transparent	#FFBCBCBC	4R													
+LeverImage	5L						駅扱切換			832	383										5L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+Image	5L_G									796	419											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+TextBlock	5L_Label		5L				駅扱切換			14	20	11	11				5	10	Transparent	#FFBCBCBC	5L													
+ButtonImage	A						駅扱切換			185	336										A	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	A_Label		A				駅扱切換			5	23	15	12				A	10	Transparent	#FFBCBCBC	A													
+ButtonImage	B						駅扱切換			185	456										B	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	B_Label		B				駅扱切換			5	23	15	12				B	10	Transparent	#FFBCBCBC	B													
+ButtonImage	C						駅扱切換			159	516										C	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	C_Label		C				駅扱切換			5	23	15	12				C	10	Transparent	#FFBCBCBC	C													
+ButtonImage	D						駅扱切換			159	576										D	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	D_Label		D				駅扱切換			5	23	15	12				D	10	Transparent	#FFBCBCBC	D													
+ButtonImage	S						駅扱切換			766	336										S	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	S_Label		S				駅扱切換			5	23	15	12				S	10	Transparent	#FFBCBCBC	S													
+ButtonImage	警報下り接近						駅扱切換			1111	731										警報下り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
+LeverImage	P21						駅扱切換			168	64										P21	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	転てつ器単独てこはNCR								
+Image	P21_PG									166	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P21_PY									200	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P21_Label		P21				駅扱切換			14	20	11	11				21	10	Transparent	#FFBCBCBC	P21													
+LeverImage	P22						駅扱切換			236	64										P22	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P22_PG									234	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P22_PY									268	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P22_Label		P22				駅扱切換			14	20	11	11				22	10	Transparent	#FFBCBCBC	P22													
+LeverImage	P23						駅扱切換			304	64										P23	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P23_PG									302	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P23_PY									336	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P23_Label		P23				駅扱切換			14	20	11	11				23	10	Transparent	#FFBCBCBC	P23													
+LeverImage	P24						駅扱切換			372	64										P24	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P24_PG									370	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P24_PY									404	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P24_Label		P24				駅扱切換			14	20	11	11				24	10	Transparent	#FFBCBCBC	P24													
+LeverImage	P25						駅扱切換			440	64										P25	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P25_PG									438	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P25_PY									472	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P25_Label		P25				駅扱切換			14	20	11	11				25	10	Transparent	#FFBCBCBC	P25													
+LeverImage	P26						駅扱切換			508	64										P26	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P26_PG									506	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P26_PY									540	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P26_Label		P26				駅扱切換			14	20	11	11				26	10	Transparent	#FFBCBCBC	P26													
+LeverImage	P27						駅扱切換			576	64										P27	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P27_PG									574	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P27_PY									608	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P27_Label		P27				駅扱切換			14	20	11	11				27	10	Transparent	#FFBCBCBC	P27													
+KeyImage	駅扱切換									1347	64										駅扱切換	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	駅扱切換はLR								
+Image	駅扱切換_PY									1345	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+Image	駅扱切換_PG									1379	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	TH76_5LAT_1									167	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0度※以下0度省略								
+Image	TH76_5LAT_2									411	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_5LBT_1									167	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_5LBT_2									411	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_5LCT_1									141	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_5LCT_2									385	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_5LDT_1									141	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_5LDT_2									385	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21イT_P21イN_1									454	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21イT_P21イN_2									530	508											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_21イT_P21イR_1									454	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21イT_P21イR_2									478	544											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH76_21ロT_P21ロN_1									480	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21ロT_P21ロN_2									520	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21ロT_P21ロN_3									572	550											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_21ロT_P21ロR_1									498	564											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH76_21ロT_P21ロR_2									520	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21ロT_P21ロR_3									572	550											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_22T_P22N_1									480	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_22T_P22N_2									549	379											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH76_22T_P22R_1									480	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_22T_P22R_2									562	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_22T_P22R_3									645	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_23T_P23N_P24ロN_1									550	488											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_23T_P23N_P24ロN_2									594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_23T_P23R_P24ロN_1									480	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_23T_P23R_P24ロN_2									539	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_23T_P23R_P24ロN_3									594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_23T_P24ロR_1									595	472											"0,1,2"	0		"Image/Light/90N.png,Image/Light/90Y.png,Image/Light/90R.png"	90度								
+Image	TH76_23T_P24ロR_2									594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24イT_P24イN_1									592	530											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24イT_P24イN_2									649	473											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24イT_P24イN_3									721	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24イT_P24イR_1									592	530											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24イT_P24イR_2									595	500											"0,1,2"	0		"Image/Light/90N.png,Image/Light/90Y.png,Image/Light/90R.png"	90度								
+Image	TH76_25T_P25N_1									614	424											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_25T_P25N_2									645	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_25T_P25R_1									604	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_25T_P25R_2									645	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26イT_P26イN_1									673	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26イT_P26イN_2									704	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26イT_P26イR_1									673	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26イT_P26イR_2									697	384											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_26ロT_P26ロN_1									673	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26ロT_P26ロN_2									739	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26ロT_P26ロR_1									717	364											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_26ロT_P26ロR_2									739	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_27T_P27N_1									741	424											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_27T_P27N_2									803	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_27T_P27R_1									732	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_27T_P27R_2									803	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	7T_1									881	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	9T_1									911	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_TST_1									941	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41イT_P41イN_1									966	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41イT_P41イN_2									996	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41イT_P41イR_1									966	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41イT_P41イR_2									978	386											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_41ロT_P41ロN_1									966	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41ロT_P41ロN_2									996	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41ロT_P41ロR_1									988	361											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_41ロT_P41ロR_2									996	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43イT_P43イN_1									1016	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43イT_P43イN_2									1046	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43イT_P43イR_1									1016	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43イT_P43イR_2									1028	326											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_43ロT_P43ロN_1									1016	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43ロT_P43ロN_2									1046	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43ロT_P43ロR_1									1038	301											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_43ロT_P43ロR_2									1046	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_P44イN_P45ロN_1									1066	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_P44イN_P45ロN_2									1096	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_P44イN_P45ロN_3									1126	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_P44イN_P45ロR_1									1088	241											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_44T_P44イN_P45ロR_2									1096	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_P44イN_P45ロR_3									1126	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_P44イR_P45ロN_1									1066	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_P44イR_P45ロN_2									1078	241											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH75_45T_P44ロN_P45イN_1									1066	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_P44ロN_P45イN_2									1096	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_P44ロN_P45イN_3									1126	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_P44ロN_P45イR_1									1088	266											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH75_45T_P44ロN_P45イR_2									1096	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_P44ロN_P45イR_3									1126	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_P44ロR_P45イN_1									1066	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_P44ロR_P45イN_2									1078	266											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_6LT_1									1040	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_6LT_2									1106	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_5T_1									1154	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_5T_2									1236	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_6T_1									1154	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_6T_2									1236	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_9LCT_1									1154	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_9LCT_2									1236	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_50ロT_1									1265	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_9LT_1									1295	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_27T_1									1331	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_27T_2									1371	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	停電_R									54	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTC故障_R									102	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	鎖錠60秒_R									696	747											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	鎖錠30秒_R									734	747											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Retsuban	列番館浜1番線									229	335										列番館浜1番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番館浜2番線									229	455										列番館浜2番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番館浜3番線									203	515										列番館浜3番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番館浜4番線									203	575										列番館浜4番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番館浜下り第1接近									685	574										列番館浜下り第1接近				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番館浜下り第2接近									835	574										列番館浜下り第2接近				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番駒野下り出発									985	574										列番駒野下り出発				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番駒野5番線									1135	482										列番駒野5番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番駒野6番線									1135	528										列番駒野6番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番駒野3番線									1135	574										列番駒野3番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番駒野下り第1接近									1285	574										列番駒野下り第1接近				Image/Retsuban/Retsuban-Window.png									
+																																		
+																																		
+																																		
+																																		
+																																		
+																																		
