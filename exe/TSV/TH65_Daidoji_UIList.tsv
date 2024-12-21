@@ -58,7 +58,7 @@ LeverImage	13L						‰wˆµØŠ·			2370	388										13L	"-1,0"	0	Image/Lever/LeverB
 Image	13LC_G									2342	349											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 Image	13LD_G									2334	367											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	13L_Label		13L				‰wˆµØŠ·			14	20	11	11				13	10	Transparent	#FFBCBCBC	13L													
-LeverImage	14L					•ûŒü‚Ä‚±	‰wˆµØŠ·			2435	388										14L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	14L‚Í•ûŒü‚Ä‚±@”’LR								
+LeverImage	14L					•ûŒü‚Ä‚±	‰ğ•ú99	“¡]‰w	‰ğ•ú98	2435	388										14L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	14L‚Í•ûŒü‚Ä‚±@”’LR								
 TextBlock	14L_Label		14L				‰wˆµØŠ·			14	20	11	11				14	10	Transparent	#FFBCBCBC	14L													
 LeverImage	21R						‰wˆµØŠ·			1068	388										21R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"	20‘ãX=‚Ä‚±—Î(X)N(X)@—áF21R=‚Ä‚±—ÎNR								
 Image	21R_Y									1185	393											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									

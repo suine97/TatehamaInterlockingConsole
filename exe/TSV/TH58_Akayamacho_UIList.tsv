@@ -3,7 +3,7 @@ BackImage	˜A“®”Õ									0	0														Image/BackImage/TH58_Akayamacho.png
 Image	Clock_Base									1350	78	79	110												Image/Clock/Clock_Border.png									
 ClockImage	Clock_Meter		Clock_Base							6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
 Image	Hook									1361	10														Image/Hook/Hook_Base.png									
-LeverImage	1L					•ûŒü‚Ä‚±	‰wˆµØŠ·			289	323										1L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	1L‚Í•ûŒü‚Ä‚±@”’LR								
+LeverImage	1L					•ûŒü‚Ä‚±	‰ğ•ú98	¼ÔR‰w	‰ğ•ú99	289	323										1L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	1L‚Í•ûŒü‚Ä‚±@”’LR								
 TextBlock	1L_Label		1L				‰wˆµØŠ·			14	20	11	11				1	10	Transparent	#FFBCBCBC	1L													
 LeverImage	2R						‰wˆµØŠ·			354	323										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0‘ãX=‚Ä‚±Ô(X)N(X)@—áF2R=‚Ä‚±ÔNR								
 Image	2R_G									420	321											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PY‚Í“”F"								
@@ -29,7 +29,7 @@ TextBlock	8R_Label		8R				‰wˆµØŠ·			14	20	11	11				8	10	Transparent	#FFBCBCBC	8
 LeverImage	9L						‰wˆµØŠ·			1479	323										9L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
 Image	9L_G									1443	302											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	9L_Label		9L				‰wˆµØŠ·			14	20	11	11				9	10	Transparent	#FFBCBCBC	9L													
-LeverImage	10L						‰wˆµØŠ·			1544	323										10L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	10L‚Í•ûŒü‚Ä‚±@”’LR								
+LeverImage	10L					•ûŒü‚Ä‚±	‰ğ•ú99			1544	323										10L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	10L‚Í•ûŒü‚Ä‚±@”’LR								
 TextBlock	10L_Label		10L				‰wˆµØŠ·			14	20	11	11				10	10	Transparent	#FFBCBCBC	10L													
 LeverImage	31R						‰wˆµØŠ·			983	243										31R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"	30‘ãX=‚Ä‚±—Î(X)N(X)@—áF31R=‚Ä‚±—ÎNR								
 Image	31R_Y									1100	240											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									

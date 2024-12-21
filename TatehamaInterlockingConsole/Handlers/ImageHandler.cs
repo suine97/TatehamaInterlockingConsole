@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
@@ -127,10 +128,18 @@ namespace TatehamaInterlockingConsole.Handlers
             _dataUpdateViewModel.SetControlsetting(control);
             _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
-            // 鍵位置「駅扱」判定
-            if (!IsKeyLeverManual(control))
+            // サーバーリクエスト送信判定
+            if ((control.LeverType == "方向てこ") && IsBothReleaseLeversManual(control))
             {
+                // 双方の方向てこ解放鍵「駅扱」位置
                 // サーバーへリクエスト送信
+                Debug.WriteLine($"Server Request : {control.UniqueName} : {control.ImageIndex}");
+            }
+            else if ((control.LeverType != "方向てこ") && IsKeyLeverManual(control))
+            {
+                // 鍵「駅扱」位置
+                // サーバーへリクエスト送信
+                Debug.WriteLine($"Server Request : {control.UniqueName} : {control.ImageIndex}");
             }
         }
 
@@ -226,8 +235,8 @@ namespace TatehamaInterlockingConsole.Handlers
                 _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
             }
             // 鍵位置設定
-            control.KeyManual = ((control.ControlType == "KeyImage") && (control.UniqueName == "駅扱切換") && (control.ImageIndex < 0))
-                || ((control.ControlType == "KeyImage") && (control.UniqueName.Contains("解放")) && (control.ImageIndex > 0));
+            control.KeyManual = ((control.LeverType == "駅扱切換") && (control.ImageIndex < 0))
+                || ((control.LeverType == "方向てこ解放") && (control.ImageIndex > 0));
         }
 
         /// <summary>
@@ -337,14 +346,12 @@ namespace TatehamaInterlockingConsole.Handlers
         {
             try
             {
-                var list = _dataManager.AllControlSettingList
-                .Where(key => key.StationName == control.StationName)
-                .ToList();
-
-                var keyControl = list
-                    .Where(key => key.UniqueName == control.KeyName)
+                // 駅扱切換鍵取得
+                var keyControl = _dataManager.AllControlSettingList
+                    .Where(key => key.StationName == control.StationName && key.UniqueName == control.KeyName)
                     .FirstOrDefault();
 
+                // 「駅扱」位置判定
                 if (keyControl.KeyManual)
                 {
                     return true;
@@ -366,15 +373,22 @@ namespace TatehamaInterlockingConsole.Handlers
         {
             try
             {
-                var mainReleaseLeverManual = control.KeyManual;
-                var subReleaseLeverManual = _dataManager.AllControlSettingList
+                // 駅扱切換鍵取得
+                var mainReleaseLever = _dataManager.AllControlSettingList
+                    .Where(key => key.StationName == control.StationName && key.UniqueName == control.KeyName)
+                    .FirstOrDefault();
+                // 方向てこ解放鍵取得
+                var subReleaseLever = _dataManager.AllControlSettingList
                     .Where(key => key.StationName == control.LinkedStationName && key.UniqueName == control.LinkedUniqueName)
-                    .FirstOrDefault()
-                    .KeyManual;
+                    .FirstOrDefault();
 
-                if (mainReleaseLeverManual && subReleaseLeverManual)
+                if ((mainReleaseLever != null) && (subReleaseLever != null))
                 {
-                    return true;
+                    // 「駅扱」位置判定
+                    if (mainReleaseLever.KeyManual && subReleaseLever.KeyManual)
+                    {
+                        return true;
+                    }
                 }
             }
             catch
