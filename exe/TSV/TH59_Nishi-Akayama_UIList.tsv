@@ -3,195 +3,105 @@ BackImage	連動盤									0	0														Image/BackImage/TH59_Nishi-Akayama.png
 Image	Clock_Base									900	78	79	110												Image/Clock/Clock_Border.png									
 ClockImage	Clock_Meter		Clock_Base							6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
 Image	Hook									911	10														Image/Hook/Hook_Base.png									
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
-																																		
+LeverImage	11R						駅扱切換			466	538										11R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	10代X=てこ赤(X)N(X)　例：11R=てこ赤NR								
+Image	11R_G									360	181											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PYは灯色"								
+TextBlock	11R_Label		11R				駅扱切換			14	20	11	11				11	10	Transparent	#FFBCBCBC	11R													
+LeverImage	12L						駅扱切換			534	538										12L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+Image	12L_G									346	271											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+TextBlock	12L_Label		12L				駅扱切換			14	20	11	11				12	10	Transparent	#FFBCBCBC	12L													
+LeverImage	13LR						駅扱切換			866	538										13LR	"-1,0,1"	0	Image/Lever/LeverBase_LNR.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+Image	13R_G									739	173											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	13L_G									828	233											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+TextBlock	13LR_Label		13LR				駅扱切換			14	20	11	11				13	10	Transparent	#FFBCBCBC	13LR													
+LeverImage	14L					方向てこ	解放99	赤山町駅	解放98	934	538										14L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	14Lは方向てこ　白LR								
+TextBlock	14L_Label		14L				駅扱切換			14	20	11	11				14	10	Transparent	#FFBCBCBC	14L													
+ButtonImage	警報上り接近						駅扱切換			304	551										警報上り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
+ButtonImage	警報下り接近						駅扱切換			1111	551										警報下り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
+LeverImage	P21						駅扱切換			824	64										P21	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	転てつ器単独てこはNCR								
+Image	P21_PG									822	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P21_PY									856	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P21_Label		P21				駅扱切換			14	20	11	11				21	10	Transparent	#FFBCBCBC	P21													
+KeyImage	駅扱切換					駅扱切換	駅扱切換			1249	64										駅扱切換	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	駅扱切換はLR								
+Image	駅扱切換_PY									1247	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+Image	駅扱切換_PG									1281	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+KeyImage	解放99					方向てこ解放	駅扱切換			1347	64										解放99	"0,1,10,11"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/KeyLever_KeyOFF_N.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_N.png,Image/Lever/KeyLever_KeyON_R.png"	方向てこ解放はNR								
+Image	解放99_PY									1362	31											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+Image	TH61_5RT_1									52	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0度※以下0度省略								
+Image	TH61_5RT_2									82	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	238T_1									112	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	238T_2									142	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	242T_1									172	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	242T_2									202	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	246T_1									232	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	246T_2									262	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	250T_1									292	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	250T_2									322	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_12LT_1									322	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_12LT_2									352	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_11RT_1									419	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_11RT_2									663	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_13LT_1									419	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_13LT_2									663	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_21イT_P21イN_1									730	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	21EM_R									800	196											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	TH59_21イT_P21イR_1									730	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_21イT_P21イR_2									754	216											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH59_21ロT_P21ロN_1									730	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_21ロT_P21ロN_2									835	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH59_21ロT_P21ロR_1									774	236											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH59_21ロT_P21ロR_2									835	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA1T_1									869	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA1T_2									909	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA1T_14L_1									885	274											"0,1,2"	0		"Image/Light/AlN.png,Image/Light/AlY.png,Image/Light/AlR.png"	Al								
+Image	NA1T_14R_1									885	238											"0,1,2"	0		"Image/Light/ArN.png,Image/Light/ArY.png,Image/Light/ArR.png"	Ar								
+Image	NA2T_1									949	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA2T_2									989	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_2RT_1									1024	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_21T_P21N_1									1049	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_21T_P21N_2									1079	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_21T_P21R_1									1049	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_21T_P21R_2									1071	213											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH58_21T_P21R_3									1117	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_22イT_P22イN_1									1099	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_22イT_P22イN_2									1142	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_22イT_P22イR_1									1099	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_22イT_P22イR_2									1111	273											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH58_22ロT_P22ロN_1									1167	318											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_22ロT_P22ロR_1									1121	298											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH58_22ロT_P22ロR_2									1167	318											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_2RAT_1									1141	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_2RAT_2									1223	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_2RBT_1									1166	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_2RBT_2									1248	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_9LCT_1									1191	318											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_9LCT_2									1273	318											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_23イT_P23イN_1									1247	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_23イT_P23イN_2									1302	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_23イT_P23イR_1									1247	198											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_23イT_P23イR_2									1284	213											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH58_23ロT_P23ロN_1									1272	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_23ロT_P23ロN_2									1302	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_23ロT_P23ロR_1									1294	238											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH58_23ロT_P23ロR_2									1302	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_25T_P25N_1									1322	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_25T_P25N_2									1352	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_25T_P25R_1									1297	318											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_25T_P25R_2									1334	298											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH58_25T_P25R_3									1352	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH58_9LT_1									1377	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	停電_R									54	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTC故障_R									102	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	鎖錠60秒_R									696	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	鎖錠30秒_R									734	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Retsuban	列番西赤山上り第2接近									24	120										列番西赤山上り第2接近				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番西赤山上り第1接近									174	120										列番西赤山上り第1接近				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番西赤山1番線									481	187										列番西赤山1番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番西赤山2番線									481	247										列番西赤山2番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番西赤山下り第1接近									847	440										列番西赤山下り第1接近				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番西赤山下り第2接近									997	440										列番西赤山下り第2接近				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番赤山町1番線									1147	394										列番赤山町1番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番赤山町2番線									1147	440										列番赤山町2番線				Image/Retsuban/Retsuban-Window.png									
+Retsuban	列番赤山町3番線									1147	486										列番赤山町3番線				Image/Retsuban/Retsuban-Window.png									
 																																		
 																																		
 																																		
