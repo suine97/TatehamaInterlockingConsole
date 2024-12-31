@@ -150,6 +150,7 @@ Image	AS1T_10L_1									1529	323											"0,1,2"	0		"Image/Light/45N.png,Imag
 Image	AS1T_10L_2									1529	365											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
 Image	AS1T_10R_1									1589	323											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
 Image	AS1T_10R_2									1589	365											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	AS2T_1									1618	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	停電_R									152	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	CTC故障_R									200	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠60秒_R									936	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
@@ -164,7 +165,6 @@ Retsuban	列番赤山町4番線									1396	195										列番赤山町4番線				Image/Rets
 Retsuban	列番赤山町5番線									1396	255										列番赤山町5番線				Image/Retsuban/Retsuban-Window.png									
 Retsuban	列番赤山町下り第1接近									1425	422										列番赤山町下り第1接近				Image/Retsuban/Retsuban-Window.png									
 Retsuban	列番赤山町下り第2接近									1575	422										列番赤山町下り第2接近				Image/Retsuban/Retsuban-Window.png									
-																																		
-																																		
+Retsuban	列番三郷2番線									1725	422										列番三郷2番線				Image/Retsuban/Retsuban-Window.png									
 																																		
 																																		

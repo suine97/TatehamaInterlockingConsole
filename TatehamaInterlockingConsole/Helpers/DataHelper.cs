@@ -83,14 +83,14 @@ namespace TatehamaInterlockingConsole.Helpers
         }
 
         /// <summary>
-        /// TSVファイルを読み込んで駅名対照表の辞書データを返す
+        /// TSVファイルを読み込んで辞書データを返す
         /// </summary>
         /// <param name="folderPath">フォルダ名</param>
         /// <param name="fileName">読み込むファイル名</param>
         /// <returns></returns>
-        public static Dictionary<string, List<string>> LoadStationNameFromTSVAsDictionary(string folderPath, string fileName)
+        public static Dictionary<string, List<string>> LoadTSVAsDictionary(string folderPath, string fileName)
         {
-            var stationNameDictionary = new Dictionary<string, List<string>>();
+            var dictionary = new Dictionary<string, List<string>>();
 
             // ファイルパスを組み立てる
             string filePath = Path.Combine(folderPath, fileName);
@@ -133,7 +133,7 @@ namespace TatehamaInterlockingConsole.Helpers
                     }
 
                     // 辞書に登録
-                    stationNameDictionary[key] = values;
+                    dictionary[key] = values;
                 }
             }
             catch (Exception ex)
@@ -141,7 +141,7 @@ namespace TatehamaInterlockingConsole.Helpers
                 Console.WriteLine($"エラー: {ex.Message}");
                 throw;
             }
-            return stationNameDictionary;
+            return dictionary;
         }
     }
 

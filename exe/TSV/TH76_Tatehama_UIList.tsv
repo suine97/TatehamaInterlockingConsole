@@ -57,7 +57,7 @@ LeverImage	P27						‰wˆµØŠ·			576	64										P27	"-1,0,1"	0	Image/Lever/LeverB
 Image	P27_PG									574	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P27_PY									608	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P27_Label		P27				‰wˆµØŠ·			14	20	11	11				27	10	Transparent	#FFBCBCBC	P27													
-KeyImage	‰wˆµØŠ·									1347	64										‰wˆµØŠ·	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	‰wˆµØŠ·‚ÍLR								
+KeyImage	‰wˆµØŠ·					‰wˆµØŠ·				1347	64										‰wˆµØŠ·	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	‰wˆµØŠ·‚ÍLR								
 Image	‰wˆµØŠ·_PY									1345	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 Image	‰wˆµØŠ·_PG									1379	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	TH76_5LAT_1									167	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0“x¦ˆÈ‰º0“xÈ—ª								

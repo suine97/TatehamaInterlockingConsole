@@ -95,7 +95,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             var retsubanFolderPath = "Image/Retsuban";
 
             // 駅名データを辞書に格納
-            _dataManager.StationNameDictionary = DataHelper.LoadStationNameFromTSVAsDictionary(tsvFolderPath, "StationList.tsv");
+            _dataManager.StationNameDictionary = DataHelper.LoadTSVAsDictionary(tsvFolderPath, "StationList.tsv");
             // 設定データをリストに格納
             _dataManager.AllControlSettingList = UIElementLoader.LoadSettingsFromFolderAsUIControlSetting(tsvFolderPath);
             // 列番表示画像Pathを辞書に格納

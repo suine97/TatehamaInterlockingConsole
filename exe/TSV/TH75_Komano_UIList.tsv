@@ -143,7 +143,7 @@ LeverImage	P50						‰wˆµØŠ·			2183	64										P50	"-1,0,1"	0	Image/Lever/Lever
 Image	P50_PG									2181	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P50_PY									2215	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P50_Label		P50				‰wˆµØŠ·			14	20	11	11				50	10	Transparent	#FFBCBCBC	P50													
-KeyImage	‰wˆµØŠ·									2367	64										‰wˆµØŠ·	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	‰wˆµØŠ·‚ÍLR								
+KeyImage	‰wˆµØŠ·					‰wˆµØŠ·				2367	64										‰wˆµØŠ·	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	‰wˆµØŠ·‚ÍLR								
 Image	‰wˆµØŠ·_PY									2365	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 Image	‰wˆµØŠ·_PG									2399	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	TH76_5LAT_1									126	548											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0“x¦ˆÈ‰º0“xÈ—ª								

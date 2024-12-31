@@ -53,7 +53,7 @@ LeverImage	P24						‰wˆµØŠ·			985	64										P24	"-1,0,1"	0	Image/Lever/LeverB
 Image	P24_PG									983	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P24_PY									1017	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P24_Label		P24				‰wˆµØŠ·			14	20	11	11				24	10	Transparent	#FFBCBCBC	P24													
-KeyImage	‰wˆµØŠ·									1347	64										‰wˆµØŠ·	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	‰wˆµØŠ·‚ÍLR								
+KeyImage	‰wˆµØŠ·					‰wˆµØŠ·				1347	64										‰wˆµØŠ·	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	‰wˆµØŠ·‚ÍLR								
 Image	‰wˆµØŠ·_PY									1345	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 Image	‰wˆµØŠ·_PG									1379	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	56T_1									52	289											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0“x¦ˆÈ‰º0“xÈ—ª								
