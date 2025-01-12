@@ -73,6 +73,7 @@
     <Compile Include="Factories\TextBlockFactory.cs" />
     <Compile Include="Factories\LeverImageFactory.cs" />
     <Compile Include="Handlers\LabelHandler.cs" />
+    <Compile Include="JavaScript\JavaScriptExecutor.cs" />
     <Compile Include="Manager\DataManager.cs" />
     <Compile Include="Manager\ImageCacheManager.cs" />
     <Compile Include="Manager\ServerAddress.cs" />
@@ -149,6 +150,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Jint">
+      <Version>4.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNet.SignalR.Client">
+      <Version>2.4.3</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
       <Version>1.1.135</Version>
     </PackageReference>
@@ -161,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="InterlockingIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="JavaScript\TextParse.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
