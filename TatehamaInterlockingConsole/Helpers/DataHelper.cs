@@ -104,6 +104,7 @@ namespace TatehamaInterlockingConsole.Helpers
                 }
 
                 // Shift-JISエンコーディングでファイルを読み込む
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                 var encoding = Encoding.GetEncoding("Shift_JIS");
                 var header = false;
                 foreach (var line in File.ReadLines(filePath, encoding))
