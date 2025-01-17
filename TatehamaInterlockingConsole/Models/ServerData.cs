@@ -26,6 +26,7 @@ namespace TatehamaInterlockingConsole.Models
             public List<InterlockingPoint> Points { get; set; } = new List<InterlockingPoint>();
             public List<InterlockingSignal> Signals { get; set; } = new List<InterlockingSignal>();
             public List<InterlockingLamp> Lamps { get; set; } = new List<InterlockingLamp>();
+            public List<InterlockingRetsuban> Retsuban { get; set; } = new List<InterlockingRetsuban>();
         }
 
         /// <summary>
@@ -33,7 +34,14 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class InterlockingAuthentication
         {
-            public bool OperableUser { get; set; }
+            /// <summary>
+            /// 操作権限ユーザー判定
+            /// </summary>
+            public bool IsOperableUser { get; set; }
+            /// <summary>
+            /// 認証トークン
+            /// </summary>
+            public string Token { get; set; }
         }
 
         /// <summary>
@@ -41,9 +49,18 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class InterlockingTrackCircuit
         {
+            /// <summary>
+            /// 名称
+            /// </summary>
             public string Name { get; set; }
-            public bool RouteSetting { get; set; }
-            public bool OnTrack { get; set; }
+            /// <summary>
+            /// 鎖錠判定
+            /// </summary>
+            public bool IsRouteSetting { get; set; }
+            /// <summary>
+            /// 在線判定
+            /// </summary>
+            public bool IsOnTrack { get; set; }
         }
 
         /// <summary>
@@ -51,8 +68,14 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class InterlockingPoint
         {
+            /// <summary>
+            /// 名称
+            /// </summary>
             public string Name { get; set; }
-            public bool NormalPosition { get; set; }
+            /// <summary>
+            /// 反位判定
+            /// </summary>
+            public bool IsReversePosition { get; set; }
         }
 
         /// <summary>
@@ -60,8 +83,14 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class InterlockingSignal
         {
+            /// <summary>
+            /// 名称
+            /// </summary>
             public string Name { get; set; }
-            public bool StopSignal { get; set; }
+            /// <summary>
+            /// 進行信号判定
+            /// </summary>
+            public bool IsProceedSignal { get; set; }
         }
 
         /// <summary>
@@ -69,8 +98,29 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class InterlockingLamp
         {
+            /// <summary>
+            /// 名称
+            /// </summary>
             public string Name { get; set; }
-            public bool Value { get; set; }
+            /// <summary>
+            /// 点灯判定
+            /// </summary>
+            public bool IsLighting { get; set; }
+        }
+
+        /// <summary>
+        /// 連動装置・列番情報クラス
+        /// </summary>
+        public class InterlockingRetsuban
+        {
+            /// <summary>
+            /// 名称
+            /// </summary>
+            public string Name { get; set; }
+            /// <summary>
+            /// 列車番号情報
+            /// </summary>
+            public string RetsubanText { get; set; }
         }
     }
 }

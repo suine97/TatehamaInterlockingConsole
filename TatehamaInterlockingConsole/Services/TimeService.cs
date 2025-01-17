@@ -4,9 +4,22 @@ using System.Windows.Threading;
 namespace TatehamaInterlockingConsole.Services
 {
     /// <summary>
+    /// TimeServiceクラスのインターフェース
+    /// </summary>
+    public interface ITimeService
+    {
+        event Action<DateTime> TimeUpdated;
+        DateTime CurrentTime { get; }
+        void Start();
+        void Stop();
+        void IncreaseTime();
+        void DecreaseTime();
+    }
+
+    /// <summary>
     /// 時刻を管理および更新するためのサービスクラス
     /// </summary>
-    public class TimeService
+    public class TimeService : ITimeService
     {
         private readonly DispatcherTimer _timer; // 一定間隔で時間を更新するためのタイマー
         private DateTime _baseTime; // 基準となる現在時刻

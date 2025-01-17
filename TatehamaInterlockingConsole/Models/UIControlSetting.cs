@@ -20,13 +20,17 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
+        /// 親コントロール名称
+        /// </summary>
+        public string ParentName { get; set; }
+        /// <summary>
         /// サーバー名称
         /// </summary>
         public string ServerName { get; set; }
         /// <summary>
-        /// 親コントロール名称
+        /// サーバー分類
         /// </summary>
-        public string ParentName { get; set; }
+        public string ServerType { get; set; }
         /// <summary>
         /// 制御条件に含む転てつ器名称
         /// </summary>

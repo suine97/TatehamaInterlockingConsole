@@ -14,10 +14,10 @@ namespace TatehamaInterlockingConsole.ViewModels
     /// </summary>
     public class MainViewModel : WindowViewModel
     {
-        private readonly TimeService _timeService; // 時間管理サービス
-        private readonly DataManager _dataManager; // データ管理を担当するクラス
-        private DataUpdateViewModel _dataUpdate; // データ更新処理を管理するViewModel
-        private static bool _isConstructorExecuted = false; // コンストラクタが一度だけ実行されることを保証するフラグ
+        private readonly ITimeService _timeService;                 // 時間管理サービス
+        private readonly IDataManager _dataManager;                 // データ管理を担当するクラス
+        private readonly IDataUpdateViewModel _dataUpdateViewModel; // データ更新処理を管理するViewModel
+        private static bool _isConstructorExecuted = false;         // コンストラクタが一度だけ実行されることを保証するフラグ
 
         /// <summary>
         /// 時刻を1時間進めるコマンド
@@ -55,7 +55,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="timeService">時間管理サービス</param>
         /// <param name="uiElementLoader">UI要素ローダー</param>
         /// <param name="dataManager">データ管理クラス</param>
-        public MainViewModel(TimeService timeService, DataManager dataManager, DataUpdateViewModel dataUpdateViewModel)
+        public MainViewModel(ITimeService timeService, IDataManager dataManager, IDataUpdateViewModel dataUpdateViewModel)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                     _isConstructorExecuted = true;
 
                     _timeService = timeService;
-                    _dataUpdate = dataUpdateViewModel;
+                    _dataUpdateViewModel = dataUpdateViewModel;
                     _dataManager = dataManager;
                     _dataManager.Initialize(timeService);
 
@@ -114,7 +114,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// </summary>
         public void OnTimerElapsed()
         {
-            _dataUpdate.UpdateTimerEvent();
+            _dataUpdateViewModel.UpdateTimerEvent();
         }
 
         /// <summary>

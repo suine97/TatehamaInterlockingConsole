@@ -7,12 +7,26 @@ using TatehamaInterlockingConsole.Services;
 namespace TatehamaInterlockingConsole.Manager
 {
     /// <summary>
+    /// DataManagerクラスのインターフェース
+    /// </summary>
+    public interface IDataManager
+    {
+        event Action<DateTime> TimeUpdated;
+        DateTime CurrentTime { get; }
+        List<UIControlSetting> AllControlSettingList { get; set; }
+        Dictionary<string, string> RetsubanImagePathDictionary { get; set; }
+        Dictionary<string, List<string>> StationNameDictionary { get; set; }
+        bool Administrator { get; set; }
+        void Initialize(ITimeService timeService);
+    }
+
+    /// <summary>
     /// GlobalData管理クラス
     /// </summary>
-    public class DataManager
+    public class DataManager : IDataManager
     {
         private static readonly DataManager _instance = new DataManager();
-        private TimeService _timeService;
+        private ITimeService _timeService;
         public event Action<DateTime> TimeUpdated;
 
         public static DataManager Instance => _instance;
@@ -53,7 +67,7 @@ namespace TatehamaInterlockingConsole.Manager
         /// 初期化処理
         /// </summary>
         /// <param name="timeService"></param>
-        public void Initialize(TimeService timeService)
+        public void Initialize(ITimeService timeService)
         {
             _timeService = timeService;
             _timeService.TimeUpdated += (currentTime) => OnTimeUpdated();
