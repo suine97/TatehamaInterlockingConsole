@@ -10,6 +10,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>InterlockingIcon.ico</ApplicationIcon>
+	<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Jint">
@@ -52,4 +53,8 @@
   <ItemGroup>
     <Content Include="JavaScript\TextParse.js" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="Build">
+    <MakeDir Directories="$(OutputPath)libs" />
+    <Copy SourceFiles="@(ReferenceCopyLocalPaths)" DestinationFolder="$(OutputPath)libs" />
+  </Target>
 </Project>

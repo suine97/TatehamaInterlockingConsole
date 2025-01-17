@@ -10,12 +10,35 @@ using TatehamaInterlockingConsole.ViewModels;
 using TatehamaInterlockingConsole.Views;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Services;
+using System.Reflection;
 
 namespace TatehamaInterlockingConsole
 {
     public partial class App : Application
     {
         private IHost _host;
+
+        public App()
+        {
+            // AppDomainのAssemblyResolveイベントを設定
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+        }
+
+        private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            // "libs"フォルダのパスを取得
+            string libsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "libs");
+            // DLL名を取得
+            string assemblyName = new AssemblyName(args.Name).Name + ".dll";
+            // 対象DLLのフルパスを取得
+            string assemblyPath = Path.Combine(libsPath, assemblyName);
+            // DLLが存在する場合に読み込む
+            if (File.Exists(assemblyPath))
+            {
+                return Assembly.LoadFrom(assemblyPath);
+            }
+            return null;
+        }
 
         protected override void OnStartup(StartupEventArgs e)
         {
