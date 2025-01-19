@@ -3,12 +3,15 @@
 namespace TatehamaInterlockingConsole.Models
 {
     /// <summary>
-    /// 連動装置サーバーデータ格納クラス
+    /// 運用サーバーデータ格納クラス
     /// </summary>
-    public class ServerData
+    public class DatabaseOperational
     {
+        private static readonly DatabaseOperational _instance = new();
+        public static DatabaseOperational Instance => _instance;
+
         /// <summary>
-        /// 連動装置・コマンド
+        /// 連動装置・送信用コマンド
         /// </summary>
         public class CommandToServer
         {
@@ -21,12 +24,25 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class InterlockingData
         {
-            public List<InterlockingAuthentication> Authentications { get; set; } = new List<InterlockingAuthentication>();
-            public List<InterlockingTrackCircuit> TrackCircuits { get; set; } = new List<InterlockingTrackCircuit>();
-            public List<InterlockingPoint> Points { get; set; } = new List<InterlockingPoint>();
-            public List<InterlockingSignal> Signals { get; set; } = new List<InterlockingSignal>();
-            public List<InterlockingLamp> Lamps { get; set; } = new List<InterlockingLamp>();
-            public List<InterlockingRetsuban> Retsuban { get; set; } = new List<InterlockingRetsuban>();
+            private InterlockingAuthentication _authentication;
+
+            public InterlockingAuthentication Authentication
+            {
+                get => _authentication;
+                set
+                {
+                    if (_authentication != null)
+                    {
+                        throw new System.InvalidOperationException("Authentication is already set. Only one instance is allowed.");
+                    }
+                    _authentication = value;
+                }
+            }
+            public List<InterlockingTrackCircuit> TrackCircuits { get; set; } = [];
+            public List<InterlockingPoint> Points { get; set; } = [];
+            public List<InterlockingSignal> Signals { get; set; } = [];
+            public List<InterlockingLamp> Lamps { get; set; } = [];
+            public List<InterlockingRetsuban> Retsuban { get; set; } = [];
         }
 
         /// <summary>

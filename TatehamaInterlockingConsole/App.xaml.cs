@@ -1,22 +1,19 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Windows;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using OpenIddict.Client;
 using TatehamaInterlockingConsole.ViewModels;
 using TatehamaInterlockingConsole.Views;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Services;
-using System.Reflection;
+using TatehamaInterlockingConsole.Models;
 
 namespace TatehamaInterlockingConsole
 {
     public partial class App : Application
     {
-        private IHost _host;
+        private ServiceProvider _serviceProvider;
 
         public App()
         {
@@ -40,79 +37,33 @@ namespace TatehamaInterlockingConsole
             return null;
         }
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            // IHostの初期化
-            _host = new HostBuilder()
-                .ConfigureLogging(options => options.AddDebug())
-                .ConfigureServices(services =>
-                {
-                    // DbContextの設定
-                    services.AddDbContext<DbContext>(options =>
-                    {
-                        options.UseSqlite(
-                            $"Filename={Path.Combine(Path.GetTempPath(), "trancrew-multiats-client.sqlite3")}");
-                        options.UseOpenIddict();
-                    });
+            var services = new ServiceCollection();
 
-                    // OpenIddictの設定
-                    services.AddOpenIddict()
+            // 必要なサービスの登録
+            services.AddSingleton(TimeService.Instance);
+            services.AddSingleton(DataManager.Instance);
+            services.AddSingleton(DataUpdateViewModel.Instance);
+            // ViewModelの登録
+            services.AddTransient<MainViewModel>();
+            // ウィンドウの登録
+            services.AddTransient<MainWindow>();
+            // Workerサービスを登録
+            services.AddHostedService<Worker>();
 
-                        .AddCore(options =>
-                        {
-                            options.UseEntityFrameworkCore()
-                                .UseDbContext<DbContext>();
-                        })
-
-                        .AddClient(options =>
-                        {
-                            options.AllowAuthorizationCodeFlow()
-                                .AllowRefreshTokenFlow();
-
-                            options.AddDevelopmentEncryptionCertificate()
-                                .AddDevelopmentSigningCertificate();
-
-                            options.UseSystemIntegration();
-
-                            options.UseSystemNetHttp()
-                                .SetProductInformation(typeof(App).Assembly);
-
-                            options.AddRegistration(new OpenIddictClientRegistration
-                            {
-                                Issuer = new Uri(ServerAddress.SignalAddress + "/hub/train", UriKind.Absolute),
-                                ClientId = "MultiATS_Client",
-                                RedirectUri = new Uri("/", UriKind.Relative),
-                            });
-                        }); 
-
-                    // 必要なサービスの登録
-                    services.AddSingleton<ITimeService, TimeService>();
-                    services.AddSingleton<IDataManager>(DataManager.Instance);
-                    services.AddSingleton<IDataUpdateViewModel>(DataUpdateViewModel.Instance);
-
-                    // ViewModelの登録
-                    services.AddTransient<MainViewModel>();
-                    // ウィンドウの登録
-                    services.AddTransient<MainWindow>();
-
-                    // Workerサービスを登録
-                    services.AddHostedService<Worker>();
-                })
-                .Build();
+            _serviceProvider = services.BuildServiceProvider();
 
             // MainWindowとViewModelのインスタンスを取得して表示
-            var mainWindow = _host.Services.GetRequiredService<MainWindow>();
+            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
-        }
 
-        protected override async void OnExit(ExitEventArgs e)
-        {
-            if (_host is not null)
-                await _host.StopAsync();
-
-            base.OnExit(e);
+            // サーバー接続
+            await ServerCommunication.Instance.StartAsync();
+            // ユーザー認証
+            await ServerCommunication.Instance.AuthenticateAsync();
         }
     }
 }

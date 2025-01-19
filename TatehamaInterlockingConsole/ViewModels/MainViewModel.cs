@@ -14,9 +14,9 @@ namespace TatehamaInterlockingConsole.ViewModels
     /// </summary>
     public class MainViewModel : WindowViewModel
     {
-        private readonly ITimeService _timeService;                 // 時間管理サービス
-        private readonly IDataManager _dataManager;                 // データ管理を担当するクラス
-        private readonly IDataUpdateViewModel _dataUpdateViewModel; // データ更新処理を管理するViewModel
+        private readonly TimeService _timeService;                  // 時間管理サービス
+        private readonly DataManager _dataManager;                  // データ管理を担当するクラス
+        private readonly DataUpdateViewModel _dataUpdateViewModel;  // データ更新処理を管理するViewModel
         private static bool _isConstructorExecuted = false;         // コンストラクタが一度だけ実行されることを保証するフラグ
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// コンストラクタ
         /// </summary>
         /// <param name="timeService">時間管理サービス</param>
-        /// <param name="uiElementLoader">UI要素ローダー</param>
         /// <param name="dataManager">データ管理クラス</param>
-        public MainViewModel(ITimeService timeService, IDataManager dataManager, IDataUpdateViewModel dataUpdateViewModel)
+        /// <param name="dataUpdateViewModel">データ更新クラス</param>
+        public MainViewModel(TimeService timeService, DataManager dataManager, DataUpdateViewModel dataUpdateViewModel)
         {
             try
             {

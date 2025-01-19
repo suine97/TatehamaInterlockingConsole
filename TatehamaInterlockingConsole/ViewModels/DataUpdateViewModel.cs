@@ -7,21 +7,11 @@ using TatehamaInterlockingConsole.Models;
 namespace TatehamaInterlockingConsole.ViewModels
 {
     /// <summary>
-    /// DataUpdateViewModelクラスのインターフェース
-    /// </summary>
-    public interface IDataUpdateViewModel
-    {
-        event Action<List<UIControlSetting>> NotifyUpdateControlEvent;
-        void UpdateTimerEvent();
-        void SetControlsetting(UIControlSetting setting);
-    }
-
-    /// <summary>
     /// UIControlSettingList更新クラス
     /// </summary>
-    public class DataUpdateViewModel : BaseViewModel, IDataUpdateViewModel
+    public class DataUpdateViewModel : BaseViewModel
     {
-        private static readonly DataUpdateViewModel _instance = new DataUpdateViewModel();
+        private static readonly DataUpdateViewModel _instance = new();
         private readonly DataManager _dataManager; // データ管理を担当するクラス
 
         public static DataUpdateViewModel Instance => _instance;

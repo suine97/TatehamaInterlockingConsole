@@ -14,18 +14,18 @@ namespace TatehamaInterlockingConsole.Models
     internal class Communication
     {
         // WebSocket関連のフィールド
-        private ClientWebSocket _webSocket = new ClientWebSocket();
-        private readonly Stopwatch _stopwatch = new Stopwatch();
+        private ClientWebSocket _webSocket = new();
+        private readonly Stopwatch _stopwatch = new();
         private static readonly Encoding _encoding = Encoding.UTF8;
         //private readonly string _connectUri = ServerAddress.SignalAddress;
         private readonly string _connectUri = "https://localhost:7232";
 
         // キャッシュ用の静的辞書
-        private static readonly ConcurrentDictionary<Type, PropertyInfo[]> PropertyCache = new ConcurrentDictionary<Type, PropertyInfo[]>();
-        private static readonly ConcurrentDictionary<Type, FieldInfo[]> FieldCache = new ConcurrentDictionary<Type, FieldInfo[]>();
+        private static readonly ConcurrentDictionary<Type, PropertyInfo[]> PropertyCache = new();
+        private static readonly ConcurrentDictionary<Type, FieldInfo[]> FieldCache = new();
 
         // JSONシリアライザ設定
-        private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings()
+        private static readonly JsonSerializerSettings JsonSerializerSettings = new()
         {
             NullValueHandling = NullValueHandling.Ignore
         };
@@ -118,7 +118,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public Communication()
         {
-            _webSocket = new ClientWebSocket();
+            _webSocket = new();
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace TatehamaInterlockingConsole.Models
         {
             while (true)
             {
-                _webSocket = new ClientWebSocket();
+                _webSocket = new();
 
                 try
                 {
@@ -176,7 +176,7 @@ namespace TatehamaInterlockingConsole.Models
                 await _webSocket.ConnectAsync(new Uri(_connectUri), CancellationToken.None);
             }
 
-            ServerData.CommandToServer requestCommand = new ServerData.CommandToServer()
+            DatabaseOperational.CommandToServer requestCommand = new()
             {
                 Command = _command,
                 Args = _request
@@ -197,7 +197,7 @@ namespace TatehamaInterlockingConsole.Models
                 await _webSocket.ConnectAsync(new Uri(_connectUri), CancellationToken.None);
             }
 
-            ServerData.CommandToServer requestCommand = new ServerData.CommandToServer()
+            DatabaseOperational.CommandToServer requestCommand = new()
             {
                 Command = command,
                 Args = request
@@ -256,7 +256,7 @@ namespace TatehamaInterlockingConsole.Models
                     {
                         if (messageBuilder == null)
                         {
-                            messageBuilder = new StringBuilder();
+                            messageBuilder = new();
                         }
                         string partMessage = _encoding.GetString(buffer, 0, result.Count);
                         messageBuilder.Append(partMessage);
