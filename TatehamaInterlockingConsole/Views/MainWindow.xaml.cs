@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using Microsoft.AspNetCore.SignalR.Client;
-using Newtonsoft.Json;
 using OpenIddict.Abstractions;
 using OpenIddict.Client;
 using TatehamaInterlockingConsole.Manager;
-using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.ViewModels;
 
 namespace TatehamaInterlockingConsole.Views
@@ -107,30 +105,6 @@ namespace TatehamaInterlockingConsole.Views
                 .WithUrl($"{ServerAddress.SignalAddress}/hub/train?access_token={_token}")
                 .WithAutomaticReconnect() // 自動再接続
                 .Build();
-
-            // サーバーからのメッセージを受信
-            client.On<string>("ReceiveMessage", (jsonMessage) =>
-            {
-                try
-                {
-                    // JSONをDatabaseTemporary.RootObjectにデシリアライズ
-                    var data = JsonConvert.DeserializeObject<DatabaseTemporary.RootObject>(jsonMessage);
-                    if (data != null)
-                    {
-                        Console.WriteLine("Data successfully deserialized:");
-                        Console.WriteLine($"Track Circuits: {data.TrackCircuitList.Count}");
-                        Console.WriteLine($"Signals: {data.SignalDataList.Count}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Failed to deserialize JSON.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error during JSON deserialization: {ex.Message}");
-                }
-            });
 
             // 再接続イベントのハンドリング
             client.Reconnecting += error =>

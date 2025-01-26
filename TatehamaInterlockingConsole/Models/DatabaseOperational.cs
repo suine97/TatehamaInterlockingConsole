@@ -42,7 +42,8 @@ namespace TatehamaInterlockingConsole.Models
             public List<InterlockingPoint> Points { get; set; } = [];
             public List<InterlockingSignal> Signals { get; set; } = [];
             public List<InterlockingLamp> Lamps { get; set; } = [];
-            public List<InterlockingRetsuban> Retsuban { get; set; } = [];
+            public List<InterlockingRetsuban> Retsubans { get; set; } = [];
+            public List<InterlockingLever> Levers { get; set; } = [];
         }
 
         /// <summary>
@@ -137,6 +138,21 @@ namespace TatehamaInterlockingConsole.Models
             /// 列車番号情報
             /// </summary>
             public string RetsubanText { get; set; }
+        }
+
+        /// <summary>
+        /// 連動装置・てこ情報クラス
+        /// </summary>
+        public class InterlockingLever
+        {
+            /// <summary>
+            /// 名称
+            /// </summary>
+            public string Name { get; set; }
+            /// <summary>
+            /// てこ状態値
+            /// </summary>
+            public int LeverValue { get; set; }
         }
     }
 }
