@@ -7,10 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OpenIddict.Client;
-using TatehamaInterlockingConsole.ViewModels;
-using TatehamaInterlockingConsole.Views;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Services;
+using TatehamaInterlockingConsole.ViewModels;
+using TatehamaInterlockingConsole.Views;
 
 namespace TatehamaInterlockingConsole
 {
@@ -78,7 +78,7 @@ namespace TatehamaInterlockingConsole
                 })
                 .Build();
 
-            // MainWindowとViewModelのインスタンスを取得して表示
+            // MainWindowのインスタンスを取得して表示
             var mainWindow = _host.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
 

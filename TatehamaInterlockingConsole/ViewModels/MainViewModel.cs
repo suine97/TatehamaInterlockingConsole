@@ -1,10 +1,12 @@
-﻿using System;
+﻿using OpenIddict.Client;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
+using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
 
 namespace TatehamaInterlockingConsole.ViewModels
@@ -17,7 +19,8 @@ namespace TatehamaInterlockingConsole.ViewModels
         private readonly TimeService _timeService;                 // 時間管理サービス
         private readonly DataManager _dataManager;                 // データ管理を担当するクラス
         private readonly DataUpdateViewModel _dataUpdateViewModel; // データ更新処理を管理するViewModel
-        private static bool _isConstructorExecuted = false;         // コンストラクタが一度だけ実行されることを保証するフラグ
+        private readonly ServerCommunication _serverCommunication; // サーバ通信クラス
+        private static bool _isConstructorExecuted = false;        // コンストラクタが一度だけ実行されることを保証するフラグ
 
         /// <summary>
         /// 時刻を1時間進めるコマンド
@@ -44,18 +47,31 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// </summary>
         public string Title { get; set; }
 
+        private bool _connectionStatus;
         /// <summary>
         /// 通信状態ステータス
         /// </summary>
-        public bool ConnectionStatus { get; set; } = false;
+        public bool ConnectionStatus
+        {
+            get => _connectionStatus;
+            set
+            {
+                if (_connectionStatus != value)
+                {
+                    _connectionStatus = value;
+                    OnPropertyChanged(nameof(ConnectionStatus));
+                }
+            }
+        }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        /// <param name="timeService">時間管理サービス</param>
-        /// <param name="uiElementLoader">UI要素ローダー</param>
-        /// <param name="dataManager">データ管理クラス</param>
-        public MainViewModel(TimeService timeService, DataManager dataManager, DataUpdateViewModel dataUpdateViewModel)
+        /// <param name="timeService"></param>
+        /// <param name="dataManager"></param>
+        /// <param name="dataUpdateViewModel"></param>
+        /// <param name="openIddictClientService"></param>
+        public MainViewModel(TimeService timeService, DataManager dataManager, DataUpdateViewModel dataUpdateViewModel, OpenIddictClientService openIddictClientService)
         {
             try
             {
@@ -68,6 +84,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                     _dataUpdateViewModel = dataUpdateViewModel;
                     _dataManager = dataManager;
                     _dataManager.Initialize(timeService);
+                    _serverCommunication = new ServerCommunication(openIddictClientService);
 
                     Title = "連動盤選択 | 連動盤 - ダイヤ運転会";
                     IncreaseTimeCommand = new RelayCommand(() => _timeService.IncreaseTime());
@@ -75,6 +92,8 @@ namespace TatehamaInterlockingConsole.ViewModels
 
                     // 時間更新イベントを購読
                     _dataManager.TimeUpdated += (currentTime) => OnPropertyChanged(nameof(CurrentTime));
+                    // サーバー接続状態イベントを購読
+                    _serverCommunication.ConnectionStatusChanged += (status) => ConnectionStatus = status;
                     // 初期化処理
                     Initialize();
                 }
@@ -138,6 +157,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             _timeService.Stop();
             ImageCacheManager.ClearCache();
             _dataManager.TimeUpdated -= (currentTime) => OnPropertyChanged(nameof(CurrentTime));
+            _serverCommunication.ConnectionStatusChanged -= (status) => OnPropertyChanged(nameof(ConnectionStatus));
             return true;
         }
     }

@@ -26,6 +26,11 @@ namespace TatehamaInterlockingConsole.ViewModels
         private string _stationName; // 駅名
 
         /// <summary>
+        /// 起動しているウィンドウの駅名を保持するリスト
+        /// </summary>
+        public static List<string> ActiveStationsList { get; } = new();
+
+        /// <summary>
         /// 表示モードを切り替えるコマンド
         /// </summary>
         public ICommand ToggleModeCommand { get; }
@@ -108,6 +113,9 @@ namespace TatehamaInterlockingConsole.ViewModels
                 _dataUpdateViewModel.NotifyUpdateControlEvent += OnNotifyUpdateControlEvent;
                 _stationName = DataHelper.ExtractStationNameFromFilePath(filePath); // ファイルパスから駅名を抽出
 
+                // 駅名をリストに追加
+                ActiveStationsList.Add(_stationName);
+
                 _clockUpdateTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
                 _clockUpdateTimer.Tick += OnClockUpdate;
                 _clockUpdateTimer.Start();
@@ -181,14 +189,19 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// </summary>
         public void OnClosing()
         {
-            ClearStationCache();
             // UI要素をクリア
+            ClearStationCache();
             StationElements.Clear();
+
             // キャッシュをクリア
             ImageCacheManager.ClearCache();
+
             // イベント解除
             _dataUpdateViewModel.NotifyUpdateControlEvent -= OnNotifyUpdateControlEvent;
             _clockUpdateTimer.Tick -= OnClockUpdate;
+
+            // 駅名をリストから削除
+            ActiveStationsList.Remove(_stationName);
         }
 
         /// <summary>
