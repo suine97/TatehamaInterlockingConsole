@@ -55,7 +55,7 @@ namespace TatehamaInterlockingConsole.Views
             }
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+        private async void Window_Closing(object sender, CancelEventArgs e)
         {
             if (DataContext is MainViewModel viewModel)
             {
@@ -68,6 +68,9 @@ namespace TatehamaInterlockingConsole.Views
 
                 // タイマーを停止
                 _timer.Stop();
+
+                // サーバーとの接続を切断
+                await _serverCommunication.DisconnectAsync();
 
                 // アプリケーション全体を終了
                 Application.Current.Shutdown();

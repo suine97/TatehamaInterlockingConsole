@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using OpenIddict.Abstractions;
 using OpenIddict.Client;
 using TatehamaInterlockingConsole.Manager;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace TatehamaInterlockingConsole.Models
 {
@@ -204,6 +205,12 @@ namespace TatehamaInterlockingConsole.Models
             {
                 Console.WriteLine($"Server send failed: {exception.Message}");
             }
+        }
+
+        public async Task DisconnectAsync()
+        {
+            await _connection.StopAsync();
+            await _connection.DisposeAsync();
         }
     }
 }
