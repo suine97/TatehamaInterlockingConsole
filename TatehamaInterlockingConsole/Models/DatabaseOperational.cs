@@ -11,18 +11,28 @@ namespace TatehamaInterlockingConsole.Models
         public static DatabaseOperational Instance => _instance;
 
         /// <summary>
-        /// 連動装置・送信用コマンド
+        /// 連動装置・送信用データクラス
         /// </summary>
-        public class CommandToServer
+        public class DataToServer
         {
-            public string Command { get; set; }
-            public string[] Args { get; set; }
+            /// <summary>
+            /// 起動しているウィンドウの駅名
+            /// </summary>
+            public List<string> ActiveStationsList { get; set; }
+            /// <summary>
+            /// てこ・着点ボタン名
+            /// </summary>
+            public string PartsName { get; set; }
+            /// <summary>
+            /// てこの向き
+            /// </summary>
+            public int PartsValue { get; set; }
         }
 
         /// <summary>
-        /// 連動装置データクラス
+        /// 連動装置・受信用データクラス
         /// </summary>
-        public class InterlockingData
+        public class DataFromServer
         {
             private InterlockingAuthentication _authentication;
 
@@ -52,13 +62,13 @@ namespace TatehamaInterlockingConsole.Models
         public class InterlockingAuthentication
         {
             /// <summary>
-            /// 操作権限ユーザー判定
+            /// 指令主任判定
             /// </summary>
-            public bool IsOperableUser { get; set; }
+            public bool IsCommander { get; set; }
             /// <summary>
-            /// 認証トークン
+            /// 信号係員判定
             /// </summary>
-            public string Token { get; set; }
+            public bool IsOperator { get; set; }
         }
 
         /// <summary>
@@ -150,7 +160,7 @@ namespace TatehamaInterlockingConsole.Models
             /// </summary>
             public string Name { get; set; }
             /// <summary>
-            /// てこ状態値
+            /// てこの向き
             /// </summary>
             public int LeverValue { get; set; }
         }
