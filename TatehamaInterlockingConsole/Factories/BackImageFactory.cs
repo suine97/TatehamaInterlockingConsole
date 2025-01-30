@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Collections.Generic;
 using TatehamaInterlockingConsole.Models;
 
 namespace TatehamaInterlockingConsole.Factories
@@ -14,9 +13,9 @@ namespace TatehamaInterlockingConsole.Factories
         /// </summary>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static UIElement CreateBackImageControl(UIControlSetting setting, List<UIControlSetting> allSettings)
+        public static UIElement CreateBackImageControl(UIControlSetting setting)
         {
-            var backImage = ImageFactory.CreateImageControl(setting, allSettings, 0);
+            var backImage = ImageFactory.CreateImageControl(setting, 0);
 
             BackImageWidth = backImage.Width;
             BackImageHeight = backImage.Height;

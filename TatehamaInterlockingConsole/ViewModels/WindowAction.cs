@@ -40,7 +40,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                CustomMessage.Show(ex.Message, "エラー");
             }
         }
     }

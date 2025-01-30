@@ -22,7 +22,7 @@ namespace TatehamaInterlockingConsole.Factories
         /// <param name="allSettings"></param>
         /// <param name="drawing"></param>
         /// <returns></returns>
-        public static UIElement CreateRetsubanImageControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool drawing)
+        public static UIElement CreateRetsubanImageControl(UIControlSetting setting, bool drawing)
         {
             var canvas = new Canvas();
 
@@ -83,7 +83,7 @@ namespace TatehamaInterlockingConsole.Factories
             // ベースイメージを追加
             if (drawing)
             {
-                var baseImage = ImageFactory.CreateImageControl(setting, allSettings, true);
+                var baseImage = ImageFactory.CreateImageControl(setting, true);
                 canvas.Children.Insert(0, baseImage);
             }
             return canvas;

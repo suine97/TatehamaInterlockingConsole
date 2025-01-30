@@ -1,0 +1,255 @@
+Type	UniqueName	ParentName	ServerType	ServerName	PointNameA	PointValueA	PointNameB	PointValueB	LeverType	KeyName	LinkedStationName	LinkedUniqueName	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImageIndex	BaseImagePath	ImagePath	Remark								
+BackImage	操作盤												0	0														Image/BackImage/TH66_Enohara-Inspection-Switchboard.png									
+Image	Clock_Base												1650	78	79	110												Image/Clock/Clock_Border.png									
+ClockImage	Clock_Meter	Clock_Base											6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
+Image	Hook												1661	10														Image/Hook/Hook_Base.png									
+LeverImage	1R									駅扱切換			433	767										1R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0代X=てこ赤(X)N(X)　例：1R=てこ赤NR								
+TextBlock	1R_Label	1R								駅扱切換			14	20	11	11				1	10	Transparent	#FFBCBCBC	1R													
+LeverImage	2R									駅扱切換			1338	717										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+TextBlock	2R_Label	2R								駅扱切換			14	20	11	11				2	10	Transparent	#FFBCBCBC	2R													
+LeverImage	3L									駅扱切換			1588	667										3L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+TextBlock	3L_Label	3L								駅扱切換			14	20	11	11				3	10	Transparent	#FFBCBCBC	3L													
+LeverImage	4L									駅扱切換			1588	717										4L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+TextBlock	4L_Label	4L								駅扱切換			14	20	11	11				4	10	Transparent	#FFBCBCBC	4L													
+LeverImage	5L									駅扱切換			1748	817										5L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+TextBlock	5L_Label	5L								駅扱切換			14	20	11	11				5	10	Transparent	#FFBCBCBC	5L													
+LeverImage	11R									駅扱切換			722	717										11R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"	10代X=てこ緑(X)N(X)　例：11R=てこ緑NR								
+TextBlock	11R_Label	11R								駅扱切換			14	20	11	11				11	10	Transparent	#FFBCBCBC	11R													
+LeverImage	12L									駅扱切換			870	717										12L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+TextBlock	12L_Label	12L								駅扱切換			14	20	11	11				12	10	Transparent	#FFBCBCBC	12L													
+LeverImage	13R									駅扱切換			1280	717										13R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
+TextBlock	13R_Label	13R								駅扱切換			14	20	11	11				13	10	Transparent	#FFBCBCBC	13R													
+LeverImage	14R									駅扱切換			1440	667										14R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
+TextBlock	14R_Label	14R								駅扱切換			14	20	11	11				14	10	Transparent	#FFBCBCBC	14R													
+LeverImage	15L									駅扱切換			1646	667										15L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+TextBlock	15L_Label	15L								駅扱切換			14	20	11	11				15	10	Transparent	#FFBCBCBC	15L													
+LeverImage	15LZ									駅扱切換			1704	667										15LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"	10代XZ=てこ黄(X)N(X)Z　例：15LZ=てこ黄LN								
+TextBlock	15LZ_Label	15LZ								駅扱切換			14	20	11	11				15Z	10	Transparent	#FFBCBCBC	15LZ													
+LeverImage	16L									駅扱切換			1646	717										16L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+TextBlock	16L_Label	16L								駅扱切換			14	20	11	11				16	10	Transparent	#FFBCBCBC	16L													
+LeverImage	16LZ									駅扱切換			1704	717										16LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
+TextBlock	16LZ_Label	16LZ								駅扱切換			14	20	11	11				16Z	10	Transparent	#FFBCBCBC	16LZ													
+LeverImage	21R												928	267											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	21R_Label	21R											14	20	11	11				21	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	22R												928	317											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	22R_Label	22R											14	20	11	11				22	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	23R												928	367											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	23R_Label	23R											14	20	11	11				23	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	24R												928	417											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	24R_Label	24R											14	20	11	11				24	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	25R												928	467											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	25R_Label	25R											14	20	11	11				25	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	26R												928	517											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	26R_Label	26R											14	20	11	11				26	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	27R												928	567											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	27R_Label	27R											14	20	11	11				27	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	28R												928	617											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	28R_Label	28R											14	20	11	11				28	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	29R												928	667											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	29R_Label	29R											14	20	11	11				29	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	31R												477	117											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	31R_Label	31R											14	20	11	11				31	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	32R												477	167											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	32R_Label	32R											14	20	11	11				32	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	33R												477	217											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	33R_Label	33R											14	20	11	11				33	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	34L												1419	117											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Green_L.png,Image/Lever_dummy/Lever_Green_N.png"	ダミー								
+TextBlock	34L_Label	34L											14	20	11	11				34	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	34LZ												1477	117											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Yellow_L.png,Image/Lever_dummy/Lever_Yellow_N.png"	ダミー								
+TextBlock	34LZ_Label	34LZ											14	20	11	11				34Z	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	35L												1419	167											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Green_L.png,Image/Lever_dummy/Lever_Green_N.png"	ダミー								
+TextBlock	35L_Label	35L											14	20	11	11				35	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	35LZ												1477	167											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Yellow_L.png,Image/Lever_dummy/Lever_Yellow_N.png"	ダミー								
+TextBlock	35LZ_Label	35LZ											14	20	11	11				35Z	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	36L												1419	217											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Green_L.png,Image/Lever_dummy/Lever_Green_N.png"	ダミー								
+TextBlock	36L_Label	36L											14	20	11	11				36	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	36LZ												1477	217											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Yellow_L.png,Image/Lever_dummy/Lever_Yellow_N.png"	ダミー								
+TextBlock	36LZ_Label	36LZ											14	20	11	11				36Z	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	37L												1477	367											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Green_L.png,Image/Lever_dummy/Lever_Green_N.png"	ダミー								
+TextBlock	37L_Label	37L											14	20	11	11				37	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	38L												1477	417											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Green_L.png,Image/Lever_dummy/Lever_Green_N.png"	ダミー								
+TextBlock	38L_Label	38L											14	20	11	11				38	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	39L												1477	467											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Green_L.png,Image/Lever_dummy/Lever_Green_N.png"	ダミー								
+TextBlock	39L_Label	39L											14	20	11	11				39	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	40L												1477	517											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Green_L.png,Image/Lever_dummy/Lever_Green_N.png"	ダミー								
+TextBlock	40L_Label	40L											14	20	11	11				40	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	41L												886	217											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Green_L.png,Image/Lever_dummy/Lever_Green_N.png"	ダミー								
+TextBlock	41L_Label	41L											14	20	11	11				41	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	41LZ												944	217											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Yellow_L.png,Image/Lever_dummy/Lever_Yellow_N.png"	ダミー								
+TextBlock	41LZ_Label	41LZ											14	20	11	11				41Z	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	42L												886	167											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Green_L.png,Image/Lever_dummy/Lever_Green_N.png"	ダミー								
+TextBlock	42L_Label	42L											14	20	11	11				42	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	42LZ												944	167											"-1,0"	0	Image/Lever_dummy/LeverBase_LN.png	"Image/Lever_dummy/Lever_Yellow_L.png,Image/Lever_dummy/Lever_Yellow_N.png"	ダミー								
+TextBlock	42LZ_Label	42LZ											14	20	11	11				42Z	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	43R												808	167											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Green_N.png,Image/Lever_dummy/Lever_Green_R.png"	ダミー								
+TextBlock	43R_Label	43R											14	20	11	11				43	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	43RZ												750	167											"0,1"	0	Image/Lever_dummy/LeverBase_NR.png	"Image/Lever_dummy/Lever_Yellow_N.png,Image/Lever_dummy/Lever_Yellow_R.png"	ダミー								
+TextBlock	43RZ_Label	43RZ											14	20	11	11				43Z	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	A									駅扱切換			1762	680										A	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	A_Label	A								駅扱切換			5	23	15	12				A	10	Transparent	#FFBCBCBC	A													
+ButtonImage	B									駅扱切換			1762	730										B	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	B_Label	B								駅扱切換			5	23	15	12				B	10	Transparent	#FFBCBCBC	B													
+ButtonImage	C									駅扱切換			1654	780										C	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	C_Label	C								駅扱切換			5	23	15	12				C	10	Transparent	#FFBCBCBC	C													
+ButtonImage	D									駅扱切換			533	730										D	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	D_Label	D								駅扱切換			5	23	15	12				D	10	Transparent	#FFBCBCBC	D													
+ButtonImage	E									駅扱切換			541	830										E	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	E_Label	E								駅扱切換			5	23	15	12				E	10	Transparent	#FFBCBCBC	E													
+ButtonImage	J												1396	680											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	J_Label	J											5	23	15	12				J	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	N												1002	230											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	N_Label	N											5	23	15	12				N	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	P												706	180											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	P_Label	P											5	23	15	12				P	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	Q												1002	180											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	Q_Label	Q											5	23	15	12				Q	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	1												533	280											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	1_Label	1											5	23	15	12				1	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	2												533	330											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	2_Label	2											5	23	15	12				2	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	3												533	380											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	3_Label	3											5	23	15	12				3	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	4												533	430											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	4_Label	4											5	23	15	12				4	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	5												533	480											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	5_Label	5											5	23	15	12				5	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	6												533	530											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	6_Label	6											5	23	15	12				6	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	7												533	580											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	7_Label	7											5	23	15	12				7	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	8												533	630											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	8_Label	8											5	23	15	12				8	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	9												533	680											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	9_Label	9											5	23	15	12				9	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	13									駅扱切換			1148	730										13	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+TextBlock	13_Label	13								駅扱切換			5	23	15	12				13	10	Transparent	#FFBCBCBC	13													
+ButtonImage	21												433	130											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	21_Label	21											5	23	15	12				21	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	22												433	180											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	22_Label	22											5	23	15	12				22	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	23												433	230											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	23_Label	23											5	23	15	12				23	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	24												1535	130											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	24_Label	24											5	23	15	12				24	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	25												1535	180											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	25_Label	25											5	23	15	12				25	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	26												1535	230											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	26_Label	26											5	23	15	12				26	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	27												1535	380											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	27_Label	27											5	23	15	12				27	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	28												1535	430											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	28_Label	28											5	23	15	12				28	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	29												1535	480											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	29_Label	29											5	23	15	12				29	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	30												1535	530											"0,1"	0	Image/Button_dummy/ArrivalButton_Base.png	"Image/Button_dummy/ArrivalButton_White_OFF.png,Image/Button_dummy/ArrivalButton_White_ON.png"	ダミー								
+TextBlock	30_Label	30											5	23	15	12				30	10	Transparent	#FFBCBCBC						ダミー								
+ButtonImage	警報上り接近									駅扱切換			604	911										警報上り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
+ButtonImage	警報下り接近									駅扱切換			1591	911										警報下り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
+LeverImage	P51									駅扱切換			33	681										P51	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	転てつ器単独てこはNCR								
+Image	P51_PG		転てつ器										31	662											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"	"G,Y,R,PG,PYは灯色"								
+Image	P51_PY		転てつ器										65	662											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P51_Label	P51								駅扱切換			14	20	11	11				51	10	Transparent	#FFBCBCBC	P51													
+LeverImage	P52									駅扱切換			101	681										P52	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P52_PG		転てつ器										99	662											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P52_PY		転てつ器										133	662											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P52_Label	P52								駅扱切換			14	20	11	11				52	10	Transparent	#FFBCBCBC	P52													
+LeverImage	P53									駅扱切換			169	681										P53	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P53_PG		転てつ器										167	662											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P53_PY		転てつ器										201	662											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P53_Label	P53								駅扱切換			14	20	11	11				53	10	Transparent	#FFBCBCBC	P53													
+LeverImage	P54									駅扱切換			237	681										P54	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P54_PG		転てつ器										235	662											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P54_PY		転てつ器										269	662											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P54_Label	P54								駅扱切換			14	20	11	11				54	10	Transparent	#FFBCBCBC	P54													
+LeverImage	P55									駅扱切換			33	757										P55	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P55_PG		転てつ器										31	738											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P55_PY		転てつ器										65	738											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P55_Label	P55								駅扱切換			14	20	11	11				55	10	Transparent	#FFBCBCBC	P55													
+LeverImage	P56									駅扱切換			101	757										P56	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P56_PG		転てつ器										99	738											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P56_PY		転てつ器										133	738											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P56_Label	P56								駅扱切換			14	20	11	11				56	10	Transparent	#FFBCBCBC	P56													
+LeverImage	P57									駅扱切換			169	757										P57	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	P57_PG		転てつ器										167	738											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	P57_PY		転てつ器										201	738											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	P57_Label	P57								駅扱切換			14	20	11	11				57	10	Transparent	#FFBCBCBC	P57													
+LeverImage	P61												33	225											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P61_PG												31	206											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P61_PY												65	206											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P61_Label	P61											14	20	11	11				61	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P62												101	225											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P62_PG												99	206											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P62_PY												133	206											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P62_Label	P62											14	20	11	11				62	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P63												169	225											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P63_PG												167	206											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P63_PY												201	206											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P63_Label	P63											14	20	11	11				63	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P64												237	225											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P64_PG												235	206											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P64_PY												269	206											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P64_Label	P64											14	20	11	11				64	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P65												33	301											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P65_PG												31	282											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P65_PY												65	282											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P65_Label	P65											14	20	11	11				65	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P66												101	301											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P66_PG												99	282											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P66_PY												133	282											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P66_Label	P66											14	20	11	11				66	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P67												169	301											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P67_PG												167	282											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P67_PY												201	282											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P67_Label	P67											14	20	11	11				67	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P68												237	301											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P68_PG												235	282											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P68_PY												269	282											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P68_Label	P68											14	20	11	11				68	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P69												33	377											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P69_PG												31	358											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P69_PY												65	358											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P69_Label	P69											14	20	11	11				69	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P70												101	377											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P70_PG												99	358											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P70_PY												133	358											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P70_Label	P70											14	20	11	11				70	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P71												169	377											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P71_PG												167	358											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P71_PY												201	358											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P71_Label	P71											14	20	11	11				71	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P72												237	377											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P72_PG												235	358											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P72_PY												269	358											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P72_Label	P72											14	20	11	11				72	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P73												33	453											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P73_PG												31	434											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P73_PY												65	434											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P73_Label	P73											14	20	11	11				73	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P74												101	453											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P74_PG												99	434											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P74_PY												133	434											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P74_Label	P74											14	20	11	11				74	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P75												169	453											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P75_PG												167	434											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P75_PY												201	434											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P75_Label	P75											14	20	11	11				75	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P76												237	453											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P76_PG												235	434											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P76_PY												269	434											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P76_Label	P76											14	20	11	11				76	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P77												33	529											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P77_PG												31	510											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P77_PY												65	510											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P77_Label	P77											14	20	11	11				77	10	Transparent	#FFBCBCBC						ダミー								
+LeverImage	P78												101	529											"-1,0,1"	0	Image/Lever_dummy/LeverBase_NCR.png	"Image/Lever_dummy/Lever_Black_L.png,Image/Lever_dummy/Lever_Black_N.png,Image/Lever_dummy/Lever_Black_R.png"	ダミー								
+Image	P78_PG												99	510											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PG.png"	ダミー								
+Image	P78_PY												133	510											"0,1"	0		"Image/Light_dummy/N.png,Image/Light_dummy/PY.png"	ダミー								
+TextBlock	P78_Label	P78											14	20	11	11				78	10	Transparent	#FFBCBCBC						ダミー								
+KeyImage	駅扱切換								駅扱切換				1827	64										駅扱切換	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	駅扱切換はLR								
+Image	駅扱切換_PY		てこ										1825	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+Image	駅扱切換_PG		てこ										1859	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+																																					
+																																					
+																																					
+																																					
+																																					

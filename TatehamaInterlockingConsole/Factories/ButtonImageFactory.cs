@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Collections.Generic;
 using TatehamaInterlockingConsole.Models;
 
 namespace TatehamaInterlockingConsole.Factories
@@ -12,14 +11,14 @@ namespace TatehamaInterlockingConsole.Factories
         /// </summary>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static UIElement CreateButtonImageControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool drawing)
+        public static UIElement CreateButtonImageControl(UIControlSetting setting, bool drawing)
         {
             var canvas = new Canvas();
 
             // Base画像の読み込み
-            var baseImage = BaseImageFactory.CreateBaseImageControl(setting, allSettings);
+            var baseImage = BaseImageFactory.CreateBaseImageControl(setting);
             // 切り替え用画像の読み込み
-            var changeImage = ImageFactory.CreateImageControl(setting, allSettings, true);
+            var changeImage = ImageFactory.CreateImageControl(setting, true);
 
             if (drawing)
             {

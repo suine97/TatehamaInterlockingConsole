@@ -11,6 +11,7 @@ using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.Models;
+using System.Linq;
 
 namespace TatehamaInterlockingConsole.ViewModels
 {
@@ -24,11 +25,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         private readonly DataUpdateViewModel _dataUpdateViewModel;
         private readonly DispatcherTimer _clockUpdateTimer;
         private string _stationName; // 駅名
-
-        /// <summary>
-        /// 起動しているウィンドウの駅名を保持するリスト
-        /// </summary>
-        public static List<string> ActiveStationsList { get; } = new();
+        private string _stationNumber; // 駅番号
 
         /// <summary>
         /// 表示モードを切り替えるコマンド
@@ -112,9 +109,13 @@ namespace TatehamaInterlockingConsole.ViewModels
                 _dataUpdateViewModel = dataUpdateViewModel;
                 _dataUpdateViewModel.NotifyUpdateControlEvent += OnNotifyUpdateControlEvent;
                 _stationName = DataHelper.ExtractStationNameFromFilePath(filePath); // ファイルパスから駅名を抽出
+                _stationNumber = DataHelper.GetStationNumberFromStationName(_stationName); // 駅名から駅番号を取得
 
                 // 駅名をリストに追加
-                ActiveStationsList.Add(_stationName);
+                if (!_dataManager.ActiveStationsList.Contains(_stationNumber))
+                {
+                    _dataManager.ActiveStationsList.Add(_stationNumber);
+                }
 
                 _clockUpdateTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
                 _clockUpdateTimer.Tick += OnClockUpdate;
@@ -141,7 +142,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                CustomMessage.Show(ex.ToString(), "エラー");
                 throw ex;
             }
         }
@@ -201,7 +202,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             _clockUpdateTimer.Tick -= OnClockUpdate;
 
             // 駅名をリストから削除
-            ActiveStationsList.Remove(_stationName);
+            _dataManager.ActiveStationsList.Remove(_stationNumber);
         }
 
         /// <summary>

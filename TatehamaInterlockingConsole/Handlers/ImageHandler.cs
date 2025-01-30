@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
@@ -60,11 +58,7 @@ namespace TatehamaInterlockingConsole.Handlers
                 case "ButtonImage":
                     HandleButtonImageMouseDown(control);
                     break;
-                case "Retsuban":
-                    HandleRetsubanMouseDown(control, isLeftClick);
-                    break;
                 default:
-                    // MessageBox.Show($"Image {(isLeftClick ? "Left" : "Right")} MouseDown event {control.ClickEventName} | {control.UniqueName}");
                     break;
             }
         }
@@ -81,7 +75,6 @@ namespace TatehamaInterlockingConsole.Handlers
                     HandleButtonImageMouseUp(control);
                     break;
                 default:
-                    // MessageBox.Show($"Image {(isLeftClick ? "Left" : "Right")} MouseUp event {control.ClickEventName} | {control.UniqueName}");
                     break;
             }
         }
@@ -128,19 +121,7 @@ namespace TatehamaInterlockingConsole.Handlers
             _dataUpdateViewModel.SetControlsetting(control);
             _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
-            // サーバーリクエスト送信判定
-            if ((control.LeverType == "方向てこ") && IsBothReleaseLeversManual(control))
-            {
-                // 双方の方向てこ解放鍵「駅扱」位置
-                // サーバーへリクエスト送信
-                Debug.WriteLine($"Server Request : {control.UniqueName} : {control.ImageIndex}");
-            }
-            else if ((control.LeverType != "方向てこ") && IsKeyLeverManual(control))
-            {
-                // 鍵「駅扱」位置
-                // サーバーへリクエスト送信
-                Debug.WriteLine($"Server Request : {control.UniqueName} : {control.ImageIndex}");
-            }
+            // サーバーへリクエスト送信
         }
 
         /// <summary>
@@ -255,11 +236,7 @@ namespace TatehamaInterlockingConsole.Handlers
                 _dataUpdateViewModel.SetControlsetting(control);
                 _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
 
-                // 鍵位置「駅扱」判定
-                if (!IsKeyLeverManual(control))
-                {
-                    // サーバーへリクエスト送信
-                }
+                // サーバーへリクエスト送信
             }
         }
 
@@ -280,31 +257,7 @@ namespace TatehamaInterlockingConsole.Handlers
                 _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
             }
 
-            // 鍵位置「駅扱」判定
-            if (!IsKeyLeverManual(control))
-            {
-                // サーバーへリクエスト送信
-            }
-        }
-
-        /// <summary>
-        /// Retsubanマウスダウン処理
-        /// </summary>
-        /// <param name="control"></param>
-        /// <param name="isLeftClick"></param>
-        /// <param name="soundIndex"></param>
-        private void HandleRetsubanMouseDown(UIControlSetting control, bool isLeftClick)
-        {
-            if (string.IsNullOrEmpty(control.Retsuban))
-            {
-                control.Retsuban = "回1234A";
-                _dataUpdateViewModel.SetControlsetting(control);
-            }
-            else if (!string.IsNullOrEmpty(control.Retsuban))
-            {
-                control.Retsuban = string.Empty;
-                _dataUpdateViewModel.SetControlsetting(control);
-            }
+            // サーバーへリクエスト送信
         }
 
         /// <summary>
@@ -336,66 +289,6 @@ namespace TatehamaInterlockingConsole.Handlers
                 default:
                     return false;
             }
-        }
-
-        /// <summary>
-        /// 鍵てこ位置が「駅扱」になっているか判定
-        /// </summary>
-        /// <returns></returns>
-        private bool IsKeyLeverManual(UIControlSetting control)
-        {
-            try
-            {
-                // 駅扱切換鍵取得
-                var keyControl = _dataManager.AllControlSettingList
-                    .Where(key => key.StationName == control.StationName && key.UniqueName == control.KeyName)
-                    .FirstOrDefault();
-
-                // 「駅扱」位置判定
-                if (keyControl.KeyManual)
-                {
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// 2つの解放てこがどちらも「駅扱」になっているか判定
-        /// </summary>
-        /// <param name="control"></param>
-        /// <returns></returns>
-        private bool IsBothReleaseLeversManual(UIControlSetting control)
-        {
-            try
-            {
-                // 駅扱切換鍵取得
-                var mainReleaseLever = _dataManager.AllControlSettingList
-                    .Where(key => key.StationName == control.StationName && key.UniqueName == control.KeyName)
-                    .FirstOrDefault();
-                // 方向てこ解放鍵取得
-                var subReleaseLever = _dataManager.AllControlSettingList
-                    .Where(key => key.StationName == control.LinkedStationName && key.UniqueName == control.LinkedUniqueName)
-                    .FirstOrDefault();
-
-                if ((mainReleaseLever != null) && (subReleaseLever != null))
-                {
-                    // 「駅扱」位置判定
-                    if (mainReleaseLever.KeyManual && subReleaseLever.KeyManual)
-                    {
-                        return true;
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }
-            return false;
         }
     }
 }

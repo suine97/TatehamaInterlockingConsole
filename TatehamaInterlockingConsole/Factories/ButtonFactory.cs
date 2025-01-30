@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 using System.Windows.Controls;
-using System.Collections.Generic;
 using TatehamaInterlockingConsole.CustomControl;
 using TatehamaInterlockingConsole.Handlers;
 using TatehamaInterlockingConsole.Models;
@@ -15,7 +14,7 @@ namespace TatehamaInterlockingConsole.Factories
         /// </summary>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static Button CreateButtonControl(UIControlSetting setting, List<UIControlSetting> allSettings)
+        public static Button CreateButtonControl(UIControlSetting setting)
         {
             var button = new CustomButton
             {

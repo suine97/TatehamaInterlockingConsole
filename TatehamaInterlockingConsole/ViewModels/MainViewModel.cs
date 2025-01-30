@@ -1,8 +1,8 @@
-﻿using OpenIddict.Client;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using OpenIddict.Client;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
@@ -100,7 +100,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                CustomMessage.Show(ex.ToString(), "エラー");
                 throw ex;
             }
         }
@@ -129,21 +129,13 @@ namespace TatehamaInterlockingConsole.ViewModels
         }
 
         /// <summary>
-        /// タイマー周期ごとの処理
-        /// </summary>
-        public void OnTimerElapsed()
-        {
-            _dataUpdateViewModel.UpdateTimerEvent();
-        }
-
-        /// <summary>
         /// ウィンドウを閉じる際の確認処理
         /// </summary>
         /// <returns>ウィンドウを閉じて良い場合はtrue、それ以外はfalse</returns>
         public bool ConfirmClose()
         {
-            var result = MessageBox.Show("全ての連動盤を閉じます。よろしいですか？",
-                "終了確認",
+            var result = CustomMessage.Show("全ての連動盤を閉じます。よろしいですか？",
+                "終了確認", 
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 

@@ -1,12 +1,10 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Collections.Generic;
+using System.Windows.Media.Imaging;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Manager;
-using System.Windows.Media.Imaging;
-using System;
-using System.IO;
 
 namespace TatehamaInterlockingConsole.Factories
 {
@@ -18,7 +16,7 @@ namespace TatehamaInterlockingConsole.Factories
         /// <param name="setting"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        public static Image CreateBaseImageControl(UIControlSetting setting, List<UIControlSetting> allSettings)
+        public static Image CreateBaseImageControl(UIControlSetting setting)
         {
             var imagePath = setting.BaseImagePath;
             var imageSource = ImageCacheManager.GetImage(imagePath);

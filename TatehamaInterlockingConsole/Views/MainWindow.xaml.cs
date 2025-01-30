@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Threading;
 using OpenIddict.Client;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.ViewModels;
@@ -13,7 +11,6 @@ namespace TatehamaInterlockingConsole.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly DispatcherTimer _timer;
         private readonly ServerCommunication _serverCommunication;
 
         public MainWindow(MainViewModel viewModel, OpenIddictClientService openIddictClientService)
@@ -23,14 +20,6 @@ namespace TatehamaInterlockingConsole.Views
             _serverCommunication = new ServerCommunication(openIddictClientService);
 
             Loaded += OnLoaded;
-
-            // タイマーの初期化
-            _timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromMilliseconds(100)
-            };
-            _timer.Tick += OnTimerTick;
-            _timer.Start();
         }
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
@@ -46,15 +35,6 @@ namespace TatehamaInterlockingConsole.Views
             await _serverCommunication.AuthenticateAsync();
         }
 
-        private void OnTimerTick(object sender, EventArgs e)
-        {
-            if (DataContext is MainViewModel viewModel)
-            {
-                // タイマーイベントをViewModelに通知
-                viewModel.OnTimerElapsed();
-            }
-        }
-
         private async void Window_Closing(object sender, CancelEventArgs e)
         {
             if (DataContext is MainViewModel viewModel)
@@ -65,9 +45,6 @@ namespace TatehamaInterlockingConsole.Views
                     e.Cancel = true;
                     return;
                 }
-
-                // タイマーを停止
-                _timer.Stop();
 
                 // サーバーとの接続を切断
                 await _serverCommunication.DisconnectAsync();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
@@ -34,9 +35,14 @@ namespace TatehamaInterlockingConsole.Manager
         public Dictionary<string, List<string>> StationNameDictionary { get; set; }
 
         /// <summary>
-        /// 信号操作管理者判定
+        /// サーバー接続状態
         /// </summary>
-        public bool Administrator { get; set; }
+        public bool ServerConnected { get; set; }
+
+        /// <summary>
+        /// 起動しているウィンドウの駅名を保持するリスト
+        /// </summary>
+        public List<string> ActiveStationsList { get; set; }
 
         /// <summary>
         /// コンストラクタ
@@ -46,7 +52,7 @@ namespace TatehamaInterlockingConsole.Manager
             AllControlSettingList = new();
             RetsubanImagePathDictionary = new();
             StationNameDictionary  = new();
-            Administrator = false;
+            ActiveStationsList = new();
         }
 
         /// <summary>
@@ -58,6 +64,62 @@ namespace TatehamaInterlockingConsole.Manager
             _timeService = timeService;
             _timeService.TimeUpdated += (currentTime) => OnTimeUpdated();
             TimeUpdated += (currentTime) => ClockImageFactory.CurrentTime = currentTime;
+        }
+
+        /// <summary>
+        /// サーバー受信データを運用データに代入
+        /// </summary>
+        /// <param name="data"></param>
+        public DatabaseOperational.DataFromServer UpdateDataFromServer(DatabaseTemporary.RootObject data)
+        {
+            try
+            {
+                var updatedDataFromServer = new DatabaseOperational.DataFromServer
+                {
+                    TrackCircuits = data.TrackCircuitList.Select(temp => new DatabaseOperational.InterlockingTrackCircuit
+                    {
+                        Name = temp.Name,
+                        IsRouteSetting = false,
+                        IsOnTrack = false,
+                    }).ToList(),
+
+                    Signals = data.SignalDataList.Select(temp => new DatabaseOperational.InterlockingSignal
+                    {
+                        Name = temp.Name,
+                        IsProceedSignal = false,
+                    }).ToList(),
+
+                    Points = data.PointList.Select(temp => new DatabaseOperational.InterlockingPoint
+                    {
+                        Name = temp.Name,
+                        IsReversePosition = false,
+                    }).ToList(),
+
+                    Lamps = data.LampList.Select(temp => new DatabaseOperational.InterlockingLamp
+                    {
+                        Name = temp.Name,
+                        IsLighting = false,
+                    }).ToList(),
+
+                    Retsubans = data.RetsubanList.Select(temp => new DatabaseOperational.InterlockingRetsuban
+                    {
+                        Name = temp.Name,
+                        RetsubanText = "",
+                    }).ToList(),
+
+                    Levers = data.LeverList.Select(temp => new DatabaseOperational.InterlockingLever
+                    {
+                        Name = temp.Name,
+                        LeverValue = 0,
+                    }).ToList()
+                };
+
+                return updatedDataFromServer;
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         /// <summary>

@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using TatehamaInterlockingConsole.Models;
 
 namespace TatehamaInterlockingConsole.Handlers
@@ -16,7 +15,6 @@ namespace TatehamaInterlockingConsole.Handlers
                 switch (setting.ClickEventName)
                 {
                     default:
-                        MessageBox.Show($"Label Left Click event {setting.ClickEventName} | {setting.UniqueName}");
                         break;
                 }
             };
@@ -25,7 +23,6 @@ namespace TatehamaInterlockingConsole.Handlers
                 switch (setting.ClickEventName)
                 {
                     default:
-                        MessageBox.Show($"Label Right Click event {setting.ClickEventName} | {setting.UniqueName}");
                         break;
                 }
             };

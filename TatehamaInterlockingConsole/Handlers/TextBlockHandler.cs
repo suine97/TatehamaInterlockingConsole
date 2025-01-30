@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace TatehamaInterlockingConsole.Handlers
 {
@@ -15,8 +14,7 @@ namespace TatehamaInterlockingConsole.Handlers
                 switch(clickEventName)
                 {
                     default:
-                        MessageBox.Show($"Click event {clickEventName}");
-                    break;
+                        break;
                 }
             };
         }

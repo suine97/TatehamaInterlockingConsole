@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Models;
 
@@ -24,29 +23,31 @@ namespace TatehamaInterlockingConsole.Services
             ParentName = 2,
             ServerName = 3,
             serverType = 4,
-            PointName = 5,
-            PointValue = 6,
-            LeverType = 7,
-            KeyName = 8,
-            LinkedStationName = 9,
-            LinkedUniqueName = 10,
-            X = 11,
-            Y = 12,
-            Width = 13,
-            Height = 14,
-            Angle = 15,
-            AngleOriginX = 16,
-            AngleOriginY = 17,
-            Text = 18,
-            FontSize = 19,
-            BackgroundColor = 20,
-            TextColor = 21,
-            ClickEventName = 22,
-            ImagePattern = 23, 
-            ImageIndex = 24,
-            BaseImagePath = 25,
-            ImagePath = 26,
-            Remark = 27
+            PointNameA = 5,
+            PointValueA = 6,
+            PointNameB = 7,
+            PointValueB = 8,
+            LeverType = 9,
+            KeyName = 10,
+            LinkedStationName = 11,
+            LinkedUniqueName = 12,
+            X = 13,
+            Y = 14,
+            Width = 15,
+            Height = 16,
+            Angle = 17,
+            AngleOriginX = 18,
+            AngleOriginY = 19,
+            Text = 20,
+            FontSize = 21,
+            BackgroundColor = 22,
+            TextColor = 23,
+            ClickEventName = 24,
+            ImagePattern = 25, 
+            ImageIndex = 26,
+            BaseImagePath = 27,
+            ImagePath = 28,
+            Remark = 29
         }
 
         /// <summary>
@@ -96,13 +97,15 @@ namespace TatehamaInterlockingConsole.Services
                         ParentName = columns[(int)ColumnIndex.ParentName],
                         ServerName = columns[(int)ColumnIndex.ServerName],
                         ServerType = columns[(int)ColumnIndex.serverType],
-                        PointName = columns[(int)ColumnIndex.PointName],
+                        PointNameA = columns[(int)ColumnIndex.PointNameA],
+                        PointValueA = columns[(int)ColumnIndex.PointValueA] == "R" ? false : true,
+                        PointNameB = columns[(int)ColumnIndex.PointNameB],
+                        PointValueB = columns[(int)ColumnIndex.PointValueB] == "R" ? false : true,
                         LeverType = columns[(int)ColumnIndex.LeverType],
                         KeyName = columns[(int)ColumnIndex.KeyName],
                         KeyManual = false,
                         LinkedStationName = columns[(int)ColumnIndex.LinkedStationName],
                         LinkedUniqueName = columns[(int)ColumnIndex.LinkedUniqueName],
-                        PointValue = bool.TryParse(columns[(int)ColumnIndex.PointValue], out var pointvalue) && pointvalue,
                         X = double.TryParse(columns[(int)ColumnIndex.X], out var x) ? x : 0,
                         Y = double.TryParse(columns[(int)ColumnIndex.Y], out var y) ? y : 0,
                         RelativeX = double.TryParse(columns[(int)ColumnIndex.X], out var relativeX) ? relativeX : 0,
@@ -131,7 +134,7 @@ namespace TatehamaInterlockingConsole.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                CustomMessage.Show(ex.ToString(), "エラー");
                 return null;
             }
         }

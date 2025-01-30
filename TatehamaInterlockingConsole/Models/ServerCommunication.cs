@@ -7,7 +7,8 @@ using Newtonsoft.Json;
 using OpenIddict.Abstractions;
 using OpenIddict.Client;
 using TatehamaInterlockingConsole.Manager;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using TatehamaInterlockingConsole.Services;
+using TatehamaInterlockingConsole.ViewModels;
 
 namespace TatehamaInterlockingConsole.Models
 {
@@ -18,14 +19,9 @@ namespace TatehamaInterlockingConsole.Models
     {
         private string _token;
         private readonly OpenIddictClientService _openIddictClientService;
-        private readonly DatabaseOperational _databaseOperational;
+        private readonly DataManager _dataManager;
         private static HubConnection _connection;
         private static bool _isUpdateLoopRunning = false;
-
-        /// <summary>
-        /// サーバー接続状態
-        /// </summary>
-        public static bool Connected { get; set; } = false;
 
         /// <summary>
         /// サーバー接続状態変更イベント
@@ -33,12 +29,19 @@ namespace TatehamaInterlockingConsole.Models
         public event Action<bool> ConnectionStatusChanged;
 
         /// <summary>
+        /// サーバー受信データ
+        /// </summary>
+        private DatabaseOperational.DataFromServer _dataFromServer;
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         public ServerCommunication(OpenIddictClientService openIddictClientService)
         {
             _openIddictClientService = openIddictClientService;
-            _databaseOperational = DatabaseOperational.Instance;
+            _dataManager = DataManager.Instance;
+
+            _dataFromServer = new();
 
             if (!_isUpdateLoopRunning)
             {
@@ -57,23 +60,11 @@ namespace TatehamaInterlockingConsole.Models
         {
             while (true)
             {
-                var timer = Task.Delay(100);
+                var timer = Task.Delay(1000);
                 await timer;
 
-                ConnectionStatusChanged?.Invoke(Connected);
-
-                if (!Connected)
-                {
-                    continue;
-                }
-                try
-                {
-                    //await SendRequestAsync();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error during server request: {ex.Message}");
-                }
+                // サーバー接続状態変更イベント発火
+                ConnectionStatusChanged?.Invoke(_dataManager.ServerConnected);
             }
         }
 
@@ -110,12 +101,12 @@ namespace TatehamaInterlockingConsole.Models
                 when (exception.Error is OpenIddictConstants.Errors.AccessDenied)
             {
                 // 認証拒否(サーバーに入ってないとか、ロールがついてないetc...)
-                MessageBox.Show($"認証が拒否されました。\n司令主任に連絡してください。", "認証拒否 | 連動盤 - ダイヤ運転会");
+                CustomMessage.Show("認証が拒否されました。\n指令主任に連絡してください。", "認証拒否", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 // その他別な理由で認証失敗
-                var result = MessageBox.Show($"認証に失敗しました。\n再認証しますか？\n\n{ex.Message}\n{ex.StackTrace})", "認証失敗 | 連動盤 - ダイヤ運転会", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                var result = CustomMessage.Show("認証に失敗しました。\n再認証しますか？", "認証失敗", exception, MessageBoxButton.YesNo, MessageBoxImage.Error);
                 if (result == MessageBoxResult.Yes)
                 {
                     _ = AuthenticateAsync();
@@ -136,32 +127,32 @@ namespace TatehamaInterlockingConsole.Models
                 .WithAutomaticReconnect() // 自動再接続
                 .Build();
 
-            while (!Connected)
+            while (!_dataManager.ServerConnected)
             {
                 try
                 {
                     await _connection.StartAsync();
                     Console.WriteLine("Connected");
-                    Connected = true;
+                    _dataManager.ServerConnected = true;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Connection Error!! {ex.Message}");
-                    Connected = false;
+                    _dataManager.ServerConnected = false;
                 }
             }
 
             // 再接続イベントのハンドリング
             _connection.Reconnecting += exception =>
             {
-                Connected = false;
+                _dataManager.ServerConnected = false;
                 Console.WriteLine("Reconnecting");
                 return Task.CompletedTask;
             };
 
             _connection.Reconnected += exeption =>
             {
-                Connected = true;
+                _dataManager.ServerConnected = true;
                 Console.WriteLine("Connected");
                 return Task.CompletedTask;
             };
@@ -174,13 +165,12 @@ namespace TatehamaInterlockingConsole.Models
         /// <param name="token"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async Task SendRequestAsync()
+        public async Task SendRequestAsync(DatabaseOperational.DataToServer dataToServer)
         {
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", "");
-
+                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", dataToServer);
                 try
                 {
                     // JSONをDatabaseTemporary.RootObjectにデシリアライズ
@@ -190,6 +180,12 @@ namespace TatehamaInterlockingConsole.Models
                         Console.WriteLine("Data successfully deserialized:");
                         Console.WriteLine($"Track Circuits: {data.TrackCircuitList.Count}");
                         Console.WriteLine($"Signals: {data.SignalDataList.Count}");
+
+                        // DatabaseOperational.DataFromServer型に代入
+                        _dataFromServer = _dataManager.UpdateDataFromServer(data);
+
+                        // コントロール更新処理
+                        DataUpdateViewModel.Instance.UpdateControl(_dataFromServer);
                     }
                     else
                     {
@@ -207,10 +203,17 @@ namespace TatehamaInterlockingConsole.Models
             }
         }
 
+        /// <summary>
+        /// サーバー切断
+        /// </summary>
+        /// <returns></returns>
         public async Task DisconnectAsync()
         {
-            await _connection.StopAsync();
-            await _connection.DisposeAsync();
+            if (_connection != null)
+            {
+                await _connection.StopAsync();
+                await _connection.DisposeAsync();
+            }
         }
     }
 }

@@ -23,34 +23,34 @@ namespace TatehamaInterlockingConsole.Factories
             switch (setting.ControlType)
             {
                 case "Button":
-                    control = ButtonFactory.CreateButtonControl(setting, allSettings);
+                    control = ButtonFactory.CreateButtonControl(setting);
                     break;
                 case "Label":
-                    control = LabelFactory.CreateLabelControl(setting, allSettings);
+                    control = LabelFactory.CreateLabelControl(setting);
                     break;
                 case "TextBlock":
                     control = TextBlockFactory.CreateTextBlockControl(setting, allSettings, false);
                     break;
                 case "Image":
-                    control = ImageFactory.CreateImageControl(setting, allSettings, true);
+                    control = ImageFactory.CreateImageControl(setting, true);
                     break;
                 case "BackImage":
-                    control = BackImageFactory.CreateBackImageControl(setting, allSettings);
+                    control = BackImageFactory.CreateBackImageControl(setting);
                     break;
                 case "ClockImage":
-                    control = ClockImageFactory.CreateClockImageControl(setting, allSettings, drawing);
+                    control = ClockImageFactory.CreateClockImageControl(setting, drawing);
                     break;
                 case "LeverImage":
-                    control = LeverImageFactory.CreateLeverImageControl(setting, allSettings, drawing);
+                    control = LeverImageFactory.CreateLeverImageControl(setting, drawing);
                     break;
                 case "KeyImage":
-                    control = KeyImageFactory.CreateKeyImageControl(setting, allSettings, drawing);
+                    control = KeyImageFactory.CreateKeyImageControl(setting, drawing);
                     break;
                 case "ButtonImage":
-                    control = ButtonImageFactory.CreateButtonImageControl(setting, allSettings, drawing);
+                    control = ButtonImageFactory.CreateButtonImageControl(setting, drawing);
                     break;
                 case "Retsuban":
-                    control = RetsubanFactory.CreateRetsubanImageControl(setting, allSettings, drawing);
+                    control = RetsubanFactory.CreateRetsubanImageControl(setting, drawing);
                     break;
                 default:
                     break;

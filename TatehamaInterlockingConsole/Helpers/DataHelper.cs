@@ -13,6 +13,19 @@ namespace TatehamaInterlockingConsole.Helpers
     public static class DataHelper
     {
         /// <summary>
+        /// 駅名対照表の列定義
+        /// </summary>
+        public enum StationRow
+        {
+            ViewName = 0,
+            StationName = 1,
+            StationNumber = 2,
+            ApproachingAlarm_UpSide = 3,
+            ApproachingAlarm_DownSide = 4,
+            DirectionLeverAlarm = 5,
+        }
+
+        /// <summary>
         /// 指定された数値が偶数であるかを判定
         /// </summary>
         /// <param name="number">判定対象の整数</param>
@@ -44,7 +57,7 @@ namespace TatehamaInterlockingConsole.Helpers
             var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
             if (_dataManager.StationNameDictionary.TryGetValue(fileNameWithoutExtension, out var stationData))
             {
-                return stationData.Count > 0 ? stationData[1] : fileNameWithoutExtension;
+                return stationData.Count > 0 ? stationData[(int)StationRow.StationName] : fileNameWithoutExtension;
             }
             return fileNameWithoutExtension;
         }
@@ -60,7 +73,7 @@ namespace TatehamaInterlockingConsole.Helpers
 
             if (_dataManager.StationNameDictionary.TryGetValue(englishName + "_UIList", out var stationData))
             {
-                return stationData[1];
+                return stationData[(int)StationRow.StationName];
             }
             return string.Empty;
         }
@@ -80,6 +93,23 @@ namespace TatehamaInterlockingConsole.Helpers
                 .ToList();
 
             return matchingLists;
+        }
+
+        /// <summary>
+        /// 日本語駅名を基に駅名対照表から駅番号を返す
+        /// </summary>
+        /// <param name="stationName"></param>
+        /// <returns></returns>
+        public static string GetStationNumberFromStationName(string stationName)
+        {
+            DataManager _dataManager = DataManager.Instance;
+
+            var matchingLists = _dataManager.StationNameDictionary.Values
+                .Where(list => list.Contains(stationName))
+                .First()
+                .ToList();
+
+            return matchingLists[(int)StationRow.StationNumber];
         }
 
         /// <summary>

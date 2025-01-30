@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Collections.Generic;
 using TatehamaInterlockingConsole.Handlers;
 using TatehamaInterlockingConsole.Models;
 
@@ -14,7 +13,7 @@ namespace TatehamaInterlockingConsole.Factories
         /// </summary>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static Label CreateLabelControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool clickEvent = true)
+        public static Label CreateLabelControl(UIControlSetting setting, bool clickEvent = true)
         {
             var label = new Label
             {

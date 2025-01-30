@@ -32,14 +32,23 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public string ServerType { get; set; }
         /// <summary>
-        /// 制御条件に含む転てつ器名称
+        /// 制御条件に含む転てつ器名称A
         /// </summary>
-        public string PointName { get; set; }
+        public string PointNameA { get; set; }
         /// <summary>
-        /// 制御条件に含む転てつ器状態
+        /// 制御条件に含む転てつ器状態A
         /// (定位=True, 反位=False)
         /// </summary>
-        public bool PointValue { get; set; }
+        public bool PointValueA { get; set; }
+        /// <summary>
+        /// 制御条件に含む転てつ器名称B
+        /// </summary>
+        public string PointNameB { get; set; }
+        /// <summary>
+        /// 制御条件に含む転てつ器状態B
+        /// (定位=True, 反位=False)
+        /// </summary>
+        public bool PointValueB { get; set; }
         /// <summary>
         /// てこ種類
         /// </summary>

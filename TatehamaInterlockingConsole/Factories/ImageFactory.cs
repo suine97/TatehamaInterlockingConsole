@@ -1,13 +1,12 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Collections.Generic;
-using TatehamaInterlockingConsole.Handlers;
-using TatehamaInterlockingConsole.Models;
-using TatehamaInterlockingConsole.Manager;
 using System.Windows.Media.Imaging;
-using System;
-using System.IO;
+using TatehamaInterlockingConsole.Handlers;
+using TatehamaInterlockingConsole.Manager;
+using TatehamaInterlockingConsole.Models;
 
 namespace TatehamaInterlockingConsole.Factories
 {
@@ -19,14 +18,13 @@ namespace TatehamaInterlockingConsole.Factories
         /// <param name="setting"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        public static Image CreateImageControl(UIControlSetting setting, List<UIControlSetting> allSettings, int index = 0, bool clickEvent = true)
+        public static Image CreateImageControl(UIControlSetting setting, int index = 0, bool clickEvent = true)
         {
-            if (!setting.ImagePaths.ContainsKey(index))
+            if (!setting.ImagePaths.TryGetValue(index, out string imagePath))
             {
                 throw new KeyNotFoundException($"Index {index} に対応する画像パスが見つかりません。");
             }
 
-            var imagePath = setting.ImagePaths[index];
             var imageSource = ImageCacheManager.GetImage(imagePath);
 
             if (imageSource == null)
@@ -79,14 +77,13 @@ namespace TatehamaInterlockingConsole.Factories
         /// <param name="setting"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        public static Image CreateImageControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool clickEvent = true, double angle = 0.0d)
+        public static Image CreateImageControl(UIControlSetting setting, bool clickEvent = true, double angle = 0.0d)
         {
-            if (!setting.ImagePaths.ContainsKey(setting.ImageIndex))
+            if (!setting.ImagePaths.TryGetValue(setting.ImageIndex, out string imagePath))
             {
                 throw new KeyNotFoundException($"ImageIndex {setting.ImageIndex} に対応する画像パスが見つかりません。");
             }
 
-            var imagePath = setting.ImagePaths[setting.ImageIndex];
             var imageSource = ImageCacheManager.GetImage(imagePath);
 
             if (imageSource == null)

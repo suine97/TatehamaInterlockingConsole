@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Collections.Generic;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
 
@@ -17,15 +16,15 @@ namespace TatehamaInterlockingConsole.Factories
         /// </summary>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static UIElement CreateClockImageControl(UIControlSetting setting, List<UIControlSetting> allSettings, bool drawing)
+        public static UIElement CreateClockImageControl(UIControlSetting setting, bool drawing)
         {
             var canvas = new Canvas();
             // 時計の各画像を取得 (Base, 短針, 長針, 秒針, カバー)
-            var baseImage = BaseImageFactory.CreateBaseImageControl(setting, allSettings);
-            var hourHandImage = ImageFactory.CreateImageControl(setting, allSettings, 0);
-            var minuteHandImage = ImageFactory.CreateImageControl(setting, allSettings, 1);
-            var secondHandImage = ImageFactory.CreateImageControl(setting, allSettings, 2);
-            var coverImage = ImageFactory.CreateImageControl(setting, allSettings, 3);
+            var baseImage = BaseImageFactory.CreateBaseImageControl(setting);
+            var hourHandImage = ImageFactory.CreateImageControl(setting, 0);
+            var minuteHandImage = ImageFactory.CreateImageControl(setting, 1);
+            var secondHandImage = ImageFactory.CreateImageControl(setting, 2);
+            var coverImage = ImageFactory.CreateImageControl(setting, 3);
 
             hourHandImage.Tag = "HourHand";
             minuteHandImage.Tag = "MinuteHand";
