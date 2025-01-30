@@ -48,7 +48,7 @@ namespace TatehamaInterlockingConsole.Factories
                 {
                     grid.IsHitTestVisible = false;
                 }
-                new TextBlockHandler().AttachTextBlockClick(grid, setting.ClickEventName);
+                TextBlockHandler.Instance.AttachTextBlockClick(grid, setting.ClickEventName);
             }
 
             // GridにTextBlockを追加

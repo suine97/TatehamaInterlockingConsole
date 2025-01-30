@@ -58,10 +58,6 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public string KeyName { get; set; }
         /// <summary>
-        /// 鍵位置「駅扱」判定
-        /// </summary>
-        public bool KeyManual { get; set; }
-        /// <summary>
         /// 当該盤以外で連動する場合の駅名
         /// </summary>
         public string LinkedStationName { get; set; }

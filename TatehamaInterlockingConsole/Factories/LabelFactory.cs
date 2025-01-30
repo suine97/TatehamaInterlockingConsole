@@ -35,7 +35,7 @@ namespace TatehamaInterlockingConsole.Factories
                 {
                     label.IsHitTestVisible = false;
                 }
-                new LabelHandler().AttachLabelClick(label, setting);
+                LabelHandler.Instance.AttachLabelClick(label, setting);
             }
 
             RotateTransform rotateTransform = new RotateTransform();

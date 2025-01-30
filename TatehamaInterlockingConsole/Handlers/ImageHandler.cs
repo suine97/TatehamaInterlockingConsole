@@ -10,9 +10,21 @@ namespace TatehamaInterlockingConsole.Handlers
     public class ImageHandler
     {
         private readonly Sound _sound = Sound.Instance;
-        private readonly Random _random = new Random();
-        private readonly DataManager _dataManager = DataManager.Instance;
+        private readonly Random _random = new();
         private readonly DataUpdateViewModel _dataUpdateViewModel = DataUpdateViewModel.Instance;
+        private readonly DataManager _dataManager = DataManager.Instance;
+        private readonly ServerCommunication _serverCommunication;
+        public static ImageHandler Instance { get; private set; }
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="serverCommunication"></param>
+        public ImageHandler(ServerCommunication serverCommunication)
+        {
+            _serverCommunication = serverCommunication;
+            Instance = this;
+        }
 
         /// <summary>
         /// Imageクリックイベント処理
@@ -122,6 +134,13 @@ namespace TatehamaInterlockingConsole.Handlers
             _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
             // サーバーへリクエスト送信
+            var dataToServer = new DatabaseOperational.DataToServer
+            {
+                ActiveStationsList = _dataManager.ActiveStationsList,
+                PartsName = control.ServerName,
+                PartsValue = control.ImageIndex
+            };
+            _ = _serverCommunication.SendRequestAsync(dataToServer);
         }
 
         /// <summary>
@@ -215,9 +234,15 @@ namespace TatehamaInterlockingConsole.Handlers
                 _dataUpdateViewModel.SetControlsetting(control);
                 _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
             }
-            // 鍵位置設定
-            control.KeyManual = ((control.LeverType == "駅扱切換") && (control.ImageIndex < 0))
-                || ((control.LeverType == "方向てこ解放") && (control.ImageIndex > 0));
+
+            // サーバーへリクエスト送信
+            var dataToServer = new DatabaseOperational.DataToServer
+            {
+                ActiveStationsList = _dataManager.ActiveStationsList,
+                PartsName = control.ServerName,
+                PartsValue = control.ImageIndex
+            };
+            _ = _serverCommunication.SendRequestAsync(dataToServer);
         }
 
         /// <summary>
@@ -237,6 +262,13 @@ namespace TatehamaInterlockingConsole.Handlers
                 _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
 
                 // サーバーへリクエスト送信
+                var dataToServer = new DatabaseOperational.DataToServer
+                {
+                    ActiveStationsList = _dataManager.ActiveStationsList,
+                    PartsName = control.ServerName,
+                    PartsValue = 0
+                };
+                _ = _serverCommunication.SendRequestAsync(dataToServer);
             }
         }
 
@@ -256,8 +288,6 @@ namespace TatehamaInterlockingConsole.Handlers
                 _dataUpdateViewModel.SetControlsetting(control);
                 _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
             }
-
-            // サーバーへリクエスト送信
         }
 
         /// <summary>

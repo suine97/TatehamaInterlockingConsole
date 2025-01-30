@@ -31,7 +31,7 @@ namespace TatehamaInterlockingConsole.Factories
             // イベントが設定されている場合は、イベントをアタッチ
             if (setting.ClickEventName != string.Empty)
             {
-                new ButtonHandler().AttachButtonClick(button, setting.ClickEventName);
+                ButtonHandler.Instance.AttachButtonClick(button, setting.ClickEventName);
             }
 
             RotateTransform rotateTransform = new RotateTransform();

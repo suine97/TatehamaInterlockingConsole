@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using OpenIddict.Client;
 using TatehamaInterlockingConsole.Factories;
+using TatehamaInterlockingConsole.Handlers;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
@@ -21,6 +22,10 @@ namespace TatehamaInterlockingConsole.ViewModels
         private readonly DataUpdateViewModel _dataUpdateViewModel; // データ更新処理を管理するViewModel
         private readonly ServerCommunication _serverCommunication; // サーバ通信クラス
         private static bool _isConstructorExecuted = false;        // コンストラクタが一度だけ実行されることを保証するフラグ
+        private readonly ButtonHandler _buttonHandler;             // ボタン操作処理クラス
+        private readonly ImageHandler _imageHandler;               // 画像操作処理クラス
+        private readonly LabelHandler _labelHandler;               // ラベル操作処理クラス
+        private readonly TextBlockHandler _textBlockHandler;       // テキストブロック操作処理クラス
 
         /// <summary>
         /// 時刻を1時間進めるコマンド
@@ -85,6 +90,10 @@ namespace TatehamaInterlockingConsole.ViewModels
                     _dataManager = dataManager;
                     _dataManager.Initialize(timeService);
                     _serverCommunication = new ServerCommunication(openIddictClientService);
+                    _buttonHandler = new ButtonHandler(_serverCommunication);
+                    _imageHandler = new ImageHandler(_serverCommunication);
+                    _labelHandler = new LabelHandler(_serverCommunication);
+                    _textBlockHandler = new TextBlockHandler(_serverCommunication);
 
                     Title = "連動盤選択 | 連動盤 - ダイヤ運転会";
                     IncreaseTimeCommand = new RelayCommand(() => _timeService.IncreaseTime());

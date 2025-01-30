@@ -103,7 +103,6 @@ namespace TatehamaInterlockingConsole.Services
                         PointValueB = columns[(int)ColumnIndex.PointValueB] == "R" ? false : true,
                         LeverType = columns[(int)ColumnIndex.LeverType],
                         KeyName = columns[(int)ColumnIndex.KeyName],
-                        KeyManual = false,
                         LinkedStationName = columns[(int)ColumnIndex.LinkedStationName],
                         LinkedUniqueName = columns[(int)ColumnIndex.LinkedUniqueName],
                         X = double.TryParse(columns[(int)ColumnIndex.X], out var x) ? x : 0,

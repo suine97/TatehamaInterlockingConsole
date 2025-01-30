@@ -72,7 +72,7 @@ namespace TatehamaInterlockingConsole.Factories
                 // イベントが設定されている場合は、イベントをアタッチ
                 if (!string.IsNullOrEmpty(setting.ClickEventName))
                 {
-                    new ImageHandler().AttachImageClick(image, setting);
+                    ImageHandler.Instance.AttachImageClick(image, setting);
                 }
 
                 Canvas.SetLeft(image, control.X);

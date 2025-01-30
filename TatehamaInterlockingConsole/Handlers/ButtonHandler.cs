@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.ViewModels;
 
 namespace TatehamaInterlockingConsole.Handlers
@@ -8,6 +9,19 @@ namespace TatehamaInterlockingConsole.Handlers
     /// </summary>
     public class ButtonHandler
     {
+        private readonly ServerCommunication _serverCommunication;
+        public static ButtonHandler Instance { get; private set; }
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="serverCommunication"></param>
+        public ButtonHandler(ServerCommunication serverCommunication)
+        {
+            _serverCommunication = serverCommunication;
+            Instance = this;
+        }
+
         public void AttachButtonClick(Button button, string clickEventName)
         {
             button.Click += (s, e) =>

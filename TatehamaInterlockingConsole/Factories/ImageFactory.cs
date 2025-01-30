@@ -60,7 +60,7 @@ namespace TatehamaInterlockingConsole.Factories
                 {
                     image.IsHitTestVisible = false;
                 }
-                new ImageHandler().AttachImageClick(image, setting);
+                ImageHandler.Instance.AttachImageClick(image, setting);
             }
 
             RotateTransform rotateTransform = new RotateTransform();
@@ -119,7 +119,7 @@ namespace TatehamaInterlockingConsole.Factories
                 {
                     image.IsHitTestVisible = false;
                 }
-                new ImageHandler().AttachImageClick(image, setting);
+                ImageHandler.Instance.AttachImageClick(image, setting);
             }
 
             RotateTransform rotateTransform = new RotateTransform();
