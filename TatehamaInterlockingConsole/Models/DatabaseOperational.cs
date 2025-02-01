@@ -34,20 +34,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class DataFromServer
         {
-            private InterlockingAuthentication _authentication;
-
-            public InterlockingAuthentication Authentication
-            {
-                get => _authentication;
-                set
-                {
-                    if (_authentication != null)
-                    {
-                        throw new System.InvalidOperationException("Authentication is already set. Only one instance is allowed.");
-                    }
-                    _authentication = value;
-                }
-            }
+            public InterlockingAuthentication Authentication { get; set; } = new();
             public List<InterlockingTrackCircuit> TrackCircuits { get; set; } = [];
             public List<InterlockingPoint> Points { get; set; } = [];
             public List<InterlockingSignal> Signals { get; set; } = [];
@@ -62,7 +49,7 @@ namespace TatehamaInterlockingConsole.Models
         public class InterlockingAuthentication
         {
             /// <summary>
-            /// 指令主任判定
+            /// 司令主任判定
             /// </summary>
             public bool IsCommander { get; set; }
             /// <summary>

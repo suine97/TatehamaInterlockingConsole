@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.ViewModels;
 
@@ -26,15 +27,19 @@ namespace TatehamaInterlockingConsole.Handlers
         {
             button.Click += (s, e) =>
             {
-                switch (clickEventName)
+                // サーバー接続状態の場合のみ処理を実行
+                if (DataManager.Instance.ServerConnected)
                 {
-                    case "TH66S_Enohara-Inspection":
-                        WindowAction.ShowStationWindow("TH66S_Enohara-Inspection-Indicater");
-                        WindowAction.ShowStationWindow("TH66S_Enohara-Inspection-Switchboard");
-                        break;
-                    default:
-                        WindowAction.ShowStationWindow(clickEventName);
-                        break;
+                    switch (clickEventName)
+                    {
+                        case "TH66S_Enohara-Inspection":
+                            WindowAction.ShowStationWindow("TH66S_Enohara-Inspection-Indicater");
+                            WindowAction.ShowStationWindow("TH66S_Enohara-Inspection-Switchboard");
+                            break;
+                        default:
+                            WindowAction.ShowStationWindow(clickEventName);
+                            break;
+                    }
                 }
             };
         }

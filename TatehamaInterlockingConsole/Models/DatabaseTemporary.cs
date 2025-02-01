@@ -32,23 +32,23 @@ namespace TatehamaInterlockingConsole.Models
 
         public class AuthenticationList
         {
+            public bool IsCommander { get; set; }
 
+            public bool IsOperator { get; set; }
         }
 
         public class TrackCircuitList
         {
-            [JsonProperty("On")]
-            public bool On { get; set; }
-            [JsonProperty("Last")]
-            public string Last { get; set; } // 軌道回路を踏んだ列車の名前
-            [JsonProperty("Name")]
             public string Name { get; set; }
+            public bool IsRouteSetting { get; set; }
+            public bool IsOnTrack { get; set; }
         }
 
         public class PointList
         {
             [JsonProperty("Name")]
             public string Name { get; set; }
+            public bool IsReversePosition { get; set; }
         }
 
         public class SignalDataList
@@ -63,18 +63,21 @@ namespace TatehamaInterlockingConsole.Models
         {
             [JsonProperty("Name")]
             public string Name { get; set; }
+            public bool IsLighting { get; set; }
         }
 
         public class RetsubanList
         {
             [JsonProperty("Name")]
             public string Name { get; set; }
+            public string RetsubanText { get; set; }
         }
 
         public class LeverList
         {
             [JsonProperty("Name")]
             public string Name { get; set; }
+            public int LeverValue { get; set; }
         }
     }
 }

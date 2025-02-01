@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,9 +31,9 @@ namespace TatehamaInterlockingConsole.Models
         public event Action<bool> ConnectionStatusChanged;
 
         /// <summary>
-        /// サーバー受信データ
+        /// サーバー接続中の駅名リスト
         /// </summary>
-        private DatabaseOperational.DataFromServer _dataFromServer;
+        private List<string> _connectionStationsList;
 
         /// <summary>
         /// コンストラクタ
@@ -41,15 +43,47 @@ namespace TatehamaInterlockingConsole.Models
             _openIddictClientService = openIddictClientService;
             _dataManager = DataManager.Instance;
 
-            _dataFromServer = new();
-
             if (!_isUpdateLoopRunning)
             {
                 _isUpdateLoopRunning = true;
 
+                _connectionStationsList = new();
+                _dataManager.ActiveStationsListChanged += OnActiveStationsListChanged;
+
                 // ループ処理開始
                 Task.Run(() => UpdateLoop());
             }
+        }
+
+        /// <summary>
+        /// 駅名リスト変更イベント
+        /// </summary>
+        /// <param name="newActiveStationsList"></param>
+        private void OnActiveStationsListChanged(List<string> newActiveStationsList)
+        {
+            var addedStations = newActiveStationsList.Except(_connectionStationsList).ToList();
+            var removedStations = _connectionStationsList.Except(newActiveStationsList).ToList();
+
+            foreach (var station in addedStations)
+            {
+                // 増加した駅名の処理
+                var dataToServer = new DatabaseOperational.DataToServer
+                {
+                    ActiveStationsList = new List<string> { station },
+                };
+                _ = SendRequestAsync(dataToServer);
+            }
+
+            foreach (var station in removedStations)
+            {
+                // 減少した駅名の処理
+                var dataToServer = new DatabaseOperational.DataToServer
+                {
+                    ActiveStationsList = new List<string> { station },
+                };
+                _ = SendRequestAsync(dataToServer);
+            }
+            _connectionStationsList = newActiveStationsList.ToList();
         }
 
         /// <summary>
@@ -101,12 +135,12 @@ namespace TatehamaInterlockingConsole.Models
                 when (exception.Error is OpenIddictConstants.Errors.AccessDenied)
             {
                 // 認証拒否(サーバーに入ってないとか、ロールがついてないetc...)
-                CustomMessage.Show("認証が拒否されました。\n指令主任に連絡してください。", "認証拒否", MessageBoxButton.OK, MessageBoxImage.Error);
+                CustomMessage.Show("認証が拒否されました。\n司令主任に連絡してください。", "認証拒否", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (Exception exception)
+            catch
             {
                 // その他別な理由で認証失敗
-                var result = CustomMessage.Show("認証に失敗しました。\n再認証しますか？", "認証失敗", exception, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                var result = CustomMessage.Show("認証に失敗しました。\n再認証しますか？", "認証失敗", MessageBoxButton.YesNo, MessageBoxImage.Error);
                 if (result == MessageBoxResult.Yes)
                 {
                     _ = AuthenticateAsync();
@@ -173,19 +207,16 @@ namespace TatehamaInterlockingConsole.Models
                 var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", dataToServer);
                 try
                 {
-                    // JSONをDatabaseTemporary.RootObjectにデシリアライズ
+                    // JSONを一時保存クラスにデシリアライズ
                     var data = JsonConvert.DeserializeObject<DatabaseTemporary.RootObject>(jsonMessage);
                     if (data != null)
                     {
-                        Console.WriteLine("Data successfully deserialized:");
-                        Console.WriteLine($"Track Circuits: {data.TrackCircuitList.Count}");
-                        Console.WriteLine($"Signals: {data.SignalDataList.Count}");
-
-                        // DatabaseOperational.DataFromServer型に代入
-                        _dataFromServer = _dataManager.UpdateDataFromServer(data);
-
+                        // 一時保存クラスから運用クラスに代入
+                        _dataManager.DataFromServer = _dataManager.UpdateDataFromServer(data);
+                        // 認証情報を保存
+                        _dataManager.Authentication ??= _dataManager.DataFromServer.Authentication;
                         // コントロール更新処理
-                        DataUpdateViewModel.Instance.UpdateControl(_dataFromServer);
+                        DataUpdateViewModel.Instance.UpdateControl(_dataManager.DataFromServer);
                     }
                     else
                     {

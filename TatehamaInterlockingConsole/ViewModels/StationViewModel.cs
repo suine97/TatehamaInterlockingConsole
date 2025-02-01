@@ -114,7 +114,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                 // 駅名をリストに追加
                 if (!_dataManager.ActiveStationsList.Contains(_stationNumber))
                 {
-                    _dataManager.ActiveStationsList.Add(_stationNumber);
+                    _dataManager.AddActiveStation(_stationNumber);
                 }
 
                 _clockUpdateTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
@@ -202,7 +202,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             _clockUpdateTimer.Tick -= OnClockUpdate;
 
             // 駅名をリストから削除
-            _dataManager.ActiveStationsList.Remove(_stationNumber);
+            _dataManager.RemoveActiveStation(_stationNumber);
         }
 
         /// <summary>

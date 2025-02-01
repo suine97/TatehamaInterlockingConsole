@@ -134,13 +134,21 @@ namespace TatehamaInterlockingConsole.Handlers
             _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
             // サーバーへリクエスト送信
-            var dataToServer = new DatabaseOperational.DataToServer
+            if (control.ServerType != string.Empty)
             {
-                ActiveStationsList = _dataManager.ActiveStationsList,
-                PartsName = control.ServerName,
-                PartsValue = control.ImageIndex
-            };
-            _ = _serverCommunication.SendRequestAsync(dataToServer);
+                var dataToServer = new DatabaseOperational.DataToServer
+                {
+                    ActiveStationsList = _dataManager.ActiveStationsList,
+                    PartsName = control.ServerName,
+                    PartsValue = control.ImageIndex
+                };
+                _ = _serverCommunication.SendRequestAsync(dataToServer);
+                //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                //    "サーバー送信",
+                //    System.Windows.MessageBoxButton.OK,
+                //    System.Windows.MessageBoxImage.Information
+                //    );
+            }
         }
 
         /// <summary>
@@ -159,90 +167,120 @@ namespace TatehamaInterlockingConsole.Handlers
 
             // Shiftキーが押されているかを判定
             bool isShiftPressed = (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Shift) == System.Windows.Input.ModifierKeys.Shift;
-            // Controlキーが押されているかを判定
-            bool isControlPressed = (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Control) == System.Windows.Input.ModifierKeys.Control;
+            // 司令主任権限
+            bool isCommander = _dataManager.Authentication?.IsCommander ?? false;
 
-            if (isShiftPressed)
+            // 司令主任権限がある場合のみ処理
+            if (isCommander)
             {
-                // Shiftキーが押されている場合、KeyInsertedを切り替え
-                if (control.KeyInserted)
+                if (isShiftPressed)
                 {
-                    if (control.ImageIndex >= 0)
+                    // Shiftキーが押されている場合、KeyInsertedを切り替え
+                    if (control.KeyInserted)
                     {
-                        control.ImageIndex -= 10;
+                        if (control.ImageIndex >= 0)
+                        {
+                            control.ImageIndex -= 10;
+                        }
+                        else
+                        {
+                            control.ImageIndex += 10;
+                        }
+                        _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
+                        _sound.SoundPlay($"remove_{randomKeyRemoveSoundIndex}", false);
                     }
                     else
                     {
-                        control.ImageIndex += 10;
+                        if (control.ImageIndex >= 0)
+                        {
+                            control.ImageIndex += 10;
+                        }
+                        else
+                        {
+                            control.ImageIndex -= 10;
+                        }
+                        _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
+                        _sound.SoundPlay($"insert_{randomKeyInsertSoundIndex}", false);
                     }
-                    _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
-                    _sound.SoundPlay($"remove_{randomKeyRemoveSoundIndex}", false);
-                }
-                else
-                {
-                    if (control.ImageIndex >= 0)
+                    control.KeyInserted = !control.KeyInserted;
+                    _dataUpdateViewModel.SetControlsetting(control);
+
+                    // サーバーへリクエスト送信
+                    if (control.ServerType != string.Empty)
                     {
-                        control.ImageIndex += 10;
+                        var dataToServer = new DatabaseOperational.DataToServer
+                        {
+                            ActiveStationsList = _dataManager.ActiveStationsList,
+                            PartsName = control.ServerName,
+                            PartsValue = control.ImageIndex
+                        };
+                        _ = _serverCommunication.SendRequestAsync(dataToServer);
+                        //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                        //    "サーバー送信",
+                        //    System.Windows.MessageBoxButton.OK,
+                        //    System.Windows.MessageBoxImage.Information
+                        //    );
+                    }
+                }
+                else if (control.KeyInserted)
+                {
+                    int newIndex;
+
+                    // LRパターンのみ別処理
+                    if (control.ImagePatternSymbol == "KeyLR")
+                    {
+                        if (control.ImageIndex == -11 && !isLeftClick)
+                        {
+                            newIndex = 11;
+                        }
+                        else if (control.ImageIndex == 11 && isLeftClick)
+                        {
+                            newIndex = -11;
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
                     else
                     {
-                        control.ImageIndex -= 10;
+                        int change = isLeftClick ? -1 : 1;
+                        newIndex = control.ImageIndex + change;
+
+                        if (!IsValidIndex(control.ImagePatternSymbol, newIndex))
+                        {
+                            return;
+                        }
                     }
-                    _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
-                    _sound.SoundPlay($"insert_{randomKeyInsertSoundIndex}", false);
+
+                    control.ImageIndex = newIndex;
+                    _dataUpdateViewModel.SetControlsetting(control);
+                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+
+                    // サーバーへリクエスト送信
+                    if (control.ServerType != string.Empty)
+                    {
+                        var dataToServer = new DatabaseOperational.DataToServer
+                        {
+                            ActiveStationsList = _dataManager.ActiveStationsList,
+                            PartsName = control.ServerName,
+                            PartsValue = control.ImageIndex
+                        };
+                        _ = _serverCommunication.SendRequestAsync(dataToServer);
+                        //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                        //    "サーバー送信",
+                        //    System.Windows.MessageBoxButton.OK,
+                        //    System.Windows.MessageBoxImage.Information
+                        //    );
+                    }
                 }
-                control.KeyInserted = !control.KeyInserted;
             }
-            else if (isControlPressed)
+            // 司令主任権限がない場合は操作無効
+            else
             {
-                // (デバッグ) Controlが押されている場合、権限無効判定
                 _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
                 _sound.SoundPlay($"reject_{randomKeyRejectSoundIndex}", false);
             }
-            else if (control.KeyInserted)
-            {
-                int newIndex;
-
-                // LRパターンのみ別処理
-                if (control.ImagePatternSymbol == "KeyLR")
-                {
-                    if (control.ImageIndex == -11 && !isLeftClick)
-                    {
-                        newIndex = 11;
-                    }
-                    else if (control.ImageIndex == 11 && isLeftClick)
-                    {
-                        newIndex = -11;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-                else
-                {
-                    int change = isLeftClick ? -1 : 1;
-                    newIndex = control.ImageIndex + change;
-
-                    if (!IsValidIndex(control.ImagePatternSymbol, newIndex))
-                    {
-                        return;
-                    }
-                }
-
-                control.ImageIndex = newIndex;
-                _dataUpdateViewModel.SetControlsetting(control);
-                _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
-            }
-
-            // サーバーへリクエスト送信
-            var dataToServer = new DatabaseOperational.DataToServer
-            {
-                ActiveStationsList = _dataManager.ActiveStationsList,
-                PartsName = control.ServerName,
-                PartsValue = control.ImageIndex
-            };
-            _ = _serverCommunication.SendRequestAsync(dataToServer);
         }
 
         /// <summary>
@@ -262,13 +300,20 @@ namespace TatehamaInterlockingConsole.Handlers
                 _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
 
                 // サーバーへリクエスト送信
-                var dataToServer = new DatabaseOperational.DataToServer
+                if (control.ServerType != string.Empty)
                 {
-                    ActiveStationsList = _dataManager.ActiveStationsList,
-                    PartsName = control.ServerName,
-                    PartsValue = 0
-                };
-                _ = _serverCommunication.SendRequestAsync(dataToServer);
+                    var dataToServer = new DatabaseOperational.DataToServer
+                    {
+                        ActiveStationsList = _dataManager.ActiveStationsList,
+                        PartsName = control.ServerName,
+                    };
+                    _ = _serverCommunication.SendRequestAsync(dataToServer);
+                    //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                    //    "サーバー送信",
+                    //    System.Windows.MessageBoxButton.OK,
+                    //    System.Windows.MessageBoxImage.Information
+                    //    );
+                }
             }
         }
 

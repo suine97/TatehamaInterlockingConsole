@@ -39,10 +39,52 @@ namespace TatehamaInterlockingConsole.Manager
         /// </summary>
         public bool ServerConnected { get; set; }
 
+        private DatabaseOperational.DataFromServer _dataFromServer;
+        /// <summary>
+        /// サーバー受信データ
+        /// </summary>
+        public DatabaseOperational.DataFromServer DataFromServer
+        {
+            get => _dataFromServer;
+            set
+            {
+                _dataFromServer = value;
+            }
+        }
+
+        private DatabaseOperational.InterlockingAuthentication _authentication;
+        /// <summary>
+        /// サーバー受信データ(認証情報)
+        /// </summary>
+        public DatabaseOperational.InterlockingAuthentication Authentication
+        {
+            get => _authentication;
+            set
+            {
+                _authentication = value;
+            }
+        }
+
+        /// <summary>
+        /// ActiveStationsList変更通知イベント
+        /// </summary>
+        public event Action<List<string>> ActiveStationsListChanged;
+
+        private List<string> _activeStationsList;
         /// <summary>
         /// 起動しているウィンドウの駅名を保持するリスト
         /// </summary>
-        public List<string> ActiveStationsList { get; set; }
+        public List<string> ActiveStationsList
+        {
+            get => _activeStationsList;
+            set
+            {
+                if (_activeStationsList != value)
+                {
+                    _activeStationsList = value;
+                }
+            }
+        }
 
         /// <summary>
         /// コンストラクタ
@@ -52,6 +94,7 @@ namespace TatehamaInterlockingConsole.Manager
             AllControlSettingList = new();
             RetsubanImagePathDictionary = new();
             StationNameDictionary  = new();
+            DataFromServer = new();
             ActiveStationsList = new();
         }
 
@@ -64,6 +107,32 @@ namespace TatehamaInterlockingConsole.Manager
             _timeService = timeService;
             _timeService.TimeUpdated += (currentTime) => OnTimeUpdated();
             TimeUpdated += (currentTime) => ClockImageFactory.CurrentTime = currentTime;
+        }
+
+        /// <summary>
+        /// 駅名を追加するメソッド
+        /// </summary>
+        /// <param name="stationName"></param>
+        public void AddActiveStation(string stationName)
+        {
+            if (!_activeStationsList.Contains(stationName))
+            {
+                _activeStationsList.Add(stationName);
+                ActiveStationsListChanged?.Invoke(_activeStationsList);
+            }
+        }
+
+        /// <summary>
+        /// 駅名を削除するメソッド
+        /// </summary>
+        /// <param name="stationName"></param>
+        public void RemoveActiveStation(string stationName)
+        {
+            if (_activeStationsList.Contains(stationName))
+            {
+                _activeStationsList.Remove(stationName);
+                ActiveStationsListChanged?.Invoke(_activeStationsList);
+            }
         }
 
         /// <summary>

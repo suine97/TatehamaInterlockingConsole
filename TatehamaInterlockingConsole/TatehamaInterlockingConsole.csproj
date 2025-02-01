@@ -50,9 +50,6 @@
     <Resource Include="InterlockingIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="JavaScript\TextParse.js" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>

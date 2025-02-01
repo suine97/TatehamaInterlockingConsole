@@ -50,22 +50,6 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public bool PointValueB { get; set; }
         /// <summary>
-        /// てこ種類
-        /// </summary>
-        public string LeverType { get; set; }
-        /// <summary>
-        /// 操作可能判定に用いる鍵名称
-        /// </summary>
-        public string KeyName { get; set; }
-        /// <summary>
-        /// 当該盤以外で連動する場合の駅名
-        /// </summary>
-        public string LinkedStationName { get; set; }
-        /// <summary>
-        /// 当該盤以外で連動する場合のユニーク名
-        /// </summary>
-        public string LinkedUniqueName { get; set; }
-        /// <summary>
         /// X座標
         /// </summary>
         public double X { get; set; }
