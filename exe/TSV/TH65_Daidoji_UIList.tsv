@@ -3,212 +3,212 @@ BackImage	連動盤								0	0														Image/BackImage/TH65_Daidoji.png
 Image	Clock_Base								1400	78	79	110												Image/Clock/Clock_Border.png									
 ClockImage	Clock_Meter	Clock_Base							6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
 Image	Hook								1411	10														Image/Hook/Hook_Base.png									
-LeverImage	1R								303	388										1R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0代X=てこ赤(X)N(X)　例：1R=てこ赤NR								
+LeverImage	1R		てこ						303	388										1R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0代X=てこ赤(X)N(X)　例：1R=てこ赤NR								
 Image	1R_G		信号機	1R					369	386											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PYは灯色"								
 TextBlock	1R_Label	1R							14	20	11	11				1	10	Transparent	#FFBCBCBC	1R													
-LeverImage	2R								656	388										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	2R		てこ						656	388										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	2R_G		信号機	2R					722	387											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	2R_Label	2R							14	20	11	11				2	10	Transparent	#FFBCBCBC	2R													
-LeverImage	2RZ								608	388										2RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Pink_N.png,Image/Lever/Lever_Pink_R.png"	0代XZ=てこ桃(X)N(X)Z　例：2RZ=てこ桃NR								
+LeverImage	2RZ		てこ						608	388										2RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Pink_N.png,Image/Lever/Lever_Pink_R.png"	0代XZ=てこ桃(X)N(X)Z　例：2RZ=てこ桃NR								
 Image	2RZ_Y		信号機	2RZ					623	377											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	2RZ_Label	2RZ							14	20	11	11				2Z	10	Transparent	#FFBCBCBC	2RZ													
-LeverImage	3R								656	448										3R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	3R		てこ						656	448										3R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	3R_G		信号機	3R					722	454											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	3R_Label	3R							14	20	11	11				3	10	Transparent	#FFBCBCBC	3R													
-LeverImage	3RZ								608	448										3RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Pink_N.png,Image/Lever/Lever_Pink_R.png"									
+LeverImage	3RZ		てこ						608	448										3RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Pink_N.png,Image/Lever/Lever_Pink_R.png"									
 Image	3RZ_Y		信号機	3RZ					623	437											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	3RZ_Label	3RZ							14	20	11	11				3Z	10	Transparent	#FFBCBCBC	3RZ													
-LeverImage	4R								656	508										4R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	4R		てこ						656	508										4R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	4R_G		信号機	4R					722	560											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	4R_Label	4R							14	20	11	11				4	10	Transparent	#FFBCBCBC	4R													
-LeverImage	4RZ								608	508										4RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Pink_N.png,Image/Lever/Lever_Pink_R.png"									
+LeverImage	4RZ		てこ						608	508										4RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Pink_N.png,Image/Lever/Lever_Pink_R.png"									
 Image	4RZ_Y		信号機	4RZ					623	497											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	4RZ_Label	4RZ							14	20	11	11				4Z	10	Transparent	#FFBCBCBC	4RZ													
-LeverImage	5L								714	508										5L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	5L		てこ						714	508										5L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
 Image	5L_G		信号機	5L					678	551											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	5L_Label	5L							14	20	11	11				5	10	Transparent	#FFBCBCBC	5L													
-LeverImage	6L								714	622										6L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	6L		てこ						714	622										6L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
 Image	6L_G		信号機	6L					678	658											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	6L_Label	6L							14	20	11	11				6	10	Transparent	#FFBCBCBC	6L													
-LeverImage	7R								1126	388										7R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	7R		てこ						1126	388										7R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	7R_G		信号機	7R					1203	394											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	7R_Label	7R							14	20	11	11				7	10	Transparent	#FFBCBCBC	7R													
-LeverImage	8R								1126	448										8R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	8R		てこ						1126	448										8R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	8R_G		信号機	8R					1203	454											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	8R_Label	8R							14	20	11	11				8	10	Transparent	#FFBCBCBC	8R													
-LeverImage	9R								1106	508										9R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	9R		てこ						1106	508										9R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	9R_G		信号機	9R					1183	568											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	9R_Label	9R							14	20	11	11				9	10	Transparent	#FFBCBCBC	9R													
-LeverImage	10R								1106	622										10R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	10R		てこ						1106	622										10R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	10R_G		信号機	10R					1183	607											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	10R_Label	10R							14	20	11	11				10	10	Transparent	#FFBCBCBC	10R													
-LeverImage	11L								1164	508										11L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	11L		てこ						1164	508										11L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
 Image	11L_G		信号機	11L					1117	551											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	11L_Label	11L							14	20	11	11				11	10	Transparent	#FFBCBCBC	11L													
-LeverImage	11LZ								1212	508										11LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Pink_L.png,Image/Lever/Lever_Pink_N.png"									
+LeverImage	11LZ		てこ						1212	508										11LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Pink_L.png,Image/Lever/Lever_Pink_N.png"									
 Image	11LZ_Y		信号機	11LZ					1227	497											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	11LZ_Label	11LZ							14	20	11	11				11Z	10	Transparent	#FFBCBCBC	11LZ													
-LeverImage	12L								1164	622										12L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	12L		てこ						1164	622										12L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
 Image	12L_G		信号機	12L					1117	596											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	12L_Label	12L							14	20	11	11				12	10	Transparent	#FFBCBCBC	12L													
-LeverImage	12LZ								1212	622										12LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Pink_L.png,Image/Lever/Lever_Pink_N.png"									
+LeverImage	12LZ		てこ						1212	622										12LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Pink_L.png,Image/Lever/Lever_Pink_N.png"									
 Image	12LZ_Y		信号機	12LZ					1227	611											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	12LZ_Label	12LZ							14	20	11	11				12Z	10	Transparent	#FFBCBCBC	12LZ													
-LeverImage	13L								2370	388										13L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	13L		てこ						2370	388										13L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
 Image	13LC_G		信号機	13LC					2342	349											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 Image	13LD_G		信号機	13LD					2334	367											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	13L_Label	13L							14	20	11	11				13	10	Transparent	#FFBCBCBC	13L													
-LeverImage	14L								2435	388										14L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	14Lは方向てこ　白LR								
+LeverImage	14L		てこ						2435	388										14L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	14Lは方向てこ　白LR								
 TextBlock	14L_Label	14L							14	20	11	11				14	10	Transparent	#FFBCBCBC	14L													
-LeverImage	21R								1068	388										21R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"	20代X=てこ緑(X)N(X)　例：21R=てこ緑NR								
+LeverImage	21R		てこ						1068	388										21R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"	20代X=てこ緑(X)N(X)　例：21R=てこ緑NR								
 Image	21R_Y		信号機	21R					1185	393											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	21R_Label	21R							14	20	11	11				21	10	Transparent	#FFBCBCBC	21R													
-LeverImage	21RZ								1010	388										21RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"	20代XZ=てこ黄(X)N(X)Z　例：2RZ=てこ黄NR								
+LeverImage	21RZ		てこ						1010	388										21RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"	20代XZ=てこ黄(X)N(X)Z　例：2RZ=てこ黄NR								
 Image	21RZ_Y		信号機	21RZ					1025	377											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	21RZ_Label	21RZ							14	20	11	11				21Z	10	Transparent	#FFBCBCBC	21RZ													
-LeverImage	22R								1068	448										22R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
+LeverImage	22R		てこ						1068	448										22R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
 Image	22R_Y		信号機	22R					1185	453											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	22R_Label	22R							14	20	11	11				22	10	Transparent	#FFBCBCBC	22R													
-LeverImage	22RZ								1010	448										22RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
+LeverImage	22RZ		てこ						1010	448										22RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
 Image	22RZ_Y		信号機	22RZ					1025	437											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	22RZ_Label	22RZ							14	20	11	11				22Z	10	Transparent	#FFBCBCBC	22RZ													
-LeverImage	23R								1058	508										23R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
+LeverImage	23R		てこ						1058	508										23R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
 Image	23R_Y		信号機	23R					1165	567											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	23R_Label	23R							14	20	11	11				23	10	Transparent	#FFBCBCBC	23R													
-LeverImage	23RZ								1010	508										23RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
+LeverImage	23RZ		てこ						1010	508										23RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
 Image	23RZ_Y		信号機	23RZ					1025	497											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	23RZ_Label	23RZ							14	20	11	11				23Z	10	Transparent	#FFBCBCBC	23RZ													
-LeverImage	24R								1058	622										24R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
+LeverImage	24R		てこ						1058	622										24R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
 Image	24R_Y		信号機	24R					1165	606											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	24R_Label	24R							14	20	11	11				24	10	Transparent	#FFBCBCBC	24R													
-LeverImage	24RZ								1010	622										24RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
+LeverImage	24RZ		てこ						1010	622										24RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
 Image	24RZ_Y		信号機	24RZ					1025	611											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	24RZ_Label	24RZ							14	20	11	11				24Z	10	Transparent	#FFBCBCBC	24RZ													
-LeverImage	25R								1106	686										25R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
+LeverImage	25R		てこ						1106	686										25R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
 Image	25R_Y		信号機	25R					1165	691											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	25R_Label	25R							14	20	11	11				25	10	Transparent	#FFBCBCBC	25R													
-LeverImage	25RZ								1048	686										25RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
+LeverImage	25RZ		てこ						1048	686										25RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
 Image	25RZ_Y		信号機	25RZ					1063	675											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	25RZ_Label	25RZ							14	20	11	11				25Z	10	Transparent	#FFBCBCBC	25RZ													
-LeverImage	26R								1106	746										26R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
+LeverImage	26R		てこ						1106	746										26R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
 Image	26R_Y		信号機	26R					1165	751											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	26R_Label	26R							14	20	11	11				26	10	Transparent	#FFBCBCBC	26R													
-LeverImage	26RZ								1048	746										26RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
+LeverImage	26RZ		てこ						1048	746										26RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
 Image	26RZ_Y		信号機	26RZ					1063	735											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	26RZ_Label	26RZ							14	20	11	11				26Z	10	Transparent	#FFBCBCBC	26RZ													
-LeverImage	27L								1260	508										27L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+LeverImage	27L		てこ						1260	508										27L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
 Image	27L_Y		信号機	27L					1135	552											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	27L_Label	27L							14	20	11	11				27	10	Transparent	#FFBCBCBC	27L													
-LeverImage	27LZ								1308	508										27LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
+LeverImage	27LZ		てこ						1308	508										27LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
 Image	27LZ_Y		信号機	27LZ					1323	497											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	27LZ_Label	27LZ							14	20	11	11				27Z	10	Transparent	#FFBCBCBC	27LZ													
-LeverImage	28L								1260	622										28L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+LeverImage	28L		てこ						1260	622										28L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
 Image	28L_Y		信号機	28L					1135	597											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	28L_Label	28L							14	20	11	11				28	10	Transparent	#FFBCBCBC	28L													
-LeverImage	28LZ								1308	622										28LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
+LeverImage	28LZ		てこ						1308	622										28LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
 Image	28LZ_Y		信号機	28LZ					1323	611											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	28LZ_Label	28LZ							14	20	11	11				28Z	10	Transparent	#FFBCBCBC	28LZ													
-LeverImage	29L								1704	448										29L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+LeverImage	29L		てこ						1704	448										29L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
 Image	29L_Y		信号機	29L					1675	489											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	29L_Label	29L							14	20	11	11				29	10	Transparent	#FFBCBCBC	29L													
-LeverImage	29LZ								1752	448										29LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
+LeverImage	29LZ		てこ						1752	448										29LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
 Image	29LZ_Y		信号機	29LZ					1767	437											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	29LZ_Label	29LZ							14	20	11	11				29Z	10	Transparent	#FFBCBCBC	29LZ													
-LeverImage	30R								1902	448										30R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
+LeverImage	30R		てこ						1902	448										30R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Green_N.png,Image/Lever/Lever_Green_R.png"									
 Image	30R_Y		信号機	30R					1961	483											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	30R_Label	30R							14	20	11	11				30	10	Transparent	#FFBCBCBC	30R													
-LeverImage	30RZ								1854	448										30RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
+LeverImage	30RZ		てこ						1854	448										30RZ	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Yellow_N.png,Image/Lever/Lever_Yellow_R.png"									
 Image	30RZ_Y		信号機	30RZ					1869	437											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	30RZ_Label	30RZ							14	20	11	11				30Z	10	Transparent	#FFBCBCBC	30RZ													
-LeverImage	31L								2054	388										31L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+LeverImage	31L		てこ						2054	388										31L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
 Image	31L_Y		信号機	31L					2025	395											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	31L_Label	31L							14	20	11	11				31	10	Transparent	#FFBCBCBC	31L													
-LeverImage	31LZ								2102	388										31LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
+LeverImage	31LZ		てこ						2102	388										31LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
 Image	31LZ_Y		信号機	31LZ					2117	377											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	31LZ_Label	31LZ							14	20	11	11				31Z	10	Transparent	#FFBCBCBC	31LZ													
-LeverImage	32L								2054	448										32L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
+LeverImage	32L		てこ						2054	448										32L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
 Image	32L_Y		信号機	32L					2025	485											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	32L_Label	32L							14	20	11	11				32	10	Transparent	#FFBCBCBC	32L													
-LeverImage	32LZ								2102	448										32LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
+LeverImage	32LZ		てこ						2102	448										32LZ	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Yellow_L.png,Image/Lever/Lever_Yellow_N.png"									
 Image	32LZ_Y		信号機	32LZ					2117	437											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	32LZ_Label	32LZ							14	20	11	11				32Z	10	Transparent	#FFBCBCBC	32LZ													
-ButtonImage	T								360	461										T	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	T		着点ボタン						360	461										T	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	T_Label	T							5	23	15	12				T	10	Transparent	#FFBCBCBC	T													
-ButtonImage	TA								564	401										TA	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	TA		着点ボタン						564	401										TA	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	TA_Label	TA							5	23	15	12				TA	10	Transparent	#FFBCBCBC	TA													
-ButtonImage	TB								564	461										TB	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	TB		着点ボタン						564	461										TB	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	TB_Label	TB							5	23	15	12				TB	10	Transparent	#FFBCBCBC	TB													
-ButtonImage	TC								564	521										TC	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	TC		着点ボタン						564	521										TC	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	TC_Label	TC							5	23	15	12				TC	10	Transparent	#FFBCBCBC	TC													
-ButtonImage	A								966	401										A	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	A		着点ボタン						966	401										A	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	A_Label	A							5	23	15	12				A	10	Transparent	#FFBCBCBC	A													
-ButtonImage	B								966	461										B	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	B		着点ボタン						966	461										B	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	B_Label	B							5	23	15	12				B	10	Transparent	#FFBCBCBC	B													
-ButtonImage	C								966	521										C	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	C		着点ボタン						966	521										C	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	C_Label	C							5	23	15	12				C	10	Transparent	#FFBCBCBC	C													
-ButtonImage	D								966	635										D	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	D		着点ボタン						966	635										D	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	D_Label	D							5	23	15	12				D	10	Transparent	#FFBCBCBC	D													
-ButtonImage	5								1004	699										5	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	5		着点ボタン						1004	699										5	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	5_Label	5							5	23	15	12				5	10	Transparent	#FFBCBCBC	5													
-ButtonImage	6								1004	759										6	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	6		着点ボタン						1004	759										6	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	6_Label	6							5	23	15	12				6	10	Transparent	#FFBCBCBC	6													
-ButtonImage	SC								1366	521										SC	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	SC		着点ボタン						1366	521										SC	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	SC_Label	SC							5	23	15	12				SC	10	Transparent	#FFBCBCBC	SC													
-ButtonImage	SD								1366	635										SD	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	SD		着点ボタン						1366	635										SD	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	SD_Label	SD							5	23	15	12				SD	10	Transparent	#FFBCBCBC	SD													
-ButtonImage	E								1810	461										E	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	E		着点ボタン						1810	461										E	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	E_Label	E							5	23	15	12				E	10	Transparent	#FFBCBCBC	E													
-ButtonImage	X								2319	401										X	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	X		着点ボタン						2319	401										X	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	X_Label	X							5	23	15	12				X	10	Transparent	#FFBCBCBC	X													
-ButtonImage	Y								2319	461										Y	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	Y		着点ボタン						2319	461										Y	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	Y_Label	Y							5	23	15	12				Y	10	Transparent	#FFBCBCBC	Y													
 ButtonImage	警報上り接近								404	911										警報上り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
 ButtonImage	警報下り接近								2131	911										警報下り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
-LeverImage	P41								389	64										P41	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	転てつ器単独てこはNCR								
+LeverImage	P41		てこ						389	64										P41	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	転てつ器単独てこはNCR								
 Image	P41_PG		転てつ器						387	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P41_PY		転てつ器						421	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P41_Label	P41							14	20	11	11				41	10	Transparent	#FFBCBCBC	P41													
-LeverImage	P42								457	64										P42	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	P42		てこ						457	64										P42	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	P42_PG		転てつ器						455	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P42_PY		転てつ器						489	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P42_Label	P42							14	20	11	11				42	10	Transparent	#FFBCBCBC	P42													
-LeverImage	P43								525	64										P43	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	P43		てこ						525	64										P43	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	P43_PG		転てつ器						523	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P43_PY		転てつ器						557	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P43_Label	P43							14	20	11	11				43	10	Transparent	#FFBCBCBC	P43													
-LeverImage	P44								1535	64										P44	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	P44		てこ						1535	64										P44	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	P44_PG		転てつ器						1533	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P44_PY		転てつ器						1567	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P44_Label	P44							14	20	11	11				44	10	Transparent	#FFBCBCBC	P44													
-LeverImage	P45								1603	64										P45	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	P45		てこ						1603	64										P45	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	P45_PG		転てつ器						1601	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P45_PY		転てつ器						1635	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P45_Label	P45							14	20	11	11				45	10	Transparent	#FFBCBCBC	P45													
-LeverImage	P46								1671	64										P46	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	P46		てこ						1671	64										P46	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	P46_PG		転てつ器						1669	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P46_PY		転てつ器						1703	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P46_Label	P46							14	20	11	11				46	10	Transparent	#FFBCBCBC	P46													
-LeverImage	P47								1739	64										P47	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	P47		てこ						1739	64										P47	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	P47_PG		転てつ器						1737	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P47_PY		転てつ器						1771	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P47_Label	P47							14	20	11	11				47	10	Transparent	#FFBCBCBC	P47													
-LeverImage	P48								1807	64										P48	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	P48		てこ						1807	64										P48	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	P48_PG		転てつ器						1805	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P48_PY		転てつ器						1839	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P48_Label	P48							14	20	11	11				48	10	Transparent	#FFBCBCBC	P48													
-LeverImage	P49								1875	64										P49	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	P49		てこ						1875	64										P49	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	P49_PG		転てつ器						1873	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P49_PY		転てつ器						1907	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P49_Label	P49							14	20	11	11				49	10	Transparent	#FFBCBCBC	P49													
-LeverImage	P50								1943	64										P50	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	P50		てこ						1943	64										P50	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	P50_PG		転てつ器						1941	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	P50_PY		転てつ器						1975	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	P50_Label	P50							14	20	11	11				50	10	Transparent	#FFBCBCBC	P50													
-KeyImage	駅扱切換								2269	64										駅扱切換	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	駅扱切換はLR								
-Image	駅扱切換_PY		てこ						2267	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-Image	駅扱切換_PG		てこ						2301	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-KeyImage	解放99								2367	64										解放99	"0,1,10,11"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/KeyLever_KeyOFF_N.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_N.png,Image/Lever/KeyLever_KeyON_R.png"	方向てこ解放はNR								
-Image	解放99_PY		てこ						2382	31											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+KeyImage	駅扱切換		てこ						2269	64										駅扱切換	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	駅扱切換はLR								
+Image	駅扱切換_PY		駅扱切換てこ						2267	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+Image	駅扱切換_PG		駅扱切換てこ						2301	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+KeyImage	解放99		てこ						2367	64										解放99	"0,1,10,11"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/KeyLever_KeyOFF_N.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_N.png,Image/Lever/KeyLever_KeyON_R.png"	方向てこ解放はNR								
+Image	解放99_PY		解放てこ						2382	31											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 Image	142T_1		軌道回路						52	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0度※以下0度省略								
 Image	146T_1		軌道回路						82	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH66_1RT_1		軌道回路						112	411											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									

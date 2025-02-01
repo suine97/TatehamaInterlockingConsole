@@ -89,50 +89,69 @@ namespace TatehamaInterlockingConsole.ViewModels
             foreach (var item in allSettingList)
             {
                 trackCircuit = dataFromServer.TrackCircuits
-                    .Where(t => t.Name == item.ServerName)
-                    .FirstOrDefault();
+                    .FirstOrDefault(t => t.Name == item.ServerName);
                 pointA = dataFromServer.Points
-                    .Where(p => p.Name == item.PointNameA)
-                    .FirstOrDefault();
+                    .FirstOrDefault(p => p.Name == item.PointNameA);
                 pointB = dataFromServer.Points
-                    .Where(p => p.Name == item.PointNameB)
-                    .FirstOrDefault();
+                    .FirstOrDefault(p => p.Name == item.PointNameB);
                 signal = dataFromServer.Signals
-                    .Where(s => s.Name == item.ServerName)
-                    .FirstOrDefault();
+                    .FirstOrDefault(s => s.Name == item.ServerName);
                 lamp = dataFromServer.Lamps
-                    .Where(l => l.Name == item.ServerName)
-                    .FirstOrDefault();
+                    .FirstOrDefault(l => l.Name == item.ServerName);
                 retsuban = dataFromServer.Retsubans
-                    .Where(r => r.Name == item.ServerName)
-                    .FirstOrDefault();
+                    .FirstOrDefault(r => r.Name == item.ServerName);
                 lever = dataFromServer.Levers
-                    .Where(l => l.Name == item.ServerName)
-                    .FirstOrDefault();
+                    .FirstOrDefault(l => l.Name == item.ServerName);
 
                 // サーバー情報を基に更新
                 switch (item.ServerType)
                 {
                     case "信号機":
+                        if (signal != null)
                         {
-                            if (signal != null)
-                            {
-                                // 進行信号
-                                if (signal.IsProceedSignal)
-                                    item.ImageIndex = 1;
-                                else
-                                    item.ImageIndex = 0;
-                            }
+                            // 進行信号
+                            if (signal.IsProceedSignal)
+                                item.ImageIndex = 1;
+                            else
+                                item.ImageIndex = 0;
                         }
                         break;
                     case "転てつ器":
+                        // A, B転てつ器条件が存在する場合
+                        if (pointA != null && pointB != null)
                         {
-                            // A,B転てつ器条件が存在する場合
+                            // 転てつ器状態
+                            if ((pointA.IsReversePosition == !item.PointValueA) && (pointB.IsReversePosition == !item.PointValueB))
+                                item.ImageIndex = 1;
+                            else
+                                item.ImageIndex = 0;
+                        }
+                        // B転てつ器条件のみ存在する場合
+                        else if (pointB != null)
+                        {
+                            if (pointB.IsReversePosition == !item.PointValueB)
+                                item.ImageIndex = 1;
+                            else
+                                item.ImageIndex = 0;
+                        }
+                        // A転てつ器条件のみ存在する場合
+                        else if (pointA != null)
+                        {
+                            if (pointA.IsReversePosition == !item.PointValueA)
+                                item.ImageIndex = 1;
+                            else
+                                item.ImageIndex = 0;
+                        }
+                        break;
+                    case "軌道回路":
+                        if (trackCircuit != null)
+                        {
+                            // A, B転てつ器条件が存在する場合
                             if (pointA != null && pointB != null)
                             {
                                 // 転てつ器状態
                                 if ((pointA.IsReversePosition == !item.PointValueA) && (pointB.IsReversePosition == !item.PointValueB))
-                                    item.ImageIndex = 1;
+                                    item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
                                 else
                                     item.ImageIndex = 0;
                             }
@@ -140,7 +159,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                             else if (pointB != null)
                             {
                                 if (pointB.IsReversePosition == !item.PointValueB)
-                                    item.ImageIndex = 1;
+                                    item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
                                 else
                                     item.ImageIndex = 0;
                             }
@@ -148,119 +167,87 @@ namespace TatehamaInterlockingConsole.ViewModels
                             else if (pointA != null)
                             {
                                 if (pointA.IsReversePosition == !item.PointValueA)
-                                    item.ImageIndex = 1;
+                                    item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
                                 else
                                     item.ImageIndex = 0;
                             }
-                        }
-                        break;
-                    case "軌道回路":
-                        {
-                            if (trackCircuit != null)
+                            // 転てつ器条件なし
+                            else
                             {
-                                // A,B転てつ器条件が存在する場合
-                                if (pointA != null && pointB != null)
-                                {
-                                    // 転てつ器状態
-                                    if ((pointA.IsReversePosition == !item.PointValueA) && (pointB.IsReversePosition == !item.PointValueB))
-                                        item.ImageIndex = trackCircuit.IsOnTrack ? 1 : trackCircuit.IsRouteSetting ? 2 : 0;
-                                    else
-                                        item.ImageIndex = 0;
-                                }
-                                // B転てつ器条件のみ存在する場合
-                                else if (pointB != null)
-                                {
-                                    if (pointB.IsReversePosition == !item.PointValueB)
-                                        item.ImageIndex = trackCircuit.IsOnTrack ? 1 : trackCircuit.IsRouteSetting ? 2 : 0;
-                                    else
-                                        item.ImageIndex = 0;
-                                }
-                                // A転てつ器条件のみ存在する場合
-                                else if (pointA != null)
-                                {
-                                    if (pointA.IsReversePosition == !item.PointValueA)
-                                        item.ImageIndex = trackCircuit.IsOnTrack ? 1 : trackCircuit.IsRouteSetting ? 2 : 0;
-                                    else
-                                        item.ImageIndex = 0;
-                                }
-                                // 転てつ器条件なし
+                                if (trackCircuit.IsOnTrack)
+                                    item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
                                 else
-                                {
-                                    if (trackCircuit.IsOnTrack)
-                                        item.ImageIndex = trackCircuit.IsOnTrack ? 1 : trackCircuit.IsRouteSetting ? 2 : 0;
-                                    else
-                                        item.ImageIndex = 0;
-                                }
+                                    item.ImageIndex = 0;
                             }
                         }
                         break;
                     case "ランプ":
+                        if (lamp != null)
                         {
-                            if (lamp != null)
-                            {
-                                // 点灯
-                                if (lamp.IsLighting)
-                                    item.ImageIndex = 1;
-                                else
-                                    item.ImageIndex = 0;
-                            }
+                            // 点灯
+                            if (lamp.IsLighting)
+                                item.ImageIndex = 1;
+                            else
+                                item.ImageIndex = 0;
                         }
                         break;
                     case "列車番号":
+                        if (retsuban != null)
                         {
-                            if (retsuban != null)
+                            // 列車番号
+                            item.Retsuban = retsuban.RetsubanText;
+                            SetControlsetting(item);
+                        }
+                        else
+                        {
+                            item.Retsuban = string.Empty;
+                            SetControlsetting(item);
+                        }
+                        break;
+                    case "てこ":
+                        if (lever != null)
+                        {
+                            // てこ操作中でなければ更新
+                            if (!item.IsLeverhandling)
                             {
-                                // 列車番号
-                                item.Retsuban = retsuban.RetsubanText;
-                                SetControlsetting(item);
+                                item.ImageIndex = lever.LeverValue;
+                            }
+                            // てこ操作中かつ、てこの値がサーバー側と同じなら操作完了判定
+                            else if (item.IsLeverhandling && (item.ImageIndex == lever.LeverValue))
+                            {
+                                item.IsLeverhandling = false;
+                            }
+                        }
+                        break;
+                    case "駅扱切換てこ":
+                        if (lever != null)
+                        {
+                            // ランプ"PY"
+                            if (item.UniqueName.Contains("PY") && (lever.LeverValue <= 0))
+                            {
+                                item.ImageIndex = 1;
+                            }
+                            // ランプ"PG"
+                            else if (item.UniqueName.Contains("PG") && (0 < lever.LeverValue))
+                            {
+                                item.ImageIndex = 1;
                             }
                             else
                             {
-                                item.Retsuban = string.Empty;
-                                SetControlsetting(item);
+                                item.ImageIndex = 0;
                             }
                         }
                         break;
-                    default:
-                        break;
-                }
-
-                // 信号盤操作を基に更新
-                switch (item.ControlType)
-                {
-                    case "LeverImage":
+                    case "解放てこ":
+                        if (lever != null)
                         {
-                            // 転てつ器状態を基にてこ画像更新
-                            switch (item.ImagePatternSymbol)
+                            if (lever.LeverValue <= 0)
                             {
-                                case "NR":
-                                    break;
-                                case "LN":
-                                    break;
-                                case "LR":
-                                    break;
-                                case "LNR":
-                                    break;
-                                default:
-                                    break;
+                                item.ImageIndex = 1;
                             }
-                        }
-                        break;
-                    case "KeyImage":
-                        {
-                            // 鍵挿入状態を基に鍵てこ画像更新
-                            switch (item.ImagePatternSymbol)
+                            else
                             {
-                                case "KeyNR":
-                                    break;
-                                case "KeyLN":
-                                    break;
-                                case "KeyLR":
-                                    break;
-                                case "KeyLNR":
-                                    break;
-                                default:
-                                    break;
+                                item.ImageIndex = 0;
                             }
                         }
                         break;
