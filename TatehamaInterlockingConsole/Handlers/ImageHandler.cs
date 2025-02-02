@@ -129,8 +129,13 @@ namespace TatehamaInterlockingConsole.Handlers
                 }
             }
 
+            // てこ操作中判定
+            control.IsLeverhandling = true;
+
             control.ImageIndex = newIndex;
             _dataUpdateViewModel.SetControlsetting(control);
+
+            // 音声再生
             _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
             // サーバーへリクエスト送信
@@ -186,6 +191,7 @@ namespace TatehamaInterlockingConsole.Handlers
                         {
                             control.ImageIndex += 10;
                         }
+                        // 音声再生
                         _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
                         _sound.SoundPlay($"remove_{randomKeyRemoveSoundIndex}", false);
                     }
@@ -199,9 +205,13 @@ namespace TatehamaInterlockingConsole.Handlers
                         {
                             control.ImageIndex -= 10;
                         }
+                        // 音声再生
                         _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
                         _sound.SoundPlay($"insert_{randomKeyInsertSoundIndex}", false);
                     }
+                    // てこ操作中判定
+                    control.IsLeverhandling = true;
+
                     control.KeyInserted = !control.KeyInserted;
                     _dataUpdateViewModel.SetControlsetting(control);
 
@@ -252,9 +262,13 @@ namespace TatehamaInterlockingConsole.Handlers
                             return;
                         }
                     }
+                    // てこ操作中判定
+                    control.IsLeverhandling = true;
 
                     control.ImageIndex = newIndex;
                     _dataUpdateViewModel.SetControlsetting(control);
+
+                    // 音声再生
                     _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
                     // サーバーへリクエスト送信
@@ -278,6 +292,7 @@ namespace TatehamaInterlockingConsole.Handlers
             // 司令主任権限がない場合は操作無効
             else
             {
+                // 音声再生
                 _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
                 _sound.SoundPlay($"reject_{randomKeyRejectSoundIndex}", false);
             }
@@ -297,6 +312,8 @@ namespace TatehamaInterlockingConsole.Handlers
             {
                 control.ImageIndex = 1;
                 _dataUpdateViewModel.SetControlsetting(control);
+
+                // 音声再生
                 _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
 
                 // サーバーへリクエスト送信
@@ -331,6 +348,8 @@ namespace TatehamaInterlockingConsole.Handlers
             {
                 control.ImageIndex = 0;
                 _dataUpdateViewModel.SetControlsetting(control);
+
+                // 音声再生
                 _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
             }
         }

@@ -106,7 +106,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                 // サーバー情報を基に更新
                 switch (item.ServerType)
                 {
-                    case "信号機":
+                    case "信号機表示灯":
                         if (signal != null)
                         {
                             // 進行信号
@@ -116,7 +116,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                                 item.ImageIndex = 0;
                         }
                         break;
-                    case "転てつ器":
+                    case "転てつ器表示灯":
                         // A, B転てつ器条件が存在する場合
                         if (pointA != null && pointB != null)
                         {
@@ -143,7 +143,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                                 item.ImageIndex = 0;
                         }
                         break;
-                    case "軌道回路":
+                    case "軌道回路表示灯":
                         if (trackCircuit != null)
                         {
                             // A, B転てつ器条件が存在する場合
@@ -181,7 +181,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                             }
                         }
                         break;
-                    case "ランプ":
+                    case "状態表示灯":
                         if (lamp != null)
                         {
                             // 点灯
@@ -191,35 +191,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                                 item.ImageIndex = 0;
                         }
                         break;
-                    case "列車番号":
-                        if (retsuban != null)
-                        {
-                            // 列車番号
-                            item.Retsuban = retsuban.RetsubanText;
-                            SetControlsetting(item);
-                        }
-                        else
-                        {
-                            item.Retsuban = string.Empty;
-                            SetControlsetting(item);
-                        }
-                        break;
-                    case "てこ":
-                        if (lever != null)
-                        {
-                            // てこ操作中でなければ更新
-                            if (!item.IsLeverhandling)
-                            {
-                                item.ImageIndex = lever.LeverValue;
-                            }
-                            // てこ操作中かつ、てこの値がサーバー側と同じなら操作完了判定
-                            else if (item.IsLeverhandling && (item.ImageIndex == lever.LeverValue))
-                            {
-                                item.IsLeverhandling = false;
-                            }
-                        }
-                        break;
-                    case "駅扱切換てこ":
+                    case "駅扱切換表示灯":
                         if (lever != null)
                         {
                             // ランプ"PY"
@@ -238,7 +210,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                             }
                         }
                         break;
-                    case "解放てこ":
+                    case "解放表示灯":
                         if (lever != null)
                         {
                             if (lever.LeverValue <= 0)
@@ -249,6 +221,34 @@ namespace TatehamaInterlockingConsole.ViewModels
                             {
                                 item.ImageIndex = 0;
                             }
+                        }
+                        break;
+                    case "物理てこ":
+                        if (lever != null)
+                        {
+                            // てこ操作中でなければ更新
+                            if (!item.IsLeverhandling)
+                            {
+                                item.ImageIndex = lever.LeverValue;
+                            }
+                            // てこ操作中かつ、てこの値がサーバー側と同じなら操作完了判定
+                            else if (item.IsLeverhandling && (item.ImageIndex == lever.LeverValue))
+                            {
+                                item.IsLeverhandling = false;
+                            }
+                        }
+                        break;
+                    case "列車番号":
+                        if (retsuban != null)
+                        {
+                            // 列車番号
+                            item.Retsuban = retsuban.RetsubanText;
+                            SetControlsetting(item);
+                        }
+                        else
+                        {
+                            item.Retsuban = string.Empty;
+                            SetControlsetting(item);
                         }
                         break;
                     default:
