@@ -128,10 +128,6 @@ namespace TatehamaInterlockingConsole.Handlers
                     return;
                 }
             }
-
-            // てこ操作中判定
-            control.IsLeverhandling = true;
-
             control.ImageIndex = newIndex;
             _dataUpdateViewModel.SetControlsetting(control);
 
@@ -141,6 +137,9 @@ namespace TatehamaInterlockingConsole.Handlers
             // サーバーへリクエスト送信
             if (control.ServerType != string.Empty)
             {
+                // 操作中判定
+                control.Ishandling = true;
+
                 var dataToServer = new DatabaseOperational.DataToServer
                 {
                     ActiveStationsList = _dataManager.ActiveStationsList,
@@ -209,15 +208,15 @@ namespace TatehamaInterlockingConsole.Handlers
                         _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
                         _sound.SoundPlay($"insert_{randomKeyInsertSoundIndex}", false);
                     }
-                    // てこ操作中判定
-                    control.IsLeverhandling = true;
-
                     control.KeyInserted = !control.KeyInserted;
                     _dataUpdateViewModel.SetControlsetting(control);
 
                     // サーバーへリクエスト送信
                     if (control.ServerType != string.Empty)
                     {
+                        // 操作中判定
+                        control.Ishandling = true;
+
                         var dataToServer = new DatabaseOperational.DataToServer
                         {
                             ActiveStationsList = _dataManager.ActiveStationsList,
@@ -262,9 +261,6 @@ namespace TatehamaInterlockingConsole.Handlers
                             return;
                         }
                     }
-                    // てこ操作中判定
-                    control.IsLeverhandling = true;
-
                     control.ImageIndex = newIndex;
                     _dataUpdateViewModel.SetControlsetting(control);
 
@@ -274,6 +270,9 @@ namespace TatehamaInterlockingConsole.Handlers
                     // サーバーへリクエスト送信
                     if (control.ServerType != string.Empty)
                     {
+                        // 操作中判定
+                        control.Ishandling = true;
+
                         var dataToServer = new DatabaseOperational.DataToServer
                         {
                             ActiveStationsList = _dataManager.ActiveStationsList,

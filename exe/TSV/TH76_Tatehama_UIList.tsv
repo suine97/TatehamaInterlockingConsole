@@ -3,60 +3,60 @@ BackImage	連動盤								0	0														Image/BackImage/TH76_Tatehama.png
 Image	Clock_Base								850	78	79	110												Image/Clock/Clock_Border.png									
 ClockImage	Clock_Meter	Clock_Base							6	37	63	63											Image/Clock/Clock_Base.png	"Image/Clock/Clock_HourHand.png,Image/Clock/Clock_MinuteHand.png,Image/Clock/Clock_SecondHand.png,Image/Clock/Clock_Cover.png"									
 Image	Hook								861	10														Image/Hook/Hook_Base.png									
-LeverImage	1R		物理てこ	1R					423	323										1R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0代X=てこ赤(X)N(X)　例：1R=てこ赤NR								
+LeverImage	1R		物理てこ	TH76_1					423	323										1R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0代X=てこ赤(X)N(X)　例：1R=てこ赤NR								
 Image	1R_G		信号機表示灯	TH76_1R					489	359											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PYは灯色"								
 TextBlock	1R_Label	1R							14	20	11	11				1	10	Transparent	#FFBCBCBC	1R													
-LeverImage	2R		物理てこ	2R					423	443										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	2R		物理てこ	TH76_2					423	443										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	2R_G		信号機表示灯	TH76_2R					489	479											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	2R_Label	2R							14	20	11	11				2	10	Transparent	#FFBCBCBC	2R													
-LeverImage	3R		物理てこ	3R					397	503										3R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	3R		物理てこ	TH76_3					397	503										3R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	3R_G		信号機表示灯	TH76_3R					489	501											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	3R_Label	3R							14	20	11	11				3	10	Transparent	#FFBCBCBC	3R													
-LeverImage	4R		物理てこ	4R					423	563										4R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
+LeverImage	4R		物理てこ	TH76_4					423	563										4R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"									
 Image	4R_G		信号機表示灯	TH76_4R					489	599											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	4R_Label	4R							14	20	11	11				4	10	Transparent	#FFBCBCBC	4R													
-LeverImage	5L		物理てこ	5L					832	383										5L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
+LeverImage	5L		物理てこ	TH76_5					832	383										5L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
 Image	5L_G		信号機表示灯	TH76_5L					796	419											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	5L_Label	5L							14	20	11	11				5	10	Transparent	#FFBCBCBC	5L													
-ButtonImage	A		着点ボタン	A					185	336										A	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	A		着点ボタン	TH76_AP					185	336										A	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	A_Label	A							5	23	15	12				A	10	Transparent	#FFBCBCBC	A													
-ButtonImage	B		着点ボタン	B					185	456										B	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	B		着点ボタン	TH76_BP					185	456										B	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	B_Label	B							5	23	15	12				B	10	Transparent	#FFBCBCBC	B													
-ButtonImage	C		着点ボタン	C					159	516										C	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	C		着点ボタン	TH76_CP					159	516										C	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	C_Label	C							5	23	15	12				C	10	Transparent	#FFBCBCBC	C													
-ButtonImage	D		着点ボタン	D					159	576										D	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	D		着点ボタン	TH76_DP					159	576										D	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	D_Label	D							5	23	15	12				D	10	Transparent	#FFBCBCBC	D													
-ButtonImage	S		着点ボタン	S					766	336										S	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
+ButtonImage	S		着点ボタン	TH76_SP					766	336										S	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	S_Label	S							5	23	15	12				S	10	Transparent	#FFBCBCBC	S													
 ButtonImage	警報下り接近								1111	731										警報下り接近	"0,1"	0	Image/Button/ApproachingButton_Base.png	"Image/Button/ApproachingButton_Green_OFF.png,Image/Button/ApproachingButton_Green_ON.png"									
-LeverImage	W21		物理てこ	W21					168	64										P21	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	転てつ器単独てこはNCR								
-Image	W21_PG		転てつ器表示灯		TH76_W21イ	N	TH76_W21ロ	N	166	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	W21_PY		転てつ器表示灯		TH76_W21イ	R	TH76_W21ロ	R	200	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	W21_Label	W21							14	20	11	11				21	10	Transparent	#FFBCBCBC	P21													
-LeverImage	W22		物理てこ	W22					236	64										P22	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+LeverImage	W21		物理てこ	TH76_21					168	64										W21	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"	転てつ器単独てこはNCR								
+Image	W21_PG		転てつ器表示灯		TH76_W21	N			166	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	W21_PY		転てつ器表示灯		TH76_W21	R			200	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	W21_Label	W21							14	20	11	11				21	10	Transparent	#FFBCBCBC	W21													
+LeverImage	W22		物理てこ	TH76_22					236	64										W22	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	W22_PG		転てつ器表示灯		TH76_W22	N			234	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	W22_PY		転てつ器表示灯		TH76_W22	R			268	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	W22_Label	W22							14	20	11	11				22	10	Transparent	#FFBCBCBC	P22													
-LeverImage	W23		物理てこ	W23					304	64										P23	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+TextBlock	W22_Label	W22							14	20	11	11				22	10	Transparent	#FFBCBCBC	W22													
+LeverImage	W23		物理てこ	TH76_23					304	64										W23	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	W23_PG		転てつ器表示灯		TH76_W23	N			302	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	W23_PY		転てつ器表示灯		TH76_W23	R			336	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	W23_Label	W23							14	20	11	11				23	10	Transparent	#FFBCBCBC	P23													
-LeverImage	W24		物理てこ	W24					372	64										P24	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
-Image	W24_PG		転てつ器表示灯		TH76_W24イ	N	TH76_W24ロ	N	370	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	W24_PY		転てつ器表示灯		TH76_W24イ	R	TH76_W24ロ	R	404	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	W24_Label	W24							14	20	11	11				24	10	Transparent	#FFBCBCBC	P24													
-LeverImage	W25		物理てこ	W25					440	64										P25	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+TextBlock	W23_Label	W23							14	20	11	11				23	10	Transparent	#FFBCBCBC	W23													
+LeverImage	W24		物理てこ	TH76_24					372	64										W24	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	W24_PG		転てつ器表示灯		TH76_W24	N			370	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	W24_PY		転てつ器表示灯		TH76_W24	R			404	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	W24_Label	W24							14	20	11	11				24	10	Transparent	#FFBCBCBC	W24													
+LeverImage	W25		物理てこ	TH76_25					440	64										W25	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	W25_PG		転てつ器表示灯		TH76_W25	N			438	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	W25_PY		転てつ器表示灯		TH76_W25	R			472	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	W25_Label	W25							14	20	11	11				25	10	Transparent	#FFBCBCBC	P25													
-LeverImage	W26		物理てこ	W26					508	64										P26	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
-Image	W26_PG		転てつ器表示灯		TH76_W26イ	N	TH76_W26ロ	N	506	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
-Image	W26_PY		転てつ器表示灯		TH76_W26イ	R	TH76_W26ロ	R	540	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	W26_Label	W26							14	20	11	11				26	10	Transparent	#FFBCBCBC	P26													
-LeverImage	W27		物理てこ	W27					576	64										P27	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+TextBlock	W25_Label	W25							14	20	11	11				25	10	Transparent	#FFBCBCBC	W25													
+LeverImage	W26		物理てこ	TH76_26					508	64										W26	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
+Image	W26_PG		転てつ器表示灯		TH76_W26	N			506	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
+Image	W26_PY		転てつ器表示灯		TH76_W26	R			540	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+TextBlock	W26_Label	W26							14	20	11	11				26	10	Transparent	#FFBCBCBC	W26													
+LeverImage	W27		物理てこ	TH76_27					576	64										W27	"-1,0,1"	0	Image/Lever/LeverBase_NCR.png	"Image/Lever/Lever_Black_L.png,Image/Lever/Lever_Black_N.png,Image/Lever/Lever_Black_R.png"									
 Image	W27_PG		転てつ器表示灯		TH76_W27	N			574	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
 Image	W27_PY		転てつ器表示灯		TH76_W27	R			608	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
-TextBlock	W27_Label	W27							14	20	11	11				27	10	Transparent	#FFBCBCBC	P27													
+TextBlock	W27_Label	W27							14	20	11	11				27	10	Transparent	#FFBCBCBC	W27													
 KeyImage	駅扱切換		物理てこ	駅扱切換					1347	64										駅扱切換	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	駅扱切換はLR								
 Image	駅扱切換_PY		駅扱切換表示灯	駅扱切換					1345	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 Image	駅扱切換_PG		駅扱切換表示灯	駅扱切換					1379	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
@@ -68,45 +68,45 @@ Image	TH76_5LCT_1		軌道回路表示灯	TH76_5LCT					141	526											"0,1,2"	0		"Im
 Image	TH76_5LCT_2		軌道回路表示灯	TH76_5LCT					385	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_5LDT_1		軌道回路表示灯	TH76_5LDT					141	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_5LDT_2		軌道回路表示灯	TH76_5LDT					385	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21イT_W21イN_1		軌道回路表示灯	TH76_21イT	TH76_W21イ	N			454	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21イT_W21イN_2		軌道回路表示灯	TH76_21イT	TH76_W21イ	N			530	508											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_21イT_W21イR_1		軌道回路表示灯	TH76_21イT	TH76_W21イ	R			454	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21イT_W21イR_2		軌道回路表示灯	TH76_21イT	TH76_W21イ	R			478	544											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH76_21ロT_W21ロN_1		軌道回路表示灯	TH76_21ロT	TH76_W21ロ	N			480	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21ロT_W21ロN_2		軌道回路表示灯	TH76_21ロT	TH76_W21ロ	N			520	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21ロT_W21ロN_3		軌道回路表示灯	TH76_21ロT	TH76_W21ロ	N			572	550											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_21ロT_W21ロR_1		軌道回路表示灯	TH76_21ロT	TH76_W21ロ	R			498	564											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH76_21ロT_W21ロR_2		軌道回路表示灯	TH76_21ロT	TH76_W21ロ	R			520	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_21ロT_W21ロR_3		軌道回路表示灯	TH76_21ロT	TH76_W21ロ	R			572	550											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_21イT_W21イN_1		軌道回路表示灯	TH76_21イT	TH76_W21	N			454	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21イT_W21イN_2		軌道回路表示灯	TH76_21イT	TH76_W21	N			530	508											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_21イT_W21イR_1		軌道回路表示灯	TH76_21イT	TH76_W21	R			454	526											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21イT_W21イR_2		軌道回路表示灯	TH76_21イT	TH76_W21	R			478	544											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH76_21ロT_W21ロN_1		軌道回路表示灯	TH76_21ロT	TH76_W21	N			480	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21ロT_W21ロN_2		軌道回路表示灯	TH76_21ロT	TH76_W21	N			520	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21ロT_W21ロN_3		軌道回路表示灯	TH76_21ロT	TH76_W21	N			572	550											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_21ロT_W21ロR_1		軌道回路表示灯	TH76_21ロT	TH76_W21	R			498	564											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH76_21ロT_W21ロR_2		軌道回路表示灯	TH76_21ロT	TH76_W21	R			520	586											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_21ロT_W21ロR_3		軌道回路表示灯	TH76_21ロT	TH76_W21	R			572	550											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
 Image	TH76_22T_W22N_1		軌道回路表示灯	TH76_22T	TH76_W22	N			480	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_22T_W22N_2		軌道回路表示灯	TH76_22T	TH76_W22	N			549	379											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
 Image	TH76_22T_W22R_1		軌道回路表示灯	TH76_22T	TH76_W22	R			480	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_22T_W22R_2		軌道回路表示灯	TH76_22T	TH76_W22	R			562	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_22T_W22R_3		軌道回路表示灯	TH76_22T	TH76_W22	R			645	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_23T_W23N_W24ロN_1		軌道回路表示灯	TH76_23T	TH76_W23	N	W24ロ	N	550	488											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_23T_W23N_W24ロN_2		軌道回路表示灯	TH76_23T	TH76_W23	N	W24ロ	N	594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_23T_W23R_W24ロN_1		軌道回路表示灯	TH76_23T	TH76_W23	R	W24ロ	N	480	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_23T_W23R_W24ロN_2		軌道回路表示灯	TH76_23T	TH76_W23	R	W24ロ	N	539	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_23T_W23R_W24ロN_3		軌道回路表示灯	TH76_23T	TH76_W23	R	W24ロ	N	594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_23T_W24ロR_1		軌道回路表示灯	TH76_23T	TH76_W24ロ	R			595	472											"0,1,2"	0		"Image/Light/90N.png,Image/Light/90Y.png,Image/Light/90R.png"	90度								
-Image	TH76_23T_W24ロR_2		軌道回路表示灯	TH76_23T	TH76_W24ロ	R			594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24T_W24イN_1		軌道回路表示灯	TH76_24T	TH76_W24イ	N			592	530											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24T_W24イN_2		軌道回路表示灯	TH76_24T	TH76_W24イ	N			649	473											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24T_W24イN_3		軌道回路表示灯	TH76_24T	TH76_W24イ	N			721	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24T_W24イR_1		軌道回路表示灯	TH76_24T	TH76_W24イ	R			592	530											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_24T_W24イR_2		軌道回路表示灯	TH76_24T	TH76_W24イ	R			595	500											"0,1,2"	0		"Image/Light/90N.png,Image/Light/90Y.png,Image/Light/90R.png"	90度								
+Image	TH76_23T_W23N_W24ロN_1		軌道回路表示灯	TH76_23T	TH76_W23	N	TH76_W24	N	550	488											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_23T_W23N_W24ロN_2		軌道回路表示灯	TH76_23T	TH76_W23	N	TH76_W24	N	594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_23T_W23R_W24ロN_1		軌道回路表示灯	TH76_23T	TH76_W23	R	TH76_W24	N	480	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_23T_W23R_W24ロN_2		軌道回路表示灯	TH76_23T	TH76_W23	R	TH76_W24	N	539	466											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_23T_W23R_W24ロN_3		軌道回路表示灯	TH76_23T	TH76_W23	R	TH76_W24	N	594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_23T_W24ロR_1		軌道回路表示灯	TH76_23T	TH76_W24	R			595	472											"0,1,2"	0		"Image/Light/90N.png,Image/Light/90Y.png,Image/Light/90R.png"	90度								
+Image	TH76_23T_W24ロR_2		軌道回路表示灯	TH76_23T	TH76_W24	R			594	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24T_W24イN_1		軌道回路表示灯	TH76_24T	TH76_W24	N			592	530											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24T_W24イN_2		軌道回路表示灯	TH76_24T	TH76_W24	N			649	473											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24T_W24イN_3		軌道回路表示灯	TH76_24T	TH76_W24	N			721	444											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24T_W24イR_1		軌道回路表示灯	TH76_24T	TH76_W24	R			592	530											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_24T_W24イR_2		軌道回路表示灯	TH76_24T	TH76_W24	R			595	500											"0,1,2"	0		"Image/Light/90N.png,Image/Light/90Y.png,Image/Light/90R.png"	90度								
 Image	TH76_25T_W25N_1		軌道回路表示灯	TH76_25T	TH76_W25	N			614	424											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
 Image	TH76_25T_W25N_2		軌道回路表示灯	TH76_25T	TH76_W25	N			645	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_25T_W25R_1		軌道回路表示灯	TH76_25T	TH76_W25	R			604	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_25T_W25R_2		軌道回路表示灯	TH76_25T	TH76_W25	R			645	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26イT_W26イN_1		軌道回路表示灯	TH76_26イT	TH76_W26イ	N			673	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26イT_W26イN_2		軌道回路表示灯	TH76_26イT	TH76_W26イ	N			704	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26イT_W26イR_1		軌道回路表示灯	TH76_26イT	TH76_W26イ	R			673	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26イT_W26イR_2		軌道回路表示灯	TH76_26イT	TH76_W26イ	R			697	384											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_26ロT_W26ロN_1		軌道回路表示灯	TH76_26ロT	TH76_W26ロ	N			673	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26ロT_W26ロN_2		軌道回路表示灯	TH76_26ロT	TH76_W26ロ	N			739	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_26ロT_W26ロR_1		軌道回路表示灯	TH76_26ロT	TH76_W26ロ	R			717	364											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH76_26ロT_W26ロR_2		軌道回路表示灯	TH76_26ロT	TH76_W26ロ	R			739	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26イT_W26イN_1		軌道回路表示灯	TH76_26イT	TH76_W26	N			673	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26イT_W26イN_2		軌道回路表示灯	TH76_26イT	TH76_W26	N			704	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26イT_W26イR_1		軌道回路表示灯	TH76_26イT	TH76_W26	R			673	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26イT_W26イR_2		軌道回路表示灯	TH76_26イT	TH76_W26	R			697	384											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_26ロT_W26ロN_1		軌道回路表示灯	TH76_26ロT	TH76_W26	N			673	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26ロT_W26ロN_2		軌道回路表示灯	TH76_26ロT	TH76_W26	N			739	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_26ロT_W26ロR_1		軌道回路表示灯	TH76_26ロT	TH76_W26	R			717	364											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH76_26ロT_W26ロR_2		軌道回路表示灯	TH76_26ロT	TH76_W26	R			739	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_27T_W27N_1		軌道回路表示灯	TH76_27T	TH76_W27	N			741	424											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
 Image	TH76_27T_W27N_2		軌道回路表示灯	TH76_27T	TH76_W27	N			803	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_27T_W27R_1		軌道回路表示灯	TH76_27T	TH76_W27	R			732	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
@@ -114,38 +114,38 @@ Image	TH76_27T_W27R_2		軌道回路表示灯	TH76_27T	TH76_W27	R			803	406											"0
 Image	7T_1		軌道回路表示灯	下り7T					881	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	9T_1		軌道回路表示灯	下り9T					911	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH75_TST_1		軌道回路表示灯	TH75_TST					941	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41イT_W41イN_1		軌道回路表示灯	TH75_41イT	TH75_W41イ	N			966	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41イT_W41イN_2		軌道回路表示灯	TH75_41イT	TH75_W41イ	N			996	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41イT_W41イR_1		軌道回路表示灯	TH75_41イT	TH75_W41イ	R			966	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41イT_W41イR_2		軌道回路表示灯	TH75_41イT	TH75_W41イ	R			978	386											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_41ロT_W41ロN_1		軌道回路表示灯	TH75_41ロT	TH75_W41ロ	N			966	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41ロT_W41ロN_2		軌道回路表示灯	TH75_41ロT	TH75_W41ロ	N			996	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_41ロT_W41ロR_1		軌道回路表示灯	TH75_41ロT	TH75_W41ロ	R			988	361											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_41ロT_W41ロR_2		軌道回路表示灯	TH75_41ロT	TH75_W41ロ	R			996	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43イT_W43イN_1		軌道回路表示灯	TH75_43イT	TH75_W43イ	N			1016	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43イT_W43イN_2		軌道回路表示灯	TH75_43イT	TH75_W43イ	N			1046	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43イT_W43イR_1		軌道回路表示灯	TH75_43イT	TH75_W43イ	R			1016	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43イT_W43イR_2		軌道回路表示灯	TH75_43イT	TH75_W43イ	R			1028	326											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_43ロT_W43ロN_1		軌道回路表示灯	TH75_43ロT	TH75_W43ロ	N			1016	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43ロT_W43ロN_2		軌道回路表示灯	TH75_43ロT	TH75_W43ロ	N			1046	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_43ロT_W43ロR_1		軌道回路表示灯	TH75_43ロT	TH75_W43ロ	R			1038	301											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_43ロT_W43ロR_2		軌道回路表示灯	TH75_43ロT	TH75_W43ロ	R			1046	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_W44イN_W45ロN_1		軌道回路表示灯	TH75_44T	TH75_W44イ	N	TH75_W45ロ	N	1066	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_W44イN_W45ロN_2		軌道回路表示灯	TH75_44T	TH75_W44イ	N	TH75_W45ロ	N	1096	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_W44イN_W45ロN_3		軌道回路表示灯	TH75_44T	TH75_W44イ	N	TH75_W45ロ	N	1126	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_W44イN_W45ロR_1		軌道回路表示灯	TH75_44T	TH75_W44イ	R	TH75_W45ロ	R	1088	241											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
-Image	TH75_44T_W44イN_W45ロR_2		軌道回路表示灯	TH75_44T	TH75_W44イ	R	TH75_W45ロ	R	1096	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_W44イN_W45ロR_3		軌道回路表示灯	TH75_44T	TH75_W44イ	R	TH75_W45ロ	R	1126	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_W44イR_W45ロN_1		軌道回路表示灯	TH75_44T	TH75_W44イ	N	TH75_W45ロ	N	1066	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_44T_W44イR_W45ロN_2		軌道回路表示灯	TH75_44T	TH75_W44イ	N	TH75_W45ロ	N	1078	241											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
-Image	TH75_45T_W44ロN_W45イN_1		軌道回路表示灯	TH75_45T	TH75_W44ロ	N	TH75_W45イ	N	1066	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_W44ロN_W45イN_2		軌道回路表示灯	TH75_45T	TH75_W44ロ	N	TH75_W45イ	N	1096	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_W44ロN_W45イN_3		軌道回路表示灯	TH75_45T	TH75_W44ロ	N	TH75_W45イ	N	1126	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_W44ロN_W45イR_1		軌道回路表示灯	TH75_45T	TH75_W44ロ	R	TH75_W45イ	R	1088	266											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
-Image	TH75_45T_W44ロN_W45イR_2		軌道回路表示灯	TH75_45T	TH75_W44ロ	R	TH75_W45イ	R	1096	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_W44ロN_W45イR_3		軌道回路表示灯	TH75_45T	TH75_W44ロ	R	TH75_W45イ	R	1126	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_W44ロR_W45イN_1		軌道回路表示灯	TH75_45T	TH75_W44ロ	N	TH75_W45イ	N	1066	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_45T_W44ロR_W45イN_2		軌道回路表示灯	TH75_45T	TH75_W44ロ	N	TH75_W45イ	N	1078	266											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_41イT_W41イN_1		軌道回路表示灯	TH75_41イT	TH75_W41	N			966	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41イT_W41イN_2		軌道回路表示灯	TH75_41イT	TH75_W41	N			996	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41イT_W41イR_1		軌道回路表示灯	TH75_41イT	TH75_W41	R			966	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41イT_W41イR_2		軌道回路表示灯	TH75_41イT	TH75_W41	R			978	386											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_41ロT_W41ロN_1		軌道回路表示灯	TH75_41ロT	TH75_W41	N			966	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41ロT_W41ロN_2		軌道回路表示灯	TH75_41ロT	TH75_W41	N			996	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_41ロT_W41ロR_1		軌道回路表示灯	TH75_41ロT	TH75_W41	R			988	361											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_41ロT_W41ロR_2		軌道回路表示灯	TH75_41ロT	TH75_W41	R			996	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43イT_W43イN_1		軌道回路表示灯	TH75_43イT	TH75_W43	N			1016	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43イT_W43イN_2		軌道回路表示灯	TH75_43イT	TH75_W43	N			1046	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43イT_W43イR_1		軌道回路表示灯	TH75_43イT	TH75_W43	R			1016	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43イT_W43イR_2		軌道回路表示灯	TH75_43イT	TH75_W43	R			1028	326											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_43ロT_W43ロN_1		軌道回路表示灯	TH75_43ロT	TH75_W43	N			1016	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43ロT_W43ロN_2		軌道回路表示灯	TH75_43ロT	TH75_W43	N			1046	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_43ロT_W43ロR_1		軌道回路表示灯	TH75_43ロT	TH75_W43	R			1038	301											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_43ロT_W43ロR_2		軌道回路表示灯	TH75_43ロT	TH75_W43	R			1046	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_W44イN_W45ロN_1		軌道回路表示灯	TH75_44T	TH75_W44	N	TH75_W45	N	1066	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_W44イN_W45ロN_2		軌道回路表示灯	TH75_44T	TH75_W44	N	TH75_W45	N	1096	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_W44イN_W45ロN_3		軌道回路表示灯	TH75_44T	TH75_W44	N	TH75_W45	N	1126	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_W44イN_W45ロR_1		軌道回路表示灯	TH75_44T	TH75_W44	R	TH75_W45	R	1088	241											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
+Image	TH75_44T_W44イN_W45ロR_2		軌道回路表示灯	TH75_44T	TH75_W44	R	TH75_W45	R	1096	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_W44イN_W45ロR_3		軌道回路表示灯	TH75_44T	TH75_W44	R	TH75_W45	R	1126	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_W44イR_W45ロN_1		軌道回路表示灯	TH75_44T	TH75_W44	N	TH75_W45	N	1066	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_44T_W44イR_W45ロN_2		軌道回路表示灯	TH75_44T	TH75_W44	N	TH75_W45	N	1078	241											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH75_45T_W44ロN_W45イN_1		軌道回路表示灯	TH75_45T	TH75_W44	N	TH75_W45	N	1066	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_W44ロN_W45イN_2		軌道回路表示灯	TH75_45T	TH75_W44	N	TH75_W45	N	1096	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_W44ロN_W45イN_3		軌道回路表示灯	TH75_45T	TH75_W44	N	TH75_W45	N	1126	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_W44ロN_W45イR_1		軌道回路表示灯	TH75_45T	TH75_W44	R	TH75_W45	R	1088	266											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
+Image	TH75_45T_W44ロN_W45イR_2		軌道回路表示灯	TH75_45T	TH75_W44	R	TH75_W45	R	1096	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_W44ロN_W45イR_3		軌道回路表示灯	TH75_45T	TH75_W44	R	TH75_W45	R	1126	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_W44ロR_W45イN_1		軌道回路表示灯	TH75_45T	TH75_W44	N	TH75_W45	N	1066	286											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_45T_W44ロR_W45イN_2		軌道回路表示灯	TH75_45T	TH75_W44	N	TH75_W45	N	1078	266											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
 Image	TH75_6LT_1		軌道回路表示灯	TH75_6LT					1040	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH75_6LT_2		軌道回路表示灯	TH75_6LT					1106	406											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH75_5T_1		軌道回路表示灯	TH75_5T					1154	226											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									

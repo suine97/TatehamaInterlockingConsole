@@ -226,15 +226,15 @@ namespace TatehamaInterlockingConsole.ViewModels
                     case "物理てこ":
                         if (lever != null)
                         {
-                            // てこ操作中でなければ更新
-                            if (!item.IsLeverhandling)
+                            // 操作中でなければ更新
+                            if (!item.Ishandling)
                             {
                                 item.ImageIndex = lever.LeverValue;
                             }
-                            // てこ操作中かつ、てこの値がサーバー側と同じなら操作完了判定
-                            else if (item.IsLeverhandling && (item.ImageIndex == lever.LeverValue))
+                            // 操作中かつ、てこの値がサーバー側と同じなら操作完了判定
+                            else if (item.Ishandling && (item.ImageIndex == lever.LeverValue))
                             {
-                                item.IsLeverhandling = false;
+                                item.Ishandling = false;
                             }
                         }
                         break;
@@ -256,6 +256,14 @@ namespace TatehamaInterlockingConsole.ViewModels
                 }
             }
             return allSettingList;
+        }
+
+        /// <summary>
+        /// 接近警報更新
+        /// </summary>
+        public void UpdateApproachingAlarm()
+        {
+
         }
     }
 }

@@ -135,9 +135,9 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public string Retsuban { get; set; }
         /// <summary>
-        /// てこ操作中判定
+        /// 操作中判定
         /// </summary>
-        public bool IsLeverhandling { get; set; }
+        public bool Ishandling { get; set; }
         /// <summary>
         /// 備考欄
         /// </summary>

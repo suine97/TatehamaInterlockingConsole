@@ -35,6 +35,11 @@ namespace TatehamaInterlockingConsole.Manager
         public Dictionary<string, List<string>> StationNameDictionary { get; set; }
 
         /// <summary>
+        /// 接近警報鳴動条件辞書データ
+        /// </summary>
+        public Dictionary<string, List<ApproachingAlarmSetting>> ApproachingAlarmConditionDictionary { get; set; }
+
+        /// <summary>
         /// サーバー接続状態
         /// </summary>
         public bool ServerConnected { get; set; }
@@ -96,6 +101,7 @@ namespace TatehamaInterlockingConsole.Manager
             StationNameDictionary  = new();
             DataFromServer = new();
             ActiveStationsList = new();
+            ApproachingAlarmConditionDictionary = new();
         }
 
         /// <summary>
