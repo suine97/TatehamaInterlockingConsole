@@ -1,10 +1,16 @@
-﻿namespace TatehamaInterlockingConsole.Models
+﻿using System.Collections.Generic;
+
+namespace TatehamaInterlockingConsole.Models
 {
     /// <summary>
     /// 接近警報設定クラス
     /// </summary>
     public class ApproachingAlarmSetting
     {
+        /// <summary>
+        /// 自駅名
+        /// </summary>
+        public string StationName { get; set; }
         /// <summary>
         /// [ ]で囲まれた駅名
         /// </summary>
@@ -14,24 +20,39 @@
         /// </summary>
         public string OtherStationNameB { get; set; }
         /// <summary>
-        /// 上り鳴動条件
+        /// 方向
         /// </summary>
-        public string UpSideCondition { get; set; }
+        public bool IsUpSide { get; set; }
         /// <summary>
-        /// 下り鳴動条件
+        /// 軌道回路名称
         /// </summary>
-        public string DownSideCondition { get; set; }
+        public ApproachingAlarmType Track { get; set; }
         /// <summary>
-        /// 上り接近警報音声ファイル名
+        /// 転てつ器・各種てこ条件リスト
         /// </summary>
-        public string UpSideApproachingAlarmName { get; set; }
+        public List<ApproachingAlarmType> ConditionsList { get; set; }
+    }
+
+    /// <summary>
+    /// 接近警報分類クラス
+    /// </summary>
+    public class ApproachingAlarmType
+    {
         /// <summary>
-        /// 下り接近警報音声ファイル名
+        /// 名称
         /// </summary>
-        public string DownSideApproachingAlarmName { get; set; }
+        public string Name { get; set; }
         /// <summary>
-        /// 方向てこ音声ファイル名
+        /// 分類種別
         /// </summary>
-        public string DirectionLeverAlarmName { get; set; }
+        public string Type { get; set; }
+        /// <summary>
+        /// 所属駅名
+        /// </summary>
+        public string Station { get; set; }
+        /// <summary>
+        /// 反位判定
+        /// </summary>
+        public bool IsReversePosition { get; set; }
     }
 }

@@ -174,6 +174,64 @@ namespace TatehamaInterlockingConsole.Helpers
             }
             return dictionary;
         }
+
+        /// <summary>
+        /// TSVファイルを読み込んでリストデータを返す
+        /// </summary>
+        /// <param name="folderPath">フォルダ名</param>
+        /// <param name="fileName">読み込むファイル名</param>
+        /// <returns>リストデータ</returns>
+        public static List<List<string>> LoadTSVAsList(string folderPath, string fileName)
+        {
+            var list = new List<List<string>>();
+
+            // ファイルパスを組み立てる
+            string filePath = Path.Combine(folderPath, fileName);
+
+            try
+            {
+                // ファイルの存在確認
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException("指定されたTSVファイルが見つかりません。", filePath);
+                }
+
+                // Shift-JISエンコーディングでファイルを読み込む
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                var encoding = Encoding.GetEncoding("Shift_JIS");
+                var header = false;
+                foreach (var line in File.ReadLines(filePath, encoding))
+                {
+                    // ヘッダー行はスキップ
+                    if (!header)
+                    {
+                        header = true;
+                        continue;
+                    }
+
+                    // 空行をスキップ
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+
+                    // タブで分割して各列を取得
+                    // タブで分割して各列を取得
+                    var parts = line.Split('\t');
+                    var values = new List<string>();
+                    foreach (var part in parts)
+                    {
+                        values.Add(part.Trim().Replace("\\", string.Empty));
+                    }
+
+                    // リストに追加
+                    list.Add(values);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"エラー: {ex.Message}");
+                throw;
+            }
+            return list;
+        }
     }
 
     /// <summary>

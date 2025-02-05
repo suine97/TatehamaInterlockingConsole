@@ -127,21 +127,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             // 駅名データを辞書に格納
             _dataManager.StationNameDictionary = DataHelper.LoadTSVAsDictionary(tsvFolderPath, "StationList.tsv");
             // 近接警報条件データを辞書に格納
-            var dic = DataHelper.LoadTSVAsDictionary(tsvFolderPath, "ApproachingAlarmConditionList.tsv");
-            _dataManager.ApproachingAlarmConditionDictionary = dic.ToDictionary(
-                kvp => kvp.Key,
-                kvp => new List<ApproachingAlarmSetting>
-                {
-                    new() {
-                        OtherStationNameA = kvp.Value[0],
-                        OtherStationNameB = kvp.Value[1],
-                        UpSideCondition = kvp.Value[2],
-                        DownSideCondition = kvp.Value[3],
-                        UpSideApproachingAlarmName = kvp.Value[4],
-                        DownSideApproachingAlarmName = kvp.Value[5],
-                        DirectionLeverAlarmName = kvp.Value[6]
-                    }
-                });
+            _dataManager.ApproachingAlarmConditionList = ApproachingAlarmSettingLoader.LoadSettings(tsvFolderPath, "ApproachingAlarmConditionList.tsv");
             // 設定データをリストに格納
             _dataManager.AllControlSettingList = UIElementLoader.LoadSettingsFromFolderAsUIControlSetting(tsvFolderPath);
             // 列番表示画像Pathを辞書に格納
