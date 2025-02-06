@@ -17,7 +17,16 @@ namespace TatehamaInterlockingConsole.Manager
         public event Action<DateTime> TimeUpdated;
 
         public static DataManager Instance => _instance;
+
+        /// <summary>
+        /// 現在時刻
+        /// </summary>
         public DateTime CurrentTime => _timeService?.CurrentTime ?? DateTime.MinValue;
+
+        /// <summary>
+        /// 音量
+        /// </summary>
+        public double Volume { get; set; }
 
         /// <summary>
         /// 全コントロール設定データ
@@ -98,7 +107,7 @@ namespace TatehamaInterlockingConsole.Manager
         {
             AllControlSettingList = new();
             RetsubanImagePathDictionary = new();
-            StationNameDictionary  = new();
+            StationNameDictionary = new();
             DataFromServer = new();
             ActiveStationsList = new();
             ApproachingAlarmConditionList = new();

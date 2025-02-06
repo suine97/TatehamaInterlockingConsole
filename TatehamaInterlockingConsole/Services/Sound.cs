@@ -13,7 +13,7 @@ namespace TatehamaInterlockingConsole.Services
     /// </summary>
     public class Sound
     {
-        private static Sound _instance = new Sound();
+        private static Sound _instance = new();
         /// <summary>
         /// インスタンス生成
         /// </summary>
@@ -27,17 +27,22 @@ namespace TatehamaInterlockingConsole.Services
         /// <summary>
         /// 音声処理Queue
         /// </summary>
-        public ConcurrentQueue<SoundPlayArgument> SoundQueue = new ConcurrentQueue<SoundPlayArgument>();
+        public ConcurrentQueue<SoundPlayArgument> SoundQueue = new();
 
         /// <summary>
         /// 再生中のデバイスリスト
         /// </summary>
-        private readonly List<WaveOutEvent> activeDevices = new List<WaveOutEvent>();
+        private readonly List<WaveOutEvent> activeDevices = new();
 
         /// <summary>
         /// 音声処理スレッドループ判定
         /// </summary>
         public bool IsSoundThreadLoop = false;
+
+        /// <summary>
+        /// 全体音量(0-1)
+        /// </summary>
+        public float MasterVolume = 1.0f;
 
         /// <summary>
         /// コンストラクタ
@@ -79,10 +84,13 @@ namespace TatehamaInterlockingConsole.Services
             {
                 // 音声ファイルの検索
                 SoundFile sFile = SoundList.First(s => s.sFileName == soundFileName);
-                AudioFileReader audioReader = new AudioFileReader(sFile.sFilePath);
+                AudioFileReader audioReader = new(sFile.sFilePath)
+                {
+                    Volume = MasterVolume
+                };
 
                 // 出力デバイスの生成
-                WaveOutEvent device = new WaveOutEvent();
+                WaveOutEvent device = new();
                 device.PlaybackStopped += (sender, e) =>
                 {
                     // 再生停止後にリソース解放
@@ -96,7 +104,7 @@ namespace TatehamaInterlockingConsole.Services
 
                 if (isLoop)
                 {
-                    LoopStream loop = new LoopStream(audioReader);
+                    LoopStream loop = new(audioReader);
                     device.Init(loop);
                 }
                 else
@@ -117,7 +125,7 @@ namespace TatehamaInterlockingConsole.Services
             {
                 // エラー時のリソース解放処理
                 SoundStopAll();
-                SoundQueue.Enqueue(new SoundPlayArgument() { sFileName = soundFileName, IsLoop = isLoop });
+                SoundQueue.Enqueue(new() { sFileName = soundFileName, IsLoop = isLoop });
             }
         }
 
@@ -168,6 +176,33 @@ namespace TatehamaInterlockingConsole.Services
         }
 
         /// <summary>
+        /// 全体音量を設定
+        /// </summary>
+        public void SetMasterVolume(float volume)
+        {
+            if (volume * 0.01f < 0f)
+                MasterVolume = 0f;
+            else if (volume * 0.01f > 1f)
+                MasterVolume = 1f;
+            else
+                MasterVolume = (volume * 0.01f);
+
+            lock (activeDevices)
+            {
+                foreach (var device in activeDevices)
+                {
+                    AudioFileReader reader = ((WaveStream)device.GetType()
+                        .GetField("waveStream", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?
+                        .GetValue(device)) as AudioFileReader;
+                    if (reader != null)
+                    {
+                        reader.Volume = MasterVolume;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// 音声ファイル読み込みメソッド
         /// </summary>
         private List<SoundFile> ReadAudioFile()
@@ -176,10 +211,10 @@ namespace TatehamaInterlockingConsole.Services
             string[] filePaths = Directory.GetFiles(DataHelper.GetApplicationDirectory() + "\\Sound", "*.wav", SearchOption.TopDirectoryOnly);
 
             // 音声ファイル情報を読み込んでListに入れる
-            List<SoundFile> soundList = new List<SoundFile>();
+            List<SoundFile> soundList = new();
             foreach (string filePath in filePaths)
             {
-                SoundFile audioFile = new SoundFile()
+                SoundFile audioFile = new()
                 {
                     sFileName = Path.ChangeExtension(Path.GetFileName(filePath), null),
                     sFilePath = filePath

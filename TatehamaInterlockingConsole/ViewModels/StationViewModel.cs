@@ -11,7 +11,6 @@ using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.Models;
-using System.Linq;
 
 namespace TatehamaInterlockingConsole.ViewModels
 {

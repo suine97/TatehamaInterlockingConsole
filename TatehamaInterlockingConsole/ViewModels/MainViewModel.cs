@@ -29,6 +29,31 @@ namespace TatehamaInterlockingConsole.ViewModels
         private readonly LabelHandler _labelHandler;               // ラベル操作処理クラス
         private readonly TextBlockHandler _textBlockHandler;       // テキストブロック操作処理クラス
 
+        private string volumeText;
+        /// <summary>
+        /// 音量表示テキスト
+        /// </summary>
+        public string VolumeText { get => volumeText; set => SetProperty(ref volumeText, value); }
+
+        private double volume;
+        /// <summary>
+        /// 音量(％)
+        /// </summary>
+        public double Volume
+        {
+            get => volume;
+            set
+            {
+                if (volume != value)
+                {
+                    volume = value;
+                    Sound.Instance.SetMasterVolume((float)volume);
+                    OnPropertyChanged(nameof(Volume));
+                    VolumeText = $"音量: {volume:F0}%";
+                }
+            }
+        }
+
         /// <summary>
         /// 時刻を1時間進めるコマンド
         /// </summary>
@@ -100,6 +125,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                     Title = "連動盤選択 | 連動盤 - ダイヤ運転会";
                     IncreaseTimeCommand = new RelayCommand(() => _timeService.IncreaseTime());
                     DecreaseTimeCommand = new RelayCommand(() => _timeService.DecreaseTime());
+                    Volume = 100;
+                    VolumeText = $"音量: {Volume}%";
 
                     // 時間更新イベントを購読
                     _dataManager.TimeUpdated += (currentTime) => OnPropertyChanged(nameof(CurrentTime));
@@ -126,9 +153,9 @@ namespace TatehamaInterlockingConsole.ViewModels
 
             // 駅名データを辞書に格納
             _dataManager.StationNameDictionary = DataHelper.LoadTSVAsDictionary(tsvFolderPath, "StationList.tsv");
-            // 近接警報条件データを辞書に格納
+            // 近接警報条件データをリストに格納
             _dataManager.ApproachingAlarmConditionList = ApproachingAlarmSettingLoader.LoadSettings(tsvFolderPath, "ApproachingAlarmConditionList.tsv");
-            // 設定データをリストに格納
+            // UI設定データをリストに格納
             _dataManager.AllControlSettingList = UIElementLoader.LoadSettingsFromFolderAsUIControlSetting(tsvFolderPath);
             // 列番表示画像Pathを辞書に格納
             _dataManager.RetsubanImagePathDictionary = RetsubanFactory.GetRetsubanImagePath(retsubanFolderPath);

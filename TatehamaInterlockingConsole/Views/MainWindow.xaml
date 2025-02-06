@@ -32,6 +32,12 @@
             <RowDefinition Height="630"/>
         </Grid.RowDefinitions>
 
+        <!-- 音量設定ラジオボタン -->
+        <StackPanel VerticalAlignment="Center" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock Text="{Binding VolumeText}" FontSize="15" Foreground="#FFF7F7F7" Margin="2" HorizontalAlignment="Center"/>
+            <Slider Minimum="0" Maximum="100" Value="{Binding Volume}" Width="150" Margin="2" HorizontalAlignment="Center" TickFrequency="10" IsSnapToTickEnabled="True"/>
+        </StackPanel>
+
         <!-- 時刻補正UI -->
         <StackPanel VerticalAlignment="Center" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
             <!-- マイナス1時間ボタン -->
@@ -59,7 +65,7 @@
                         <Canvas Width="1008" Height="630"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                
+
             </ItemsControl>
         </Viewbox>
     </Grid>
