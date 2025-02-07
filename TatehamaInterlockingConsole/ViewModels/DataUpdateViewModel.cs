@@ -37,6 +37,9 @@ namespace TatehamaInterlockingConsole.ViewModels
             // コントロール更新処理
             var updateList = UpdateControlsetting(dataFromServer);
 
+            // 接近警報更新処理
+            UpdateApproachingAlarm();
+
             // 変更通知イベント発火
             var handler = NotifyUpdateControlEvent;
             handler?.Invoke(updateList);
@@ -263,7 +266,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// </summary>
         public void UpdateApproachingAlarm()
         {
-
+            
         }
     }
 }

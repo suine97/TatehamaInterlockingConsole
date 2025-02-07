@@ -28,7 +28,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public ApproachingAlarmType Track { get; set; }
         /// <summary>
-        /// 転てつ器・各種てこ条件リスト
+        /// 転てつ器・各種てこ・軌道回路条件リスト
         /// </summary>
         public List<ApproachingAlarmType> ConditionsList { get; set; }
     }

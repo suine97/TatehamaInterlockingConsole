@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using TatehamaInterlockingConsole.Helpers;
+using System;
 
 namespace TatehamaInterlockingConsole.Services
 {
@@ -191,12 +192,29 @@ namespace TatehamaInterlockingConsole.Services
             {
                 foreach (var device in activeDevices)
                 {
-                    AudioFileReader reader = ((WaveStream)device.GetType()
-                        .GetField("waveStream", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?
-                        .GetValue(device)) as AudioFileReader;
-                    if (reader != null)
+                    var waveStreamField = device.GetType()
+                        .GetField("waveStream", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                    if (waveStreamField != null)
                     {
-                        reader.Volume = MasterVolume;
+                        var waveStream = waveStreamField.GetValue(device) as WaveStream;
+                        if (waveStream is AudioFileReader audioFileReader)
+                        {
+                            audioFileReader.Volume = MasterVolume;
+                        }
+                        else if (waveStream is LoopStream loopStream)
+                        {
+                            var innerStreamField = loopStream.GetType()
+                                .GetField("sourceStream", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                            if (innerStreamField != null)
+                            {
+                                var innerStream = innerStreamField.GetValue(loopStream) as AudioFileReader;
+                                if (innerStream != null)
+                                {
+                                    innerStream.Volume = MasterVolume;
+                                }
+                            }
+                        }
                     }
                 }
             }
