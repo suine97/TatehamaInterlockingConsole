@@ -134,7 +134,6 @@ namespace TatehamaInterlockingConsole.ViewModels
                     _serverCommunication.ConnectionStatusChanged += (status) => ConnectionStatus = status;
                     // 初期化処理
                     Initialize();
-                    Sound.Instance.SoundPlay("410Hz_long", true);
                 }
             }
             catch (Exception ex)
