@@ -21,6 +21,9 @@ namespace TatehamaInterlockingConsole.Services
         {
             try
             {
+                // EncodingProviderを登録
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
                 // ファイルパスを組み立てる
                 string filePath = Path.Combine(folderPath, fileName);
 
@@ -58,12 +61,20 @@ namespace TatehamaInterlockingConsole.Services
                                 IsReversePosition = IsReversePosition(columns[4]),
                                 Type = GetType(columns[4])
                             },
-                            ConditionsList = columns[5].Split(':').Select(condition => new ApproachingAlarmType
+                            ConditionsList = columns[5].Split(':').Select(condition =>
                             {
-                                Name = FormatName(condition),
-                                Station = GetStation(condition, columns),
-                                IsReversePosition = IsReversePosition(condition),
-                                Type = GetType(condition)
+                                var formattedName = FormatName(condition);
+                                var type = GetType(condition);
+                                var station = GetStation(condition, columns);
+                                var isReversePosition = IsReversePosition(condition);
+
+                                return new ApproachingAlarmType
+                                {
+                                    Name = FormatToServerName(formattedName, type, station),
+                                    Station = station,
+                                    IsReversePosition = isReversePosition,
+                                    Type = type
+                                };
                             }).ToList()
                         }
                     });
@@ -75,6 +86,34 @@ namespace TatehamaInterlockingConsole.Services
                 CustomMessage.Show(ex.ToString(), "エラー");
                 return null;
             }
+        }
+
+        /// <summary>
+        /// 名称をサーバー名に整形
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private static string FormatToServerName(string formattedName, string type, string station)
+        {
+            string result;
+
+            // 信号機なら番号を抽出して"所属駅名_信号機番号"に整形
+            if (type == "Signal")
+            {
+                var number = new string(formattedName.TakeWhile(c => c != 'L' && c != 'R').ToArray());
+                result = station + "_" + number;
+            }
+            // 転てつ器なら"所属駅名_転てつ器番号"に整形
+            else if (type == "Point")
+            {
+                result = station + "_" + formattedName;
+            }
+            // 軌道回路やその他種別ならそのまま
+            else
+            {
+                result = formattedName;
+            }
+            return result;
         }
 
         /// <summary>

@@ -39,12 +39,12 @@ namespace TatehamaInterlockingConsole.Manager
         public Dictionary<string, string> RetsubanImagePathDictionary { get; set; }
 
         /// <summary>
-        /// 駅名対照表辞書データ
+        /// 駅設定リストデータ
         /// </summary>
-        public Dictionary<string, List<string>> StationNameDictionary { get; set; }
+        public List<List<StationSetting>> StationSettingList { get; set; }
 
         /// <summary>
-        /// 接近警報鳴動条件辞書データ
+        /// 接近警報鳴動条件リストデータ
         /// </summary>
         public List<List<ApproachingAlarmSetting>> ApproachingAlarmConditionList { get; set; }
 
@@ -79,11 +79,6 @@ namespace TatehamaInterlockingConsole.Manager
             }
         }
 
-        /// <summary>
-        /// ActiveStationsList変更通知イベント
-        /// </summary>
-        public event Action<List<string>> ActiveStationsListChanged;
-
         private List<string> _activeStationsList;
         /// <summary>
         /// 起動しているウィンドウの駅名を保持するリスト
@@ -107,7 +102,7 @@ namespace TatehamaInterlockingConsole.Manager
         {
             AllControlSettingList = new();
             RetsubanImagePathDictionary = new();
-            StationNameDictionary = new();
+            StationSettingList = new();
             DataFromServer = new();
             ActiveStationsList = new();
             ApproachingAlarmConditionList = new();
@@ -133,7 +128,6 @@ namespace TatehamaInterlockingConsole.Manager
             if (!_activeStationsList.Contains(stationName))
             {
                 _activeStationsList.Add(stationName);
-                ActiveStationsListChanged?.Invoke(_activeStationsList);
             }
         }
 
@@ -146,7 +140,6 @@ namespace TatehamaInterlockingConsole.Manager
             if (_activeStationsList.Contains(stationName))
             {
                 _activeStationsList.Remove(stationName);
-                ActiveStationsListChanged?.Invoke(_activeStationsList);
             }
         }
 

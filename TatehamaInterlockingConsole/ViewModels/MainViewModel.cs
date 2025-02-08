@@ -151,8 +151,8 @@ namespace TatehamaInterlockingConsole.ViewModels
             var tsvFolderPath = "TSV";
             var retsubanFolderPath = "Image/Retsuban";
 
-            // 駅名データを辞書に格納
-            _dataManager.StationNameDictionary = DataHelper.LoadTSVAsDictionary(tsvFolderPath, "StationList.tsv");
+            // 駅設定データをリストに格納
+            _dataManager.StationSettingList = StationSettingLoader.LoadSettings(tsvFolderPath, "StationSettingList.tsv");
             // 近接警報条件データをリストに格納
             _dataManager.ApproachingAlarmConditionList = ApproachingAlarmSettingLoader.LoadSettings(tsvFolderPath, "ApproachingAlarmConditionList.tsv");
             // UI設定データをリストに格納

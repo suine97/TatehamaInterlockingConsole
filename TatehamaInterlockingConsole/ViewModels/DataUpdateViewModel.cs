@@ -38,11 +38,223 @@ namespace TatehamaInterlockingConsole.ViewModels
             var updateList = UpdateControlsetting(dataFromServer);
 
             // 接近警報更新処理
-            UpdateApproachingAlarm();
+            UpdateApproachingAlarm(dataFromServer);
 
             // 変更通知イベント発火
             var handler = NotifyUpdateControlEvent;
             handler?.Invoke(updateList);
+        }
+
+        /// <summary>
+        /// サーバー情報を基にコントロールの状態更新
+        /// </summary>
+        /// <returns></returns>
+        private List<UIControlSetting> UpdateControlsetting(DatabaseOperational.DataFromServer dataFromServer)
+        {
+            var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
+            var signal = new DatabaseOperational.InterlockingSignal();
+            var pointA = new DatabaseOperational.InterlockingPoint();
+            var pointB = new DatabaseOperational.InterlockingPoint();
+            var trackCircuit = new DatabaseOperational.InterlockingTrackCircuit();
+            var lamp = new DatabaseOperational.InterlockingLamp();
+            var retsuban = new DatabaseOperational.InterlockingRetsuban();
+            var lever = new DatabaseOperational.InterlockingLever();
+
+            try
+            {
+                foreach (var item in allSettingList)
+                {
+                    trackCircuit = dataFromServer.TrackCircuits
+                        .FirstOrDefault(t => t.Name == item.ServerName);
+                    pointA = dataFromServer.Points
+                        .FirstOrDefault(p => p.Name == item.PointNameA);
+                    pointB = dataFromServer.Points
+                        .FirstOrDefault(p => p.Name == item.PointNameB);
+                    signal = dataFromServer.Signals
+                        .FirstOrDefault(s => s.Name == item.ServerName);
+                    lamp = dataFromServer.Lamps
+                        .FirstOrDefault(l => l.Name == item.ServerName);
+                    retsuban = dataFromServer.Retsubans
+                        .FirstOrDefault(r => r.Name == item.ServerName);
+                    lever = dataFromServer.Levers
+                        .FirstOrDefault(l => l.Name == item.ServerName);
+
+                    // サーバー情報を基に更新
+                    switch (item.ServerType)
+                    {
+                        case "信号機表示灯":
+                            if (signal != null)
+                            {
+                                // 進行信号
+                                if (signal.IsProceedSignal)
+                                    item.ImageIndex = 1;
+                                else
+                                    item.ImageIndex = 0;
+                            }
+                            break;
+                        case "転てつ器表示灯":
+                            // A, B転てつ器条件が存在する場合
+                            if (pointA != null && pointB != null)
+                            {
+                                // 転てつ器状態
+                                if ((pointA.IsReversePosition == !item.PointValueA) && (pointB.IsReversePosition == !item.PointValueB))
+                                    item.ImageIndex = 1;
+                                else
+                                    item.ImageIndex = 0;
+                            }
+                            // B転てつ器条件のみ存在する場合
+                            else if (pointB != null)
+                            {
+                                if (pointB.IsReversePosition == !item.PointValueB)
+                                    item.ImageIndex = 1;
+                                else
+                                    item.ImageIndex = 0;
+                            }
+                            // A転てつ器条件のみ存在する場合
+                            else if (pointA != null)
+                            {
+                                if (pointA.IsReversePosition == !item.PointValueA)
+                                    item.ImageIndex = 1;
+                                else
+                                    item.ImageIndex = 0;
+                            }
+                            break;
+                        case "軌道回路表示灯":
+                            if (trackCircuit != null)
+                            {
+                                // A, B転てつ器条件が存在する場合
+                                if (pointA != null && pointB != null)
+                                {
+                                    // 転てつ器状態
+                                    if ((pointA.IsReversePosition == !item.PointValueA) && (pointB.IsReversePosition == !item.PointValueB))
+                                        item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
+                                    else
+                                        item.ImageIndex = 0;
+                                }
+                                // B転てつ器条件のみ存在する場合
+                                else if (pointB != null)
+                                {
+                                    if (pointB.IsReversePosition == !item.PointValueB)
+                                        item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
+                                    else
+                                        item.ImageIndex = 0;
+                                }
+                                // A転てつ器条件のみ存在する場合
+                                else if (pointA != null)
+                                {
+                                    if (pointA.IsReversePosition == !item.PointValueA)
+                                        item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
+                                    else
+                                        item.ImageIndex = 0;
+                                }
+                                // 転てつ器条件なし
+                                else
+                                {
+                                    if (trackCircuit.IsOnTrack)
+                                        item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
+                                    else
+                                        item.ImageIndex = 0;
+                                }
+                            }
+                            break;
+                        case "状態表示灯":
+                            if (lamp != null)
+                            {
+                                // 点灯
+                                if (lamp.IsLighting)
+                                    item.ImageIndex = 1;
+                                else
+                                    item.ImageIndex = 0;
+                            }
+                            break;
+                        case "駅扱切換表示灯":
+                            if (lever != null)
+                            {
+                                // ランプ"PY"
+                                if (item.UniqueName.Contains("PY") && (lever.LeverValue <= 0))
+                                {
+                                    item.ImageIndex = 1;
+                                }
+                                // ランプ"PG"
+                                else if (item.UniqueName.Contains("PG") && (0 < lever.LeverValue))
+                                {
+                                    item.ImageIndex = 1;
+                                }
+                                else
+                                {
+                                    item.ImageIndex = 0;
+                                }
+                            }
+                            break;
+                        case "解放表示灯":
+                            if (lever != null)
+                            {
+                                if (lever.LeverValue <= 0)
+                                {
+                                    item.ImageIndex = 1;
+                                }
+                                else
+                                {
+                                    item.ImageIndex = 0;
+                                }
+                            }
+                            break;
+                        case "物理てこ":
+                            if (lever != null)
+                            {
+                                // 操作中でなければ更新
+                                if (!item.Ishandling)
+                                {
+                                    item.ImageIndex = lever.LeverValue;
+                                }
+                                // 操作中かつ、てこの値がサーバー側と同じなら操作完了判定
+                                else if (item.Ishandling && (item.ImageIndex == lever.LeverValue))
+                                {
+                                    item.Ishandling = false;
+                                }
+                            }
+                            break;
+                        case "列車番号":
+                            if (retsuban != null)
+                            {
+                                // 列車番号
+                                item.Retsuban = retsuban.RetsubanText;
+                                SetControlsetting(item);
+                            }
+                            else
+                            {
+                                item.Retsuban = string.Empty;
+                                SetControlsetting(item);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                return allSettingList;
+            }
+            catch (Exception ex)
+            {
+                CustomMessage.Show(ex.ToString(), "エラー");
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// 接近警報更新
+        /// </summary>
+        private void UpdateApproachingAlarm(DatabaseOperational.DataFromServer dataFromServer)
+        {
+            try
+            {
+                var AlarmSetting = _dataManager.ApproachingAlarmConditionList;
+                
+            }
+            catch (Exception ex)
+            {
+                CustomMessage.Show(ex.ToString(), "エラー");
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -72,201 +284,6 @@ namespace TatehamaInterlockingConsole.ViewModels
                 CustomMessage.Show(ex.ToString(), "エラー");
                 throw ex;
             }
-        }
-
-        /// <summary>
-        /// サーバー情報を基にコントロールの状態更新
-        /// </summary>
-        /// <returns></returns>
-        private List<UIControlSetting> UpdateControlsetting(DatabaseOperational.DataFromServer dataFromServer)
-        {
-            var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
-            var signal = new DatabaseOperational.InterlockingSignal();
-            var pointA = new DatabaseOperational.InterlockingPoint();
-            var pointB = new DatabaseOperational.InterlockingPoint();
-            var trackCircuit = new DatabaseOperational.InterlockingTrackCircuit();
-            var lamp = new DatabaseOperational.InterlockingLamp();
-            var retsuban = new DatabaseOperational.InterlockingRetsuban();
-            var lever = new DatabaseOperational.InterlockingLever();
-
-            foreach (var item in allSettingList)
-            {
-                trackCircuit = dataFromServer.TrackCircuits
-                    .FirstOrDefault(t => t.Name == item.ServerName);
-                pointA = dataFromServer.Points
-                    .FirstOrDefault(p => p.Name == item.PointNameA);
-                pointB = dataFromServer.Points
-                    .FirstOrDefault(p => p.Name == item.PointNameB);
-                signal = dataFromServer.Signals
-                    .FirstOrDefault(s => s.Name == item.ServerName);
-                lamp = dataFromServer.Lamps
-                    .FirstOrDefault(l => l.Name == item.ServerName);
-                retsuban = dataFromServer.Retsubans
-                    .FirstOrDefault(r => r.Name == item.ServerName);
-                lever = dataFromServer.Levers
-                    .FirstOrDefault(l => l.Name == item.ServerName);
-
-                // サーバー情報を基に更新
-                switch (item.ServerType)
-                {
-                    case "信号機表示灯":
-                        if (signal != null)
-                        {
-                            // 進行信号
-                            if (signal.IsProceedSignal)
-                                item.ImageIndex = 1;
-                            else
-                                item.ImageIndex = 0;
-                        }
-                        break;
-                    case "転てつ器表示灯":
-                        // A, B転てつ器条件が存在する場合
-                        if (pointA != null && pointB != null)
-                        {
-                            // 転てつ器状態
-                            if ((pointA.IsReversePosition == !item.PointValueA) && (pointB.IsReversePosition == !item.PointValueB))
-                                item.ImageIndex = 1;
-                            else
-                                item.ImageIndex = 0;
-                        }
-                        // B転てつ器条件のみ存在する場合
-                        else if (pointB != null)
-                        {
-                            if (pointB.IsReversePosition == !item.PointValueB)
-                                item.ImageIndex = 1;
-                            else
-                                item.ImageIndex = 0;
-                        }
-                        // A転てつ器条件のみ存在する場合
-                        else if (pointA != null)
-                        {
-                            if (pointA.IsReversePosition == !item.PointValueA)
-                                item.ImageIndex = 1;
-                            else
-                                item.ImageIndex = 0;
-                        }
-                        break;
-                    case "軌道回路表示灯":
-                        if (trackCircuit != null)
-                        {
-                            // A, B転てつ器条件が存在する場合
-                            if (pointA != null && pointB != null)
-                            {
-                                // 転てつ器状態
-                                if ((pointA.IsReversePosition == !item.PointValueA) && (pointB.IsReversePosition == !item.PointValueB))
-                                    item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
-                                else
-                                    item.ImageIndex = 0;
-                            }
-                            // B転てつ器条件のみ存在する場合
-                            else if (pointB != null)
-                            {
-                                if (pointB.IsReversePosition == !item.PointValueB)
-                                    item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
-                                else
-                                    item.ImageIndex = 0;
-                            }
-                            // A転てつ器条件のみ存在する場合
-                            else if (pointA != null)
-                            {
-                                if (pointA.IsReversePosition == !item.PointValueA)
-                                    item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
-                                else
-                                    item.ImageIndex = 0;
-                            }
-                            // 転てつ器条件なし
-                            else
-                            {
-                                if (trackCircuit.IsOnTrack)
-                                    item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
-                                else
-                                    item.ImageIndex = 0;
-                            }
-                        }
-                        break;
-                    case "状態表示灯":
-                        if (lamp != null)
-                        {
-                            // 点灯
-                            if (lamp.IsLighting)
-                                item.ImageIndex = 1;
-                            else
-                                item.ImageIndex = 0;
-                        }
-                        break;
-                    case "駅扱切換表示灯":
-                        if (lever != null)
-                        {
-                            // ランプ"PY"
-                            if (item.UniqueName.Contains("PY") && (lever.LeverValue <= 0))
-                            {
-                                item.ImageIndex = 1;
-                            }
-                            // ランプ"PG"
-                            else if (item.UniqueName.Contains("PG") && (0 < lever.LeverValue))
-                            {
-                                item.ImageIndex = 1;
-                            }
-                            else
-                            {
-                                item.ImageIndex = 0;
-                            }
-                        }
-                        break;
-                    case "解放表示灯":
-                        if (lever != null)
-                        {
-                            if (lever.LeverValue <= 0)
-                            {
-                                item.ImageIndex = 1;
-                            }
-                            else
-                            {
-                                item.ImageIndex = 0;
-                            }
-                        }
-                        break;
-                    case "物理てこ":
-                        if (lever != null)
-                        {
-                            // 操作中でなければ更新
-                            if (!item.Ishandling)
-                            {
-                                item.ImageIndex = lever.LeverValue;
-                            }
-                            // 操作中かつ、てこの値がサーバー側と同じなら操作完了判定
-                            else if (item.Ishandling && (item.ImageIndex == lever.LeverValue))
-                            {
-                                item.Ishandling = false;
-                            }
-                        }
-                        break;
-                    case "列車番号":
-                        if (retsuban != null)
-                        {
-                            // 列車番号
-                            item.Retsuban = retsuban.RetsubanText;
-                            SetControlsetting(item);
-                        }
-                        else
-                        {
-                            item.Retsuban = string.Empty;
-                            SetControlsetting(item);
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-            return allSettingList;
-        }
-
-        /// <summary>
-        /// 接近警報更新
-        /// </summary>
-        public void UpdateApproachingAlarm()
-        {
-            
         }
     }
 }

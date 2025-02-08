@@ -55,6 +55,9 @@ namespace TatehamaInterlockingConsole.Services
         {
             try
             {
+                // EncodingProviderを登録
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
                 var settings = new List<UIControlSetting>();
                 bool header = false;
                 foreach (var line in File.ReadAllLines(filePath, Encoding.GetEncoding("shift_jis")))

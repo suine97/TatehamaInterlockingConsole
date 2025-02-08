@@ -55,27 +55,27 @@ namespace TatehamaInterlockingConsole.Helpers
             DataManager _dataManager = DataManager.Instance;
 
             var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
-            if (_dataManager.StationNameDictionary.TryGetValue(fileNameWithoutExtension, out var stationData))
-            {
-                return stationData.Count > 0 ? stationData[(int)StationRow.StationName] : fileNameWithoutExtension;
-            }
-            return fileNameWithoutExtension;
+            var stationData = _dataManager.StationSettingList
+                .SelectMany(list => list)
+                .FirstOrDefault(setting => setting.FileName.Contains(fileNameWithoutExtension));
+
+            return stationData != null ? stationData.StationName : fileNameWithoutExtension;
         }
 
         /// <summary>
         /// 英語駅名を基に駅名対照表から日本語駅名を返す
         /// </summary>
-        /// <param name="filePath">対象のファイルパス</param>
+        /// <param name="englishName">対象の英語駅名</param>
         /// <returns>駅名</returns>
         public static string GetStationNameFromEnglishName(string englishName)
         {
             DataManager _dataManager = DataManager.Instance;
 
-            if (_dataManager.StationNameDictionary.TryGetValue(englishName + "_UIList", out var stationData))
-            {
-                return stationData[(int)StationRow.StationName];
-            }
-            return string.Empty;
+            var stationData = _dataManager.StationSettingList
+                .SelectMany(list => list)
+                .FirstOrDefault(setting => setting.FileName.Contains(englishName + "_UIList"));
+
+            return stationData != null ? stationData.StationName : string.Empty;
         }
 
         /// <summary>
@@ -87,12 +87,11 @@ namespace TatehamaInterlockingConsole.Helpers
         {
             DataManager _dataManager = DataManager.Instance;
 
-            var matchingLists = _dataManager.StationNameDictionary.Values
-                .Where(list => list.Contains(stationName))
-                .First()
-                .ToList();
+            var matchingLists = _dataManager.StationSettingList
+                .Where(list => list.Any(setting => setting.StationName.Contains(stationName)))
+                .FirstOrDefault();
 
-            return matchingLists;
+            return matchingLists?.Select(setting => setting.StationName).ToList() ?? new List<string>();
         }
 
         /// <summary>
@@ -104,12 +103,12 @@ namespace TatehamaInterlockingConsole.Helpers
         {
             DataManager _dataManager = DataManager.Instance;
 
-            var matchingLists = _dataManager.StationNameDictionary.Values
-                .Where(list => list.Contains(stationName))
-                .First()
-                .ToList();
+            var matchingLists = _dataManager.StationSettingList
+                .Where(list => list.Any(setting => setting.StationName.Contains(stationName)))
+                .FirstOrDefault();
 
-            return matchingLists[(int)StationRow.StationNumber];
+            var stationSetting = matchingLists?.FirstOrDefault(setting => setting.StationName == stationName);
+            return stationSetting?.StationNumber ?? string.Empty;
         }
 
         /// <summary>

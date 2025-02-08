@@ -350,6 +350,22 @@ namespace TatehamaInterlockingConsole.Handlers
 
                 // 音声再生
                 _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
+
+                // サーバーへリクエスト送信
+                if (control.ServerType != string.Empty)
+                {
+                    var dataToServer = new DatabaseOperational.DataToServer
+                    {
+                        ActiveStationsList = _dataManager.ActiveStationsList,
+                        PartsName = control.ServerName,
+                    };
+                    _ = _serverCommunication.SendRequestAsync(dataToServer);
+                    //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                    //    "サーバー送信",
+                    //    System.Windows.MessageBoxButton.OK,
+                    //    System.Windows.MessageBoxImage.Information
+                    //    );
+                }
             }
         }
 

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,11 +29,6 @@ namespace TatehamaInterlockingConsole.Models
         public event Action<bool> ConnectionStatusChanged;
 
         /// <summary>
-        /// サーバー接続中の駅名リスト
-        /// </summary>
-        private List<string> _connectionStationsList;
-
-        /// <summary>
         /// コンストラクタ
         /// </summary>
         public ServerCommunication(OpenIddictClientService openIddictClientService)
@@ -47,43 +40,9 @@ namespace TatehamaInterlockingConsole.Models
             {
                 _isUpdateLoopRunning = true;
 
-                _connectionStationsList = new();
-                _dataManager.ActiveStationsListChanged += OnActiveStationsListChanged;
-
                 // ループ処理開始
                 Task.Run(() => UpdateLoop());
             }
-        }
-
-        /// <summary>
-        /// 駅名リスト変更イベント
-        /// </summary>
-        /// <param name="newActiveStationsList"></param>
-        private void OnActiveStationsListChanged(List<string> newActiveStationsList)
-        {
-            var addedStations = newActiveStationsList.Except(_connectionStationsList).ToList();
-            var removedStations = _connectionStationsList.Except(newActiveStationsList).ToList();
-
-            foreach (var station in addedStations)
-            {
-                // 増加した駅名の処理
-                var dataToServer = new DatabaseOperational.DataToServer
-                {
-                    ActiveStationsList = new List<string> { station },
-                };
-                _ = SendRequestAsync(dataToServer);
-            }
-
-            foreach (var station in removedStations)
-            {
-                // 減少した駅名の処理
-                var dataToServer = new DatabaseOperational.DataToServer
-                {
-                    ActiveStationsList = new List<string> { station },
-                };
-                _ = SendRequestAsync(dataToServer);
-            }
-            _connectionStationsList = newActiveStationsList.ToList();
         }
 
         /// <summary>
@@ -94,11 +53,20 @@ namespace TatehamaInterlockingConsole.Models
         {
             while (true)
             {
-                var timer = Task.Delay(1000);
+                var timer = Task.Delay(100);
                 await timer;
 
                 // サーバー接続状態変更イベント発火
                 ConnectionStatusChanged?.Invoke(_dataManager.ServerConnected);
+
+                // サーバー接続中かつ信号盤表示中ならデータ送信
+                if (_dataManager.ServerConnected && (_dataManager.ActiveStationsList.Count > 0))
+                {
+                    await SendRequestAsync(new DatabaseOperational.DataToServer
+                    {
+                        ActiveStationsList = _dataManager.ActiveStationsList,
+                    });
+                }
             }
         }
 
