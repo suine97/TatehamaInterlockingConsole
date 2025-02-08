@@ -59,12 +59,12 @@ namespace TatehamaInterlockingConsole.Models
                 // サーバー接続状態変更イベント発火
                 ConnectionStatusChanged?.Invoke(_dataManager.ServerConnected);
 
-                // サーバー接続中かつ信号盤表示中ならデータ送信
-                if (_dataManager.ServerConnected && (_dataManager.ActiveStationsList.Count > 0))
+                // サーバー接続中ならデータ送信
+                if (_dataManager.ServerConnected)
                 {
-                    await SendRequestAsync(new DatabaseOperational.DataToServer
+                    await SendConstantDataRequestToServerAsync(new DatabaseOperational.ConstantDataToServer
                     {
-                        ActiveStationsList = _dataManager.ActiveStationsList,
+                        ActiveStationsList = _dataManager.ActiveStationsList
                     });
                 }
             }
@@ -162,17 +162,16 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// サーバーへリクエスト送信
+        /// サーバーへ常時送信用データをリクエスト
         /// </summary>
-        /// <param name="token"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="constantDataToServer"></param>
         /// <returns></returns>
-        public async Task SendRequestAsync(DatabaseOperational.DataToServer dataToServer)
+        public async Task SendConstantDataRequestToServerAsync(DatabaseOperational.ConstantDataToServer constantDataToServer)
         {
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", dataToServer);
+                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", constantDataToServer);
                 try
                 {
                     // JSONを一時保存クラスにデシリアライズ
@@ -198,7 +197,25 @@ namespace TatehamaInterlockingConsole.Models
             }
             catch (Exception exception)
             {
-                Console.WriteLine($"Server send failed: {exception.Message}");
+                Console.WriteLine($"Failed to send constant data to server: {exception.Message}");
+            }
+        }
+
+        /// <summary>
+        /// サーバーへイベント送信用データをリクエスト
+        /// </summary>
+        /// <param name="eventDataToServer"></param>
+        /// <returns></returns>
+        public async Task SendEventDataRequestToServerAsync(DatabaseOperational.EventDataToServer eventDataToServer)
+        {
+            try
+            {
+                // サーバーメソッドの呼び出し
+                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", eventDataToServer);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine($"Failed to send event data to server: {exception.Message}");
             }
         }
 

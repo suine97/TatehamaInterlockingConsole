@@ -11,14 +11,21 @@ namespace TatehamaInterlockingConsole.Models
         public static DatabaseOperational Instance => _instance;
 
         /// <summary>
-        /// 連動装置・送信用データクラス
+        /// 連動装置・常時送信用データクラス
         /// </summary>
-        public class DataToServer
+        public class ConstantDataToServer
         {
             /// <summary>
             /// 起動しているウィンドウの駅名
             /// </summary>
             public List<string> ActiveStationsList { get; set; }
+        }
+
+        /// <summary>
+        /// 連動装置・イベント送信用データクラス
+        /// </summary>
+        public class EventDataToServer
+        {
             /// <summary>
             /// てこ・着点ボタン名
             /// </summary>

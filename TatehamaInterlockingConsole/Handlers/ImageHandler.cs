@@ -140,14 +140,13 @@ namespace TatehamaInterlockingConsole.Handlers
                 // 操作中判定
                 control.Ishandling = true;
 
-                var dataToServer = new DatabaseOperational.DataToServer
+                var dataToServer = new DatabaseOperational.EventDataToServer
                 {
-                    ActiveStationsList = _dataManager.ActiveStationsList,
                     PartsName = control.ServerName,
                     PartsValue = control.ImageIndex
                 };
-                _ = _serverCommunication.SendRequestAsync(dataToServer);
-                //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
+                //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
                 //    "サーバー送信",
                 //    System.Windows.MessageBoxButton.OK,
                 //    System.Windows.MessageBoxImage.Information
@@ -217,14 +216,13 @@ namespace TatehamaInterlockingConsole.Handlers
                         // 操作中判定
                         control.Ishandling = true;
 
-                        var dataToServer = new DatabaseOperational.DataToServer
+                        var dataToServer = new DatabaseOperational.EventDataToServer
                         {
-                            ActiveStationsList = _dataManager.ActiveStationsList,
                             PartsName = control.ServerName,
                             PartsValue = control.ImageIndex
                         };
-                        _ = _serverCommunication.SendRequestAsync(dataToServer);
-                        //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                        _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
+                        //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
                         //    "サーバー送信",
                         //    System.Windows.MessageBoxButton.OK,
                         //    System.Windows.MessageBoxImage.Information
@@ -273,14 +271,13 @@ namespace TatehamaInterlockingConsole.Handlers
                         // 操作中判定
                         control.Ishandling = true;
 
-                        var dataToServer = new DatabaseOperational.DataToServer
+                        var dataToServer = new DatabaseOperational.EventDataToServer
                         {
-                            ActiveStationsList = _dataManager.ActiveStationsList,
                             PartsName = control.ServerName,
                             PartsValue = control.ImageIndex
                         };
-                        _ = _serverCommunication.SendRequestAsync(dataToServer);
-                        //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                        _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
+                        //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
                         //    "サーバー送信",
                         //    System.Windows.MessageBoxButton.OK,
                         //    System.Windows.MessageBoxImage.Information
@@ -318,13 +315,13 @@ namespace TatehamaInterlockingConsole.Handlers
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
                 {
-                    var dataToServer = new DatabaseOperational.DataToServer
+                    var dataToServer = new DatabaseOperational.EventDataToServer
                     {
-                        ActiveStationsList = _dataManager.ActiveStationsList,
                         PartsName = control.ServerName,
+                        PartsValue = control.ImageIndex
                     };
-                    _ = _serverCommunication.SendRequestAsync(dataToServer);
-                    //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                    _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
+                    //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
                     //    System.Windows.MessageBoxImage.Information
@@ -354,13 +351,13 @@ namespace TatehamaInterlockingConsole.Handlers
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
                 {
-                    var dataToServer = new DatabaseOperational.DataToServer
+                    var dataToServer = new DatabaseOperational.EventDataToServer
                     {
-                        ActiveStationsList = _dataManager.ActiveStationsList,
                         PartsName = control.ServerName,
+                        PartsValue = control.ImageIndex
                     };
-                    _ = _serverCommunication.SendRequestAsync(dataToServer);
-                    //CustomMessage.Show($"Station: {dataToServer.ActiveStationsList[0]} PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                    _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
+                    //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
                     //    System.Windows.MessageBoxImage.Information
