@@ -15,6 +15,10 @@ namespace TatehamaInterlockingConsole.Models
         {
             public AuthenticationList AuthenticationList { get; set; }
 
+            public List<PhysicalUIList> PhysicalUIList { get; set; }
+
+            public List<InternalUIList> InternalUIList { get; set; }
+
             [JsonProperty("trackCircuitList")]
             public List<TrackCircuitList> TrackCircuitList { get; set; }
 
@@ -26,8 +30,6 @@ namespace TatehamaInterlockingConsole.Models
             public List<LampList> LampList { get; set; }
 
             public List<RetsubanList> RetsubanList { get; set; }
-
-            public List<LeverList> LeverList { get; set; }
         }
 
         public class AuthenticationList
@@ -37,11 +39,26 @@ namespace TatehamaInterlockingConsole.Models
             public bool IsOperator { get; set; }
         }
 
+        public class PhysicalUIList
+        {
+            [JsonProperty("Name")]
+            public string Name { get; set; }
+            public int Value { get; set; }
+        }
+
+        public class InternalUIList
+        {
+            [JsonProperty("Name")]
+            public string Name { get; set; }
+            public int Value { get; set; }
+        }
+
         public class TrackCircuitList
         {
             public string Name { get; set; }
             public bool IsRouteSetting { get; set; }
             public bool IsOnTrack { get; set; }
+            public string Retsuban { get; set; }
         }
 
         public class PointList
@@ -71,13 +88,6 @@ namespace TatehamaInterlockingConsole.Models
             [JsonProperty("Name")]
             public string Name { get; set; }
             public string RetsubanText { get; set; }
-        }
-
-        public class LeverList
-        {
-            [JsonProperty("Name")]
-            public string Name { get; set; }
-            public int LeverValue { get; set; }
         }
     }
 }

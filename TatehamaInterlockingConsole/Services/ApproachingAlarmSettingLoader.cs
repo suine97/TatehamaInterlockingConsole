@@ -159,6 +159,10 @@ namespace TatehamaInterlockingConsole.Services
             {
                 return "Point";
             }
+            else if (input.Contains("列番"))
+            {
+                return "Retsuban";
+            }
             else
             {
                 return "None";

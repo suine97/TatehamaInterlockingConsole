@@ -58,7 +58,8 @@ namespace TatehamaInterlockingConsole.ViewModels
             var trackCircuit = new DatabaseOperational.InterlockingTrackCircuit();
             var lamp = new DatabaseOperational.InterlockingLamp();
             var retsuban = new DatabaseOperational.InterlockingRetsuban();
-            var lever = new DatabaseOperational.InterlockingLever();
+            var physicalUI = new DatabaseOperational.InterlockingPhysicalUI();
+            var internalUI = new DatabaseOperational.InterlockingInternalUI();
 
             try
             {
@@ -76,7 +77,9 @@ namespace TatehamaInterlockingConsole.ViewModels
                         .FirstOrDefault(l => l.Name == item.ServerName);
                     retsuban = dataFromServer.Retsubans
                         .FirstOrDefault(r => r.Name == item.ServerName);
-                    lever = dataFromServer.Levers
+                    physicalUI = dataFromServer.PhysicalUIs
+                        .FirstOrDefault(l => l.Name == item.ServerName);
+                    internalUI = dataFromServer.InternalUIs
                         .FirstOrDefault(l => l.Name == item.ServerName);
 
                     // サーバー情報を基に更新
@@ -168,15 +171,15 @@ namespace TatehamaInterlockingConsole.ViewModels
                             }
                             break;
                         case "駅扱切換表示灯":
-                            if (lever != null)
+                            if (internalUI != null) // 内部UI
                             {
                                 // ランプ"PY"
-                                if (item.UniqueName.Contains("PY") && (lever.LeverValue <= 0))
+                                if (item.UniqueName.Contains("PY") && (internalUI.Value <= 0))
                                 {
                                     item.ImageIndex = 1;
                                 }
                                 // ランプ"PG"
-                                else if (item.UniqueName.Contains("PG") && (0 < lever.LeverValue))
+                                else if (item.UniqueName.Contains("PG") && (0 < internalUI.Value))
                                 {
                                     item.ImageIndex = 1;
                                 }
@@ -187,9 +190,9 @@ namespace TatehamaInterlockingConsole.ViewModels
                             }
                             break;
                         case "解放表示灯":
-                            if (lever != null)
+                            if (internalUI != null) // 内部UI
                             {
-                                if (lever.LeverValue <= 0)
+                                if (internalUI.Value <= 0)
                                 {
                                     item.ImageIndex = 1;
                                 }
@@ -200,15 +203,15 @@ namespace TatehamaInterlockingConsole.ViewModels
                             }
                             break;
                         case "物理てこ":
-                            if (lever != null)
+                            if (physicalUI != null) // 物理UI
                             {
                                 // 操作中でなければ更新
                                 if (!item.Ishandling)
                                 {
-                                    item.ImageIndex = lever.LeverValue;
+                                    item.ImageIndex = physicalUI.Value;
                                 }
                                 // 操作中かつ、てこの値がサーバー側と同じなら操作完了判定
-                                else if (item.Ishandling && (item.ImageIndex == lever.LeverValue))
+                                else if (item.Ishandling && (item.ImageIndex == physicalUI.Value))
                                 {
                                     item.Ishandling = false;
                                 }
@@ -248,7 +251,37 @@ namespace TatehamaInterlockingConsole.ViewModels
             try
             {
                 var AlarmSetting = _dataManager.ApproachingAlarmConditionList;
-                
+                var trackList = AlarmSetting.SelectMany(list => list).Select(alarm => alarm.Track).ToList();
+
+                var signal = new DatabaseOperational.InterlockingSignal();
+                var point = new DatabaseOperational.InterlockingPoint();
+                var trackCircuit = new DatabaseOperational.InterlockingTrackCircuit();
+                var internalUI = new DatabaseOperational.InterlockingInternalUI();
+
+                foreach (var alarmSetting in AlarmSetting.SelectMany(list => list))
+                {
+                    trackCircuit = dataFromServer.TrackCircuits
+                        .FirstOrDefault(server => server.Name == alarmSetting.Track.Name);
+                    point = dataFromServer.Points
+                        .FirstOrDefault(server => alarmSetting.ConditionsList
+                        .Any(alarm => server.Name == alarm.Name));
+                    signal = dataFromServer.Signals
+                        .FirstOrDefault(server => alarmSetting.ConditionsList
+                        .Any(alarm => server.Name == alarm.Name));
+                    internalUI = dataFromServer.InternalUIs
+                        .FirstOrDefault(server => alarmSetting.ConditionsList
+                        .Any(alarm => server.Name == alarm.Name));
+
+                    // 接近警報処理
+                    {
+
+                    }
+
+                    // 方向てこ警報処理
+                    {
+
+                    }
+                }
             }
             catch (Exception ex)
             {

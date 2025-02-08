@@ -184,11 +184,17 @@ namespace TatehamaInterlockingConsole.Manager
                         RetsubanText = "",
                     }).ToList(),
 
-                    Levers = data.LeverList.Select(temp => new DatabaseOperational.InterlockingLever
+                    PhysicalUIs = data.PhysicalUIList.Select(temp => new DatabaseOperational.InterlockingPhysicalUI
                     {
                         Name = temp.Name,
-                        LeverValue = 0,
-                    }).ToList()
+                        Value = 0,
+                    }).ToList(),
+
+                    InternalUIs = data.PhysicalUIList.Select(temp => new DatabaseOperational.InterlockingInternalUI
+                    {
+                        Name = temp.Name,
+                        Value = 0,
+                    }).ToList(),
                 };
 
                 return updatedDataFromServer;

@@ -35,12 +35,13 @@ namespace TatehamaInterlockingConsole.Models
         public class DataFromServer
         {
             public InterlockingAuthentication Authentication { get; set; } = new();
+            public List<InterlockingPhysicalUI> PhysicalUIs { get; set; } = [];
+            public List<InterlockingInternalUI> InternalUIs { get; set; } = [];
             public List<InterlockingTrackCircuit> TrackCircuits { get; set; } = [];
             public List<InterlockingPoint> Points { get; set; } = [];
             public List<InterlockingSignal> Signals { get; set; } = [];
             public List<InterlockingLamp> Lamps { get; set; } = [];
             public List<InterlockingRetsuban> Retsubans { get; set; } = [];
-            public List<InterlockingLever> Levers { get; set; } = [];
         }
 
         /// <summary>
@@ -56,6 +57,36 @@ namespace TatehamaInterlockingConsole.Models
             /// 信号係員判定
             /// </summary>
             public bool IsOperator { get; set; }
+        }
+
+        /// <summary>
+        /// 連動装置・物理UI情報クラス
+        /// </summary>
+        public class InterlockingPhysicalUI
+        {
+            /// <summary>
+            /// 名称
+            /// </summary>
+            public string Name { get; set; }
+            /// <summary>
+            /// UIの状態
+            /// </summary>
+            public int Value { get; set; }
+        }
+
+        /// <summary>
+        /// 連動装置・内部UI情報クラス
+        /// </summary>
+        public class InterlockingInternalUI
+        {
+            /// <summary>
+            /// 名称
+            /// </summary>
+            public string Name { get; set; }
+            /// <summary>
+            /// UIの状態
+            /// </summary>
+            public int Value { get; set; }
         }
 
         /// <summary>
@@ -75,6 +106,10 @@ namespace TatehamaInterlockingConsole.Models
             /// 在線判定
             /// </summary>
             public bool IsOnTrack { get; set; }
+            /// <summary>
+            /// 在線している列車番号
+            /// </summary>
+            public string Retsuban { get; set; }
         }
 
         /// <summary>
@@ -135,21 +170,6 @@ namespace TatehamaInterlockingConsole.Models
             /// 列車番号情報
             /// </summary>
             public string RetsubanText { get; set; }
-        }
-
-        /// <summary>
-        /// 連動装置・てこ情報クラス
-        /// </summary>
-        public class InterlockingLever
-        {
-            /// <summary>
-            /// 名称
-            /// </summary>
-            public string Name { get; set; }
-            /// <summary>
-            /// てこの向き
-            /// </summary>
-            public int LeverValue { get; set; }
         }
     }
 }
