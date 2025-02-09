@@ -18,20 +18,16 @@ namespace TatehamaInterlockingConsole.Models
         public class ConstantDataToServer
         {
             /// <summary>
-            /// 起動しているウィンドウの駅名
+            /// 常時送信用駅データリスト
             /// </summary>
             public List<string> ActiveStationsList { get; set; }
         }
 
         /// <summary>
-        /// 物理てこイベント送信用データクラス
+        /// イベント送信用データクラス(物理てこ)
         /// </summary>
         public class LeverEventDataToServer
         {
-            /// <summary>
-            /// 物理てこ名称
-            /// </summary>
-            public string LeverName { get; set; }
             /// <summary>
             /// 物理てこデータ
             /// </summary>
@@ -39,14 +35,10 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// 着点ボタンイベント送信用データクラス
+        /// イベント送信用データクラス(着点ボタン)
         /// </summary>
         public class ButtonEventDataToServer
         {
-            /// <summary>
-            /// 着点ボタン名称
-            /// </summary>
-            public string ButtonName { get; set; }
             /// <summary>
             /// 着点ボタンデータ
             /// </summary>
@@ -58,27 +50,56 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class DataFromServer
         {
+            /// <summary>
+            /// 認証情報リスト
+            /// </summary>
             public TraincrewRole Authentications { get; set; }
 
+            /// <summary>
+            /// 軌道回路情報リスト
+            /// </summary>
             [JsonProperty("trackCircuitList")]
             public List<TrackCircuitData> TrackCircuits { get; set; }
 
+            /// <summary>
+            /// 転てつ器情報リスト
+            /// </summary>
             public List<SwitchData> Points { get; set; }
 
+            /// <summary>
+            /// 信号機情報リスト
+            /// </summary>
             [JsonProperty("signalDataList")]
-            public List<SignalData> Signals { get; set; } 
+            public List<SignalData> Signals { get; set; }
 
-            public List<PhysicalUIData> PhysicalUIs { get; set; }
+            /// <summary>
+            /// 物理てこ情報リスト
+            /// </summary>
+            public List<LeverData> PhysicalLeverDataList { get; set; } = new();
 
-            public List<DirectionLeverData> DirectionLevers { get; set; }
+            /// <summary>
+            /// 着点ボタン情報リスト
+            /// </summary>
+            public List<DestinationButtonData> PhysicalButtonDataList { get; set; } = new();
 
+            /// <summary>
+            /// 方向てこ情報リスト
+            /// </summary>
+            public List<DirectionData> DirectionLevers { get; set; }
+
+            /// <summary>
+            /// 列番情報リスト
+            /// </summary>
             public List<RetsubanData> Retsubans { get; set; }
 
+            /// <summary>
+            /// 表示灯情報リスト
+            /// </summary>
             public List<Dictionary<string, bool>> Lamps { get; set; }
         }
 
         /// <summary>
-        /// 認証情報クラス
+        /// 認証データクラス
         /// </summary>
         public class TraincrewRole
         {
@@ -109,28 +130,9 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// 物理てこ・着点ボタン情報クラス
+        /// 方向てこデータクラス
         /// </summary>
-        public class PhysicalUIData
-        {
-            /// <summary>
-            /// 物理てこ・ボタン名称
-            /// </summary>
-            public string Name { get; set; } = "";
-            /// <summary>
-            /// 物理てこデータ
-            /// </summary>
-            public LeverData LeverData { get; set; }
-            /// <summary>
-            /// 着点ボタンデータ
-            /// </summary>
-            public DestinationButtonData DestinationButtonData { get; set; }
-        }
-
-        /// <summary>
-        /// 方向てこ情報クラス
-        /// </summary>
-        public class DirectionLeverData
+        public class DirectionData
         {
             /// <summary>
             /// 方向てこ名称
@@ -143,7 +145,7 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// 軌道回路情報クラス
+        /// 軌道回路データクラス
         /// </summary>
         public class TrackCircuitData
         {
@@ -171,7 +173,7 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// 転てつ器情報クラス
+        /// 転てつ器データクラス
         /// </summary>
         public class SwitchData
         {
@@ -186,7 +188,7 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// 信号機情報クラス
+        /// 信号機データクラス
         /// </summary>
         public class SignalData
         {
@@ -201,7 +203,7 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// 列番情報クラス
+        /// 列番データクラス
         /// </summary>
         public class RetsubanData
         {
@@ -214,12 +216,6 @@ namespace TatehamaInterlockingConsole.Models
             /// </summary>
             public string Retsuban { get; set; } = "";
         }
-
-        /// <summary>
-        /// 表示灯情報データ
-        /// Key=表示灯名称, Value=表示灯点灯状態
-        /// </summary>
-        public Dictionary<string, bool> LampDic { get; set; } = new();
 
         /// <summary>
         /// 物理てこデータクラス
