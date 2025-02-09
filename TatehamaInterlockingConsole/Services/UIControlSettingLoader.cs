@@ -14,39 +14,6 @@ namespace TatehamaInterlockingConsole.Services
     public static class UIControlSettingLoader
     {
         /// <summary>
-        /// TSVファイルの列要素番号
-        /// </summary>
-        public enum ColumnIndex
-        {
-            ControlType = 0,
-            UniqueName = 1,
-            ParentName = 2,
-            ServerType = 3,
-            ServerName = 4,
-            PointNameA = 5,
-            PointValueA = 6,
-            PointNameB = 7,
-            PointValueB = 8,
-            X = 9,
-            Y = 10,
-            Width = 11,
-            Height = 12,
-            Angle = 13,
-            AngleOriginX = 14,
-            AngleOriginY = 15,
-            Text = 16,
-            FontSize = 17,
-            BackgroundColor = 18,
-            TextColor = 19,
-            ClickEventName = 20,
-            ImagePattern = 21, 
-            ImageIndex = 22,
-            BaseImagePath = 23,
-            ImagePath = 24,
-            Remark = 25
-        }
-
-        /// <summary>
         /// TSVファイルを読み込みUIControlSettingListを作成する
         /// </summary>
         /// <param name="filePath"></param>
@@ -78,7 +45,7 @@ namespace TatehamaInterlockingConsole.Services
                     var columns = line.Split('\t');
 
                     // ControlTypeが未定義ならスキップ
-                    if (string.IsNullOrWhiteSpace(columns[(int)ColumnIndex.ControlType]))
+                    if (string.IsNullOrWhiteSpace(columns[(int)EnumData.ColumnIndex.ControlType]))
                     {
                         continue;
                     }
@@ -86,42 +53,42 @@ namespace TatehamaInterlockingConsole.Services
                     // 駅名称抽出
                     var stationName = DataHelper.ExtractStationNameFromFilePath(filePath);
                     // ImagePattern生成
-                    var imagePattern = columns[(int)ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList();
+                    var imagePattern = columns[(int)EnumData.ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList();
 
                     settings.Add(new UIControlSetting
                     {
                         StationName = stationName,
-                        ControlType = columns[(int)ColumnIndex.ControlType] != string.Empty ? columns[(int)ColumnIndex.ControlType] : string.Empty,
-                        UniqueName = columns[(int)ColumnIndex.UniqueName],
-                        ParentName = columns[(int)ColumnIndex.ParentName],
-                        ServerType = columns[(int)ColumnIndex.ServerType],
-                        ServerName = columns[(int)ColumnIndex.ServerName],
-                        PointNameA = columns[(int)ColumnIndex.PointNameA],
-                        PointValueA = columns[(int)ColumnIndex.PointValueA] == "R" ? false : true,
-                        PointNameB = columns[(int)ColumnIndex.PointNameB],
-                        PointValueB = columns[(int)ColumnIndex.PointValueB] == "R" ? false : true,
-                        X = double.TryParse(columns[(int)ColumnIndex.X], out var x) ? x : 0,
-                        Y = double.TryParse(columns[(int)ColumnIndex.Y], out var y) ? y : 0,
-                        RelativeX = double.TryParse(columns[(int)ColumnIndex.X], out var relativeX) ? relativeX : 0,
-                        RelativeY = double.TryParse(columns[(int)ColumnIndex.Y], out var relativeY) ? relativeY : 0,
-                        Width = double.TryParse(columns[(int)ColumnIndex.Width], out var width) ? width : 0,
-                        Height = double.TryParse(columns[(int)ColumnIndex.Height], out var height) ? height : 0,
-                        Angle = double.TryParse(columns[(int)ColumnIndex.Angle], out var angle) ? angle : 0,
-                        AngleOriginX = double.TryParse(columns[(int)ColumnIndex.AngleOriginX], out var angleX) ? angleX : 0.5,
-                        AngleOriginY = double.TryParse(columns[(int)ColumnIndex.AngleOriginY], out var angleY) ? angleY : 0.5,
-                        Text = columns[(int)ColumnIndex.Text],
-                        FontSize = double.TryParse(columns[(int)ColumnIndex.FontSize], out var fontSize) ? fontSize : 10,
-                        BackgroundColor = columns[(int)ColumnIndex.BackgroundColor],
-                        TextColor = columns[(int)ColumnIndex.TextColor],
-                        ClickEventName = columns[(int)ColumnIndex.ClickEventName],
+                        ControlType = columns[(int)EnumData.ColumnIndex.ControlType] != string.Empty ? columns[(int)EnumData.ColumnIndex.ControlType] : string.Empty,
+                        UniqueName = columns[(int)EnumData.ColumnIndex.UniqueName],
+                        ParentName = columns[(int)EnumData.ColumnIndex.ParentName],
+                        ServerType = columns[(int)EnumData.ColumnIndex.ServerType],
+                        ServerName = columns[(int)EnumData.ColumnIndex.ServerName],
+                        PointNameA = columns[(int)EnumData.ColumnIndex.PointNameA],
+                        PointValueA = columns[(int)EnumData.ColumnIndex.PointValueA] == "R" ? false : true,
+                        PointNameB = columns[(int)EnumData.ColumnIndex.PointNameB],
+                        PointValueB = columns[(int)EnumData.ColumnIndex.PointValueB] == "R" ? false : true,
+                        X = double.TryParse(columns[(int)EnumData.ColumnIndex.X], out var x) ? x : 0,
+                        Y = double.TryParse(columns[(int)EnumData.ColumnIndex.Y], out var y) ? y : 0,
+                        RelativeX = double.TryParse(columns[(int)EnumData.ColumnIndex.X], out var relativeX) ? relativeX : 0,
+                        RelativeY = double.TryParse(columns[(int)EnumData.ColumnIndex.Y], out var relativeY) ? relativeY : 0,
+                        Width = double.TryParse(columns[(int)EnumData.ColumnIndex.Width], out var width) ? width : 0,
+                        Height = double.TryParse(columns[(int)EnumData.ColumnIndex.Height], out var height) ? height : 0,
+                        Angle = double.TryParse(columns[(int)EnumData.ColumnIndex.Angle], out var angle) ? angle : 0,
+                        AngleOriginX = double.TryParse(columns[(int)EnumData.ColumnIndex.AngleOriginX], out var angleX) ? angleX : 0.5,
+                        AngleOriginY = double.TryParse(columns[(int)EnumData.ColumnIndex.AngleOriginY], out var angleY) ? angleY : 0.5,
+                        Text = columns[(int)EnumData.ColumnIndex.Text],
+                        FontSize = double.TryParse(columns[(int)EnumData.ColumnIndex.FontSize], out var fontSize) ? fontSize : 10,
+                        BackgroundColor = columns[(int)EnumData.ColumnIndex.BackgroundColor],
+                        TextColor = columns[(int)EnumData.ColumnIndex.TextColor],
+                        ClickEventName = columns[(int)EnumData.ColumnIndex.ClickEventName],
                         ImagePattern = imagePattern,
                         ImagePatternSymbol = MapImagePatternsToSymbols(imagePattern),
-                        ImageIndex = int.TryParse(columns[(int)ColumnIndex.ImageIndex], out var defaultImage) ? defaultImage : 0,
-                        BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)ColumnIndex.BaseImagePath].Trim('"').Trim(),
-                        ImagePaths = CreateImagePaths(columns[(int)ColumnIndex.ImagePattern], columns[(int)ColumnIndex.ImagePath]),
+                        ImageIndex = int.TryParse(columns[(int)EnumData.ColumnIndex.ImageIndex], out var defaultImage) ? defaultImage : 0,
+                        BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)EnumData.ColumnIndex.BaseImagePath].Trim('"').Trim(),
+                        ImagePaths = CreateImagePaths(columns[(int)EnumData.ColumnIndex.ImagePattern], columns[(int)EnumData.ColumnIndex.ImagePath]),
                         KeyInserted = false,
                         Retsuban = string.Empty,
-                        Remark = columns[(int)ColumnIndex.Remark],
+                        Remark = columns[(int)EnumData.ColumnIndex.Remark],
                     });
                 }
                 return settings;

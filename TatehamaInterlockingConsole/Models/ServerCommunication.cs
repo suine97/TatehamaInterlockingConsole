@@ -174,14 +174,14 @@ namespace TatehamaInterlockingConsole.Models
                 var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", constantDataToServer);
                 try
                 {
-                    // JSONを一時保存クラスにデシリアライズ
-                    var data = JsonConvert.DeserializeObject<DatabaseTemporary.RootObject>(jsonMessage);
+                    // 受信したJSONデータをデシリアライズ
+                    var data = JsonConvert.DeserializeObject<DatabaseOperational.DataFromServer>(jsonMessage);
                     if (data != null)
                     {
-                        // 一時保存クラスから運用クラスに代入
-                        _dataManager.DataFromServer = _dataManager.UpdateDataFromServer(data);
+                        // 運用クラスに代入
+                        _dataManager.DataFromServer = data;
                         // 認証情報を保存
-                        _dataManager.Authentication ??= _dataManager.DataFromServer.Authentication;
+                        _dataManager.Authentication ??= _dataManager.DataFromServer.Authentications;
                         // コントロール更新処理
                         DataUpdateViewModel.Instance.UpdateControl(_dataManager.DataFromServer);
                     }
@@ -202,16 +202,34 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// サーバーへイベント送信用データをリクエスト
+        /// サーバーへ物理てこイベント送信用データをリクエスト
         /// </summary>
         /// <param name="eventDataToServer"></param>
         /// <returns></returns>
-        public async Task SendEventDataRequestToServerAsync(DatabaseOperational.EventDataToServer eventDataToServer)
+        public async Task SendLeverEventDataRequestToServerAsync(DatabaseOperational.LeverEventDataToServer leverEventDataToServer)
         {
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", eventDataToServer);
+                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", leverEventDataToServer);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine($"Failed to send event data to server: {exception.Message}");
+            }
+        }
+
+        /// <summary>
+        /// サーバーへ着点ボタンイベント送信用データをリクエスト
+        /// </summary>
+        /// <param name="eventDataToServer"></param>
+        /// <returns></returns>
+        public async Task SendButtonEventDataRequestToServerAsync(DatabaseOperational.ButtonEventDataToServer buttonEventDataToServer)
+        {
+            try
+            {
+                // サーバーメソッドの呼び出し
+                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", buttonEventDataToServer);
             }
             catch (Exception exception)
             {

@@ -66,11 +66,11 @@ namespace TatehamaInterlockingConsole.Manager
             }
         }
 
-        private DatabaseOperational.InterlockingAuthentication _authentication;
+        private DatabaseOperational.TraincrewRole _authentication;
         /// <summary>
         /// サーバー受信データ(認証情報)
         /// </summary>
-        public DatabaseOperational.InterlockingAuthentication Authentication
+        public DatabaseOperational.TraincrewRole Authentication
         {
             get => _authentication;
             set
@@ -140,68 +140,6 @@ namespace TatehamaInterlockingConsole.Manager
             if (_activeStationsList.Contains(stationName))
             {
                 _activeStationsList.Remove(stationName);
-            }
-        }
-
-        /// <summary>
-        /// サーバー受信データを運用データに代入
-        /// </summary>
-        /// <param name="data"></param>
-        public DatabaseOperational.DataFromServer UpdateDataFromServer(DatabaseTemporary.RootObject data)
-        {
-            try
-            {
-                var updatedDataFromServer = new DatabaseOperational.DataFromServer
-                {
-                    TrackCircuits = data.TrackCircuitList.Select(temp => new DatabaseOperational.InterlockingTrackCircuit
-                    {
-                        Name = temp.Name,
-                        IsRouteSetting = false,
-                        IsOnTrack = false,
-                    }).ToList(),
-
-                    Signals = data.SignalDataList.Select(temp => new DatabaseOperational.InterlockingSignal
-                    {
-                        Name = temp.Name,
-                        IsProceedSignal = false,
-                    }).ToList(),
-
-                    Points = data.PointList.Select(temp => new DatabaseOperational.InterlockingPoint
-                    {
-                        Name = temp.Name,
-                        IsReversePosition = false,
-                    }).ToList(),
-
-                    Lamps = data.LampList.Select(temp => new DatabaseOperational.InterlockingLamp
-                    {
-                        Name = temp.Name,
-                        IsLighting = false,
-                    }).ToList(),
-
-                    Retsubans = data.RetsubanList.Select(temp => new DatabaseOperational.InterlockingRetsuban
-                    {
-                        Name = temp.Name,
-                        RetsubanText = "",
-                    }).ToList(),
-
-                    PhysicalUIs = data.PhysicalUIList.Select(temp => new DatabaseOperational.InterlockingPhysicalUI
-                    {
-                        Name = temp.Name,
-                        Value = 0,
-                    }).ToList(),
-
-                    InternalUIs = data.PhysicalUIList.Select(temp => new DatabaseOperational.InterlockingInternalUI
-                    {
-                        Name = temp.Name,
-                        Value = 0,
-                    }).ToList(),
-                };
-
-                return updatedDataFromServer;
-            }
-            catch
-            {
-                throw;
             }
         }
 

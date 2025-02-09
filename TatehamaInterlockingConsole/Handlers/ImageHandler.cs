@@ -137,16 +137,17 @@ namespace TatehamaInterlockingConsole.Handlers
             // サーバーへリクエスト送信
             if (control.ServerType != string.Empty)
             {
-                // 操作中判定
-                control.Ishandling = true;
-
-                var dataToServer = new DatabaseOperational.EventDataToServer
+                var dataToServer = new DatabaseOperational.LeverEventDataToServer
                 {
-                    PartsName = control.ServerName,
-                    PartsValue = control.ImageIndex
+                    LeverName = control.ServerName,
+                    LeverData = new DatabaseOperational.LeverData
+                    {
+                        Name = control.ServerName,
+                        State = EnumData.ConvertToLCR(control.ImageIndex)
+                    }
                 };
-                _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
-                //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(dataToServer);
+                //CustomMessage.Show($"Name: {dataToServer.LeverName} State: {dataToServer.LeverData.State}",
                 //    "サーバー送信",
                 //    System.Windows.MessageBoxButton.OK,
                 //    System.Windows.MessageBoxImage.Information
@@ -171,10 +172,10 @@ namespace TatehamaInterlockingConsole.Handlers
             // Shiftキーが押されているかを判定
             bool isShiftPressed = (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Shift) == System.Windows.Input.ModifierKeys.Shift;
             // 司令主任権限
-            bool isCommander = _dataManager.Authentication?.IsCommander ?? false;
+            bool isAdministrator = _dataManager.Authentication?.IsAdministrator ?? false;
 
             // 司令主任権限がある場合のみ処理
-            if (isCommander)
+            if (isAdministrator)
             {
                 if (isShiftPressed)
                 {
@@ -213,16 +214,17 @@ namespace TatehamaInterlockingConsole.Handlers
                     // サーバーへリクエスト送信
                     if (control.ServerType != string.Empty)
                     {
-                        // 操作中判定
-                        control.Ishandling = true;
-
-                        var dataToServer = new DatabaseOperational.EventDataToServer
+                        var dataToServer = new DatabaseOperational.LeverEventDataToServer
                         {
-                            PartsName = control.ServerName,
-                            PartsValue = control.ImageIndex
+                            LeverName = control.ServerName,
+                            LeverData = new DatabaseOperational.LeverData
+                            {
+                                Name = control.ServerName,
+                                State = EnumData.ConvertToLCR(control.ImageIndex)
+                            }
                         };
-                        _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
-                        //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                        _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(dataToServer);
+                        //CustomMessage.Show($"Name: {dataToServer.LeverName} State: {dataToServer.LeverData.State}",
                         //    "サーバー送信",
                         //    System.Windows.MessageBoxButton.OK,
                         //    System.Windows.MessageBoxImage.Information
@@ -268,16 +270,17 @@ namespace TatehamaInterlockingConsole.Handlers
                     // サーバーへリクエスト送信
                     if (control.ServerType != string.Empty)
                     {
-                        // 操作中判定
-                        control.Ishandling = true;
-
-                        var dataToServer = new DatabaseOperational.EventDataToServer
+                        var dataToServer = new DatabaseOperational.LeverEventDataToServer
                         {
-                            PartsName = control.ServerName,
-                            PartsValue = control.ImageIndex
+                            LeverName = control.ServerName,
+                            LeverData = new DatabaseOperational.LeverData
+                            {
+                                Name = control.ServerName,
+                                State = EnumData.ConvertToLCR(control.ImageIndex)
+                            }
                         };
-                        _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
-                        //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                        _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(dataToServer);
+                        //CustomMessage.Show($"Name: {dataToServer.LeverName} State: {dataToServer.LeverData.State}",
                         //    "サーバー送信",
                         //    System.Windows.MessageBoxButton.OK,
                         //    System.Windows.MessageBoxImage.Information
@@ -315,13 +318,18 @@ namespace TatehamaInterlockingConsole.Handlers
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
                 {
-                    var dataToServer = new DatabaseOperational.EventDataToServer
+                    var dataToServer = new DatabaseOperational.ButtonEventDataToServer
                     {
-                        PartsName = control.ServerName,
-                        PartsValue = control.ImageIndex
+                        ButtonName = control.ServerName,
+                        DestinationButtonData = new DatabaseOperational.DestinationButtonData
+                        {
+                            Name = control.ServerName,
+                            IsRaised = EnumData.ConvertToRaiseDrop(control.ImageIndex),
+                            OperatedAt = DateTime.Now
+                        }
                     };
-                    _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
-                    //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                    _ = _serverCommunication.SendButtonEventDataRequestToServerAsync(dataToServer);
+                    //CustomMessage.Show($"Name: {dataToServer.ButtonName} State: {dataToServer.DestinationButtonData.IsRaised}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
                     //    System.Windows.MessageBoxImage.Information
@@ -351,13 +359,18 @@ namespace TatehamaInterlockingConsole.Handlers
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
                 {
-                    var dataToServer = new DatabaseOperational.EventDataToServer
+                    var dataToServer = new DatabaseOperational.ButtonEventDataToServer
                     {
-                        PartsName = control.ServerName,
-                        PartsValue = control.ImageIndex
+                        ButtonName = control.ServerName,
+                        DestinationButtonData = new DatabaseOperational.DestinationButtonData
+                        {
+                            Name = control.ServerName,
+                            IsRaised = EnumData.ConvertToRaiseDrop(control.ImageIndex),
+                            OperatedAt = DateTime.Now
+                        }
                     };
-                    _ = _serverCommunication.SendEventDataRequestToServerAsync(dataToServer);
-                    //CustomMessage.Show($"PartsName: {dataToServer.PartsName} PartsValue: {dataToServer.PartsValue}",
+                    _ = _serverCommunication.SendButtonEventDataRequestToServerAsync(dataToServer);
+                    //CustomMessage.Show($"Name: {dataToServer.ButtonName} State: {dataToServer.DestinationButtonData.IsRaised}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
                     //    System.Windows.MessageBoxImage.Information

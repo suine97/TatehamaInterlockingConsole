@@ -13,7 +13,9 @@ namespace TatehamaInterlockingConsole.ViewModels
     public class DataUpdateViewModel : BaseViewModel
     {
         private static readonly DataUpdateViewModel _instance = new();
-        private readonly DataManager _dataManager; // データ管理を担当するクラス
+        private readonly DataManager _dataManager;  // データ管理を担当するクラス
+        private readonly Sound _sound;              // 音声再生クラス
+        private readonly Random _random = new();    // 乱数生成クラス
         public static DataUpdateViewModel Instance => _instance;
 
         /// <summary>
@@ -27,6 +29,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         public DataUpdateViewModel()
         {
             _dataManager = DataManager.Instance;
+            _sound = Sound.Instance;
         }
 
         /// <summary>
@@ -52,19 +55,21 @@ namespace TatehamaInterlockingConsole.ViewModels
         private List<UIControlSetting> UpdateControlsetting(DatabaseOperational.DataFromServer dataFromServer)
         {
             var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
-            var signal = new DatabaseOperational.InterlockingSignal();
-            var pointA = new DatabaseOperational.InterlockingPoint();
-            var pointB = new DatabaseOperational.InterlockingPoint();
-            var trackCircuit = new DatabaseOperational.InterlockingTrackCircuit();
-            var lamp = new DatabaseOperational.InterlockingLamp();
-            var retsuban = new DatabaseOperational.InterlockingRetsuban();
-            var physicalUI = new DatabaseOperational.InterlockingPhysicalUI();
-            var internalUI = new DatabaseOperational.InterlockingInternalUI();
+            var trackCircuit = new DatabaseOperational.TrackCircuitData();
+            var pointA = new DatabaseOperational.SwitchData();
+            var pointB = new DatabaseOperational.SwitchData();
+            var signal = new DatabaseOperational.SignalData();
+            var physicalUI = new DatabaseOperational.PhysicalUIData();
+            var directionLever = new DatabaseOperational.DirectionLeverData();
+            var retsuban = new DatabaseOperational.RetsubanData();
+            var lamp = new Dictionary<string, bool>();
 
             try
             {
+                // 全コントロール設定データ更新
                 foreach (var item in allSettingList)
                 {
+                    // コントロールと一致するサーバー情報のみ抽出
                     trackCircuit = dataFromServer.TrackCircuits
                         .FirstOrDefault(t => t.Name == item.ServerName);
                     pointA = dataFromServer.Points
@@ -73,23 +78,36 @@ namespace TatehamaInterlockingConsole.ViewModels
                         .FirstOrDefault(p => p.Name == item.PointNameB);
                     signal = dataFromServer.Signals
                         .FirstOrDefault(s => s.Name == item.ServerName);
-                    lamp = dataFromServer.Lamps
+                    physicalUI = dataFromServer.PhysicalUIs
+                        .FirstOrDefault(l => l.Name == item.ServerName);
+                    directionLever = dataFromServer.DirectionLevers
                         .FirstOrDefault(l => l.Name == item.ServerName);
                     retsuban = dataFromServer.Retsubans
                         .FirstOrDefault(r => r.Name == item.ServerName);
-                    physicalUI = dataFromServer.PhysicalUIs
-                        .FirstOrDefault(l => l.Name == item.ServerName);
-                    internalUI = dataFromServer.InternalUIs
-                        .FirstOrDefault(l => l.Name == item.ServerName);
+                    lamp = dataFromServer.Lamps
+                        .FirstOrDefault(l => l.ContainsKey(item.ServerName));
 
-                    // サーバー情報を基に更新
+                    // NRC型の転てつ器状態取得
+                    EnumData.NRC pointAState = item.PointValueA ? EnumData.NRC.Normal : EnumData.NRC.Reversed;
+                    EnumData.NRC pointBState = item.PointValueB ? EnumData.NRC.Normal : EnumData.NRC.Reversed;
+
+                    // 音声再生用の乱数生成
+                    string randomKeyInsertSoundIndex = _random.Next(1, 6).ToString("00");
+                    string randomKeyChainSoundIndex = _random.Next(1, 10).ToString("00");
+                    string randomKeyRemoveSoundIndex = _random.Next(1, 6).ToString("00");
+                    string randomKeyRejectSoundIndex = _random.Next(1, 4).ToString("00");
+                    string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
+                    string randomDropSoundIndex = _random.Next(1, 4).ToString("00");
+                    string randomRaiseSoundIndex = _random.Next(1, 4).ToString("00");
+
+                    // サーバー分類毎に処理
                     switch (item.ServerType)
                     {
                         case "信号機表示灯":
                             if (signal != null)
                             {
                                 // 進行信号
-                                if (signal.IsProceedSignal)
+                                if (signal.Phase != EnumData.Phase.R)
                                     item.ImageIndex = 1;
                                 else
                                     item.ImageIndex = 0;
@@ -100,7 +118,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                             if (pointA != null && pointB != null)
                             {
                                 // 転てつ器状態
-                                if ((pointA.IsReversePosition == !item.PointValueA) && (pointB.IsReversePosition == !item.PointValueB))
+                                if ((pointA.State == pointAState) && (pointB.State == pointBState))
                                     item.ImageIndex = 1;
                                 else
                                     item.ImageIndex = 0;
@@ -108,7 +126,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                             // B転てつ器条件のみ存在する場合
                             else if (pointB != null)
                             {
-                                if (pointB.IsReversePosition == !item.PointValueB)
+                                if (pointB.State == pointBState)
                                     item.ImageIndex = 1;
                                 else
                                     item.ImageIndex = 0;
@@ -116,7 +134,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                             // A転てつ器条件のみ存在する場合
                             else if (pointA != null)
                             {
-                                if (pointA.IsReversePosition == !item.PointValueA)
+                                if (pointA.State == pointAState)
                                     item.ImageIndex = 1;
                                 else
                                     item.ImageIndex = 0;
@@ -129,32 +147,32 @@ namespace TatehamaInterlockingConsole.ViewModels
                                 if (pointA != null && pointB != null)
                                 {
                                     // 転てつ器状態
-                                    if ((pointA.IsReversePosition == !item.PointValueA) && (pointB.IsReversePosition == !item.PointValueB))
-                                        item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
+                                    if ((pointA.State == pointAState) && (pointB.State == pointBState))
+                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
                                     else
                                         item.ImageIndex = 0;
                                 }
                                 // B転てつ器条件のみ存在する場合
                                 else if (pointB != null)
                                 {
-                                    if (pointB.IsReversePosition == !item.PointValueB)
-                                        item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
+                                    if (pointB.State == pointBState)
+                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
                                     else
                                         item.ImageIndex = 0;
                                 }
                                 // A転てつ器条件のみ存在する場合
                                 else if (pointA != null)
                                 {
-                                    if (pointA.IsReversePosition == !item.PointValueA)
-                                        item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
+                                    if (pointA.State == pointAState)
+                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
                                     else
                                         item.ImageIndex = 0;
                                 }
                                 // 転てつ器条件なし
                                 else
                                 {
-                                    if (trackCircuit.IsOnTrack)
-                                        item.ImageIndex = trackCircuit.IsRouteSetting ? 1 : trackCircuit.IsOnTrack ? 2 : 0;
+                                    if (trackCircuit.On)
+                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
                                     else
                                         item.ImageIndex = 0;
                                 }
@@ -164,56 +182,75 @@ namespace TatehamaInterlockingConsole.ViewModels
                             if (lamp != null)
                             {
                                 // 点灯
-                                if (lamp.IsLighting)
+                                if (lamp.TryGetValue(item.ServerName, out bool lampValue))
                                     item.ImageIndex = 1;
                                 else
                                     item.ImageIndex = 0;
                             }
                             break;
                         case "駅扱切換表示灯":
-                            if (internalUI != null) // 内部UI
+                            if (physicalUI != null)
                             {
                                 // ランプ"PY"
-                                if (item.UniqueName.Contains("PY") && (internalUI.Value <= 0))
-                                {
+                                if (item.UniqueName.Contains("PY") && (physicalUI.LeverData.State == EnumData.LCR.Left))
                                     item.ImageIndex = 1;
-                                }
                                 // ランプ"PG"
-                                else if (item.UniqueName.Contains("PG") && (0 < internalUI.Value))
-                                {
+                                else if (item.UniqueName.Contains("PG") && (physicalUI.LeverData.State == EnumData.LCR.Right))
                                     item.ImageIndex = 1;
-                                }
                                 else
-                                {
                                     item.ImageIndex = 0;
-                                }
                             }
                             break;
                         case "解放表示灯":
-                            if (internalUI != null) // 内部UI
+                            if (physicalUI != null)
                             {
-                                if (internalUI.Value <= 0)
-                                {
+                                if (physicalUI.LeverData.State == EnumData.LCR.Right)
                                     item.ImageIndex = 1;
-                                }
                                 else
-                                {
                                     item.ImageIndex = 0;
-                                }
                             }
                             break;
                         case "物理てこ":
-                            if (physicalUI != null) // 物理UI
+                            if (physicalUI != null)
                             {
-                                // 操作中でなければ更新
-                                if (!item.Ishandling)
+                                // 物理てこの状態がUIと異なる場合に更新
+                                if (physicalUI.LeverData.State != EnumData.ConvertToLCR(item.ImageIndex))
                                 {
-                                    item.ImageIndex = physicalUI.Value;
+                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalUI.LeverData.State);
+
+                                    // 音声再生
+                                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
                                 }
-                                // 操作中かつ、てこの値がサーバー側と同じなら操作完了判定
-                                else if (item.Ishandling && (item.ImageIndex == physicalUI.Value))
+                            }
+                            break;
+                        case "物理鍵てこ":
+                            if (physicalUI != null)
+                            {
+                                // 物理鍵てこの状態がUIと異なる場合に更新
+                                if (physicalUI.LeverData.State != EnumData.ConvertToLCR(item.ImageIndex))
                                 {
-                                    item.Ishandling = false;
+                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalUI.LeverData.State);
+
+                                    // Todo: 鍵音声処理追加
+
+                                    // 音声再生
+                                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                                }
+                            }
+                            break;
+                        case "着点ボタン":
+                            if (physicalUI != null)
+                            {
+                                // 着点ボタンの状態がUIと異なる場合に更新
+                                if (physicalUI.DestinationButtonData.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                                {
+                                    item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalUI.DestinationButtonData.IsRaised);
+
+                                    // 音声再生
+                                    if (item.ImageIndex == 1)
+                                        _sound.SoundPlay($"drop_{randomDropSoundIndex}", false);
+                                    else
+                                        _sound.SoundPlay($"raise_{randomRaiseSoundIndex}", false);
                                 }
                             }
                             break;
@@ -221,7 +258,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                             if (retsuban != null)
                             {
                                 // 列車番号
-                                item.Retsuban = retsuban.RetsubanText;
+                                item.Retsuban = retsuban.Retsuban;
                                 SetControlsetting(item);
                             }
                             else
@@ -250,38 +287,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             try
             {
-                var AlarmSetting = _dataManager.ApproachingAlarmConditionList;
-                var trackList = AlarmSetting.SelectMany(list => list).Select(alarm => alarm.Track).ToList();
-
-                var signal = new DatabaseOperational.InterlockingSignal();
-                var point = new DatabaseOperational.InterlockingPoint();
-                var trackCircuit = new DatabaseOperational.InterlockingTrackCircuit();
-                var internalUI = new DatabaseOperational.InterlockingInternalUI();
-
-                foreach (var alarmSetting in AlarmSetting.SelectMany(list => list))
-                {
-                    trackCircuit = dataFromServer.TrackCircuits
-                        .FirstOrDefault(server => server.Name == alarmSetting.Track.Name);
-                    point = dataFromServer.Points
-                        .FirstOrDefault(server => alarmSetting.ConditionsList
-                        .Any(alarm => server.Name == alarm.Name));
-                    signal = dataFromServer.Signals
-                        .FirstOrDefault(server => alarmSetting.ConditionsList
-                        .Any(alarm => server.Name == alarm.Name));
-                    internalUI = dataFromServer.InternalUIs
-                        .FirstOrDefault(server => alarmSetting.ConditionsList
-                        .Any(alarm => server.Name == alarm.Name));
-
-                    // 接近警報処理
-                    {
-
-                    }
-
-                    // 方向てこ警報処理
-                    {
-
-                    }
-                }
+                
             }
             catch (Exception ex)
             {

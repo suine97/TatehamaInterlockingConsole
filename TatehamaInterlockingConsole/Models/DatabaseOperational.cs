@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace TatehamaInterlockingConsole.Models
 {
     /// <summary>
-    /// 運用サーバーデータ格納クラス
+    /// サーバーデータ格納クラス
     /// </summary>
     public class DatabaseOperational
     {
@@ -11,7 +13,7 @@ namespace TatehamaInterlockingConsole.Models
         public static DatabaseOperational Instance => _instance;
 
         /// <summary>
-        /// 連動装置・常時送信用データクラス
+        /// 常時送信用データクラス
         /// </summary>
         public class ConstantDataToServer
         {
@@ -22,161 +24,235 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// 連動装置・イベント送信用データクラス
+        /// 物理てこイベント送信用データクラス
         /// </summary>
-        public class EventDataToServer
+        public class LeverEventDataToServer
         {
             /// <summary>
-            /// てこ・着点ボタン名
+            /// 物理てこ名称
             /// </summary>
-            public string PartsName { get; set; }
+            public string LeverName { get; set; }
             /// <summary>
-            /// てこの向き
+            /// 物理てこデータ
             /// </summary>
-            public int PartsValue { get; set; }
+            public LeverData LeverData { get; set; }
         }
 
         /// <summary>
-        /// 連動装置・受信用データクラス
+        /// 着点ボタンイベント送信用データクラス
+        /// </summary>
+        public class ButtonEventDataToServer
+        {
+            /// <summary>
+            /// 着点ボタン名称
+            /// </summary>
+            public string ButtonName { get; set; }
+            /// <summary>
+            /// 着点ボタンデータ
+            /// </summary>
+            public DestinationButtonData DestinationButtonData { get; set; }
+        }
+
+        /// <summary>
+        /// 受信用データクラス
         /// </summary>
         public class DataFromServer
         {
-            public InterlockingAuthentication Authentication { get; set; } = new();
-            public List<InterlockingPhysicalUI> PhysicalUIs { get; set; } = [];
-            public List<InterlockingInternalUI> InternalUIs { get; set; } = [];
-            public List<InterlockingTrackCircuit> TrackCircuits { get; set; } = [];
-            public List<InterlockingPoint> Points { get; set; } = [];
-            public List<InterlockingSignal> Signals { get; set; } = [];
-            public List<InterlockingLamp> Lamps { get; set; } = [];
-            public List<InterlockingRetsuban> Retsubans { get; set; } = [];
+            public TraincrewRole Authentications { get; set; }
+
+            [JsonProperty("trackCircuitList")]
+            public List<TrackCircuitData> TrackCircuits { get; set; }
+
+            public List<SwitchData> Points { get; set; }
+
+            [JsonProperty("signalDataList")]
+            public List<SignalData> Signals { get; set; } 
+
+            public List<PhysicalUIData> PhysicalUIs { get; set; }
+
+            public List<DirectionLeverData> DirectionLevers { get; set; }
+
+            public List<RetsubanData> Retsubans { get; set; }
+
+            public List<Dictionary<string, bool>> Lamps { get; set; }
         }
 
         /// <summary>
-        /// 連動装置・認証情報クラス
+        /// 認証情報クラス
         /// </summary>
-        public class InterlockingAuthentication
+        public class TraincrewRole
         {
             /// <summary>
-            /// 司令主任判定
+            /// 運転士
             /// </summary>
-            public bool IsCommander { get; set; }
+            public required bool IsDriver { get; init; } = false;
             /// <summary>
-            /// 信号係員判定
+            /// 乗務助役
             /// </summary>
-            public bool IsOperator { get; set; }
+            public required bool IsDriverManager { get; init; } = false;
+            /// <summary>
+            /// 車掌
+            /// </summary>
+            public required bool IsConductor { get; init; } = false;
+            /// <summary>
+            /// 司令員
+            /// </summary>
+            public required bool IsCommander { get; init; } = false;
+            /// <summary>
+            /// 信号扱者
+            /// </summary>
+            public required bool IsSignalman { get; init; } = false;
+            /// <summary>
+            /// 司令主任
+            /// </summary>
+            public required bool IsAdministrator { get; init; } = false;
         }
 
         /// <summary>
-        /// 連動装置・物理UI情報クラス
+        /// 物理てこ・着点ボタン情報クラス
         /// </summary>
-        public class InterlockingPhysicalUI
+        public class PhysicalUIData
         {
             /// <summary>
-            /// 名称
+            /// 物理てこ・ボタン名称
             /// </summary>
-            public string Name { get; set; }
+            public string Name { get; set; } = "";
             /// <summary>
-            /// UIの状態
+            /// 物理てこデータ
             /// </summary>
-            public int Value { get; set; }
+            public LeverData LeverData { get; set; }
+            /// <summary>
+            /// 着点ボタンデータ
+            /// </summary>
+            public DestinationButtonData DestinationButtonData { get; set; }
         }
 
         /// <summary>
-        /// 連動装置・内部UI情報クラス
+        /// 方向てこ情報クラス
         /// </summary>
-        public class InterlockingInternalUI
+        public class DirectionLeverData
         {
             /// <summary>
-            /// 名称
+            /// 方向てこ名称
             /// </summary>
-            public string Name { get; set; }
+            public string Name { get; set; } = "";
             /// <summary>
-            /// UIの状態
+            /// 方向てこの値
             /// </summary>
-            public int Value { get; set; }
+            public EnumData.LNR State { get; set; } = EnumData.LNR.Left;
         }
 
         /// <summary>
-        /// 連動装置・軌道回路情報クラス
+        /// 軌道回路情報クラス
         /// </summary>
-        public class InterlockingTrackCircuit
+        public class TrackCircuitData
         {
             /// <summary>
-            /// 名称
+            /// 在線状態    
             /// </summary>
-            public string Name { get; set; }
+            public bool On { get; set; } = false;
             /// <summary>
-            /// 鎖錠判定
+            /// 鎖錠状態
             /// </summary>
-            public bool IsRouteSetting { get; set; }
+            public bool Lock { get; set; } = false;
             /// <summary>
-            /// 在線判定
+            /// 軌道回路を踏んだ列車の名前
             /// </summary>
-            public bool IsOnTrack { get; set; }
+            public string Last { get; set; } = null;
             /// <summary>
-            /// 在線している列車番号
+            /// 軌道回路名称
             /// </summary>
-            public string Retsuban { get; set; }
+            public string Name { get; set; } = "";
+
+            public override string ToString()
+            {
+                return $"{Name}";
+            }
         }
 
         /// <summary>
-        /// 連動装置・転てつ器情報クラス
+        /// 転てつ器情報クラス
         /// </summary>
-        public class InterlockingPoint
+        public class SwitchData
         {
             /// <summary>
-            /// 名称
+            /// 転てつ器状態
             /// </summary>
-            public string Name { get; set; }
+            public EnumData.NRC State { get; set; } = EnumData.NRC.Center;
             /// <summary>
-            /// 反位判定
+            /// 転てつ器名称
             /// </summary>
-            public bool IsReversePosition { get; set; }
+            public string Name { get; set; } = "";
         }
 
         /// <summary>
-        /// 連動装置・信号機情報クラス
+        /// 信号機情報クラス
         /// </summary>
-        public class InterlockingSignal
+        public class SignalData
         {
             /// <summary>
-            /// 名称
+            /// 信号機名称
             /// </summary>
-            public string Name { get; set; }
+            public string Name { get; init; } = "";
             /// <summary>
-            /// 進行信号判定
+            /// 信号機現示
             /// </summary>
-            public bool IsProceedSignal { get; set; }
+            public EnumData.Phase Phase { get; init; } = EnumData.Phase.None;
         }
 
         /// <summary>
-        /// 連動装置・ランプ情報クラス
+        /// 列番情報クラス
         /// </summary>
-        public class InterlockingLamp
+        public class RetsubanData
         {
             /// <summary>
-            /// 名称
+            /// 列番名称
             /// </summary>
-            public string Name { get; set; }
+            public string Name { get; set; } = "";
             /// <summary>
-            /// 点灯判定
+            /// 列番
             /// </summary>
-            public bool IsLighting { get; set; }
+            public string Retsuban { get; set; } = "";
         }
 
         /// <summary>
-        /// 連動装置・列番情報クラス
+        /// 表示灯情報データ
+        /// Key=表示灯名称, Value=表示灯点灯状態
         /// </summary>
-        public class InterlockingRetsuban
+        public Dictionary<string, bool> LampDic { get; set; } = new();
+
+        /// <summary>
+        /// 物理てこデータクラス
+        /// </summary>
+        public class LeverData
         {
             /// <summary>
-            /// 名称
+            /// 物理てこ名称
             /// </summary>
-            public string Name { get; set; }
+            public string Name { get; set; } = "";
             /// <summary>
-            /// 列車番号情報
+            /// 物理てこの状態
             /// </summary>
-            public string RetsubanText { get; set; }
+            public EnumData.LCR State { get; set; } = EnumData.LCR.Center;
+        }
+
+        /// <summary>
+        /// 着点ボタンデータクラス
+        /// </summary>
+        public class DestinationButtonData
+        {
+            /// <summary>
+            /// 着点ボタン名称
+            /// </summary>
+            public required string Name { get; init; }
+            /// <summary>
+            /// 着点ボタンの状態
+            /// </summary>
+            public EnumData.RaiseDrop IsRaised { get; set; }
+            /// <summary>
+            /// 着点ボタンの操作時間
+            /// </summary>
+            public DateTime OperatedAt { get; set; }
         }
     }
 }
