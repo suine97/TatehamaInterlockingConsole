@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using OpenIddict.Client;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Handlers;
-using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
@@ -21,7 +18,6 @@ namespace TatehamaInterlockingConsole.ViewModels
     {
         private readonly TimeService _timeService;                 // 時間管理サービス
         private readonly DataManager _dataManager;                 // データ管理を担当するクラス
-        private readonly DataUpdateViewModel _dataUpdateViewModel; // データ更新処理を管理するViewModel
         private readonly ServerCommunication _serverCommunication; // サーバ通信クラス
         private static bool _isConstructorExecuted = false;        // コンストラクタが一度だけ実行されることを保証するフラグ
         private readonly ButtonHandler _buttonHandler;             // ボタン操作処理クラス
@@ -103,7 +99,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="dataManager"></param>
         /// <param name="dataUpdateViewModel"></param>
         /// <param name="openIddictClientService"></param>
-        public MainViewModel(TimeService timeService, DataManager dataManager, DataUpdateViewModel dataUpdateViewModel, OpenIddictClientService openIddictClientService)
+        public MainViewModel(TimeService timeService, DataManager dataManager, OpenIddictClientService openIddictClientService)
         {
             try
             {
@@ -113,7 +109,6 @@ namespace TatehamaInterlockingConsole.ViewModels
                     _isConstructorExecuted = true;
 
                     _timeService = timeService;
-                    _dataUpdateViewModel = dataUpdateViewModel;
                     _dataManager = dataManager;
                     _dataManager.Initialize(timeService);
                     _serverCommunication = new ServerCommunication(openIddictClientService);

@@ -75,12 +75,12 @@ namespace TatehamaInterlockingConsole.Models
             /// <summary>
             /// 物理てこ情報リスト
             /// </summary>
-            public List<LeverData> PhysicalLeverDataList { get; set; } = new();
+            public List<LeverData> PhysicalLeverDataList { get; set; }
 
             /// <summary>
             /// 着点ボタン情報リスト
             /// </summary>
-            public List<DestinationButtonData> PhysicalButtonDataList { get; set; } = new();
+            public List<DestinationButtonData> PhysicalButtonDataList { get; set; }
 
             /// <summary>
             /// 方向てこ情報リスト
@@ -240,15 +240,15 @@ namespace TatehamaInterlockingConsole.Models
             /// <summary>
             /// 着点ボタン名称
             /// </summary>
-            public required string Name { get; init; }
+            public required string Name { get; init; } = "";
             /// <summary>
             /// 着点ボタンの状態
             /// </summary>
-            public EnumData.RaiseDrop IsRaised { get; set; }
+            public EnumData.RaiseDrop IsRaised { get; set; } = EnumData.RaiseDrop.Raise;
             /// <summary>
             /// 着点ボタンの操作時間
             /// </summary>
-            public DateTime OperatedAt { get; set; }
+            public DateTime OperatedAt { get; set; } = DateTime.MinValue;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
@@ -245,8 +244,18 @@ namespace TatehamaInterlockingConsole.ViewModels
                         case "着点ボタン":
                             if (physicalButton != null)
                             {
+                                // 着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作が100ms以内の場合に音声再生
+                                if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex)
+                                    && (DateTime.Now - physicalButton.OperatedAt).Milliseconds < 100)
+                                {
+                                    // 音声再生
+                                    if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))
+                                        _sound.SoundPlay($"drop_{randomDropSoundIndex}", false);
+                                    else
+                                        _sound.SoundPlay($"raise_{randomRaiseSoundIndex}", false);
+                                }
                                 // 着点ボタンの状態がUIと異なる場合に更新
-                                if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                                else if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
                                 {
                                     item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalButton.IsRaised);
 

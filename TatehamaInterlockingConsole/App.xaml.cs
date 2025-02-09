@@ -68,7 +68,6 @@ namespace TatehamaInterlockingConsole
                     // 必要なサービスの登録
                     services.AddSingleton(TimeService.Instance);
                     services.AddSingleton(DataManager.Instance);
-                    services.AddSingleton(DataUpdateViewModel.Instance);
                     // ViewModelの登録
                     services.AddTransient<MainViewModel>();
                     // ウィンドウの登録

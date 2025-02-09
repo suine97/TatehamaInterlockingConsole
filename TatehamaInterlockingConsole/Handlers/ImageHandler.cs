@@ -2,16 +2,11 @@
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
-using TatehamaInterlockingConsole.Services;
-using TatehamaInterlockingConsole.ViewModels;
 
 namespace TatehamaInterlockingConsole.Handlers
 {
     public class ImageHandler
     {
-        private readonly Sound _sound = Sound.Instance;
-        private readonly Random _random = new();
-        private readonly DataUpdateViewModel _dataUpdateViewModel = DataUpdateViewModel.Instance;
         private readonly DataManager _dataManager = DataManager.Instance;
         private readonly ServerCommunication _serverCommunication;
         public static ImageHandler Instance { get; private set; }
@@ -100,7 +95,6 @@ namespace TatehamaInterlockingConsole.Handlers
         private void HandleLeverImageMouseDown(UIControlSetting control, bool isLeftClick)
         {
             int newIndex;
-            string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
 
             // LRパターンのみ別処理
             if (control.ImagePatternSymbol == "LR")
@@ -129,10 +123,6 @@ namespace TatehamaInterlockingConsole.Handlers
                 }
             }
             control.ImageIndex = newIndex;
-            _dataUpdateViewModel.SetControlsetting(control);
-
-            // 音声再生
-            //_sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
             // サーバーへリクエスト送信
             if (control.ServerType != string.Empty)
@@ -162,12 +152,6 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleKeyImageMouseDown(UIControlSetting control, bool isLeftClick)
         {
-            string randomKeyInsertSoundIndex = _random.Next(1, 6).ToString("00");
-            string randomKeyChainSoundIndex = _random.Next(1, 10).ToString("00");
-            string randomKeyRemoveSoundIndex = _random.Next(1, 6).ToString("00");
-            string randomKeyRejectSoundIndex = _random.Next(1, 4).ToString("00");
-            string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
-
             // Shiftキーが押されているかを判定
             bool isShiftPressed = (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Shift) == System.Windows.Input.ModifierKeys.Shift;
             // 司令主任権限
@@ -189,9 +173,6 @@ namespace TatehamaInterlockingConsole.Handlers
                         {
                             control.ImageIndex += 10;
                         }
-                        // 音声再生
-                        //_sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
-                        //_sound.SoundPlay($"remove_{randomKeyRemoveSoundIndex}", false);
                     }
                     else
                     {
@@ -203,12 +184,8 @@ namespace TatehamaInterlockingConsole.Handlers
                         {
                             control.ImageIndex -= 10;
                         }
-                        // 音声再生
-                        //_sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
-                        //_sound.SoundPlay($"insert_{randomKeyInsertSoundIndex}", false);
                     }
                     control.KeyInserted = !control.KeyInserted;
-                    _dataUpdateViewModel.SetControlsetting(control);
 
                     // サーバーへリクエスト送信
                     if (control.ServerType != string.Empty)
@@ -260,10 +237,6 @@ namespace TatehamaInterlockingConsole.Handlers
                         }
                     }
                     control.ImageIndex = newIndex;
-                    _dataUpdateViewModel.SetControlsetting(control);
-
-                    // 音声再生
-                    //_sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
                     // サーバーへリクエスト送信
                     if (control.ServerType != string.Empty)
@@ -288,9 +261,7 @@ namespace TatehamaInterlockingConsole.Handlers
             // 司令主任権限がない場合は操作無効
             else
             {
-                // 音声再生
-                //_sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
-                //_sound.SoundPlay($"reject_{randomKeyRejectSoundIndex}", false);
+
             }
         }
 
@@ -302,15 +273,9 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseDown(UIControlSetting control)
         {
-            string randomPushSoundIndex = _random.Next(1, 4).ToString("00");
-            
             if (control.ImageIndex != 1)
             {
                 control.ImageIndex = 1;
-                _dataUpdateViewModel.SetControlsetting(control);
-
-                // 音声再生
-                //_sound.SoundPlay($"push_{randomPushSoundIndex}", false);
 
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
@@ -342,15 +307,9 @@ namespace TatehamaInterlockingConsole.Handlers
         /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseUp(UIControlSetting control)
         {
-            string randomPullSoundIndex = _random.Next(1, 4).ToString("00");
-
             if (control.ImageIndex != 0)
             {
                 control.ImageIndex = 0;
-                _dataUpdateViewModel.SetControlsetting(control);
-
-                // 音声再生
-                //_sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
 
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
