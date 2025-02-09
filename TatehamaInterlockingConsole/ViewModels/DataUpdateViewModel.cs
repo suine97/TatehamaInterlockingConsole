@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
@@ -59,8 +60,9 @@ namespace TatehamaInterlockingConsole.ViewModels
             var pointA = new DatabaseOperational.SwitchData();
             var pointB = new DatabaseOperational.SwitchData();
             var signal = new DatabaseOperational.SignalData();
-            var physicalUI = new DatabaseOperational.PhysicalUIData();
-            var directionLever = new DatabaseOperational.DirectionLeverData();
+            var physicalLever = new DatabaseOperational.LeverData();
+            var physicalButton = new DatabaseOperational.DestinationButtonData { Name = string.Empty };
+            var direction = new DatabaseOperational.DirectionData();
             var retsuban = new DatabaseOperational.RetsubanData();
             var lamp = new Dictionary<string, bool>();
 
@@ -78,9 +80,11 @@ namespace TatehamaInterlockingConsole.ViewModels
                         .FirstOrDefault(p => p.Name == item.PointNameB);
                     signal = dataFromServer.Signals
                         .FirstOrDefault(s => s.Name == item.ServerName);
-                    physicalUI = dataFromServer.PhysicalUIs
+                    physicalLever = dataFromServer.PhysicalLeverDataList
                         .FirstOrDefault(l => l.Name == item.ServerName);
-                    directionLever = dataFromServer.DirectionLevers
+                    physicalButton = dataFromServer.PhysicalButtonDataList
+                        .FirstOrDefault(b => b.Name == item.ServerName);
+                    direction = dataFromServer.DirectionLevers
                         .FirstOrDefault(l => l.Name == item.ServerName);
                     retsuban = dataFromServer.Retsubans
                         .FirstOrDefault(r => r.Name == item.ServerName);
@@ -97,8 +101,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                     string randomKeyRemoveSoundIndex = _random.Next(1, 6).ToString("00");
                     string randomKeyRejectSoundIndex = _random.Next(1, 4).ToString("00");
                     string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
-                    string randomDropSoundIndex = _random.Next(1, 4).ToString("00");
-                    string randomRaiseSoundIndex = _random.Next(1, 4).ToString("00");
+                    string randomDropSoundIndex = _random.Next(1, 13).ToString("00");
+                    string randomRaiseSoundIndex = _random.Next(1, 13).ToString("00");
 
                     // サーバー分類毎に処理
                     switch (item.ServerType)
@@ -189,34 +193,34 @@ namespace TatehamaInterlockingConsole.ViewModels
                             }
                             break;
                         case "駅扱切換表示灯":
-                            if (physicalUI != null)
+                            if (physicalLever != null)
                             {
                                 // ランプ"PY"
-                                if (item.UniqueName.Contains("PY") && (physicalUI.LeverData.State == EnumData.LCR.Left))
+                                if (item.UniqueName.Contains("PY") && (physicalLever.State == EnumData.LCR.Left))
                                     item.ImageIndex = 1;
                                 // ランプ"PG"
-                                else if (item.UniqueName.Contains("PG") && (physicalUI.LeverData.State == EnumData.LCR.Right))
+                                else if (item.UniqueName.Contains("PG") && (physicalLever.State == EnumData.LCR.Right))
                                     item.ImageIndex = 1;
                                 else
                                     item.ImageIndex = 0;
                             }
                             break;
                         case "解放表示灯":
-                            if (physicalUI != null)
+                            if (physicalLever != null)
                             {
-                                if (physicalUI.LeverData.State == EnumData.LCR.Right)
+                                if (physicalLever.State == EnumData.LCR.Right)
                                     item.ImageIndex = 1;
                                 else
                                     item.ImageIndex = 0;
                             }
                             break;
                         case "物理てこ":
-                            if (physicalUI != null)
+                            if (physicalLever != null)
                             {
                                 // 物理てこの状態がUIと異なる場合に更新
-                                if (physicalUI.LeverData.State != EnumData.ConvertToLCR(item.ImageIndex))
+                                if (physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex))
                                 {
-                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalUI.LeverData.State);
+                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
 
                                     // 音声再生
                                     _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
@@ -224,12 +228,12 @@ namespace TatehamaInterlockingConsole.ViewModels
                             }
                             break;
                         case "物理鍵てこ":
-                            if (physicalUI != null)
+                            if (physicalLever != null)
                             {
                                 // 物理鍵てこの状態がUIと異なる場合に更新
-                                if (physicalUI.LeverData.State != EnumData.ConvertToLCR(item.ImageIndex))
+                                if (physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex))
                                 {
-                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalUI.LeverData.State);
+                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
 
                                     // Todo: 鍵音声処理追加
 
@@ -239,12 +243,12 @@ namespace TatehamaInterlockingConsole.ViewModels
                             }
                             break;
                         case "着点ボタン":
-                            if (physicalUI != null)
+                            if (physicalButton != null)
                             {
                                 // 着点ボタンの状態がUIと異なる場合に更新
-                                if (physicalUI.DestinationButtonData.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                                if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
                                 {
-                                    item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalUI.DestinationButtonData.IsRaised);
+                                    item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalButton.IsRaised);
 
                                     // 音声再生
                                     if (item.ImageIndex == 1)

@@ -13,16 +13,15 @@ namespace TatehamaInterlockingConsole.Helpers
     public static class DataHelper
     {
         /// <summary>
-        /// 駅名対照表の列定義
+        /// 指定した周期でtrue、falseを繰り返すメソッド
         /// </summary>
-        public enum StationRow
+        /// <param name="intervalInMilliseconds">true/falseを切り替える周期（ミリ秒）</param>
+        /// <returns></returns>
+        public static bool GetAlternatingBoolean(int intervalInMilliseconds)
         {
-            ViewName = 0,
-            StationName = 1,
-            StationNumber = 2,
-            ApproachingAlarm_UpSide = 3,
-            ApproachingAlarm_DownSide = 4,
-            DirectionLeverAlarm = 5,
+            var currentTime = DateTime.Now;
+            var totalMilliseconds = (int)currentTime.TimeOfDay.TotalMilliseconds;
+            return (totalMilliseconds / intervalInMilliseconds) % 2 == 0;
         }
 
         /// <summary>

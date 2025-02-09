@@ -132,14 +132,13 @@ namespace TatehamaInterlockingConsole.Handlers
             _dataUpdateViewModel.SetControlsetting(control);
 
             // 音声再生
-            _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+            //_sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
             // サーバーへリクエスト送信
             if (control.ServerType != string.Empty)
             {
                 var dataToServer = new DatabaseOperational.LeverEventDataToServer
                 {
-                    LeverName = control.ServerName,
                     LeverData = new DatabaseOperational.LeverData
                     {
                         Name = control.ServerName,
@@ -147,7 +146,7 @@ namespace TatehamaInterlockingConsole.Handlers
                     }
                 };
                 _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(dataToServer);
-                //CustomMessage.Show($"Name: {dataToServer.LeverName} State: {dataToServer.LeverData.State}",
+                //CustomMessage.Show($"Name: {dataToServer.LeverData.Name} State: {dataToServer.LeverData.State}",
                 //    "サーバー送信",
                 //    System.Windows.MessageBoxButton.OK,
                 //    System.Windows.MessageBoxImage.Information
@@ -191,8 +190,8 @@ namespace TatehamaInterlockingConsole.Handlers
                             control.ImageIndex += 10;
                         }
                         // 音声再生
-                        _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
-                        _sound.SoundPlay($"remove_{randomKeyRemoveSoundIndex}", false);
+                        //_sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
+                        //_sound.SoundPlay($"remove_{randomKeyRemoveSoundIndex}", false);
                     }
                     else
                     {
@@ -205,8 +204,8 @@ namespace TatehamaInterlockingConsole.Handlers
                             control.ImageIndex -= 10;
                         }
                         // 音声再生
-                        _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
-                        _sound.SoundPlay($"insert_{randomKeyInsertSoundIndex}", false);
+                        //_sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
+                        //_sound.SoundPlay($"insert_{randomKeyInsertSoundIndex}", false);
                     }
                     control.KeyInserted = !control.KeyInserted;
                     _dataUpdateViewModel.SetControlsetting(control);
@@ -216,7 +215,6 @@ namespace TatehamaInterlockingConsole.Handlers
                     {
                         var dataToServer = new DatabaseOperational.LeverEventDataToServer
                         {
-                            LeverName = control.ServerName,
                             LeverData = new DatabaseOperational.LeverData
                             {
                                 Name = control.ServerName,
@@ -224,7 +222,7 @@ namespace TatehamaInterlockingConsole.Handlers
                             }
                         };
                         _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(dataToServer);
-                        //CustomMessage.Show($"Name: {dataToServer.LeverName} State: {dataToServer.LeverData.State}",
+                        //CustomMessage.Show($"Name: {dataToServer.LeverData.Name} State: {dataToServer.LeverData.State}",
                         //    "サーバー送信",
                         //    System.Windows.MessageBoxButton.OK,
                         //    System.Windows.MessageBoxImage.Information
@@ -265,14 +263,13 @@ namespace TatehamaInterlockingConsole.Handlers
                     _dataUpdateViewModel.SetControlsetting(control);
 
                     // 音声再生
-                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                    //_sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
 
                     // サーバーへリクエスト送信
                     if (control.ServerType != string.Empty)
                     {
                         var dataToServer = new DatabaseOperational.LeverEventDataToServer
                         {
-                            LeverName = control.ServerName,
                             LeverData = new DatabaseOperational.LeverData
                             {
                                 Name = control.ServerName,
@@ -280,7 +277,7 @@ namespace TatehamaInterlockingConsole.Handlers
                             }
                         };
                         _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(dataToServer);
-                        //CustomMessage.Show($"Name: {dataToServer.LeverName} State: {dataToServer.LeverData.State}",
+                        //CustomMessage.Show($"Name: {dataToServer.LeverData.Name} State: {dataToServer.LeverData.State}",
                         //    "サーバー送信",
                         //    System.Windows.MessageBoxButton.OK,
                         //    System.Windows.MessageBoxImage.Information
@@ -292,8 +289,8 @@ namespace TatehamaInterlockingConsole.Handlers
             else
             {
                 // 音声再生
-                _sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
-                _sound.SoundPlay($"reject_{randomKeyRejectSoundIndex}", false);
+                //_sound.SoundPlay($"keychain_{randomKeyChainSoundIndex}", false);
+                //_sound.SoundPlay($"reject_{randomKeyRejectSoundIndex}", false);
             }
         }
 
@@ -313,14 +310,13 @@ namespace TatehamaInterlockingConsole.Handlers
                 _dataUpdateViewModel.SetControlsetting(control);
 
                 // 音声再生
-                _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
+                //_sound.SoundPlay($"push_{randomPushSoundIndex}", false);
 
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
                 {
                     var dataToServer = new DatabaseOperational.ButtonEventDataToServer
                     {
-                        ButtonName = control.ServerName,
                         DestinationButtonData = new DatabaseOperational.DestinationButtonData
                         {
                             Name = control.ServerName,
@@ -329,7 +325,7 @@ namespace TatehamaInterlockingConsole.Handlers
                         }
                     };
                     _ = _serverCommunication.SendButtonEventDataRequestToServerAsync(dataToServer);
-                    //CustomMessage.Show($"Name: {dataToServer.ButtonName} State: {dataToServer.DestinationButtonData.IsRaised}",
+                    //CustomMessage.Show($"Name: {dataToServer.DestinationButtonData.Name} State: {dataToServer.DestinationButtonData.IsRaised}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
                     //    System.Windows.MessageBoxImage.Information
@@ -354,14 +350,13 @@ namespace TatehamaInterlockingConsole.Handlers
                 _dataUpdateViewModel.SetControlsetting(control);
 
                 // 音声再生
-                _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
+                //_sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
 
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
                 {
                     var dataToServer = new DatabaseOperational.ButtonEventDataToServer
                     {
-                        ButtonName = control.ServerName,
                         DestinationButtonData = new DatabaseOperational.DestinationButtonData
                         {
                             Name = control.ServerName,
@@ -370,7 +365,7 @@ namespace TatehamaInterlockingConsole.Handlers
                         }
                     };
                     _ = _serverCommunication.SendButtonEventDataRequestToServerAsync(dataToServer);
-                    //CustomMessage.Show($"Name: {dataToServer.ButtonName} State: {dataToServer.DestinationButtonData.IsRaised}",
+                    //CustomMessage.Show($"Name: {dataToServer.DestinationButtonData.Name} State: {dataToServer.DestinationButtonData.IsRaised}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
                     //    System.Windows.MessageBoxImage.Information

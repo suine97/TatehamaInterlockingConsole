@@ -47,7 +47,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                 if (volume != value)
                 {
                     volume = value;
-                    Sound.Instance.SetMasterVolume((float)volume);
+                    Sound.Instance.SetMasterVolume((float)volume * 0.01f);
                     OnPropertyChanged(nameof(Volume));
                     VolumeText = $"音量: {volume:F0}%";
                 }
@@ -190,6 +190,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             ImageCacheManager.ClearCache();
             _dataManager.TimeUpdated -= (currentTime) => OnPropertyChanged(nameof(CurrentTime));
             _serverCommunication.ConnectionStatusChanged -= (status) => OnPropertyChanged(nameof(ConnectionStatus));
+            Sound.Instance.Dispose();
             return true;
         }
     }

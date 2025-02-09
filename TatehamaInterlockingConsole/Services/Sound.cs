@@ -1,323 +1,238 @@
-﻿using NAudio.Wave;
+﻿using SharpDX.XAudio2;
+using SharpDX.Multimedia;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using TatehamaInterlockingConsole.Helpers;
-using System;
+using TatehamaInterlockingConsole.Services;
 
-namespace TatehamaInterlockingConsole.Services
+namespace TatehamaInterlockingConsole
 {
     /// <summary>
-    /// 音声クラス
+    /// Soundクラス
     /// </summary>
     public class Sound
     {
-        private static Sound _instance = new();
-        /// <summary>
-        /// インスタンス生成
-        /// </summary>
+        private static readonly Sound _instance = new();
         public static Sound Instance => _instance;
 
-        /// <summary>
-        /// 音声リスト
-        /// </summary>
-        public List<SoundFile> SoundList;
-
-        /// <summary>
-        /// 音声処理Queue
-        /// </summary>
-        public ConcurrentQueue<SoundPlayArgument> SoundQueue = new();
-
-        /// <summary>
-        /// 再生中のデバイスリスト
-        /// </summary>
-        private readonly List<WaveOutEvent> activeDevices = new();
-
-        /// <summary>
-        /// 音声処理スレッドループ判定
-        /// </summary>
-        public bool IsSoundThreadLoop = false;
-
-        /// <summary>
-        /// 全体音量(0-1)
-        /// </summary>
-        public float MasterVolume = 1.0f;
+        private XAudio2 xAudio2;
+        private MasteringVoice masteringVoice;
+        public Dictionary<string, SourceVoice> SoundSource = new();
+        public Dictionary<string, AudioBuffer> SoundBuffer = new();
+        public Dictionary<int, string> SoundData = new();
+        public float fMasterVolume = 1.0f;
+        public float fFadeVolume = 1.0f;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public Sound()
         {
-            // 音声ファイル読み込み
-            SoundList = ReadAudioFile();
-        }
-
-        /// <summary>
-        /// 音声処理スレッド
-        /// </summary>
-        public async void SoundThread()
-        {
-            while (IsSoundThreadLoop)
-            {
-                // 50msごとに処理
-                await Task.Delay(50);
-
-                // Queueに処理が積まれた時に実行
-                if (SoundQueue.Count == 0)
-                    continue;
-
-                // Queueからデータ取得
-                if (SoundQueue.TryDequeue(out SoundPlayArgument s))
-                {
-                    SoundPlay(s.sFileName, s.IsLoop);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 音声再生メソッド（複数音声対応）
-        /// </summary>
-        public void SoundPlay(string soundFileName, bool isLoop)
-        {
             try
             {
-                // 音声ファイルの検索
-                SoundFile sFile = SoundList.First(s => s.sFileName == soundFileName);
-                AudioFileReader audioReader = new(sFile.sFilePath)
-                {
-                    Volume = MasterVolume
-                };
-
-                // 出力デバイスの生成
-                WaveOutEvent device = new();
-                device.PlaybackStopped += (sender, e) =>
-                {
-                    // 再生停止後にリソース解放
-                    device.Dispose();
-                    audioReader.Dispose();
-                    lock (activeDevices)
-                    {
-                        activeDevices.Remove(device);
-                    }
-                };
-
-                if (isLoop)
-                {
-                    LoopStream loop = new(audioReader);
-                    device.Init(loop);
-                }
-                else
-                {
-                    device.Init(audioReader);
-                }
-
-                // 再生実行
-                device.Play();
-
-                // 再生中のデバイスを管理
-                lock (activeDevices)
-                {
-                    activeDevices.Add(device);
-                }
+                // XAudio2とMasteringVoiceを初期化
+                xAudio2 = new();
+                masteringVoice = new(xAudio2);
+                LoadSoundFiles();
             }
             catch
             {
-                // エラー時のリソース解放処理
-                SoundStopAll();
-                SoundQueue.Enqueue(new() { sFileName = soundFileName, IsLoop = isLoop });
-            }
-        }
-
-        /// <summary>
-        /// 指定した音声を停止
-        /// </summary>
-        public void SoundStop(string soundFileName)
-        {
-            lock (activeDevices)
-            {
-                // 対応するデバイスを検索
-                var deviceToStop = activeDevices.FirstOrDefault(device =>
-                {
-                    if (device.PlaybackState == PlaybackState.Playing)
-                    {
-                        // 音声ファイルパスを確認
-                        var reader = ((WaveStream)device.GetType()
-                            .GetField("waveStream", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?
-                            .GetValue(device)) as AudioFileReader;
-                        return reader?.FileName == SoundList.FirstOrDefault(s => s.sFileName == soundFileName)?.sFilePath;
-                    }
-                    return false;
-                });
-
-                if (deviceToStop != null)
-                {
-                    // 停止してリストから削除
-                    deviceToStop.Stop();
-                    deviceToStop.Dispose();
-                    activeDevices.Remove(deviceToStop);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 全ての音声を停止
-        /// </summary>
-        public void SoundStopAll()
-        {
-            lock (activeDevices)
-            {
-                foreach (var device in activeDevices)
-                {
-                    device.Stop();
-                }
-                activeDevices.Clear();
-            }
-        }
-
-        /// <summary>
-        /// 全体音量を設定
-        /// </summary>
-        public void SetMasterVolume(float volume)
-        {
-            if (volume * 0.01f < 0f)
-                MasterVolume = 0f;
-            else if (volume * 0.01f > 1f)
-                MasterVolume = 1f;
-            else
-                MasterVolume = (volume * 0.01f);
-
-            lock (activeDevices)
-            {
-                foreach (var device in activeDevices)
-                {
-                    var waveStreamField = device.GetType()
-                        .GetField("waveStream", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-                    if (waveStreamField != null)
-                    {
-                        var waveStream = waveStreamField.GetValue(device) as WaveStream;
-                        if (waveStream is AudioFileReader audioFileReader)
-                        {
-                            audioFileReader.Volume = MasterVolume;
-                        }
-                        else if (waveStream is LoopStream loopStream)
-                        {
-                            var innerStreamField = loopStream.GetType()
-                                .GetField("sourceStream", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                            if (innerStreamField != null)
-                            {
-                                var innerStream = innerStreamField.GetValue(loopStream) as AudioFileReader;
-                                if (innerStream != null)
-                                {
-                                    innerStream.Volume = MasterVolume;
-                                }
-                            }
-                        }
-                    }
-                }
+                CustomMessage.Show("サウンドデバイスの生成に失敗しました。", "エラー");
             }
         }
 
         /// <summary>
         /// 音声ファイル読み込みメソッド
         /// </summary>
-        private List<SoundFile> ReadAudioFile()
+        public void LoadSoundFiles()
         {
-            // Sound配下のwavファイルのパスを全取得
-            string[] filePaths = Directory.GetFiles(DataHelper.GetApplicationDirectory() + "\\Sound", "*.wav", SearchOption.TopDirectoryOnly);
-
-            // 音声ファイル情報を読み込んでListに入れる
-            List<SoundFile> soundList = new();
-            foreach (string filePath in filePaths)
+            try
             {
-                SoundFile audioFile = new()
+                // 既存のSourceVoiceとAudioBufferを解放してクリア
+                ClearSoundData();
+
+                // Soundフォルダ内の全てのwavファイルを取得
+                var soundFiles = Directory.GetFiles($".\\Sound", "*.wav").ToList();
+
+                // サウンド読み込み
+                foreach (var filePath in soundFiles)
                 {
-                    sFileName = Path.ChangeExtension(Path.GetFileName(filePath), null),
-                    sFilePath = filePath
-                };
-                soundList.Add(audioFile);
-            }
-            return soundList;
-        }
-
-        /// <summary>
-        /// 音声ファイルクラス
-        /// </summary>
-        public class SoundFile
-        {
-            /// <summary>
-            /// ファイル名
-            /// </summary>
-            public string sFileName { get; set; }
-
-            /// <summary>
-            /// ファイルパス
-            /// </summary>
-            public string sFilePath { get; set; }
-        }
-
-        /// <summary>
-        /// 音声再生用クラス
-        /// </summary>
-        public class SoundPlayArgument
-        {
-            /// <summary>
-            /// ファイル名
-            /// </summary>
-            public string sFileName { get; set; }
-
-            /// <summary>
-            /// ループ判定
-            /// </summary>
-            public bool IsLoop { get; set; }
-        }
-
-        /// <summary>
-        /// ループ再生用クラス
-        /// </summary>
-        public class LoopStream : WaveStream
-        {
-            private readonly WaveStream sourceStream;
-
-            public LoopStream(WaveStream sourceStream)
-            {
-                this.sourceStream = sourceStream;
-                this.EnableLooping = true;
-            }
-
-            public bool EnableLooping { get; set; }
-
-            public override WaveFormat WaveFormat => sourceStream.WaveFormat;
-
-            public override long Length => sourceStream.Length;
-
-            public override long Position
-            {
-                get => sourceStream.Position;
-                set => sourceStream.Position = value;
-            }
-
-            public override int Read(byte[] buffer, int offset, int count)
-            {
-                int totalBytesRead = 0;
-
-                while (totalBytesRead < count)
-                {
-                    int bytesRead = sourceStream.Read(buffer, offset + totalBytesRead, count - totalBytesRead);
-                    if (bytesRead == 0)
+                    if (!File.Exists(filePath))
                     {
-                        if (sourceStream.Position == 0 || !EnableLooping)
-                        {
-                            break;
-                        }
-                        sourceStream.Position = 0;
+                        CustomMessage.Show($"サウンドファイルが見つかりません: {filePath}", "エラー");
+                        continue;
                     }
-                    totalBytesRead += bytesRead;
+
+                    // サウンドファイルを読み込む
+                    using (var stream = new SoundStream(File.OpenRead(filePath)))
+                    {
+                        var waveFormat = stream.Format;
+                        var buffer = new AudioBuffer
+                        {
+                            Stream = stream.ToDataStream(),
+                            AudioBytes = (int)stream.Length,
+                            LoopCount = 0,
+                            LoopBegin = 0,
+                            LoopLength = 0,
+                            PlayBegin = 0,
+                            PlayLength = 0,
+                            Flags = BufferFlags.EndOfStream
+                        };
+
+                        // SourceVoiceを作成
+                        var sourceVoice = new SourceVoice(xAudio2, waveFormat, VoiceFlags.None, maxFrequencyRatio: 4.0f);
+
+                        // ファイル名をキーとしてSourceVoiceとAudioBufferを辞書に追加
+                        var fileName = Path.GetFileNameWithoutExtension(filePath);
+                        SoundSource[fileName] = sourceVoice;
+                        SoundBuffer[fileName] = buffer;
+                    }
                 }
-                return totalBytesRead;
             }
+            catch (Exception ex)
+            {
+                CustomMessage.Show($"サウンドファイルの読み込みに失敗しました。\n{ex.Message}", "エラー");
+            }
+        }
+
+        /// <summary>
+        /// 既存の音声データをクリア
+        /// </summary>
+        public void ClearSoundData()
+        {
+            // すべてのSourceVoiceを停止して解放
+            foreach (var voice in SoundSource.Values)
+            {
+                if (voice != null)
+                {
+                    voice.Stop();
+                    voice.DestroyVoice();
+                }
+            }
+            SoundSource.Clear();
+            SoundBuffer.Clear();
+        }
+
+        /// <summary>
+        /// 音声再生メソッド
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="isLoop"></param>
+        /// <param name="volume"></param>
+        /// <param name="pitch"></param>
+        public void SoundPlay(string fileName, bool isLoop, float volume = 1.0f, float pitch = 1.0f)
+        {
+            if (!SoundSource.TryGetValue(fileName, out SourceVoice sourceVoice) || sourceVoice == null) return;
+
+            // 既に再生中の場合は処理しない
+            if (sourceVoice.State.BuffersQueued > 0) return;
+
+            // 音量とピッチを設定
+            SetVolume(fileName, volume);
+            SetPitch(fileName, pitch);
+
+            // ループ再生の設定
+            if (isLoop)
+                SoundBuffer[fileName].LoopCount = 255;
+            else
+                SoundBuffer[fileName].LoopCount = 0;
+
+            // 再生位置の設定
+            SoundBuffer[fileName].PlayBegin = 0;
+            SoundBuffer[fileName].PlayLength = 0;
+
+            var buffer = SoundBuffer[fileName];
+
+            // バッファをソースに渡して再生開始
+            sourceVoice.SubmitSourceBuffer(buffer, null);
+            sourceVoice.Start();
+        }
+
+        /// <summary>
+        /// 全音声停止メソッド
+        /// </summary>
+        public void SoundAllStop()
+        {
+            // 全サウンドを停止
+            foreach (var sourceVoice in SoundSource.Values)
+            {
+                if (sourceVoice != null)
+                {
+                    sourceVoice.Stop();
+                    sourceVoice.FlushSourceBuffers();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 音声停止メソッド
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void SoundStop(string fileName)
+        {
+            if (!SoundSource.TryGetValue(fileName, out SourceVoice value) || value == null) return;
+
+            // 既に停止している場合は処理しない
+            if (value.State.BuffersQueued == 0) return;
+
+            value.FlushSourceBuffers();
+            value.Stop(0);
+        }
+
+        /// <summary>
+        /// 音量設定メソッド
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="volume"></param>
+        public void SetVolume(string fileName, float volume)
+        {
+            if (!SoundSource.ContainsKey(fileName) || SoundSource[fileName] == null) return;
+            if (volume < 0) volume = 0;
+            SoundSource[fileName].SetVolume(fMasterVolume * fFadeVolume * volume);
+        }
+
+        /// <summary>
+        /// ピッチ設定メソッド
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="pitch"></param>
+        public void SetPitch(string fileName, float pitch)
+        {
+            if (!SoundSource.ContainsKey(fileName) || SoundSource[fileName] == null) return;
+            SoundSource[fileName].SetFrequencyRatio(pitch);
+        }
+
+        /// <summary>
+        /// マスターボリューム設定メソッド
+        /// </summary>
+        /// <param name="volume"></param>
+        public void SetMasterVolume(float volume)
+        {
+            if (volume < 0) volume = 0;
+            fMasterVolume = volume;
+
+            // 全ての音声にマスターボリュームを設定
+            foreach (var sourceVoice in SoundSource.Values)
+            {
+                if (sourceVoice != null)
+                {
+                    sourceVoice.SetVolume(fMasterVolume * fFadeVolume);
+                }
+            }
+        }
+
+        /// <summary>
+        /// リソース解放
+        /// </summary>
+        public void Dispose()
+        {
+            // 既存の音声データをクリア
+            ClearSoundData();
+
+            // リソースを解放
+            masteringVoice.Dispose();
+            xAudio2.Dispose();
         }
     }
 }
