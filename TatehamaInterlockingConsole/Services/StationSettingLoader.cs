@@ -17,7 +17,7 @@ namespace TatehamaInterlockingConsole.Services
         /// <param name="folderPath"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static List<List<StationSetting>> LoadSettings(string folderPath, string fileName)
+        public static List<StationSetting> LoadSettings(string folderPath, string fileName)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace TatehamaInterlockingConsole.Services
                 // ファイルパスを組み立てる
                 string filePath = Path.Combine(folderPath, fileName);
 
-                var Settings = new List<List<StationSetting>>();
+                var Settings = new List<StationSetting>();
                 bool header = false;
                 foreach (var line in File.ReadAllLines(filePath, Encoding.GetEncoding("shift_jis")))
                 {
@@ -46,8 +46,7 @@ namespace TatehamaInterlockingConsole.Services
 
                     var columns = line.Split('\t');
 
-                    Settings.Add(new()
-                    {
+                    Settings.Add(
                         new()
                         {
                             StationName = columns[0],
@@ -57,8 +56,7 @@ namespace TatehamaInterlockingConsole.Services
                             UpSideApproachingAlarmName = columns[4],
                             DownSideApproachingAlarmName = columns[5],
                             DirectionLeverAlarmName = columns[6]
-                        }
-                    });
+                        });
                 }
                 return Settings;
             }

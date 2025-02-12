@@ -40,12 +40,12 @@ namespace TatehamaInterlockingConsole.Manager
         /// <summary>
         /// 駅設定リストデータ
         /// </summary>
-        public List<List<StationSetting>> StationSettingList { get; set; }
+        public List<StationSetting> StationSettingList { get; set; }
 
         /// <summary>
         /// 接近警報鳴動条件リストデータ
         /// </summary>
-        public List<List<ApproachingAlarmSetting>> ApproachingAlarmConditionList { get; set; }
+        public List<ApproachingAlarmSetting> ApproachingAlarmConditionList { get; set; }
 
         /// <summary>
         /// サーバー接続状態

@@ -26,11 +26,16 @@ namespace TatehamaInterlockingConsole.Models
         /// <summary>
         /// 軌道回路名称
         /// </summary>
-        public ApproachingAlarmType Track { get; set; }
+        public ApproachingAlarmType TrackName { get; set; }
         /// <summary>
         /// 転てつ器・各種てこ・軌道回路条件リスト
         /// </summary>
         public List<ApproachingAlarmType> ConditionsList { get; set; }
+
+        /// <summary>
+        /// 接近警報の鳴動条件が成立したかどうか
+        /// </summary>
+        public bool IsAlarmConditionMet { get; set; }
     }
 
     /// <summary>

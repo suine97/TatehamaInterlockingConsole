@@ -29,9 +29,25 @@ namespace TatehamaInterlockingConsole.Helpers
         /// </summary>
         /// <param name="number">判定対象の整数</param>
         /// <returns>偶数の場合はtrue、それ以外はfalse</returns>
-        public static bool IsEven(int number)
+        public static bool IsEvenNumber(int number)
         {
             return number % 2 == 0;
+        }
+
+        /// <summary>
+        /// 文字列の中から抽出された数値が偶数であるかを判定
+        /// </summary>
+        /// <param name="input">判定対象の文字列</param>
+        /// <returns>偶数の場合はtrue、それ以外はfalse</returns>
+        public static bool IsEvenNumberInString(string input)
+        {
+            var digits = new string(input.Where(char.IsDigit).ToArray());
+            if (string.IsNullOrEmpty(digits))
+            {
+                throw new ArgumentException("入力文字列に数字が含まれていません。", nameof(input));
+            }
+            int number = int.Parse(digits);
+            return IsEvenNumber(number);
         }
 
         /// <summary>
@@ -55,7 +71,6 @@ namespace TatehamaInterlockingConsole.Helpers
 
             var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
             var stationData = _dataManager.StationSettingList
-                .SelectMany(list => list)
                 .FirstOrDefault(setting => setting.FileName.Contains(fileNameWithoutExtension));
 
             return stationData != null ? stationData.StationName : fileNameWithoutExtension;
@@ -71,7 +86,6 @@ namespace TatehamaInterlockingConsole.Helpers
             DataManager _dataManager = DataManager.Instance;
 
             var stationData = _dataManager.StationSettingList
-                .SelectMany(list => list)
                 .FirstOrDefault(setting => setting.FileName.Contains(englishName + "_UIList"));
 
             return stationData != null ? stationData.StationName : string.Empty;
@@ -87,10 +101,10 @@ namespace TatehamaInterlockingConsole.Helpers
             DataManager _dataManager = DataManager.Instance;
 
             var matchingLists = _dataManager.StationSettingList
-                .Where(list => list.Any(setting => setting.StationName.Contains(stationName)))
-                .FirstOrDefault();
+                .Where(setting => setting.StationName.Contains(stationName))
+                .ToList();
 
-            return matchingLists?.Select(setting => setting.StationName).ToList() ?? new List<string>();
+            return matchingLists.Select(setting => setting.StationName).ToList();
         }
 
         /// <summary>
@@ -103,10 +117,10 @@ namespace TatehamaInterlockingConsole.Helpers
             DataManager _dataManager = DataManager.Instance;
 
             var matchingLists = _dataManager.StationSettingList
-                .Where(list => list.Any(setting => setting.StationName.Contains(stationName)))
+                .Where(setting => setting.StationName.Contains(stationName))
                 .FirstOrDefault();
 
-            var stationSetting = matchingLists?.FirstOrDefault(setting => setting.StationName == stationName);
+            var stationSetting = matchingLists;
             return stationSetting?.StationNumber ?? string.Empty;
         }
 

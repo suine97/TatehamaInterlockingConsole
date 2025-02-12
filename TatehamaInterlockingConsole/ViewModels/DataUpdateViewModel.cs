@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
@@ -100,8 +101,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                     string randomKeyRemoveSoundIndex = _random.Next(1, 6).ToString("00");
                     string randomKeyRejectSoundIndex = _random.Next(1, 4).ToString("00");
                     string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
-                    string randomDropSoundIndex = _random.Next(1, 13).ToString("00");
-                    string randomRaiseSoundIndex = _random.Next(1, 13).ToString("00");
+                    string randomPushSoundIndex = _random.Next(1, 13).ToString("00");
+                    string randomPullSoundIndex = _random.Next(1, 13).ToString("00");
 
                     // サーバー分類毎に処理
                     switch (item.ServerType)
@@ -234,7 +235,11 @@ namespace TatehamaInterlockingConsole.ViewModels
                                 {
                                     item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
 
+                                    //
+                                    //
                                     // Todo: 鍵音声処理追加
+                                    //
+                                    //
 
                                     // 音声再生
                                     _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
@@ -250,9 +255,9 @@ namespace TatehamaInterlockingConsole.ViewModels
                                 {
                                     // 音声再生
                                     if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))
-                                        _sound.SoundPlay($"drop_{randomDropSoundIndex}", false);
+                                        _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
                                     else
-                                        _sound.SoundPlay($"raise_{randomRaiseSoundIndex}", false);
+                                        _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
                                 }
                                 // 着点ボタンの状態がUIと異なる場合に更新
                                 else if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
@@ -261,9 +266,9 @@ namespace TatehamaInterlockingConsole.ViewModels
 
                                     // 音声再生
                                     if (item.ImageIndex == 1)
-                                        _sound.SoundPlay($"drop_{randomDropSoundIndex}", false);
+                                        _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
                                     else
-                                        _sound.SoundPlay($"raise_{randomRaiseSoundIndex}", false);
+                                        _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
                                 }
                             }
                             break;
@@ -300,7 +305,42 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             try
             {
-                
+                var approachingAlarmList = _dataManager.ApproachingAlarmConditionList;
+                var OnTrack = new DatabaseOperational.TrackCircuitData();
+                var conditionsTrack = new DatabaseOperational.TrackCircuitData();
+                var conditionsPoint = new DatabaseOperational.SwitchData();
+                var conditionsSignal = new DatabaseOperational.SignalData();
+                var conditionsDirection = new DatabaseOperational.DirectionData();
+
+                // 接近警報条件リストを処理
+                foreach (var alarm in approachingAlarmList)
+                {
+                    // 接近警報条件と一致するサーバー情報のみ抽出
+                    OnTrack = dataFromServer.TrackCircuits
+                        .FirstOrDefault(p => p.Name == alarm.TrackName.Name);
+                    conditionsTrack = dataFromServer.TrackCircuits
+                        .FirstOrDefault(p => alarm.ConditionsList
+                        .Any(c => (c.Type == "Track") && (c.Name == p.Name)));
+                    conditionsPoint = dataFromServer.Points
+                        .FirstOrDefault(p => alarm.ConditionsList
+                        .Any(c => (c.Type == "Point") && (c.Name == p.Name)));
+                    conditionsSignal = dataFromServer.Signals
+                        .FirstOrDefault(p => alarm.ConditionsList
+                        .Any(c => (c.Type == "Signal") && (c.Name == p.Name)));
+
+                    // 各パラメータの接近警報鳴動条件を満たしているか判定
+                    bool IsOnTrack = (OnTrack != null) && OnTrack.On;
+                    bool IsTrackState = IsTrackCircuitConditionMet(conditionsTrack, alarm);
+                    bool IsPointState = IsPointConditionMet(conditionsPoint, alarm);
+                    bool IsSignalState = IsSignalConditionMet(conditionsSignal, alarm);
+                    bool IsRetsubanState = IsRetsubanConditionMet(conditionsTrack, alarm);
+
+                    // 接近警報鳴動条件が全て満たされている場合に鳴動判定
+                    if (IsOnTrack && IsTrackState && IsPointState && IsSignalState && IsRetsubanState)
+                        alarm.IsAlarmConditionMet = true;
+                    else
+                        alarm.IsAlarmConditionMet = false;
+                }
             }
             catch (Exception ex)
             {
@@ -336,6 +376,97 @@ namespace TatehamaInterlockingConsole.ViewModels
                 CustomMessage.Show(ex.ToString(), "エラー");
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// 接近警報鳴動条件判定(軌道回路)
+        /// </summary>
+        /// <param name="track"></param>
+        /// <param name="alarm"></param>
+        /// <returns></returns>
+        public bool IsTrackCircuitConditionMet(DatabaseOperational.TrackCircuitData track, ApproachingAlarmSetting alarm)
+        {
+            // 軌道回路条件が存在しない場合は条件を満たす
+            if (track == null) return true;
+
+            // 軌道回路条件を抽出
+            bool isReverse = alarm.ConditionsList.FirstOrDefault(p => p.Name == track.Name).IsReversePosition;
+
+            // 軌道回路と設定内容が在線同士、または非在線同士の場合は条件を満たす
+            if (isReverse == track.On)
+                return true;
+            // それ以外は条件を満たさない
+            else
+                return false;
+        }
+        /// <summary>
+        /// 接近警報鳴動条件判定(転てつ器)
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="alarm"></param>
+        /// <returns></returns>
+        public bool IsPointConditionMet(DatabaseOperational.SwitchData point, ApproachingAlarmSetting alarm)
+        {
+            // 転てつ器条件が存在しない場合は条件を満たす
+            if (point == null) return true;
+
+            // 軌道回路条件を抽出
+            bool isReverse = alarm.ConditionsList.FirstOrDefault(p => p.Name == point.Name).IsReversePosition;
+
+            // 転てつ器と設定内容が反位同士の場合は条件を満たす
+            if (isReverse == (point.State == EnumData.NRC.Reversed))
+                return true;
+            // 転てつ器と設定内容が定位同士の場合は条件を満たす
+            else if (!isReverse == (point.State == EnumData.NRC.Normal))
+                return true;
+            // それ以外は条件を満たさない
+            else
+                return false;
+        }
+        /// <summary>
+        /// 接近警報鳴動条件判定(信号機)
+        /// </summary>
+        /// <param name="signal"></param>
+        /// <param name="alarm"></param>
+        /// <returns></returns>
+        public bool IsSignalConditionMet(DatabaseOperational.SignalData signal, ApproachingAlarmSetting alarm)
+        {
+            // 信号機条件が存在しない場合は条件を満たす
+            if (signal == null) return true;
+
+            // 軌道回路条件を抽出
+            bool isReverse = alarm.ConditionsList.FirstOrDefault(p => p.Name == signal.Name).IsReversePosition;
+
+            // 信号機と設定内容が定位同士、または反位同士の場合は条件を満たす
+            if (isReverse == (signal.Phase != EnumData.Phase.R))
+                return true;
+            // それ以外は条件を満たさない
+            else
+                return false;
+        }
+        /// <summary>
+        /// 接近警報鳴動条件判定(列車番号)
+        /// </summary>
+        /// <param name="retsuban"></param>
+        /// <param name="alarm"></param>
+        /// <returns></returns>
+        public bool IsRetsubanConditionMet(DatabaseOperational.TrackCircuitData retsuban, ApproachingAlarmSetting alarm)
+        {
+            // 列車番号条件が存在しない場合は条件を満たす
+            if (retsuban == null) return true;
+
+            // 軌道回路条件を抽出
+            bool isEven = alarm.ConditionsList.FirstOrDefault(p => p.Name.Contains("列番")).Name.Contains("偶数");
+
+            // 列車番号が未設定、または[9999]の場合は条件を満たさない
+            if (string.IsNullOrEmpty(retsuban.Last) || retsuban.Last.Contains("9999"))
+                return false;
+            // 列車番号と設定内容が偶数同士、または奇数同士の場合は条件を満たす
+            else if (isEven == DataHelper.IsEvenNumberInString(retsuban.Last))
+                return true;
+            // それ以外は条件を満たさない
+            else
+                return false;
         }
     }
 }

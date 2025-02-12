@@ -179,7 +179,23 @@ namespace TatehamaInterlockingConsole.Models
                     if (data != null)
                     {
                         // 運用クラスに代入
-                        _dataManager.DataFromServer = data;
+                        if (_dataManager.DataFromServer == null)
+                        {
+                            _dataManager.DataFromServer = data;
+                        }
+                        else
+                        {
+                            // 変更があれば更新
+                            foreach (var property in typeof(DatabaseOperational.DataFromServer).GetProperties())
+                            {
+                                var newValue = property.GetValue(data);
+                                var oldValue = property.GetValue(_dataManager.DataFromServer);
+                                if (newValue != null && !newValue.Equals(oldValue))
+                                {
+                                    property.SetValue(_dataManager.DataFromServer, newValue);
+                                }
+                            }
+                        }
                         // 認証情報を保存
                         _dataManager.Authentication ??= _dataManager.DataFromServer.Authentications;
                         // コントロール更新処理

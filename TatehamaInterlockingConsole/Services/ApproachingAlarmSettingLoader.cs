@@ -15,9 +15,10 @@ namespace TatehamaInterlockingConsole.Services
         /// <summary>
         /// TSVファイルを読み込みApproachingAlarmSettingListを作成する
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="folderPath"></param>
+        /// <param name="fileName"></param>
         /// <returns></returns>
-        public static List<List<ApproachingAlarmSetting>> LoadSettings(string folderPath, string fileName)
+        public static List<ApproachingAlarmSetting> LoadSettings(string folderPath, string fileName)
         {
             try
             {
@@ -27,7 +28,7 @@ namespace TatehamaInterlockingConsole.Services
                 // ファイルパスを組み立てる
                 string filePath = Path.Combine(folderPath, fileName);
 
-                var Settings = new List<List<ApproachingAlarmSetting>>();
+                var Settings = new List<ApproachingAlarmSetting>();
                 bool header = false;
                 foreach (var line in File.ReadAllLines(filePath, Encoding.GetEncoding("shift_jis")))
                 {
@@ -46,15 +47,15 @@ namespace TatehamaInterlockingConsole.Services
 
                     var columns = line.Split('\t');
 
-                    Settings.Add(new()
-                    {
+                    Settings.Add(
                         new()
                         {
+                            IsAlarmConditionMet = false,
                             StationName = columns[0],
                             OtherStationNameA = columns[1],
                             OtherStationNameB = columns[2],
                             IsUpSide = (columns[3] == "UP"),
-                            Track = new()
+                            TrackName = new()
                             {
                                 Name = FormatName(columns[4]),
                                 Station = GetStation(columns[4], columns),
@@ -76,8 +77,7 @@ namespace TatehamaInterlockingConsole.Services
                                     Type = type
                                 };
                             }).ToList()
-                        }
-                    });
+                        });
                 }
                 return Settings;
             }
@@ -91,29 +91,28 @@ namespace TatehamaInterlockingConsole.Services
         /// <summary>
         /// 名称をサーバー名に整形
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="formattedName"></param>
+        /// <param name="type"></param>
+        /// <param name="station"></param>
         /// <returns></returns>
         private static string FormatToServerName(string formattedName, string type, string station)
         {
-            string result;
-
             // 信号機なら番号を抽出して"所属駅名_信号機番号"に整形
             if (type == "Signal")
             {
                 var number = new string(formattedName.TakeWhile(c => c != 'L' && c != 'R').ToArray());
-                result = station + "_" + number;
+                return station + "_" + number;
             }
             // 転てつ器なら"所属駅名_転てつ器番号"に整形
             else if (type == "Point")
             {
-                result = station + "_" + formattedName;
+                return station + "_" + formattedName;
             }
             // 軌道回路やその他種別ならそのまま
             else
             {
-                result = formattedName;
+                return formattedName;
             }
-            return result;
         }
 
         /// <summary>
@@ -125,17 +124,11 @@ namespace TatehamaInterlockingConsole.Services
         private static string GetStation(string input, string[] columns)
         {
             if (input.StartsWith("[[") && input.EndsWith("]]"))
-            {
                 return columns[2];
-            }
             else if (input.StartsWith("[") && input.EndsWith("]"))
-            {
                 return columns[1];
-            }
             else
-            {
                 return columns[0];
-            }
         }
 
         /// <summary>
@@ -148,25 +141,15 @@ namespace TatehamaInterlockingConsole.Services
             var strName = FormatName(input);
 
             if (strName.EndsWith("T"))
-            {
                 return "Track";
-            }
-            else if (input.Contains("L") || strName.Contains("R"))
-            {
+            else if (strName.Contains("L") || strName.Contains("R"))
                 return "Signal";
-            }
             else if (int.TryParse(strName, out _))
-            {
                 return "Point";
-            }
-            else if (input.Contains("列番"))
-            {
+            else if (strName.Contains("列番"))
                 return "Retsuban";
-            }
             else
-            {
                 return "None";
-            }
         }
 
         /// <summary>
@@ -184,17 +167,14 @@ namespace TatehamaInterlockingConsole.Services
         /// 名称整形
         /// </summary>
         /// <param name="input"></param>
+        /// <param name="isReverseCheck"></param>
         /// <returns></returns>
         private static string FormatName(string input, bool isReverseCheck = false)
         {
             if (isReverseCheck)
-            {
                 return input.Replace("[[", "").Replace("]]", "").Replace("[", "").Replace("]", "");
-            }
             else
-            {
                 return input.Replace("[[", "").Replace("]]", "").Replace("[", "").Replace("]", "").Replace("(", "").Replace(")", "");
-            }
         }
     }
 }
