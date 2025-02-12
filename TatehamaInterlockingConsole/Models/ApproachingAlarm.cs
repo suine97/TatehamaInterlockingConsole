@@ -36,6 +36,11 @@ namespace TatehamaInterlockingConsole.Models
         /// 接近警報の鳴動条件が成立したかどうか
         /// </summary>
         public bool IsAlarmConditionMet { get; set; }
+
+        /// <summary>
+        /// 接近警報音声が鳴動済みかどうか
+        /// </summary>
+        public bool IsAlarmPlayed { get; set; }
     }
 
     /// <summary>

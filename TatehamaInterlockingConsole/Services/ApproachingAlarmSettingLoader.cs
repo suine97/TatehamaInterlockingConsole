@@ -51,6 +51,7 @@ namespace TatehamaInterlockingConsole.Services
                         new()
                         {
                             IsAlarmConditionMet = false,
+                            IsAlarmPlayed = false,
                             StationName = columns[0],
                             OtherStationNameA = columns[1],
                             OtherStationNameB = columns[2],

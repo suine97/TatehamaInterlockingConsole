@@ -44,6 +44,9 @@ namespace TatehamaInterlockingConsole.ViewModels
             // 接近警報更新処理
             UpdateApproachingAlarm(dataFromServer);
 
+            // 方向てこ警報更新処理
+            UpdateDirectionAlarm(dataFromServer);
+
             // 変更通知イベント発火
             var handler = NotifyUpdateControlEvent;
             handler?.Invoke(updateList);
@@ -306,11 +309,12 @@ namespace TatehamaInterlockingConsole.ViewModels
             try
             {
                 var approachingAlarmList = _dataManager.ApproachingAlarmConditionList;
+                var activeStationsList = _dataManager.ActiveStationsList;
+                var stationSettingList = _dataManager.StationSettingList;
                 var OnTrack = new DatabaseOperational.TrackCircuitData();
                 var conditionsTrack = new DatabaseOperational.TrackCircuitData();
                 var conditionsPoint = new DatabaseOperational.SwitchData();
                 var conditionsSignal = new DatabaseOperational.SignalData();
-                var conditionsDirection = new DatabaseOperational.DirectionData();
 
                 // 接近警報条件リストを処理
                 foreach (var alarm in approachingAlarmList)
@@ -341,6 +345,66 @@ namespace TatehamaInterlockingConsole.ViewModels
                     else
                         alarm.IsAlarmConditionMet = false;
                 }
+
+                // 接近警報鳴動処理
+                foreach (var activeStation in activeStationsList)
+                {
+                    // 起動している駅と一致する接近警報リストを抽出
+                    var alarmList = approachingAlarmList
+                        .Where(a => a.StationName == activeStation).ToList();
+                    // 起動している駅と一致する駅設定リストを抽出
+                    var stationList = stationSettingList
+                        .Where(s => s.StationNumber == activeStation).ToList();
+
+                    // 接近警報リストを処理
+                    foreach (var alarm in alarmList)
+                    {
+                        var station = stationList.FirstOrDefault(s => s.StationName == alarm.StationName);
+
+                        // 接近警報鳴動条件が満たされている場合
+                        if (alarm.IsAlarmConditionMet)
+                        {
+                            // 接近警報音声が鳴動済みでない場合
+                            if (!alarm.IsAlarmPlayed)
+                            {
+                                if (alarm.IsUpSide)
+                                {
+                                    // 音声再生
+                                    _sound.SoundPlay(station.UpSideApproachingAlarmName, true);
+                                }
+                                else
+                                {
+                                    // 音声再生
+                                    _sound.SoundPlay(station.DownSideApproachingAlarmName, true); 
+                                }
+                                // 音声再生済みフラグを立てる
+                                alarm.IsAlarmPlayed = true;
+                            }
+                        }
+                        // 接近警報鳴動条件が満たされていない場合
+                        else
+                        {
+                            // 音声再生済みフラグを解除
+                            alarm.IsAlarmPlayed = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessage.Show(ex.ToString(), "エラー");
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// 方向てこ警報更新
+        /// </summary>
+        public void UpdateDirectionAlarm(DatabaseOperational.DataFromServer dataFromServer)
+        {
+            try
+            {
+                var conditionsDirection = new DatabaseOperational.DirectionData();
             }
             catch (Exception ex)
             {
@@ -410,7 +474,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             // 転てつ器条件が存在しない場合は条件を満たす
             if (point == null) return true;
 
-            // 軌道回路条件を抽出
+            // 転てつ器条件を抽出
             bool isReverse = alarm.ConditionsList.FirstOrDefault(p => p.Name == point.Name).IsReversePosition;
 
             // 転てつ器と設定内容が反位同士の場合は条件を満たす
@@ -434,7 +498,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             // 信号機条件が存在しない場合は条件を満たす
             if (signal == null) return true;
 
-            // 軌道回路条件を抽出
+            // 信号機条件を抽出
             bool isReverse = alarm.ConditionsList.FirstOrDefault(p => p.Name == signal.Name).IsReversePosition;
 
             // 信号機と設定内容が定位同士、または反位同士の場合は条件を満たす
@@ -455,7 +519,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             // 列車番号条件が存在しない場合は条件を満たす
             if (retsuban == null) return true;
 
-            // 軌道回路条件を抽出
+            // 列車番号条件を抽出
             bool isEven = alarm.ConditionsList.FirstOrDefault(p => p.Name.Contains("列番")).Name.Contains("偶数");
 
             // 列車番号が未設定、または[9999]の場合は条件を満たさない
