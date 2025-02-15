@@ -20,9 +20,8 @@ namespace TatehamaInterlockingConsole
         private MasteringVoice masteringVoice;
         public Dictionary<string, SourceVoice> SoundSource = new();
         public Dictionary<string, AudioBuffer> SoundBuffer = new();
-        public Dictionary<int, string> SoundData = new();
+        public Dictionary<string, float> SoundVolumeDic = new();
         public float fMasterVolume = 1.0f;
-        public float fFadeVolume = 1.0f;
 
         /// <summary>
         /// コンストラクタ
@@ -35,6 +34,7 @@ namespace TatehamaInterlockingConsole
                 xAudio2 = new();
                 masteringVoice = new(xAudio2);
                 LoadSoundFiles();
+                LoopSoundAllPlay();
             }
             catch
             {
@@ -87,6 +87,7 @@ namespace TatehamaInterlockingConsole
                         var fileName = Path.GetFileNameWithoutExtension(filePath);
                         SoundSource[fileName] = sourceVoice;
                         SoundBuffer[fileName] = buffer;
+                        SoundVolumeDic[fileName] = 1.0f;
                     }
                 }
             }
@@ -112,6 +113,20 @@ namespace TatehamaInterlockingConsole
             }
             SoundSource.Clear();
             SoundBuffer.Clear();
+        }
+
+        /// <summary>
+        /// ループ音声再生メソッド
+        /// </summary>
+        public void LoopSoundAllPlay()
+        {
+            foreach (var voice in SoundSource.Keys.Where(s => s.Contains("loop")))
+            {
+                if (voice != null)
+                {
+                    SoundPlay(voice, true, 0.0f);
+                }
+            }
         }
 
         /// <summary>
@@ -176,8 +191,8 @@ namespace TatehamaInterlockingConsole
             // 既に停止している場合は処理しない
             if (value.State.BuffersQueued == 0) return;
 
-            value.FlushSourceBuffers();
             value.Stop(0);
+            value.FlushSourceBuffers();
         }
 
         /// <summary>
@@ -189,7 +204,8 @@ namespace TatehamaInterlockingConsole
         {
             if (!SoundSource.ContainsKey(fileName) || SoundSource[fileName] == null) return;
             if (volume < 0) volume = 0;
-            SoundSource[fileName].SetVolume(fMasterVolume * fFadeVolume * volume);
+            SoundSource[fileName].SetVolume(fMasterVolume * volume);
+            SoundVolumeDic[fileName] = volume;
         }
 
         /// <summary>
@@ -213,11 +229,11 @@ namespace TatehamaInterlockingConsole
             fMasterVolume = volume;
 
             // 全ての音声にマスターボリュームを設定
-            foreach (var sourceVoice in SoundSource.Values)
+            foreach (var sourceVoice in SoundSource.Keys)
             {
-                if (sourceVoice != null)
+                if (SoundSource[sourceVoice] != null)
                 {
-                    sourceVoice.SetVolume(fMasterVolume * fFadeVolume);
+                    SetVolume(sourceVoice, SoundVolumeDic[sourceVoice]);
                 }
             }
         }

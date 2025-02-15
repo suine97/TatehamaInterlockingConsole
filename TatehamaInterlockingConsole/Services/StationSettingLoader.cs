@@ -53,9 +53,12 @@ namespace TatehamaInterlockingConsole.Services
                             StationNumber = columns[1],
                             FileName = columns[2],
                             ViewName = columns[3],
-                            UpSideApproachingAlarmName = columns[4],
-                            DownSideApproachingAlarmName = columns[5],
-                            DirectionLeverAlarmName = columns[6]
+                            UpSideAlarmName = columns[4],
+                            UpSideAlarmType = columns[5],
+                            DownSideAlarmName = columns[6],
+                            DownSideAlarmType = columns[7],
+                            DirectionAlarmName = columns[8],
+                            DirectionAlarmType = columns[9]
                         });
                 }
                 return Settings;

@@ -367,16 +367,12 @@ namespace TatehamaInterlockingConsole.ViewModels
                             // 接近警報音声が鳴動済みでない場合
                             if (!alarm.IsAlarmPlayed)
                             {
+                                // 音声再生
                                 if (alarm.IsUpSide)
-                                {
-                                    // 音声再生
-                                    _sound.SoundPlay(station.UpSideApproachingAlarmName, true);
-                                }
+                                    _sound.SetVolume(station.UpSideAlarmName + "_loop", 1.0f);
                                 else
-                                {
-                                    // 音声再生
-                                    _sound.SoundPlay(station.DownSideApproachingAlarmName, true); 
-                                }
+                                    _sound.SetVolume(station.DownSideAlarmName + "_loop", 1.0f);
+
                                 // 音声再生済みフラグを立てる
                                 alarm.IsAlarmPlayed = true;
                             }
@@ -384,8 +380,12 @@ namespace TatehamaInterlockingConsole.ViewModels
                         // 接近警報鳴動条件が満たされていない場合
                         else
                         {
-                            // 音声再生済みフラグを解除
-                            alarm.IsAlarmPlayed = false;
+                            // 接近警報音声が鳴動済みの場合
+                            if (alarm.IsAlarmPlayed)
+                            {
+                                // 鳴動フラグを解除
+                                alarm.IsAlarmPlayed = false;
+                            }
                         }
                     }
                 }

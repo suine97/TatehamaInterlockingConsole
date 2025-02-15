@@ -296,6 +296,11 @@ namespace TatehamaInterlockingConsole.Handlers
                     //    System.Windows.MessageBoxImage.Information
                     //    );
                 }
+                // 接近ボタンの場合は接近警報停止処理
+                else if (control.UniqueName.Contains("接近"))
+                {
+                    
+                }
             }
         }
 
