@@ -1,215 +1,215 @@
-Type	UniqueName	ParentName	ServerType	ServerName	PointNameA	PointValueA	PointNameB	PointValueB	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImageIndex	BaseImagePath	ImagePath	Remark								
-BackImage	•\¦”Õ								0	0														Image/BackImage/TH66_Enohara-Inspection-Indicater.png									
-Image	1RA_G		M†‹@•\¦“”	1RA					520	693											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PY‚Í“”F"								
-Image	1RB_G		M†‹@•\¦“”	1RB					520	712											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	1RC_G		M†‹@•\¦“”	1RC					528	730											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	2R_G		M†‹@•\¦“”	2R					1164	662											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	3L_G		M†‹@•\¦“”	3L					1273	602											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	4L_G		M†‹@•\¦“”	4L					1273	700											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	5LD_G		M†‹@•\¦“”	5LD					1273	820											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	5LE_G		M†‹@•\¦“”	5LE					1265	838											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
-Image	11R_Y		M†‹@•\¦“”	11R					816	669											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	12L_Y		M†‹@•\¦“”	12L					880	671											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	13R_Y		M†‹@•\¦“”	13R					1146	661											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	14R_Y		M†‹@•\¦“”	14R					1240	601											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	15L_Y		M†‹@•\¦“”	15L					1291	603											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	15LZ_Y		M†‹@•\¦“”	15LZ					1313	602											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	16L_Y		M†‹@•\¦“”	16L					1291	701											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-Image	16LZ_Y		M†‹@•\¦“”	16LZ					1313	700											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
-	21R_Y																																
-	22R_Y																																
-	23R_Y																																
-	24R_Y																																
-	25R_Y																																
-	26R_Y																																
-	27R_Y																																
-	28R_Y																																
-	29R_Y																																
-	31R_Y																																
-	32R_Y																																
-	33R_Y																																
-	34L_Y																																
-	35L_Y																																
-	36L_Y																																
-	37L_Y																																
-	38L_Y																																
-	39L_Y																																
-	40L_Y																																
-	41L_Y																																
-	41LZ_Y																																
-	42L_Y																																
-	42LZ_Y																																
-	43R_Y																																
-	43RZ_Y																																
-Image	TH67_1RT_1		‹O“¹‰ñ˜H•\¦“”						52	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0“x¦ˆÈ‰º0“xÈ—ª								
-Image	TH67_32T_P32N_1		‹O“¹‰ñ˜H•\¦“”						77	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_32T_P32N_2		‹O“¹‰ñ˜H•\¦“”						107	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_32T_P32R_1		‹O“¹‰ñ˜H•\¦“”						77	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_32T_P32R_2		‹O“¹‰ñ˜H•\¦“”						99	702											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
-Image	TH67_1RAT_1		‹O“¹‰ñ˜H•\¦“”						131	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_1RAT_2		‹O“¹‰ñ˜H•\¦“”						213	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_1RBT_1		‹O“¹‰ñ˜H•\¦“”						131	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_1RBT_2		‹O“¹‰ñ˜H•\¦“”						213	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_4LT_1		‹O“¹‰ñ˜H•\¦“”						131	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_4LT_2		‹O“¹‰ñ˜H•\¦“”						213	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_5LT_1		‹O“¹‰ñ˜H•\¦“”						131	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_5LT_2		‹O“¹‰ñ˜H•\¦“”						213	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33ƒCT_P33ƒCN_1		‹O“¹‰ñ˜H•\¦“”						237	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33ƒCT_P33ƒCN_2		‹O“¹‰ñ˜H•\¦“”						295	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33ƒCT_P33ƒCR_1		‹O“¹‰ñ˜H•\¦“”						237	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33ƒCT_P33ƒCR_2		‹O“¹‰ñ˜H•\¦“”						277	702											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
-Image	TH67_33ƒT_P33ƒN_1		‹O“¹‰ñ˜H•\¦“”						237	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33ƒT_P33ƒN_2		‹O“¹‰ñ˜H•\¦“”						295	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_33ƒT_P33ƒR_1		‹O“¹‰ñ˜H•\¦“”						287	727											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
-Image	TH67_33ƒT_P33ƒR_2		‹O“¹‰ñ˜H•\¦“”						295	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_34T_P34N_1		‹O“¹‰ñ˜H•\¦“”						237	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_34T_P34N_2		‹O“¹‰ñ˜H•\¦“”						295	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_34T_P34R_1		‹O“¹‰ñ˜H•\¦“”						237	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_34T_P34R_2		‹O“¹‰ñ˜H•\¦“”						277	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
-Image	TH67_34T_P34R_3		‹O“¹‰ñ˜H•\¦“”						295	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35ƒCT_P35ƒCN_1		‹O“¹‰ñ˜H•\¦“”						315	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35ƒCT_P35ƒCN_2		‹O“¹‰ñ˜H•\¦“”						345	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35ƒCT_P35ƒCR_1		‹O“¹‰ñ˜H•\¦“”						315	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35ƒCT_P35ƒCR_2		‹O“¹‰ñ˜H•\¦“”						327	787											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
-Image	TH67_35ƒT_P35ƒN_1		‹O“¹‰ñ˜H•\¦“”						315	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35ƒT_P35ƒN_2		‹O“¹‰ñ˜H•\¦“”						345	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_35ƒT_P35ƒR_1		‹O“¹‰ñ˜H•\¦“”						337	762											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
-Image	TH67_35ƒT_P35ƒR_2		‹O“¹‰ñ˜H•\¦“”						345	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_36ƒCT_1		‹O“¹‰ñ˜H•\¦“”						370	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH67_SST_1		‹O“¹‰ñ˜H•\¦“”						400	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	136T_1		‹O“¹‰ñ˜H•\¦“”						430	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	142T_1		‹O“¹‰ñ˜H•\¦“”						460	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	146T_1		‹O“¹‰ñ˜H•\¦“”						490	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RT_1		‹O“¹‰ñ˜H•\¦“”						554	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RT_2		‹O“¹‰ñ˜H•\¦“”						652	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RT_3		‹O“¹‰ñ˜H•\¦“”						751	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LET_1		‹O“¹‰ñ˜H•\¦“”						583	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LET_2		‹O“¹‰ñ˜H•\¦“”						707	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LET_3		‹O“¹‰ñ˜H•\¦“”						831	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LDT_1		‹O“¹‰ñ˜H•\¦“”						578	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LDT_2		‹O“¹‰ñ˜H•\¦“”						786	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51ƒCT_P51ƒC_N_1		‹O“¹‰ñ˜H•\¦“”						814	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51ƒCT_P51ƒC_N_2		‹O“¹‰ñ˜H•\¦“”						880	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51ƒCT_P51ƒC_R_1		‹O“¹‰ñ˜H•\¦“”						814	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51ƒCT_P51ƒC_R_2		‹O“¹‰ñ˜H•\¦“”						838	705											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
-Image	TH66_51ƒT_P51ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						814	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51ƒT_P51ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						880	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_51ƒT_P51ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						858	725											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
-Image	TH66_51ƒT_P51ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						880	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_13T_1		‹O“¹‰ñ˜H•\¦“”						908	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_13T_2		‹O“¹‰ñ˜H•\¦“”						1116	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52ƒC_N_P53ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						934	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52ƒC_N_P53ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1012	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52ƒC_N_P53ƒ_N_3		‹O“¹‰ñ˜H•\¦“”						1090	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52ƒC_N_P53ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						1027	761											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
-Image	TH66_52T_P52ƒC_N_P53ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						1090	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52ƒC_R_P53ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						934	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_52T_P52ƒC_R_P53ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						999	761											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
-Image	TH66_53T_P53ƒC_N_P52ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						934	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53ƒC_N_P52ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1012	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53ƒC_N_P52ƒ_N_3		‹O“¹‰ñ˜H•\¦“”						1090	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53ƒC_N_P52ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						1027	789											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
-Image	TH66_53T_P53ƒC_N_P52ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						1090	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53ƒC_R_P52ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						934	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_53T_P53ƒC_R_P52ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						999	789											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
-Image	TH66_54T_P54ƒC_N_P55ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1144	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54ƒC_N_P55ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1177	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54ƒC_N_P55ƒ_N_3		‹O“¹‰ñ˜H•\¦“”						1210	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54ƒC_N_P55ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						1192	701											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
-Image	TH66_54T_P54ƒC_N_P55ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						1210	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54ƒC_R_P55ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1144	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_54T_P54ƒC_R_P55ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1164	701											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
-Image	TH66_55T_P55ƒC_N_P54ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1144	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55ƒC_N_P54ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1177	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55ƒC_N_P54ƒ_N_3		‹O“¹‰ñ˜H•\¦“”						1210	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55ƒC_N_P54ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						1192	729											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
-Image	TH66_55T_P55ƒC_N_P54ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						1210	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55ƒC_R_P54ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1144	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_55T_P55ƒC_R_P54ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1164	729											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
-Image	TH66_56T_P56ƒC_N_P57ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1238	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56ƒC_N_P57ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1271	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56ƒC_N_P57ƒ_N_3		‹O“¹‰ñ˜H•\¦“”						1304	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56ƒC_N_P57ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						1286	641											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
-Image	TH66_56T_P56ƒC_N_P57ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						1304	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56ƒC_R_P57ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1238	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_56T_P56ƒC_R_P57ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1258	641											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
-Image	TH66_57T_P57ƒC_N_P56ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1238	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57ƒC_N_P56ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1271	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57ƒC_N_P56ƒ_N_3		‹O“¹‰ñ˜H•\¦“”						1304	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57ƒC_N_P56ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						1286	669											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
-Image	TH66_57T_P57ƒC_N_P56ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						1304	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57ƒC_R_P56ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1238	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_57T_P57ƒC_R_P56ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1258	669											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
-Image	TH66_1RCT_1		‹O“¹‰ñ˜H•\¦“”						1255	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RCT_2		‹O“¹‰ñ˜H•\¦“”						1318	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LT_1		‹O“¹‰ñ˜H•\¦“”						1169	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_5LT_2		‹O“¹‰ñ˜H•\¦“”						1247	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RAT_1		‹O“¹‰ñ˜H•\¦“”						1332	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RAT_2		‹O“¹‰ñ˜H•\¦“”						1540	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RBT_1		‹O“¹‰ñ˜H•\¦“”						1332	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH66_1RBT_2		‹O“¹‰ñ˜H•\¦“”						1540	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_TST_1		‹O“¹‰ñ˜H•\¦“”						1321	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_TST_2		‹O“¹‰ñ˜H•\¦“”						1389	817											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
-Image	TH65_TST_3		‹O“¹‰ñ˜H•\¦“”						1424	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ƒCT_P42ƒC_N_1		‹O“¹‰ñ˜H•\¦“”						1469	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ƒCT_P42ƒC_N_2		‹O“¹‰ñ˜H•\¦“”						1530	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ƒCT_P42ƒC_R_1		‹O“¹‰ñ˜H•\¦“”						1469	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ƒCT_P42ƒC_R_2		‹O“¹‰ñ˜H•\¦“”						1481	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
-Image	TH65_42ƒT_P42ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1469	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ƒT_P42ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1530	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_42ƒT_P42ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						1491	822											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
-Image	TH65_42ƒT_P42ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						1530	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_11LT_1		‹O“¹‰ñ˜H•\¦“”						1554	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_11LT_2		‹O“¹‰ñ˜H•\¦“”						1636	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_12LT_1		‹O“¹‰ñ˜H•\¦“”						1554	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_12LT_2		‹O“¹‰ñ˜H•\¦“”						1636	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_44T_1		‹O“¹‰ñ˜H•\¦“”						1697	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_45T_1		‹O“¹‰ñ˜H•\¦“”						1697	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47ƒC_N_P48ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1722	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47ƒC_N_P48ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1752	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47ƒC_N_P48ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						1744	822											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
-Image	TH65_47T_P47ƒC_N_P48ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						1752	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47ƒC_R_P48ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1722	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_47T_P47ƒC_R_P48ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1734	822											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
-Image	TH65_48T_P48ƒC_N_P47ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1722	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_48T_P48ƒC_N_P47ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1752	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_48T_P48ƒC_N_P47ƒ_R_1		‹O“¹‰ñ˜H•\¦“”						1744	847											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
-Image	TH65_48T_P48ƒC_N_P47ƒ_R_2		‹O“¹‰ñ˜H•\¦“”						1752	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_48T_P48ƒC_R_P47ƒ_N_1		‹O“¹‰ñ˜H•\¦“”						1722	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_48T_P48ƒC_R_P47ƒ_N_2		‹O“¹‰ñ˜H•\¦“”						1734	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
-Image	TH65_49T_P49_N_1		‹O“¹‰ñ˜H•\¦“”						1772	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_49T_P49_N_2		‹O“¹‰ñ˜H•\¦“”						1802	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_49T_P49_R_1		‹O“¹‰ñ˜H•\¦“”						1784	787											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
-Image	TH65_49T_P49_R_2		‹O“¹‰ñ˜H•\¦“”						1802	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_50ƒCT_1		‹O“¹‰ñ˜H•\¦“”						1827	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH65_XT_1		‹O“¹‰ñ˜H•\¦“”						1857	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	’â“d_1_R		ó‘Ô•\¦“”						773	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	’â“d“”¶ã								
-Image	’â“d_2_R		ó‘Ô•\¦“”						783	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	’â“d“”‰Eã								
-Image	’â“d_3_R		ó‘Ô•\¦“”						773	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	’â“d“”¶‰º								
-Image	’â“d_4_R		ó‘Ô•\¦“”						783	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	’â“d“”‰E‰º								
-Image	CTCŒÌá_1_R		ó‘Ô•\¦“”						821	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTCŒÌá“”‰Eã								
-Image	CTCŒÌá_2_R		ó‘Ô•\¦“”						831	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTCŒÌá“”¶ã								
-Image	CTCŒÌá_3_R		ó‘Ô•\¦“”						821	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTCŒÌá“”¶‰º								
-Image	CTCŒÌá_4_R		ó‘Ô•\¦“”						831	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTCŒÌá“”‰E‰º								
-Image	½ù60•b_1_R		ó‘Ô•\¦“”						1079	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	½ù60•b_2_R		ó‘Ô•\¦“”						1089	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	½ù30•b_1_R		ó‘Ô•\¦“”						1117	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	½ù30•b_2_R		ó‘Ô•\¦“”						1127	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Retsuban	—ñ”ÔV–ìè1”Ôü		—ñÔ”Ô†						112	491														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔV–ìè2”Ôü		—ñÔ”Ô†						112	537														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔV–ìè3”Ôü		—ñÔ”Ô†						112	583														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔV–ìè4”Ôü		—ñÔ”Ô†						112	629														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æã‚è‘æ2Ú‹ß		—ñÔ”Ô†						262	537														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æã‚è‘æ1Ú‹ß		—ñÔ”Ô†						412	537														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ10”Ôü		—ñÔ”Ô†						622	676														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ13”Ôü		—ñÔ”Ô†						952	676														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ11”Ôü		—ñÔ”Ô†						1376	616														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ12”Ôü		—ñÔ”Ô†						1376	676														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ‰º‚è‘æ1Ú‹ß		—ñÔ”Ô†						1385	949														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‘å“¹›3”Ôü		—ñÔ”Ô†						1535	903														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‘å“¹›4”Ôü		—ñÔ”Ô†						1535	949														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‘å“¹›‰º‚èê“à		—ñÔ”Ô†						1685	926														Image/Retsuban/Retsuban-Window.png									
-																																	
-																																	
-																																	
-																																	
+Type	UniqueName	ParentName	ServerType	ServerName	PointNameA	PointValueA	PointNameB	PointValueB	DirectionName	DirectionValue	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	ImageIndex	BaseImagePath	ImagePath	Remark								
+BackImage	•\¦”Õ										0	0														Image/BackImage/TH66_Enohara-Inspection-Indicater.png									
+Image	1RA_G		M†‹@•\¦“”	1RA							520	693											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PY‚Í“”F"								
+Image	1RB_G		M†‹@•\¦“”	1RB							520	712											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	1RC_G		M†‹@•\¦“”	1RC							528	730											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	2R_G		M†‹@•\¦“”	2R							1164	662											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	3L_G		M†‹@•\¦“”	3L							1273	602											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	4L_G		M†‹@•\¦“”	4L							1273	700											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	5LD_G		M†‹@•\¦“”	5LD							1273	820											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	5LE_G		M†‹@•\¦“”	5LE							1265	838											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	11R_Y		M†‹@•\¦“”	11R							816	669											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	12L_Y		M†‹@•\¦“”	12L							880	671											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	13R_Y		M†‹@•\¦“”	13R							1146	661											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	14R_Y		M†‹@•\¦“”	14R							1240	601											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	15L_Y		M†‹@•\¦“”	15L							1291	603											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	15LZ_Y		M†‹@•\¦“”	15LZ							1313	602											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	16L_Y		M†‹@•\¦“”	16L							1291	701											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	16LZ_Y		M†‹@•\¦“”	16LZ							1313	700											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+	21R_Y																																		
+	22R_Y																																		
+	23R_Y																																		
+	24R_Y																																		
+	25R_Y																																		
+	26R_Y																																		
+	27R_Y																																		
+	28R_Y																																		
+	29R_Y																																		
+	31R_Y																																		
+	32R_Y																																		
+	33R_Y																																		
+	34L_Y																																		
+	35L_Y																																		
+	36L_Y																																		
+	37L_Y																																		
+	38L_Y																																		
+	39L_Y																																		
+	40L_Y																																		
+	41L_Y																																		
+	41LZ_Y																																		
+	42L_Y																																		
+	42LZ_Y																																		
+	43R_Y																																		
+	43RZ_Y																																		
+Image	TH67_1RT_1		‹O“¹‰ñ˜H•\¦“”								52	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"	0“x¦ˆÈ‰º0“xÈ—ª								
+Image	TH67_32T_P32N_1		‹O“¹‰ñ˜H•\¦“”								77	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_32T_P32N_2		‹O“¹‰ñ˜H•\¦“”								107	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_32T_P32R_1		‹O“¹‰ñ˜H•\¦“”								77	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_32T_P32R_2		‹O“¹‰ñ˜H•\¦“”								99	702											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
+Image	TH67_1RAT_1		‹O“¹‰ñ˜H•\¦“”								131	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_1RAT_2		‹O“¹‰ñ˜H•\¦“”								213	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_1RBT_1		‹O“¹‰ñ˜H•\¦“”								131	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_1RBT_2		‹O“¹‰ñ˜H•\¦“”								213	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_4LT_1		‹O“¹‰ñ˜H•\¦“”								131	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_4LT_2		‹O“¹‰ñ˜H•\¦“”								213	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_5LT_1		‹O“¹‰ñ˜H•\¦“”								131	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_5LT_2		‹O“¹‰ñ˜H•\¦“”								213	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33ƒCT_P33ƒCN_1		‹O“¹‰ñ˜H•\¦“”								237	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33ƒCT_P33ƒCN_2		‹O“¹‰ñ˜H•\¦“”								295	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33ƒCT_P33ƒCR_1		‹O“¹‰ñ˜H•\¦“”								237	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33ƒCT_P33ƒCR_2		‹O“¹‰ñ˜H•\¦“”								277	702											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
+Image	TH67_33ƒT_P33ƒN_1		‹O“¹‰ñ˜H•\¦“”								237	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33ƒT_P33ƒN_2		‹O“¹‰ñ˜H•\¦“”								295	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_33ƒT_P33ƒR_1		‹O“¹‰ñ˜H•\¦“”								287	727											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
+Image	TH67_33ƒT_P33ƒR_2		‹O“¹‰ñ˜H•\¦“”								295	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_34T_P34N_1		‹O“¹‰ñ˜H•\¦“”								237	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_34T_P34N_2		‹O“¹‰ñ˜H•\¦“”								295	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_34T_P34R_1		‹O“¹‰ñ˜H•\¦“”								237	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_34T_P34R_2		‹O“¹‰ñ˜H•\¦“”								277	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
+Image	TH67_34T_P34R_3		‹O“¹‰ñ˜H•\¦“”								295	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35ƒCT_P35ƒCN_1		‹O“¹‰ñ˜H•\¦“”								315	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35ƒCT_P35ƒCN_2		‹O“¹‰ñ˜H•\¦“”								345	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35ƒCT_P35ƒCR_1		‹O“¹‰ñ˜H•\¦“”								315	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35ƒCT_P35ƒCR_2		‹O“¹‰ñ˜H•\¦“”								327	787											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
+Image	TH67_35ƒT_P35ƒN_1		‹O“¹‰ñ˜H•\¦“”								315	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35ƒT_P35ƒN_2		‹O“¹‰ñ˜H•\¦“”								345	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_35ƒT_P35ƒR_1		‹O“¹‰ñ˜H•\¦“”								337	762											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
+Image	TH67_35ƒT_P35ƒR_2		‹O“¹‰ñ˜H•\¦“”								345	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_36ƒCT_1		‹O“¹‰ñ˜H•\¦“”								370	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH67_SST_1		‹O“¹‰ñ˜H•\¦“”								400	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	136T_1		‹O“¹‰ñ˜H•\¦“”								430	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	142T_1		‹O“¹‰ñ˜H•\¦“”								460	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	146T_1		‹O“¹‰ñ˜H•\¦“”								490	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RT_1		‹O“¹‰ñ˜H•\¦“”								554	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RT_2		‹O“¹‰ñ˜H•\¦“”								652	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RT_3		‹O“¹‰ñ˜H•\¦“”								751	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LET_1		‹O“¹‰ñ˜H•\¦“”								583	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LET_2		‹O“¹‰ñ˜H•\¦“”								707	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LET_3		‹O“¹‰ñ˜H•\¦“”								831	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LDT_1		‹O“¹‰ñ˜H•\¦“”								578	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LDT_2		‹O“¹‰ñ˜H•\¦“”								786	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51ƒCT_P51ƒC_N_1		‹O“¹‰ñ˜H•\¦“”								814	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51ƒCT_P51ƒC_N_2		‹O“¹‰ñ˜H•\¦“”								880	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51ƒCT_P51ƒC_R_1		‹O“¹‰ñ˜H•\¦“”								814	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51ƒCT_P51ƒC_R_2		‹O“¹‰ñ˜H•\¦“”								838	705											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
+Image	TH66_51ƒT_P51ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								814	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51ƒT_P51ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								880	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_51ƒT_P51ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								858	725											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
+Image	TH66_51ƒT_P51ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								880	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_13T_1		‹O“¹‰ñ˜H•\¦“”								908	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_13T_2		‹O“¹‰ñ˜H•\¦“”								1116	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52ƒC_N_P53ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								934	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52ƒC_N_P53ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1012	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52ƒC_N_P53ƒ_N_3		‹O“¹‰ñ˜H•\¦“”								1090	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52ƒC_N_P53ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								1027	761											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
+Image	TH66_52T_P52ƒC_N_P53ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								1090	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52ƒC_R_P53ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								934	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_52T_P52ƒC_R_P53ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								999	761											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
+Image	TH66_53T_P53ƒC_N_P52ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								934	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53ƒC_N_P52ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1012	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53ƒC_N_P52ƒ_N_3		‹O“¹‰ñ˜H•\¦“”								1090	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53ƒC_N_P52ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								1027	789											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
+Image	TH66_53T_P53ƒC_N_P52ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								1090	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53ƒC_R_P52ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								934	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_53T_P53ƒC_R_P52ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								999	789											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
+Image	TH66_54T_P54ƒC_N_P55ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1144	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54ƒC_N_P55ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1177	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54ƒC_N_P55ƒ_N_3		‹O“¹‰ñ˜H•\¦“”								1210	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54ƒC_N_P55ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								1192	701											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
+Image	TH66_54T_P54ƒC_N_P55ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								1210	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54ƒC_R_P55ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1144	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_54T_P54ƒC_R_P55ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1164	701											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
+Image	TH66_55T_P55ƒC_N_P54ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1144	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55ƒC_N_P54ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1177	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55ƒC_N_P54ƒ_N_3		‹O“¹‰ñ˜H•\¦“”								1210	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55ƒC_N_P54ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								1192	729											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
+Image	TH66_55T_P55ƒC_N_P54ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								1210	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55ƒC_R_P54ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1144	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_55T_P55ƒC_R_P54ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1164	729											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
+Image	TH66_56T_P56ƒC_N_P57ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1238	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56ƒC_N_P57ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1271	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56ƒC_N_P57ƒ_N_3		‹O“¹‰ñ˜H•\¦“”								1304	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56ƒC_N_P57ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								1286	641											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
+Image	TH66_56T_P56ƒC_N_P57ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								1304	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56ƒC_R_P57ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1238	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_56T_P56ƒC_R_P57ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1258	641											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
+Image	TH66_57T_P57ƒC_N_P56ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1238	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57ƒC_N_P56ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1271	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57ƒC_N_P56ƒ_N_3		‹O“¹‰ñ˜H•\¦“”								1304	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57ƒC_N_P56ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								1286	669											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135“x								
+Image	TH66_57T_P57ƒC_N_P56ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								1304	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57ƒC_R_P56ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1238	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_57T_P57ƒC_R_P56ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1258	669											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45“x								
+Image	TH66_1RCT_1		‹O“¹‰ñ˜H•\¦“”								1255	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RCT_2		‹O“¹‰ñ˜H•\¦“”								1318	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LT_1		‹O“¹‰ñ˜H•\¦“”								1169	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_5LT_2		‹O“¹‰ñ˜H•\¦“”								1247	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RAT_1		‹O“¹‰ñ˜H•\¦“”								1332	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RAT_2		‹O“¹‰ñ˜H•\¦“”								1540	627											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RBT_1		‹O“¹‰ñ˜H•\¦“”								1332	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH66_1RBT_2		‹O“¹‰ñ˜H•\¦“”								1540	687											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_TST_1		‹O“¹‰ñ˜H•\¦“”								1321	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_TST_2		‹O“¹‰ñ˜H•\¦“”								1389	817											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
+Image	TH65_TST_3		‹O“¹‰ñ˜H•\¦“”								1424	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ƒCT_P42ƒC_N_1		‹O“¹‰ñ˜H•\¦“”								1469	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ƒCT_P42ƒC_N_2		‹O“¹‰ñ˜H•\¦“”								1530	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ƒCT_P42ƒC_R_1		‹O“¹‰ñ˜H•\¦“”								1469	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ƒCT_P42ƒC_R_2		‹O“¹‰ñ˜H•\¦“”								1481	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
+Image	TH65_42ƒT_P42ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1469	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ƒT_P42ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1530	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_42ƒT_P42ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								1491	822											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
+Image	TH65_42ƒT_P42ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								1530	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_11LT_1		‹O“¹‰ñ˜H•\¦“”								1554	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_11LT_2		‹O“¹‰ñ˜H•\¦“”								1636	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_12LT_1		‹O“¹‰ñ˜H•\¦“”								1554	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_12LT_2		‹O“¹‰ñ˜H•\¦“”								1636	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_44T_1		‹O“¹‰ñ˜H•\¦“”								1697	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_45T_1		‹O“¹‰ñ˜H•\¦“”								1697	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47ƒC_N_P48ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1722	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47ƒC_N_P48ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1752	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47ƒC_N_P48ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								1744	822											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
+Image	TH65_47T_P47ƒC_N_P48ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								1752	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47ƒC_R_P48ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1722	807											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_47T_P47ƒC_R_P48ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1734	822											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
+Image	TH65_48T_P48ƒC_N_P47ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1722	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_48T_P48ƒC_N_P47ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1752	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_48T_P48ƒC_N_P47ƒ_R_1		‹O“¹‰ñ˜H•\¦“”								1744	847											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
+Image	TH65_48T_P48ƒC_N_P47ƒ_R_2		‹O“¹‰ñ˜H•\¦“”								1752	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_48T_P48ƒC_R_P47ƒ_N_1		‹O“¹‰ñ˜H•\¦“”								1722	867											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_48T_P48ƒC_R_P47ƒ_N_2		‹O“¹‰ñ˜H•\¦“”								1734	847											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
+Image	TH65_49T_P49_N_1		‹O“¹‰ñ˜H•\¦“”								1772	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_49T_P49_N_2		‹O“¹‰ñ˜H•\¦“”								1802	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_49T_P49_R_1		‹O“¹‰ñ˜H•\¦“”								1784	787											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68“x								
+Image	TH65_49T_P49_R_2		‹O“¹‰ñ˜H•\¦“”								1802	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_50ƒCT_1		‹O“¹‰ñ˜H•\¦“”								1827	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH65_XT_1		‹O“¹‰ñ˜H•\¦“”								1857	747											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	’â“d_1_R		ó‘Ô•\¦“”								773	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	’â“d“”¶ã								
+Image	’â“d_2_R		ó‘Ô•\¦“”								783	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	’â“d“”‰Eã								
+Image	’â“d_3_R		ó‘Ô•\¦“”								773	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	’â“d“”¶‰º								
+Image	’â“d_4_R		ó‘Ô•\¦“”								783	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	’â“d“”‰E‰º								
+Image	CTCŒÌá_1_R		ó‘Ô•\¦“”								821	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTCŒÌá“”‰Eã								
+Image	CTCŒÌá_2_R		ó‘Ô•\¦“”								831	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTCŒÌá“”¶ã								
+Image	CTCŒÌá_3_R		ó‘Ô•\¦“”								821	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTCŒÌá“”¶‰º								
+Image	CTCŒÌá_4_R		ó‘Ô•\¦“”								831	55											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"	CTCŒÌá“”‰E‰º								
+Image	½ù60•b_1_R		ó‘Ô•\¦“”								1079	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	½ù60•b_2_R		ó‘Ô•\¦“”								1089	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	½ù30•b_1_R		ó‘Ô•\¦“”								1117	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	½ù30•b_2_R		ó‘Ô•\¦“”								1127	50											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Retsuban	—ñ”ÔV–ìè1”Ôü		—ñÔ”Ô†								112	491														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔV–ìè2”Ôü		—ñÔ”Ô†								112	537														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔV–ìè3”Ôü		—ñÔ”Ô†								112	583														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔV–ìè4”Ôü		—ñÔ”Ô†								112	629														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æã‚è‘æ2Ú‹ß		—ñÔ”Ô†								262	537														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æã‚è‘æ1Ú‹ß		—ñÔ”Ô†								412	537														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ10”Ôü		—ñÔ”Ô†								622	676														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ13”Ôü		—ñÔ”Ô†								952	676														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ11”Ôü		—ñÔ”Ô†								1376	616														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ12”Ôü		—ñÔ”Ô†								1376	676														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô]ƒmŒ´ŒŸÔ‹æ‰º‚è‘æ1Ú‹ß		—ñÔ”Ô†								1385	949														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‘å“¹›3”Ôü		—ñÔ”Ô†								1535	903														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‘å“¹›4”Ôü		—ñÔ”Ô†								1535	949														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‘å“¹›‰º‚èê“à		—ñÔ”Ô†								1685	926														Image/Retsuban/Retsuban-Window.png									
+																																			
+																																			
+																																			
+																																			

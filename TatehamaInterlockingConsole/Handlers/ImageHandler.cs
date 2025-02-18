@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Net.WebSockets;
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
@@ -299,7 +301,10 @@ namespace TatehamaInterlockingConsole.Handlers
                 // 接近ボタンの場合は接近警報停止処理
                 else if (control.UniqueName.Contains("接近"))
                 {
-                    
+                    _dataManager.ActiveAlarmsList
+                        .RemoveAll(alarm => alarm.StationName == control.StationName && alarm.IsUpSide == control.UniqueName.Contains("上り"));
+
+                    Sound.Instance.LoopSoundAllStop(control.StationName, control.UniqueName.Contains("上り"));
                 }
             }
         }

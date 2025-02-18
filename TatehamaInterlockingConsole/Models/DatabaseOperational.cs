@@ -75,17 +75,17 @@ namespace TatehamaInterlockingConsole.Models
             /// <summary>
             /// 物理てこ情報リスト
             /// </summary>
-            public List<LeverData> PhysicalLeverDataList { get; set; }
+            public List<LeverData> PhysicalLevers { get; set; }
 
             /// <summary>
             /// 着点ボタン情報リスト
             /// </summary>
-            public List<DestinationButtonData> PhysicalButtonDataList { get; set; }
+            public List<DestinationButtonData> PhysicalButtons { get; set; }
 
             /// <summary>
             /// 方向てこ情報リスト
             /// </summary>
-            public List<DirectionData> DirectionLevers { get; set; }
+            public List<DirectionData> Directions { get; set; }
 
             /// <summary>
             /// 列番情報リスト

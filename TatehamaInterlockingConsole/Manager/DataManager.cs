@@ -94,6 +94,38 @@ namespace TatehamaInterlockingConsole.Manager
             }
         }
 
+        private List<ActiveAlarmList> _activeAlarmsList;
+        /// <summary>
+        /// 鳴動している接近警報名を保持するリスト
+        /// </summary>
+        public List<ActiveAlarmList> ActiveAlarmsList
+        {
+            get => _activeAlarmsList;
+            set
+            {
+                if (_activeAlarmsList != value)
+                {
+                    _activeAlarmsList = value;
+                }
+            }
+        }
+
+        private bool _flagValue;
+        /// <summary>
+        /// 一定周期でON・OFFを切り替えるフラグ
+        /// </summary>
+        public bool FlagValue
+        {
+            get => _flagValue;
+            set
+            {
+                if (_flagValue != value)
+                {
+                    _flagValue = value;
+                }
+            }
+        }
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -104,6 +136,7 @@ namespace TatehamaInterlockingConsole.Manager
             StationSettingList = new();
             DataFromServer = new();
             ActiveStationsList = new();
+            ActiveAlarmsList = new();
             ApproachingAlarmConditionList = new();
         }
 
@@ -149,5 +182,20 @@ namespace TatehamaInterlockingConsole.Manager
         {
             TimeUpdated?.Invoke(CurrentTime);
         }
+    }
+
+    /// <summary>
+    /// 鳴動処理用接近警報データクラス
+    /// </summary>
+    public class ActiveAlarmList
+    {
+        /// <summary>
+        /// 自駅名
+        /// </summary>
+        public string StationName { get; set; }
+        /// <summary>
+        /// 方向
+        /// </summary>
+        public bool IsUpSide { get; set; }
     }
 }

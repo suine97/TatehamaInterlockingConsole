@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Timers;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using OpenIddict.Client;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Handlers;
@@ -24,6 +26,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         private readonly ImageHandler _imageHandler;               // 画像操作処理クラス
         private readonly LabelHandler _labelHandler;               // ラベル操作処理クラス
         private readonly TextBlockHandler _textBlockHandler;       // テキストブロック操作処理クラス
+        private readonly Timer _flagTimer;                         // フラグ更新用タイマー
 
         private string volumeText;
         /// <summary>
@@ -122,6 +125,14 @@ namespace TatehamaInterlockingConsole.ViewModels
                     DecreaseTimeCommand = new RelayCommand(() => _timeService.DecreaseTime());
                     Volume = 100;
                     VolumeText = $"音量: {Volume}%";
+
+                    // フラグタイマーの初期化
+                    
+
+                    // フラグタイマーの初期化
+                    _flagTimer = new Timer(250);
+                    _flagTimer.Elapsed += (sender, args) => _dataManager.FlagValue = !_dataManager.FlagValue;
+                    _flagTimer.Start();
 
                     // 時間更新イベントを購読
                     _dataManager.TimeUpdated += (currentTime) => OnPropertyChanged(nameof(CurrentTime));

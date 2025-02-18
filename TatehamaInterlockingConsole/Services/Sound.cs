@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TatehamaInterlockingConsole.Services;
+using System.Threading.Tasks;
+using TatehamaInterlockingConsole.Manager;
+using TatehamaInterlockingConsole.Helpers;
 
 namespace TatehamaInterlockingConsole
 {
@@ -35,10 +38,47 @@ namespace TatehamaInterlockingConsole
                 masteringVoice = new(xAudio2);
                 LoadSoundFiles();
                 LoopSoundAllPlay();
+
+                // ループ処理開始
+                Task.Run(() => UpdateLoop());
             }
             catch
             {
                 CustomMessage.Show("サウンドデバイスの生成に失敗しました。", "エラー");
+            }
+        }
+
+        /// <summary>
+        /// ループ処理
+        /// </summary>
+        /// <returns></returns>
+        private async Task UpdateLoop()
+        {
+            while (true)
+            {
+                var timer = Task.Delay(50);
+                await timer;
+
+                var stationSettingList = DataManager.Instance.StationSettingList;
+
+                // 接近警報鳴動処理
+                foreach (var activeAlarm in DataManager.Instance.ActiveAlarmsList)
+                {
+                    var stationSetting = stationSettingList
+                        .FirstOrDefault(s => s.StationName == activeAlarm.StationName);
+
+                    if (stationSetting != null)
+                    {
+                        if (activeAlarm.IsUpSide)
+                        {
+                            SetAlarmVolumeBasedOnType(stationSetting.UpSideAlarmType, stationSetting.UpSideAlarmName + "_loop");
+                        }
+                        else
+                        {
+                            SetAlarmVolumeBasedOnType(stationSetting.DownSideAlarmType, stationSetting.DownSideAlarmName + "_loop");
+                        }
+                    }
+                }
             }
         }
 
@@ -130,6 +170,27 @@ namespace TatehamaInterlockingConsole
         }
 
         /// <summary>
+        /// ループ音声停止メソッド
+        /// </summary>
+        /// <param name="isUpSide"></param>
+        public void LoopSoundAllStop(string stationName, bool isUpSide)
+        {
+            var stationSetting = DataManager.Instance.StationSettingList
+                .FirstOrDefault(s => s.StationName == stationName);
+
+            if (isUpSide)
+            {
+                SetVolume(stationSetting.UpSideAlarmName + "_loop", 0.0f);
+                SoundPlay(stationSetting.UpSideAlarmName + "_loop", false);
+            }
+            else
+            {
+                SetVolume(stationSetting.DownSideAlarmName + "_loop", 0.0f);
+                SoundPlay(stationSetting.UpSideAlarmName + "_loop", false);
+            }
+        }
+
+        /// <summary>
         /// 音声再生メソッド
         /// </summary>
         /// <param name="fileName"></param>
@@ -217,6 +278,25 @@ namespace TatehamaInterlockingConsole
         {
             if (!SoundSource.ContainsKey(fileName) || SoundSource[fileName] == null) return;
             SoundSource[fileName].SetFrequencyRatio(pitch);
+        }
+
+        /// <summary>
+        /// アラーム音量設定メソッド
+        /// </summary>
+        /// <param name="alarmType"></param>
+        /// <param name="alarmName"></param>
+        public void SetAlarmVolumeBasedOnType(string alarmType, string alarmName)
+        {
+            if (alarmType.Equals("SHORT", StringComparison.CurrentCultureIgnoreCase))
+            {
+                bool flagValue = DataManager.Instance.FlagValue;
+                float volume = flagValue ? 1.0f : 0.0f;
+                SetVolume(alarmName, volume);
+            }
+            else
+            {
+                SetVolume(alarmName, 1.0f);
+            }
         }
 
         /// <summary>

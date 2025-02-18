@@ -1,14 +1,14 @@
-Type	UniqueName	ParentName	ServerName	ServerType	PointNameA	PointValueA	PointNameB	PointValueB	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	DefaultImage	BaseImagePath	ImagePath	Remark
-Button	Button_TH76								50	80	200	80				äŸïlâw	24	#FFE0FFFF	#FF000000	TH76_Tatehama					
-Button	Button_TH75								286	80	200	80				ãÓñÏâw	24	#FFE0FFFF	#FF000000	TH75_Komano					
-Button	Button_TH71								522	80	200	80				í√çËâw	24	#FFE0FFFF	#FF000000	TH71_Tsuzaki					
-Button	Button_TH70								758	80	200	80				ïlâÄâw	24	#FFE0FFFF	#FF000000	TH70_Hamazono					
-Button	Button_TH67								50	210	200	80				êVñÏçËâw	24	#FFE0FFFF	#FF000000	TH67_Shin-Nozaki					
-Button	Button_TH66S								286	210	200	80				ç]Émå¥åüé‘ãÊ	24	#FFE0FFFF	#FF000000	TH66S_Enohara-Inspection					
-Button	Button_TH65								522	210	200	80				ëÂìπéõâw	24	#FFE0FFFF	#FF000000	TH65_Daidoji					
-Button	Button_TH64								758	210	200	80				ì°ç]âw	24	#FFE0FFFF	#FF000000	TH64_Fujie					
-Button	Button_TH63								50	340	200	80				êÖâzâw	24	#FFE0FFFF	#FF000000	TH63_Mizukoshi					
-Button	Button_TH62								286	340	200	80				çÇå©ëÚâw	24	#FFE0FFFF	#FF000000	TH62_Takamizawa					
-Button	Button_TH61								522	340	200	80				ì˙ñÏêXâw	24	#FFE0FFFF	#FF000000	TH61_Hinomori					
-Button	Button_TH59								758	340	200	80				êºê‘éRâw	24	#FFE0FFFF	#FF000000	TH59_Nishi-Akayama					
-Button	Button_TH58								50	470	200	80				ê‘éRí¨âw	24	#FFE0FFFF	#FF000000	TH58_Akayamacho					
+Type	UniqueName	ParentName	ServerName	ServerType	PointNameA	PointValueA	PointNameB	PointValueB	DirectionName	DirectionValue	X	Y	Width	Height	Angle	AngleOriginX	AngleOriginY	Text	FontSize	BackColor	TextColor	ClickEventName	ImagePattern	DefaultImage	BaseImagePath	ImagePath	Remark
+Button	Button_TH76										50	80	200	80				äŸïlâw	24	#FFE0FFFF	#FF000000	TH76_Tatehama					
+Button	Button_TH75										286	80	200	80				ãÓñÏâw	24	#FFE0FFFF	#FF000000	TH75_Komano					
+Button	Button_TH71										522	80	200	80				í√çËâw	24	#FFE0FFFF	#FF000000	TH71_Tsuzaki					
+Button	Button_TH70										758	80	200	80				ïlâÄâw	24	#FFE0FFFF	#FF000000	TH70_Hamazono					
+Button	Button_TH67										50	210	200	80				êVñÏçËâw	24	#FFE0FFFF	#FF000000	TH67_Shin-Nozaki					
+Button	Button_TH66S										286	210	200	80				ç]Émå¥åüé‘ãÊ	24	#FFE0FFFF	#FF000000	TH66S_Enohara-Inspection					
+Button	Button_TH65										522	210	200	80				ëÂìπéõâw	24	#FFE0FFFF	#FF000000	TH65_Daidoji					
+Button	Button_TH64										758	210	200	80				ì°ç]âw	24	#FFE0FFFF	#FF000000	TH64_Fujie					
+Button	Button_TH63										50	340	200	80				êÖâzâw	24	#FFE0FFFF	#FF000000	TH63_Mizukoshi					
+Button	Button_TH62										286	340	200	80				çÇå©ëÚâw	24	#FFE0FFFF	#FF000000	TH62_Takamizawa					
+Button	Button_TH61										522	340	200	80				ì˙ñÏêXâw	24	#FFE0FFFF	#FF000000	TH61_Hinomori					
+Button	Button_TH59										758	340	200	80				êºê‘éRâw	24	#FFE0FFFF	#FF000000	TH59_Nishi-Akayama					
+Button	Button_TH58										50	470	200	80				ê‘éRí¨âw	24	#FFE0FFFF	#FF000000	TH58_Akayamacho					

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TatehamaInterlockingConsole.Models
 {
@@ -37,18 +38,27 @@ namespace TatehamaInterlockingConsole.Models
         public string PointNameA { get; set; }
         /// <summary>
         /// 制御条件に含む転てつ器状態A
-        /// (定位=True, 反位=False)
+        /// (NRC型)
         /// </summary>
-        public bool PointValueA { get; set; }
+        public EnumData.NRC PointValueA { get; set; }
         /// <summary>
         /// 制御条件に含む転てつ器名称B
         /// </summary>
         public string PointNameB { get; set; }
         /// <summary>
         /// 制御条件に含む転てつ器状態B
-        /// (定位=True, 反位=False)
+        /// (NRC型)
         /// </summary>
-        public bool PointValueB { get; set; }
+        public EnumData.NRC PointValueB { get; set; }
+        /// <summary>
+        /// 制御条件に含む方向てこ名称
+        /// </summary>
+        public string DirectionName { get; set; }
+        /// <summary>
+        /// 制御条件に含む方向てこ状態
+        /// (LNR型)
+        /// </summary>
+        public EnumData.LNR DirectionValue { get; set; }
         /// <summary>
         /// X座標
         /// </summary>
@@ -134,6 +144,10 @@ namespace TatehamaInterlockingConsole.Models
         /// 列番文字列
         /// </summary>
         public string Retsuban { get; set; }
+        /// <summary>
+        /// 更新時刻
+        /// </summary>
+        public DateTime UpdateTime { get; set; }
         /// <summary>
         /// 備考欄
         /// </summary>

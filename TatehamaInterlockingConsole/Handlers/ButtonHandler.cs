@@ -28,7 +28,7 @@ namespace TatehamaInterlockingConsole.Handlers
             button.Click += (s, e) =>
             {
                 // サーバー接続状態の場合のみ処理を実行
-                if (DataManager.Instance.ServerConnected)
+                //if (DataManager.Instance.ServerConnected)
                 {
                     switch (clickEventName)
                     {
