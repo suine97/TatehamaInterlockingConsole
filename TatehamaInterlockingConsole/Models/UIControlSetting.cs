@@ -145,10 +145,6 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public string Retsuban { get; set; }
         /// <summary>
-        /// 更新時刻
-        /// </summary>
-        public DateTime UpdateTime { get; set; }
-        /// <summary>
         /// 備考欄
         /// </summary>
         public string Remark { get; set; }

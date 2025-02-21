@@ -69,6 +69,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             var physicalButton = new DatabaseOperational.DestinationButtonData { Name = string.Empty };
             var retsuban = new DatabaseOperational.RetsubanData();
             var lamp = new Dictionary<string, bool>();
+            var directionStateList = _dataManager.DirectionStateList;
 
             try
             {
@@ -190,23 +191,25 @@ namespace TatehamaInterlockingConsole.ViewModels
                                 // 方向てこ条件あり
                                 if (direction != null)
                                 {
-                                    if (direction.State == item.DirectionValue)
-                                    {
-                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
-                                        item.UpdateTime = DateTime.Now; // 更新時刻を設定
-                                    } 
+                                    var directionState = directionStateList
+                                        .FirstOrDefault(d => d.Name == direction.Name);
+
+                                    // 方向てこ状態が変化してから2秒以内なら赤点灯
+                                    if ((DateTime.Now - directionState.UpdateTime).TotalSeconds < 2.0d)
+                                        item.ImageIndex = 2;
+                                    // それ以外
+                                    else if (direction.State == item.DirectionValue)
+                                        item.ImageIndex = trackCircuit.On ? 2 : 1;
                                     else
-                                    {
                                         item.ImageIndex = 0;
-                                    }
                                 }
                                 // 方向てこ条件なし
                                 else
                                 {
                                     if (trackCircuit.On)
-                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
+                                        item.ImageIndex = trackCircuit.On ? 2 : 1;
                                     else
-                                        item.ImageIndex = 0;
+                                        item.ImageIndex = 1;
                                 }
                             }
                             break;

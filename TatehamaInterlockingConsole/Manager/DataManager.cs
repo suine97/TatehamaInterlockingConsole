@@ -110,6 +110,22 @@ namespace TatehamaInterlockingConsole.Manager
             }
         }
 
+        private List<DirectionStateList> directionStateList;
+        /// <summary>
+        /// 方向てこ状態を保持するリスト
+        /// </summary>
+        public List<DirectionStateList> DirectionStateList
+        {
+            get => directionStateList;
+            set
+            {
+                if (directionStateList != value)
+                {
+                    directionStateList = value;
+                }
+            }
+        }
+
         private bool _flagValue;
         /// <summary>
         /// 一定周期でON・OFFを切り替えるフラグ
@@ -137,6 +153,7 @@ namespace TatehamaInterlockingConsole.Manager
             DataFromServer = new();
             ActiveStationsList = new();
             ActiveAlarmsList = new();
+            DirectionStateList = new();
             ApproachingAlarmConditionList = new();
         }
 
@@ -197,5 +214,24 @@ namespace TatehamaInterlockingConsole.Manager
         /// 方向
         /// </summary>
         public bool IsUpSide { get; set; }
+    }
+
+    /// <summary>
+    /// 方向てこ状態データクラス
+    /// </summary>
+    public class DirectionStateList
+    {
+        /// <summary>
+        /// 方向てこ名称
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// 方向てこの値
+        /// </summary>
+        public EnumData.LNR State { get; set; }
+        /// <summary>
+        /// 更新時刻
+        /// </summary>
+        public DateTime UpdateTime { get; set; }
     }
 }

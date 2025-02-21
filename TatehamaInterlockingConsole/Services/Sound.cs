@@ -8,6 +8,7 @@ using TatehamaInterlockingConsole.Services;
 using System.Threading.Tasks;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Helpers;
+using TatehamaInterlockingConsole.Models;
 
 namespace TatehamaInterlockingConsole
 {
@@ -60,6 +61,8 @@ namespace TatehamaInterlockingConsole
                 await timer;
 
                 var stationSettingList = DataManager.Instance.StationSettingList;
+                var directionStateList = DataManager.Instance.DirectionStateList;
+                var activeStationList = DataManager.Instance.ActiveStationsList;
 
                 // 接近警報鳴動処理
                 foreach (var activeAlarm in DataManager.Instance.ActiveAlarmsList)
@@ -76,6 +79,27 @@ namespace TatehamaInterlockingConsole
                         else
                         {
                             SetAlarmVolumeBasedOnType(stationSetting.DownSideAlarmType, stationSetting.DownSideAlarmName + "_loop");
+                        }
+                    }
+                }
+
+                // 方向てこ警報鳴動処理
+                foreach (var direction in directionStateList)
+                {
+                    var stationSetting = stationSettingList
+                        .FirstOrDefault(s => s.StationNumber == direction.Name.Split('_')[0]);
+
+                    if (stationSetting != null)
+                    {
+                        // 方向てこ状態が変化してから2秒以内なら処理
+                        if ((DateTime.Now - direction.UpdateTime).TotalSeconds < 2.0d)
+                        {
+                            SetAlarmVolumeBasedOnType(stationSetting.DirectionAlarmType, stationSetting.DirectionAlarmName + "_loop");
+                        }
+                        // 2秒以上経過している場合は音声停止
+                        else
+                        {
+                            SetVolume(stationSetting.DirectionAlarmName + "_loop", 0.0f);
                         }
                     }
                 }

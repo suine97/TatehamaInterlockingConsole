@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -176,6 +177,7 @@ namespace TatehamaInterlockingConsole.Models
                 {
                     // 受信したJSONデータをデシリアライズ
                     var data = JsonConvert.DeserializeObject<DatabaseOperational.DataFromServer>(jsonMessage);
+
                     if (data != null)
                     {
                         // 運用クラスに代入
@@ -198,6 +200,16 @@ namespace TatehamaInterlockingConsole.Models
                         }
                         // 認証情報を保存
                         _dataManager.Authentication ??= _dataManager.DataFromServer.Authentications;
+                        // 方向てこ情報を保存
+                        if (data.Directions != null && !data.Directions.SequenceEqual(_dataManager.DataFromServer.Directions))
+                        {
+                            _dataManager.DirectionStateList = data.Directions.Select(d => new DirectionStateList
+                            {
+                                Name = d.Name,
+                                State = d.State,
+                                UpdateTime = DateTime.Now
+                            }).ToList();
+                        }
                         // コントロール更新処理
                         DataUpdateViewModel.Instance.UpdateControl(_dataManager.DataFromServer);
                     }
