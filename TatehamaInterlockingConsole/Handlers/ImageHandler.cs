@@ -4,6 +4,7 @@ using System.Net.WebSockets;
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
+using TatehamaInterlockingConsole.Services;
 
 namespace TatehamaInterlockingConsole.Handlers
 {

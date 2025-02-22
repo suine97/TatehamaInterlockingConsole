@@ -53,11 +53,11 @@ namespace TatehamaInterlockingConsole.Services
                             StationNumber = columns[1],
                             FileName = columns[2],
                             ViewName = columns[3],
-                            UpSideAlarmName = columns[4],
+                            UpSideAlarmName = columns[4] != string.Empty ? columns[1] + "_" + columns[4] : string.Empty,
                             UpSideAlarmType = columns[5],
-                            DownSideAlarmName = columns[6],
+                            DownSideAlarmName = columns[6] != string.Empty ? columns[1] + "_" + columns[6] : string.Empty,
                             DownSideAlarmType = columns[7],
-                            DirectionAlarmName = columns[8],
+                            DirectionAlarmName = columns[8] != string.Empty ? columns[1] + "_" + columns[8] : string.Empty,
                             DirectionAlarmType = columns[9]
                         });
                 }

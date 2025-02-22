@@ -5,7 +5,7 @@ StationName	StationNumber	FileName	ViewName	UpSideAlarmName	UpSideAlarmType	Down
 •l‰€‰w	TH70	TH70_Hamazono_UIList	TH70_•l‰€‰w_UIList	bz_830hz	Short	bz_610hz	Long	bz_310hz	Long
 V–ìè‰w	TH67	TH67_Shin-Nozaki_UIList	TH67_V–ìè‰w_UIList	bz_730hz	Short	bz_830hz	Long	bz_410hz	Long
 ]ƒmŒ´ŒŸÔ‹æ•\¦”Õ	TH66S	TH66S_Enohara-Inspection-Indicater_UIList	TH66S_]ƒmŒ´ŒŸÔ‹æ•\¦”Õ_UIList	bz_610hz	Short	bz_730hz	Long	bz_310hz	Long
-]ƒmŒ´ŒŸÔ‹æ‘€ì”Õ	TH66S	TH66S_Enohara-Inspection-Switchboard_UIList	TH66S_]ƒmŒ´ŒŸÔ‹æ‘€ì”Õ_UIList	bz_610hz	Short	bz_730hz	Long	bz_310hz	Long
+]ƒmŒ´ŒŸÔ‹æ‘€ì”Õ	TH66S	TH66S_Enohara-Inspection-Switchboard_UIList	TH66S_]ƒmŒ´ŒŸÔ‹æ‘€ì”Õ_UIList						
 ‘å“¹›‰w	TH65	TH65_Daidoji_UIList	TH65_‘å“¹›‰w_UIList	bz_830hz	Short	bz_610hz	Long	bz_410hz	Long
 “¡]‰w	TH64	TH64_Fujie_UIList	TH64_“¡]‰w_UIList	bz_730hz	Short	bz_830hz	Long	bz_310hz	Long
 …‰z‰w	TH63	TH63_Mizukoshi_UIList	TH63_…‰z‰w_UIList	bz_610hz	Short	bz_730hz	Long	bz_410hz	Long

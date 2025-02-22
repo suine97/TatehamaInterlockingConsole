@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 using OpenIddict.Client;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Handlers;
@@ -27,6 +26,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         private readonly LabelHandler _labelHandler;               // ラベル操作処理クラス
         private readonly TextBlockHandler _textBlockHandler;       // テキストブロック操作処理クラス
         private readonly Timer _flagTimer;                         // フラグ更新用タイマー
+        private readonly Sound _sound;                             // サウンド管理クラスのインスタンス
 
         private string volumeText;
         /// <summary>
@@ -43,10 +43,10 @@ namespace TatehamaInterlockingConsole.ViewModels
             get => volume;
             set
             {
-                if (volume != value)
+                if (volume != value && _sound != null)
                 {
                     volume = value;
-                    Sound.Instance.SetMasterVolume((float)volume * 0.01f);
+                    _sound.SetMasterVolume((float)volume * 0.01f);
                     OnPropertyChanged(nameof(Volume));
                     VolumeText = $"音量: {volume:F0}%";
                 }
@@ -127,9 +127,6 @@ namespace TatehamaInterlockingConsole.ViewModels
                     VolumeText = $"音量: {Volume}%";
 
                     // フラグタイマーの初期化
-                    
-
-                    // フラグタイマーの初期化
                     _flagTimer = new Timer(250);
                     _flagTimer.Elapsed += (sender, args) => _dataManager.FlagValue = !_dataManager.FlagValue;
                     _flagTimer.Start();
@@ -140,6 +137,9 @@ namespace TatehamaInterlockingConsole.ViewModels
                     _serverCommunication.ConnectionStatusChanged += (status) => ConnectionStatus = status;
                     // 初期化処理
                     Initialize();
+
+                    // 音声管理クラスのインスタンスを取得
+                    _sound = Sound.Instance;
                 }
             }
             catch (Exception ex)

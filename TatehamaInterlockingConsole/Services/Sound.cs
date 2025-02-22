@@ -4,13 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using TatehamaInterlockingConsole.Services;
 using System.Threading.Tasks;
 using TatehamaInterlockingConsole.Manager;
-using TatehamaInterlockingConsole.Helpers;
-using TatehamaInterlockingConsole.Models;
 
-namespace TatehamaInterlockingConsole
+namespace TatehamaInterlockingConsole.Services
 {
     /// <summary>
     /// Soundクラス
@@ -118,6 +115,7 @@ namespace TatehamaInterlockingConsole
 
                 // Soundフォルダ内の全てのwavファイルを取得
                 var soundFiles = Directory.GetFiles($".\\Sound", "*.wav").ToList();
+                var stationSettingList = DataManager.Instance.StationSettingList;
 
                 // サウンド読み込み
                 foreach (var filePath in soundFiles)
@@ -152,6 +150,59 @@ namespace TatehamaInterlockingConsole
                         SoundSource[fileName] = sourceVoice;
                         SoundBuffer[fileName] = buffer;
                         SoundVolumeDic[fileName] = 1.0f;
+
+                        // stationSettingListにfileNameを含んだ音声ファイルがあれば複製して辞書に追加
+                        var baseFileName = fileName.Replace("_loop", "").Replace("_end", "");
+                        foreach (var stationSetting in stationSettingList)
+                        {
+                            if (stationSetting.UpSideAlarmName.Contains(baseFileName)
+                                || stationSetting.DownSideAlarmName.Contains(baseFileName)
+                                || stationSetting.DirectionAlarmName.Contains(baseFileName))
+                            {
+                                // UpSideAlarmNameと比較
+                                if (stationSetting.UpSideAlarmName.Contains(baseFileName))
+                                {
+                                    var loopFileName = stationSetting.UpSideAlarmName + "_loop";
+                                    var endFileName = stationSetting.UpSideAlarmName + "_end";
+
+                                    SoundSource[loopFileName] = sourceVoice;
+                                    SoundBuffer[loopFileName] = buffer;
+                                    SoundVolumeDic[loopFileName] = 1.0f;
+
+                                    SoundSource[endFileName] = sourceVoice;
+                                    SoundBuffer[endFileName] = buffer;
+                                    SoundVolumeDic[endFileName] = 1.0f;
+                                }
+                                // DownSideAlarmNameと比較
+                                if (stationSetting.DownSideAlarmName.Contains(baseFileName))
+                                {
+                                    var loopFileName = stationSetting.DownSideAlarmName + "_loop";
+                                    var endFileName = stationSetting.DownSideAlarmName + "_end";
+
+                                    SoundSource[loopFileName] = sourceVoice;
+                                    SoundBuffer[loopFileName] = buffer;
+                                    SoundVolumeDic[loopFileName] = 1.0f;
+
+                                    SoundSource[endFileName] = sourceVoice;
+                                    SoundBuffer[endFileName] = buffer;
+                                    SoundVolumeDic[endFileName] = 1.0f;
+                                }
+                                // DirectionAlarmNameと比較
+                                if (stationSetting.DirectionAlarmName.Contains(baseFileName))
+                                {
+                                    var loopFileName = stationSetting.DirectionAlarmName + "_loop";
+                                    var endFileName = stationSetting.DirectionAlarmName + "_end";
+
+                                    SoundSource[loopFileName] = sourceVoice;
+                                    SoundBuffer[loopFileName] = buffer;
+                                    SoundVolumeDic[loopFileName] = 1.0f;
+
+                                    SoundSource[endFileName] = sourceVoice;
+                                    SoundBuffer[endFileName] = buffer;
+                                    SoundVolumeDic[endFileName] = 1.0f;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -167,14 +218,7 @@ namespace TatehamaInterlockingConsole
         public void ClearSoundData()
         {
             // すべてのSourceVoiceを停止して解放
-            foreach (var voice in SoundSource.Values)
-            {
-                if (voice != null)
-                {
-                    voice.Stop();
-                    voice.DestroyVoice();
-                }
-            }
+            SoundAllStop();
             SoundSource.Clear();
             SoundBuffer.Clear();
         }
