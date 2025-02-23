@@ -21,8 +21,10 @@ namespace TatehamaInterlockingConsole.Models
         private string _token;
         private readonly OpenIddictClientService _openIddictClientService;
         private readonly DataManager _dataManager;
+        private readonly DataUpdateViewModel _dataUpdateViewModel;
         private static HubConnection _connection;
         private static bool _isUpdateLoopRunning = false;
+        private const string SendName = "SendData_Interlocking";
 
         /// <summary>
         /// サーバー接続状態変更イベント
@@ -36,6 +38,7 @@ namespace TatehamaInterlockingConsole.Models
         {
             _openIddictClientService = openIddictClientService;
             _dataManager = DataManager.Instance;
+            _dataUpdateViewModel = DataUpdateViewModel.Instance;
 
             if (!_isUpdateLoopRunning)
             {
@@ -130,6 +133,7 @@ namespace TatehamaInterlockingConsole.Models
                 .WithAutomaticReconnect() // 自動再接続
                 .Build();
 
+            // サーバー接続
             while (!_dataManager.ServerConnected)
             {
                 try
@@ -172,7 +176,7 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", constantDataToServer);
+                var jsonMessage = await _connection.InvokeAsync<string>(SendName, constantDataToServer);
                 try
                 {
                     // 受信したJSONデータをデシリアライズ
@@ -211,7 +215,7 @@ namespace TatehamaInterlockingConsole.Models
                             }).ToList();
                         }
                         // コントロール更新処理
-                        DataUpdateViewModel.Instance.UpdateControl(_dataManager.DataFromServer);
+                        _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
                     }
                     else
                     {
@@ -223,9 +227,9 @@ namespace TatehamaInterlockingConsole.Models
                     Console.WriteLine($"Error during JSON deserialization: {ex.Message}");
                 }
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                Console.WriteLine($"Failed to send constant data to server: {exception.Message}");
+                Console.WriteLine($"Failed to send constant data to server: {ex.Message}");
             }
         }
 
@@ -239,7 +243,7 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", leverEventDataToServer);
+                var jsonMessage = await _connection.InvokeAsync<string>(SendName, leverEventDataToServer);
             }
             catch (Exception exception)
             {
@@ -257,7 +261,7 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", buttonEventDataToServer);
+                var jsonMessage = await _connection.InvokeAsync<string>(SendName, buttonEventDataToServer);
             }
             catch (Exception exception)
             {

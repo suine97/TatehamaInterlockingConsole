@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Timers;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using OpenIddict.Client;
@@ -25,7 +25,6 @@ namespace TatehamaInterlockingConsole.ViewModels
         private readonly ImageHandler _imageHandler;               // 画像操作処理クラス
         private readonly LabelHandler _labelHandler;               // ラベル操作処理クラス
         private readonly TextBlockHandler _textBlockHandler;       // テキストブロック操作処理クラス
-        private readonly Timer _flagTimer;                         // フラグ更新用タイマー
         private readonly Sound _sound;                             // サウンド管理クラスのインスタンス
 
         private string volumeText;
@@ -100,7 +99,6 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// </summary>
         /// <param name="timeService"></param>
         /// <param name="dataManager"></param>
-        /// <param name="dataUpdateViewModel"></param>
         /// <param name="openIddictClientService"></param>
         public MainViewModel(TimeService timeService, DataManager dataManager, OpenIddictClientService openIddictClientService)
         {
@@ -123,13 +121,9 @@ namespace TatehamaInterlockingConsole.ViewModels
                     Title = "連動盤選択 | 連動盤 - ダイヤ運転会";
                     IncreaseTimeCommand = new RelayCommand(() => _timeService.IncreaseTime());
                     DecreaseTimeCommand = new RelayCommand(() => _timeService.DecreaseTime());
-                    Volume = 100;
-                    VolumeText = $"音量: {Volume}%";
 
                     // フラグタイマーの初期化
-                    _flagTimer = new Timer(250);
-                    _flagTimer.Elapsed += (sender, args) => _dataManager.FlagValue = !_dataManager.FlagValue;
-                    _flagTimer.Start();
+                    StartFlagTimerAsync();
 
                     // 時間更新イベントを購読
                     _dataManager.TimeUpdated += (currentTime) => OnPropertyChanged(nameof(CurrentTime));
@@ -140,12 +134,26 @@ namespace TatehamaInterlockingConsole.ViewModels
 
                     // 音声管理クラスのインスタンスを取得
                     _sound = Sound.Instance;
+                    Volume = 100;
+                    VolumeText = $"音量: {Volume}%";
                 }
             }
             catch (Exception ex)
             {
                 CustomMessage.Show(ex.ToString(), "エラー");
-                throw ex;
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 非同期タイマーを開始するメソッド
+        /// </summary>
+        private async void StartFlagTimerAsync()
+        {
+            while (true)
+            {
+                await Task.Delay(250);
+                _dataManager.FlagValue = !_dataManager.FlagValue;
             }
         }
 
@@ -170,7 +178,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             var mainControlSettingList = _dataManager.AllControlSettingList.FindAll(list => list.StationName == "Main_UIList");
             MainElements = UIElementLoader.CreateUIControlModels(mainControlSettingList);
 
-            // タイマー開始
+            // 表示時間更新サービス開始
             _timeService.Start();
         }
 

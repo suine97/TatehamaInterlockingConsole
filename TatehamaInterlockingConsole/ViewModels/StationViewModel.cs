@@ -5,12 +5,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Windows.Threading;
+using System.Timers;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.Models;
+using System.Threading.Tasks;
 
 namespace TatehamaInterlockingConsole.ViewModels
 {
@@ -22,7 +23,6 @@ namespace TatehamaInterlockingConsole.ViewModels
         private readonly DataManager _dataManager; // データ管理クラス
         private readonly Sound _sound; // サウンド管理クラスのインスタンス
         private readonly DataUpdateViewModel _dataUpdateViewModel;
-        private readonly DispatcherTimer _clockUpdateTimer;
         private string _stationName; // 駅名
         private string _stationNumber; // 駅番号
 
@@ -95,20 +95,21 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        /// <param name="title">ウィンドウのタイトル</param>
-        /// <param name="filePath">駅データのファイルパス</param>
-        /// <param name="uiElementLoader">UI 要素ローダー</param>
-        /// <param name="dataManager">データ管理クラス</param>
+        /// <param name="title"></param>
+        /// <param name="filePath"></param>
+        /// <param name="dataManager"></param>
+        /// <param name="sound"></param>
+        /// <param name="dataUpdateViewModel"></param>
         public StationViewModel(string title, string filePath, DataManager dataManager, Sound sound, DataUpdateViewModel dataUpdateViewModel)
         {
             try
             {
-                _dataManager = dataManager;
-                _sound = sound;
-                _dataUpdateViewModel = dataUpdateViewModel;
-                _dataUpdateViewModel.NotifyUpdateControlEvent += OnNotifyUpdateControlEvent;
-                _stationName = DataHelper.ExtractStationNameFromFilePath(filePath); // ファイルパスから駅名を抽出
-                _stationNumber = DataHelper.GetStationNumberFromStationName(_stationName); // 駅名から駅番号を取得
+                _dataManager = dataManager;                                                     // データ管理クラスのインスタンス
+                _sound = sound;                                                                 // サウンド管理クラスのインスタンス
+                _dataUpdateViewModel = dataUpdateViewModel;                                     // データ更新ViewModelのインスタンス
+                _dataUpdateViewModel.NotifyUpdateControlEvent += OnNotifyUpdateControlEvent;    // データ更新イベントの登録
+                _stationName = DataHelper.ExtractStationNameFromFilePath(filePath);             // ファイルパスから駅名を抽出
+                _stationNumber = DataHelper.GetStationNumberFromStationName(_stationName);      // 駅名から駅番号を取得
 
                 // 駅名をリストに追加
                 if (!_dataManager.ActiveStationsList.Contains(_stationNumber))
@@ -116,9 +117,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                     _dataManager.AddActiveStation(_stationNumber);
                 }
 
-                _clockUpdateTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
-                _clockUpdateTimer.Tick += OnClockUpdate;
-                _clockUpdateTimer.Start();
+                // 時計更新タイマーの初期化
+                StartClockUpdateTimerAsync();
 
                 IsFitMode = false;
                 ToggleButtonText = "フィット表示に切り替え";
@@ -142,7 +142,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             catch (Exception ex)
             {
                 CustomMessage.Show(ex.ToString(), "エラー");
-                throw ex;
+                throw;
             }
         }
 
@@ -168,19 +168,37 @@ namespace TatehamaInterlockingConsole.ViewModels
         }
 
         /// <summary>
+        /// 非同期タイマーを開始するメソッド
+        /// </summary>
+        private async void StartClockUpdateTimerAsync()
+        {
+            while (true)
+            {
+                await Task.Delay(1000);
+                OnClockUpdate();
+            }
+        }
+
+        /// <summary>
         /// 時計更新処理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnClockUpdate(object sender, EventArgs e)
+        private void OnClockUpdate()
         {
-            // 時計UI要素の更新処理
-            foreach (var element in StationElements)
+            if (Application.Current?.Dispatcher != null)
             {
-                if (element is Canvas clockCanvas)
+                Application.Current.Dispatcher.Invoke(() =>
                 {
-                    ClockImageFactory.UpdateClockHands(clockCanvas);
-                }
+                    // 時計UI要素の更新処理
+                    foreach (var element in StationElements)
+                    {
+                        if (element is Canvas clockCanvas)
+                        {
+                            ClockImageFactory.UpdateClockHands(clockCanvas);
+                        }
+                    }
+                });
             }
         }
 
@@ -198,7 +216,6 @@ namespace TatehamaInterlockingConsole.ViewModels
 
             // イベント解除
             _dataUpdateViewModel.NotifyUpdateControlEvent -= OnNotifyUpdateControlEvent;
-            _clockUpdateTimer.Tick -= OnClockUpdate;
 
             // 駅名をリストから削除
             _dataManager.RemoveActiveStation(_stationNumber);

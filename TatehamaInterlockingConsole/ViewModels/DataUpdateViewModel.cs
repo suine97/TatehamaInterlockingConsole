@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
@@ -44,12 +45,15 @@ namespace TatehamaInterlockingConsole.ViewModels
             // 接近警報更新処理
             UpdateApproachingAlarm(dataFromServer);
 
-            // 方向てこ警報更新処理
-            UpdateDirectionAlarm(dataFromServer);
-
             // 変更通知イベント発火
-            var handler = NotifyUpdateControlEvent;
-            handler?.Invoke(updateList);
+            if (Application.Current?.Dispatcher != null)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    var handler = NotifyUpdateControlEvent;
+                    handler?.Invoke(updateList);
+                });
+            }
         }
 
         /// <summary>
@@ -195,7 +199,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                                         .FirstOrDefault(d => d.Name == direction.Name);
 
                                     // 方向てこ状態が変化してから2秒以内なら赤点灯
-                                    if ((DateTime.Now - directionState.UpdateTime).TotalSeconds < 2.0d)
+                                    if ((DateTime.Now - directionState.UpdateTime).TotalMilliseconds < 2000d)
                                         item.ImageIndex = 2;
                                     // それ以外
                                     else if (direction.State == item.DirectionValue)
@@ -281,8 +285,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                             if (physicalButton != null)
                             {
                                 // 着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作が100ms以内の場合に音声再生
-                                if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex)
-                                    && (DateTime.Now - physicalButton.OperatedAt).Milliseconds < 100)
+                                if ((physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                                    && (DateTime.Now - physicalButton.OperatedAt).TotalMilliseconds < 100d)
                                 {
                                     // 音声再生
                                     if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))
@@ -325,7 +329,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             catch (Exception ex)
             {
                 CustomMessage.Show(ex.ToString(), "エラー");
-                throw ex;
+                throw;
             }
         }
 
@@ -425,23 +429,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             catch (Exception ex)
             {
                 CustomMessage.Show(ex.ToString(), "エラー");
-                throw ex;
-            }
-        }
-
-        /// <summary>
-        /// 方向てこ警報更新
-        /// </summary>
-        public void UpdateDirectionAlarm(DatabaseOperational.DataFromServer dataFromServer)
-        {
-            try
-            {
-                var conditionsDirection = new DatabaseOperational.DirectionData();
-            }
-            catch (Exception ex)
-            {
-                CustomMessage.Show(ex.ToString(), "エラー");
-                throw ex;
+                throw;
             }
         }
 
@@ -458,19 +446,26 @@ namespace TatehamaInterlockingConsole.ViewModels
                 int index = allSettingList.FindIndex(list => list.StationName == setting.StationName && list.UniqueName == setting.UniqueName);
                 if (index >= 0)
                 {
-                    // コントロール画像更新
-                    allSettingList[index].ImageIndex = setting.ImageIndex;
-                    allSettingList[index].Retsuban = setting.Retsuban;
+                    // UIスレッドとして実行
+                    if (Application.Current?.Dispatcher != null)
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            // コントロール画像更新
+                            allSettingList[index].ImageIndex = setting.ImageIndex;
+                            allSettingList[index].Retsuban = setting.Retsuban;
 
-                    // 変更通知イベント発火
-                    var handler = NotifyUpdateControlEvent;
-                    handler?.Invoke(allSettingList);
+                            // 変更通知イベント発火
+                            var handler = NotifyUpdateControlEvent;
+                            handler?.Invoke(allSettingList);
+                        });
+                    }
                 }
             }
             catch (Exception ex)
             {
                 CustomMessage.Show(ex.ToString(), "エラー");
-                throw ex;
+                throw;
             }
         }
 

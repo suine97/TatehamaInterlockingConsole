@@ -107,41 +107,51 @@ namespace TatehamaInterlockingConsole.Services
             }
             return true;
         }
+        /// <summary>
+        /// UIElement差分比較メソッド
+        /// </summary>
+        /// <param name="element1"></param>
+        /// <param name="element2"></param>
+        /// <returns></returns>
         private static bool AreUIElementsEqual(UIElement element1, UIElement element2)
         {
             // カスタムロジックを使用してUIElementを比較
             if (element1 == null || element2 == null)
                 return element1 == element2;
 
-            if (element1 is Canvas canvas1 && element2 is Canvas canvas2)
+            bool result = false;
+
+            if (Application.Current?.Dispatcher != null)
             {
-                return canvas1.Children.Count == canvas2.Children.Count &&
-                       CompareCanvasChildren(canvas1.Children, canvas2.Children);
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    if (element1 is Canvas canvas1 && element2 is Canvas canvas2)
+                    {
+                        result = canvas1.Children.Count == canvas2.Children.Count &&
+                                 CompareCanvasChildren(canvas1.Children, canvas2.Children);
+                    }
+                    else if (element1 is Grid grid1 && element2 is Grid grid2)
+                    {
+                        result = grid1.Children.Count == grid2.Children.Count;
+                    }
+                    else if (element1 is TextBlock text1 && element2 is TextBlock text2)
+                    {
+                        result = text1.Text.ToString() == text2.Text.ToString();
+                    }
+                    else if (element1 is Image image1 && element2 is Image image2)
+                    {
+                        var source1 = image1.Source?.ToString();
+                        var source2 = image2.Source?.ToString();
+                        result = source1 == source2;
+                    }
+                    else if (element1 is Label label1 && element2 is Label label2)
+                    {
+                        result = label1.Content.ToString() == label2.Content.ToString();
+                    }
+                });
             }
 
-            if (element1 is Grid grid1 && element2 is Grid grid2)
-            {
-                return grid1.Children.Count == grid2.Children.Count;
-            }
-
-            if (element1 is TextBlock text1 && element2 is TextBlock text2)
-            {
-                return text1.Text.ToString() == text2.Text.ToString();
-            }
-
-            if (element1 is Image image1 && element2 is Image image2)
-            {
-                var source1 = image1.Source?.ToString();
-                var source2 = image2.Source?.ToString();
-                return source1 == source2;
-            }
-
-            if (element1 is Label label1 && element2 is Label label2)
-            {
-                return label1.Content.ToString() == label2.Content.ToString();
-            }
-
-            return false;
+            return result;
         }
         private static bool CompareCanvasChildren(UIElementCollection children1, UIElementCollection children2)
         {
