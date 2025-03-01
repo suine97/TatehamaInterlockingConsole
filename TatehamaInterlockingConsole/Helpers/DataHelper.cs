@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -196,7 +197,7 @@ namespace TatehamaInterlockingConsole.Helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"エラー: {ex.Message}");
+                Debug.WriteLine($"エラー: {ex.Message}");
                 throw;
             }
             return dictionary;
@@ -254,7 +255,7 @@ namespace TatehamaInterlockingConsole.Helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"エラー: {ex.Message}");
+                Debug.WriteLine($"エラー: {ex.Message}");
                 throw;
             }
             return list;

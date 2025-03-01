@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -138,12 +139,12 @@ namespace TatehamaInterlockingConsole.Models
                 try
                 {
                     await _connection.StartAsync();
-                    Console.WriteLine("Connected");
+                    Debug.WriteLine("Connected");
                     _dataManager.ServerConnected = true;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Connection Error!! {ex.Message}");
+                    Debug.WriteLine($"Connection Error!! {ex.Message}");
                     _dataManager.ServerConnected = false;
                 }
             }
@@ -152,14 +153,14 @@ namespace TatehamaInterlockingConsole.Models
             _connection.Reconnecting += exception =>
             {
                 _dataManager.ServerConnected = false;
-                Console.WriteLine("Reconnecting");
+                Debug.WriteLine("Reconnecting");
                 return Task.CompletedTask;
             };
 
             _connection.Reconnected += exeption =>
             {
                 _dataManager.ServerConnected = true;
-                Console.WriteLine("Connected");
+                Debug.WriteLine("Connected");
                 return Task.CompletedTask;
             };
             await Task.Delay(Timeout.Infinite);
@@ -218,17 +219,17 @@ namespace TatehamaInterlockingConsole.Models
                     }
                     else
                     {
-                        Console.WriteLine("Failed to deserialize JSON.");
+                        Debug.WriteLine("Failed to deserialize JSON.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error during JSON deserialization: {ex.Message}");
+                    Debug.WriteLine($"Error during JSON deserialization: {ex.Message}");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to send constant data to server: {ex.Message}");
+                Debug.WriteLine($"Failed to send constant data to server: {ex.Message}");
             }
         }
 
@@ -246,7 +247,7 @@ namespace TatehamaInterlockingConsole.Models
             }
             catch (Exception exception)
             {
-                Console.WriteLine($"Failed to send event data to server: {exception.Message}");
+                Debug.WriteLine($"Failed to send event data to server: {exception.Message}");
             }
         }
 
@@ -264,7 +265,7 @@ namespace TatehamaInterlockingConsole.Models
             }
             catch (Exception exception)
             {
-                Console.WriteLine($"Failed to send event data to server: {exception.Message}");
+                Debug.WriteLine($"Failed to send event data to server: {exception.Message}");
             }
         }
 
