@@ -24,7 +24,6 @@ namespace TatehamaInterlockingConsole.Models
         private readonly DataUpdateViewModel _dataUpdateViewModel;
         private static HubConnection _connection;
         private static bool _isUpdateLoopRunning = false;
-        private const string SendName = "SendData_Interlocking";
 
         /// <summary>
         /// サーバー接続状態変更イベント
@@ -176,7 +175,7 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>(SendName, constantDataToServer);
+                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", constantDataToServer);
                 try
                 {
                     // 受信したJSONデータをデシリアライズ
@@ -243,7 +242,7 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>(SendName, leverEventDataToServer);
+                var jsonMessage = await _connection.InvokeAsync<string>("SetPhysicalLeverData", leverEventDataToServer);
             }
             catch (Exception exception)
             {
@@ -261,7 +260,7 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>(SendName, buttonEventDataToServer);
+                var jsonMessage = await _connection.InvokeAsync<string>("SetDestinationButtonState", buttonEventDataToServer);
             }
             catch (Exception exception)
             {
