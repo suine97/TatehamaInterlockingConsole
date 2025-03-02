@@ -129,7 +129,7 @@ namespace TatehamaInterlockingConsole.Models
         {
             // HubConnectionの作成
             _connection = new HubConnectionBuilder()
-                .WithUrl($"{ServerAddress.SignalAddress}/hub/train?access_token={_token}")
+                .WithUrl($"{ServerAddress.SignalAddress}/hub/interlocking?access_token={_token}")
                 .WithAutomaticReconnect() // 自動再接続
                 .Build();
 
