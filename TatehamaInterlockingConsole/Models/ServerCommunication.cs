@@ -176,12 +176,9 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>("SendData_Interlocking", constantDataToServer);
+                var data = await _connection.InvokeAsync<DatabaseOperational.DataFromServer>("SendData_Interlocking", constantDataToServer);
                 try
                 {
-                    // 受信したJSONデータをデシリアライズ
-                    var data = JsonConvert.DeserializeObject<DatabaseOperational.DataFromServer>(jsonMessage);
-
                     if (data != null)
                     {
                         // 運用クラスに代入
@@ -243,7 +240,7 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>("SetPhysicalLeverData", leverEventDataToServer);
+                await _connection.InvokeAsync<string>("SetPhysicalLeverData", leverEventDataToServer);
             }
             catch (Exception exception)
             {
@@ -261,7 +258,7 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var jsonMessage = await _connection.InvokeAsync<string>("SetDestinationButtonState", buttonEventDataToServer);
+                await _connection.InvokeAsync("SetDestinationButtonState", buttonEventDataToServer);
             }
             catch (Exception exception)
             {
