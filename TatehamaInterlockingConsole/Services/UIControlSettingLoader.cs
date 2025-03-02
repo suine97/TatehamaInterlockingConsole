@@ -90,6 +90,7 @@ namespace TatehamaInterlockingConsole.Services
                         ImagePaths = CreateImagePaths(columns[(int)EnumData.ColumnIndex.ImagePattern], columns[(int)EnumData.ColumnIndex.ImagePath]),
                         KeyInserted = false,
                         Retsuban = string.Empty,
+                        IsHandling = false,
                         Remark = columns[(int)EnumData.ColumnIndex.Remark],
                     });
                 }

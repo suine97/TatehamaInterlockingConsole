@@ -252,8 +252,19 @@ namespace TatehamaInterlockingConsole.ViewModels
                         case "物理てこ":
                             if (physicalLever != null)
                             {
-                                // 物理てこの状態がUIと異なる場合に更新
-                                if (physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex))
+                                // てこが操作中で、物理てこの状態がUIと同じ場合に更新
+                                if (item.IsHandling && (physicalLever.State == EnumData.ConvertToLCR(item.ImageIndex)))
+                                {
+                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
+
+                                    // 操作判定を解除
+                                    item.IsHandling = false;
+
+                                    // 音声再生
+                                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                                }
+                                // てこが操作中ではなく、物理てこの状態がUIと異なる場合に更新
+                                else if (!item.IsHandling && (physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex)))
                                 {
                                     item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
 
@@ -265,8 +276,25 @@ namespace TatehamaInterlockingConsole.ViewModels
                         case "物理鍵てこ":
                             if (physicalKeyLever != null)
                             {
-                                // 物理鍵てこの状態がUIと異なる場合に更新
-                                if (physicalKeyLever.State != EnumData.ConvertToLCR(item.ImageIndex))
+                                // てこが操作中で、物理てこの状態がUIと同じ場合に更新
+                                if (item.IsHandling && (physicalKeyLever.State == EnumData.ConvertToLCR(item.ImageIndex)))
+                                {
+                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
+
+                                    //
+                                    //
+                                    // Todo: 鍵音声処理追加
+                                    //
+                                    //
+
+                                    // 操作判定を解除
+                                    item.IsHandling = false;
+
+                                    // 音声再生
+                                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                                }
+                                // てこが操作中ではなく、物理鍵てこの状態がUIと異なる場合に更新
+                                else if (!item.IsHandling && (physicalKeyLever.State != EnumData.ConvertToLCR(item.ImageIndex)))
                                 {
                                     item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
 
