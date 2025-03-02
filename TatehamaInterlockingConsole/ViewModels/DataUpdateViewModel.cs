@@ -547,7 +547,8 @@ namespace TatehamaInterlockingConsole.ViewModels
             if (retsuban == null) return true;
 
             // 列車番号条件を抽出
-            bool isEven = alarm.ConditionsList.FirstOrDefault(p => p.Name.Contains("列番")).Name.Contains("偶数");
+            var condition = alarm.ConditionsList.FirstOrDefault(p => p.Name.Contains("列番"));
+            bool isEven = condition != null && condition.Name.Contains("偶数");
 
             // 列車番号が未設定、または[9999]の場合は条件を満たさない
             if (string.IsNullOrEmpty(retsuban.Last) || retsuban.Last.Contains("9999"))
