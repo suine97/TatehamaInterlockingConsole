@@ -206,7 +206,7 @@ namespace TatehamaInterlockingConsole.Models
         /// <returns></returns>
         public static RaiseDrop ConvertToRaiseDrop(int value)
         {
-            if (value == 0)
+            if (value == 1)
                 return RaiseDrop.Raise;
             else
                 return RaiseDrop.Drop;
@@ -221,9 +221,9 @@ namespace TatehamaInterlockingConsole.Models
             switch (raiseDrop)
             {
                 case RaiseDrop.Raise:
-                    return 0;
-                case RaiseDrop.Drop:
                     return 1;
+                case RaiseDrop.Drop:
+                    return 0;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(raiseDrop), raiseDrop, null);
             }
