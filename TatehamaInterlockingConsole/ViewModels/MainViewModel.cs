@@ -199,6 +199,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             }
 
             // リソース解放処理
+            _dataManager.ServerConnected = false;
             MainElements.Clear();
             _timeService.Stop();
             ImageCacheManager.ClearCache();

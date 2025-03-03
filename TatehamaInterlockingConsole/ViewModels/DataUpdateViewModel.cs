@@ -35,6 +35,42 @@ namespace TatehamaInterlockingConsole.ViewModels
         }
 
         /// <summary>
+        /// 指定したUIControlSettingをコントロールに反映
+        /// </summary>
+        /// <param name="setting"></param>
+        public void SetControlsetting(UIControlSetting setting)
+        {
+            try
+            {
+                var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
+
+                int index = allSettingList.FindIndex(list => list.StationName == setting.StationName && list.UniqueName == setting.UniqueName);
+                if (index >= 0)
+                {
+                    // UIスレッドとして実行
+                    if (Application.Current?.Dispatcher != null)
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            // コントロール画像更新
+                            allSettingList[index].ImageIndex = setting.ImageIndex;
+                            allSettingList[index].Retsuban = setting.Retsuban;
+
+                            // 変更通知イベント発火
+                            var handler = NotifyUpdateControlEvent;
+                            handler?.Invoke(allSettingList);
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessage.Show(ex.ToString(), "エラー");
+                throw;
+            }
+        }
+
+        /// <summary>
         /// サーバー受信毎にコントロール更新
         /// </summary>
         public void UpdateControl(DatabaseOperational.DataFromServer dataFromServer)
@@ -62,54 +98,47 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <returns></returns>
         private List<UIControlSetting> UpdateControlsetting(DatabaseOperational.DataFromServer dataFromServer)
         {
+            // データ取得
             var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
-            var trackCircuit = new DatabaseOperational.TrackCircuitData();
-            var pointA = new DatabaseOperational.SwitchData();
-            var pointB = new DatabaseOperational.SwitchData();
-            var direction = new DatabaseOperational.DirectionData();
-            var signal = new DatabaseOperational.SignalData();
-            var physicalLever = new DatabaseOperational.LeverData();
-            var physicalKeyLever = new DatabaseOperational.LeverData();
-            var physicalButton = new DatabaseOperational.DestinationButtonData { Name = string.Empty };
-            var retsuban = new DatabaseOperational.RetsubanData();
-            var lamp = new Dictionary<string, bool>();
+            var activeStationsList = _dataManager.ActiveStationsList;
+            var activeStationSettingList = allSettingList.Where(setting => activeStationsList.Contains(setting.StationNumber)).ToList();
             var directionStateList = _dataManager.DirectionStateList;
+
+            // 音声再生用の乱数生成
+            string randomKeyInsertSoundIndex = _random.Next(1, 6).ToString("00");
+            string randomKeyChainSoundIndex = _random.Next(1, 10).ToString("00");
+            string randomKeyRemoveSoundIndex = _random.Next(1, 6).ToString("00");
+            string randomKeyRejectSoundIndex = _random.Next(1, 4).ToString("00");
+            string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
+            string randomPushSoundIndex = _random.Next(1, 13).ToString("00");
+            string randomPullSoundIndex = _random.Next(1, 13).ToString("00");
 
             try
             {
-                // 全コントロール設定データ更新
-                foreach (var item in allSettingList)
+                // 起動している駅ウィンドウのコントロール設定データ更新
+                foreach (var item in activeStationSettingList)
                 {
                     // コントロールと一致するサーバー情報のみ抽出
-                    trackCircuit = dataFromServer.TrackCircuits
+                    var trackCircuit = dataFromServer.TrackCircuits
                         .FirstOrDefault(t => t.Name == item.ServerName);
-                    pointA = dataFromServer.Points
+                    var pointA = dataFromServer.Points
                         .FirstOrDefault(p => p.Name == item.PointNameA);
-                    pointB = dataFromServer.Points
+                    var pointB = dataFromServer.Points
                         .FirstOrDefault(p => p.Name == item.PointNameB);
-                    direction = dataFromServer.Directions
+                    var direction = dataFromServer.Directions
                         .FirstOrDefault(l => l.Name == item.DirectionName);
-                    signal = dataFromServer.Signals
+                    var signal = dataFromServer.Signals
                         .FirstOrDefault(s => s.Name == item.ServerName);
-                    physicalLever = dataFromServer.PhysicalLevers
+                    var physicalLever = dataFromServer.PhysicalLevers
                         .FirstOrDefault(l => l.Name == item.ServerName);
-                    physicalKeyLever = dataFromServer.PhysicalLevers
+                    var physicalKeyLever = dataFromServer.PhysicalLevers
                        .FirstOrDefault(l => l.Name == item.ServerName);
-                    physicalButton = dataFromServer.PhysicalButtons
+                    var physicalButton = dataFromServer.PhysicalButtons
                         .FirstOrDefault(b => b.Name == item.ServerName);
-                    retsuban = dataFromServer.Retsubans
+                    var retsuban = dataFromServer.Retsubans
                         .FirstOrDefault(r => r.Name == item.ServerName);
-                    lamp = dataFromServer.Lamps
+                    var lamp = dataFromServer.Lamps
                         .FirstOrDefault(l => l.ContainsKey(item.ServerName));
-
-                    // 音声再生用の乱数生成
-                    string randomKeyInsertSoundIndex = _random.Next(1, 6).ToString("00");
-                    string randomKeyChainSoundIndex = _random.Next(1, 10).ToString("00");
-                    string randomKeyRemoveSoundIndex = _random.Next(1, 6).ToString("00");
-                    string randomKeyRejectSoundIndex = _random.Next(1, 4).ToString("00");
-                    string randomSwitchSoundIndex = _random.Next(1, 9).ToString("00");
-                    string randomPushSoundIndex = _random.Next(1, 13).ToString("00");
-                    string randomPullSoundIndex = _random.Next(1, 13).ToString("00");
 
                     // サーバー分類毎に処理
                     switch (item.ServerType)
@@ -118,238 +147,61 @@ namespace TatehamaInterlockingConsole.ViewModels
                             if (signal != null)
                             {
                                 // 進行信号
-                                if (signal.Phase != EnumData.Phase.R)
-                                    item.ImageIndex = 1;
-                                else
-                                    item.ImageIndex = 0;
+                                item.ImageIndex = signal.Phase != EnumData.Phase.R ? 1 : 0;
                             }
                             break;
                         case "転てつ器表示灯":
-                            // A, B転てつ器条件が存在する場合
-                            if (pointA != null && pointB != null)
-                            {
-                                // 転てつ器状態
-                                if ((pointA.State == item.PointValueA) && (pointB.State == item.PointValueB))
-                                    item.ImageIndex = 1;
-                                else
-                                    item.ImageIndex = 0;
-                            }
-                            // B転てつ器条件のみ存在する場合
-                            else if (pointB != null)
-                            {
-                                if (pointB.State == item.PointValueB)
-                                    item.ImageIndex = 1;
-                                else
-                                    item.ImageIndex = 0;
-                            }
-                            // A転てつ器条件のみ存在する場合
-                            else if (pointA != null)
-                            {
-                                if (pointA.State == item.PointValueA)
-                                    item.ImageIndex = 1;
-                                else
-                                    item.ImageIndex = 0;
-                            }
+                            UpdatePointIndicator(item, pointA, pointB);
                             break;
                         case "軌道回路表示灯":
-                            if (trackCircuit != null)
-                            {
-                                // A, B転てつ器条件が存在する場合
-                                if (pointA != null && pointB != null)
-                                {
-                                    // 転てつ器状態
-                                    if ((pointA.State == item.PointValueA) && (pointB.State == item.PointValueB))
-                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
-                                    else
-                                        item.ImageIndex = 0;
-                                }
-                                // B転てつ器条件のみ存在する場合
-                                else if (pointB != null)
-                                {
-                                    if (pointB.State == item.PointValueB)
-                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
-                                    else
-                                        item.ImageIndex = 0;
-                                }
-                                // A転てつ器条件のみ存在する場合
-                                else if (pointA != null)
-                                {
-                                    if (pointA.State == item.PointValueA)
-                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
-                                    else
-                                        item.ImageIndex = 0;
-                                }
-                                // 転てつ器条件なし
-                                else
-                                {
-                                    if (trackCircuit.On)
-                                        item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
-                                    else
-                                        item.ImageIndex = 0;
-                                }
-                            }
+                            UpdateTrackCircuitIndicator(item, trackCircuit, pointA, pointB);
                             break;
                         case "方向てこ表示灯":
-                            if (trackCircuit != null)
-                            {
-                                // 方向てこ条件あり
-                                if (direction != null)
-                                {
-                                    var directionState = directionStateList
-                                        .FirstOrDefault(d => d.Name == direction.Name);
-
-                                    // 方向てこ状態が変化してから2秒以内なら赤点灯
-                                    if ((DateTime.Now - directionState.UpdateTime).TotalMilliseconds < 2000d)
-                                        item.ImageIndex = 2;
-                                    // それ以外
-                                    else if (direction.State == item.DirectionValue)
-                                        item.ImageIndex = trackCircuit.On ? 2 : 1;
-                                    else
-                                        item.ImageIndex = 0;
-                                }
-                                // 方向てこ条件なし
-                                else
-                                {
-                                    if (trackCircuit.On)
-                                        item.ImageIndex = trackCircuit.On ? 2 : 1;
-                                    else
-                                        item.ImageIndex = 1;
-                                }
-                            }
+                            UpdateDirectionIndicator(item, trackCircuit, direction, directionStateList);
                             break;
                         case "状態表示灯":
-                            if (lamp != null)
+                            if (lamp != null && lamp.TryGetValue(item.ServerName, out bool lampValue))
                             {
-                                // 点灯
-                                if (lamp.TryGetValue(item.ServerName, out bool lampValue))
-                                    item.ImageIndex = 1;
-                                else
-                                    item.ImageIndex = 0;
+                                item.ImageIndex = 1;
+                            }
+                            else
+                            {
+                                item.ImageIndex = 0;
                             }
                             break;
                         case "駅扱切換表示灯":
-                            if (physicalLever != null)
-                            {
-                                // ランプ"PY"
-                                if (item.UniqueName.Contains("PY") && (physicalLever.State == EnumData.LCR.Left))
-                                    item.ImageIndex = 1;
-                                // ランプ"PG"
-                                else if (item.UniqueName.Contains("PG") && (physicalLever.State == EnumData.LCR.Right))
-                                    item.ImageIndex = 1;
-                                else
-                                    item.ImageIndex = 0;
-                            }
+                            UpdateStationSwitchIndicator(item, physicalLever);
                             break;
                         case "解放表示灯":
                             if (physicalLever != null)
                             {
-                                if (physicalLever.State == EnumData.LCR.Right)
-                                    item.ImageIndex = 1;
-                                else
-                                    item.ImageIndex = 0;
+                                item.ImageIndex = physicalLever.State == EnumData.LCR.Right ? 1 : 0;
                             }
                             break;
                         case "物理てこ":
-                            if (physicalLever != null)
-                            {
-                                // てこが操作中で、物理てこの状態がUIと同じ場合に更新
-                                if (item.IsHandling && (physicalLever.State == EnumData.ConvertToLCR(item.ImageIndex)))
-                                {
-                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
-
-                                    // 操作判定を解除
-                                    item.IsHandling = false;
-
-                                    // 音声再生
-                                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
-                                }
-                                // てこが操作中ではなく、物理てこの状態がUIと異なる場合に更新
-                                else if (!item.IsHandling && (physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex)))
-                                {
-                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
-
-                                    // 音声再生
-                                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
-                                }
-                            }
+                            UpdatePhysicalLever(item, physicalLever, randomSwitchSoundIndex);
                             break;
                         case "物理鍵てこ":
-                            if (physicalKeyLever != null)
-                            {
-                                // てこが操作中で、物理てこの状態がUIと同じ場合に更新
-                                if (item.IsHandling && (physicalKeyLever.State == EnumData.ConvertToLCR(item.ImageIndex)))
-                                {
-                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
-
-                                    //
-                                    //
-                                    // Todo: 鍵音声処理追加
-                                    //
-                                    //
-
-                                    // 操作判定を解除
-                                    item.IsHandling = false;
-
-                                    // 音声再生
-                                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
-                                }
-                                // てこが操作中ではなく、物理鍵てこの状態がUIと異なる場合に更新
-                                else if (!item.IsHandling && (physicalKeyLever.State != EnumData.ConvertToLCR(item.ImageIndex)))
-                                {
-                                    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
-
-                                    //
-                                    //
-                                    // Todo: 鍵音声処理追加
-                                    //
-                                    //
-
-                                    // 音声再生
-                                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
-                                }
-                            }
+                            UpdatePhysicalKeyLever(item, physicalKeyLever, randomSwitchSoundIndex);
                             break;
                         case "着点ボタン":
-                            if (physicalButton != null)
-                            {
-                                // 着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作が100ms以内の場合に音声再生
-                                if ((physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex))
-                                    && (DateTime.Now - physicalButton.OperatedAt).TotalMilliseconds < 100d)
-                                {
-                                    // 音声再生
-                                    if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))
-                                        _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
-                                    else
-                                        _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
-                                }
-                                // 着点ボタンの状態がUIと異なる場合に更新
-                                else if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
-                                {
-                                    item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalButton.IsRaised);
-
-                                    // 音声再生
-                                    if (item.ImageIndex == 1)
-                                        _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
-                                    else
-                                        _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
-                                }
-                            }
+                            UpdateDestinationButton(item, physicalButton, randomPushSoundIndex, randomPullSoundIndex);
                             break;
                         case "列車番号":
-                            if (retsuban != null)
-                            {
-                                // 列車番号
-                                item.Retsuban = retsuban.Retsuban;
-                                SetControlsetting(item);
-                            }
-                            else
-                            {
-                                item.Retsuban = string.Empty;
-                                SetControlsetting(item);
-                            }
+                            UpdateRetsuban(item, retsuban);
                             break;
                         default:
                             break;
+                    }
+                }
+
+                // 起動している駅ウィンドウのデータを全コントロール設定データに反映
+                foreach (var activeSetting in activeStationSettingList)
+                {
+                    var index = allSettingList.FindIndex(setting => setting.StationNumber == activeSetting.StationNumber && setting.UniqueName == activeSetting.UniqueName);
+                    if (index >= 0)
+                    {
+                        allSettingList[index] = activeSetting;
                     }
                 }
                 return allSettingList;
@@ -462,39 +314,213 @@ namespace TatehamaInterlockingConsole.ViewModels
         }
 
         /// <summary>
-        /// 指定したUIControlSettingをコントロールに反映
+        /// 転てつ器表示灯の更新処理
         /// </summary>
-        /// <param name="setting"></param>
-        public void SetControlsetting(UIControlSetting setting)
+        /// <param name="item"></param>
+        /// <param name="pointA"></param>
+        /// <param name="pointB"></param>
+        private void UpdatePointIndicator(UIControlSetting item, DatabaseOperational.SwitchData pointA, DatabaseOperational.SwitchData pointB)
         {
-            try
+            // A, B転てつ器条件が存在する場合
+            if (pointA != null && pointB != null)
+                item.ImageIndex = (pointA.State == item.PointValueA && pointB.State == item.PointValueB) ? 1 : 0;
+            // B転てつ器条件のみ存在する場合
+            else if (pointB != null)
+                item.ImageIndex = (pointB.State == item.PointValueB) ? 1 : 0;
+            // A転てつ器条件のみ存在する場合
+            else if (pointA != null)
+                item.ImageIndex = (pointA.State == item.PointValueA) ? 1 : 0;
+        }
+
+        /// <summary>
+        /// 軌道回路表示灯の更新処理
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="trackCircuit"></param>
+        /// <param name="pointA"></param>
+        /// <param name="pointB"></param>
+        private void UpdateTrackCircuitIndicator(UIControlSetting item, DatabaseOperational.TrackCircuitData trackCircuit, DatabaseOperational.SwitchData pointA, DatabaseOperational.SwitchData pointB)
+        {
+            if (trackCircuit != null)
             {
-                var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
+                // A, B転てつ器条件が存在する場合
+                if (pointA != null && pointB != null)
+                    item.ImageIndex = (pointA.State == item.PointValueA && pointB.State == item.PointValueB) ? (trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0) : 0;
+                // B転てつ器条件のみ存在する場合
+                else if (pointB != null)
+                    item.ImageIndex = (pointB.State == item.PointValueB) ? (trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0) : 0;
+                // A転てつ器条件のみ存在する場合
+                else if (pointA != null)
+                    item.ImageIndex = (pointA.State == item.PointValueA) ? (trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0) : 0;
+                // 転てつ器条件なし
+                else
+                    item.ImageIndex = trackCircuit.On ? (trackCircuit.Lock ? 1 : 2) : 0;
+            }
+        }
 
-                int index = allSettingList.FindIndex(list => list.StationName == setting.StationName && list.UniqueName == setting.UniqueName);
-                if (index >= 0)
+        /// <summary>
+        /// 方向てこ表示灯の更新処理
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="trackCircuit"></param>
+        /// <param name="direction"></param>
+        /// <param name="directionStateList"></param>
+        private void UpdateDirectionIndicator(UIControlSetting item, DatabaseOperational.TrackCircuitData trackCircuit, DatabaseOperational.DirectionData direction, List<DirectionStateList> directionStateList)
+        {
+            if (trackCircuit != null)
+            {
+                // 方向てこ条件あり
+                if (direction != null)
                 {
-                    // UIスレッドとして実行
-                    if (Application.Current?.Dispatcher != null)
-                    {
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
-                            // コントロール画像更新
-                            allSettingList[index].ImageIndex = setting.ImageIndex;
-                            allSettingList[index].Retsuban = setting.Retsuban;
+                    var directionState = directionStateList.FirstOrDefault(d => d.Name == direction.Name);
 
-                            // 変更通知イベント発火
-                            var handler = NotifyUpdateControlEvent;
-                            handler?.Invoke(allSettingList);
-                        });
-                    }
+                    // 方向てこ状態が変化してから2秒以内なら赤点灯
+                    if ((DateTime.Now - directionState.UpdateTime).TotalMilliseconds < 2000d)
+                        item.ImageIndex = 2;
+                    // それ以外
+                    else if (direction.State == item.DirectionValue)
+                        item.ImageIndex = trackCircuit.On ? 2 : 1;
+                    else
+                        item.ImageIndex = 0;
+                }
+                // 方向てこ条件なし
+                else
+                {
+                    item.ImageIndex = trackCircuit.On ? 2 : 1;
                 }
             }
-            catch (Exception ex)
+        }
+
+        /// <summary>
+        /// 駅扱切換表示灯の更新処理
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="physicalLever"></param>
+        private void UpdateStationSwitchIndicator(UIControlSetting item, DatabaseOperational.LeverData physicalLever)
+        {
+            if (physicalLever != null)
             {
-                CustomMessage.Show(ex.ToString(), "エラー");
-                throw;
+                // ランプ"PY"
+                if (item.UniqueName.Contains("PY") && physicalLever.State == EnumData.LCR.Left)
+                    item.ImageIndex = 1;
+                // ランプ"PG"
+                else if (item.UniqueName.Contains("PG") && physicalLever.State == EnumData.LCR.Right)
+                    item.ImageIndex = 1;
+                else
+                    item.ImageIndex = 0;
             }
+        }
+
+        /// <summary>
+        /// 物理てこの更新処理
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="physicalLever"></param>
+        /// <param name="randomSwitchSoundIndex"></param>
+        private void UpdatePhysicalLever(UIControlSetting item, DatabaseOperational.LeverData physicalLever, string randomSwitchSoundIndex)
+        {
+            if (physicalLever != null)
+            {
+                // てこが操作中で、物理てこの状態がUIと同じ場合に更新
+                if (item.IsHandling && physicalLever.State == EnumData.ConvertToLCR(item.ImageIndex))
+                {
+                    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
+
+                    // 操作判定を解除
+                    item.IsHandling = false;
+                    // 音声再生
+                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                }
+                // てこが操作中ではなく、物理てこの状態がUIと異なる場合に更新
+                else if (!item.IsHandling && physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex))
+                {
+                    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
+
+                    // 音声再生
+                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 物理鍵てこの更新処理
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="physicalKeyLever"></param>
+        /// <param name="randomSwitchSoundIndex"></param>
+        private void UpdatePhysicalKeyLever(UIControlSetting item, DatabaseOperational.LeverData physicalKeyLever, string randomSwitchSoundIndex)
+        {
+            if (physicalKeyLever != null)
+            {
+                // 鍵てこが操作中で、物理鍵てこの状態がUIと同じ場合に更新
+                if (item.IsHandling && physicalKeyLever.State == EnumData.ConvertToLCR(item.ImageIndex))
+                {
+                    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
+
+                    // 操作判定を解除
+                    item.IsHandling = false;
+                    // 音声再生
+                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                }
+                // 鍵てこが操作中ではなく、物理鍵てこの状態がUIと異なる場合に更新
+                else if (!item.IsHandling && physicalKeyLever.State != EnumData.ConvertToLCR(item.ImageIndex))
+                {
+                    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
+
+                    // 音声再生
+                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 着点ボタンの更新処理
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="physicalButton"></param>
+        /// <param name="randomPushSoundIndex"></param>
+        /// <param name="randomPullSoundIndex"></param>
+        private void UpdateDestinationButton(UIControlSetting item, DatabaseOperational.DestinationButtonData physicalButton, string randomPushSoundIndex, string randomPullSoundIndex)
+        {
+            if (physicalButton != null)
+            {
+                // 着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作が100ms以内の場合に音声再生
+                if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex)
+                    && (DateTime.Now - physicalButton.OperatedAt).TotalMilliseconds < 100d)
+                {
+                    // 音声再生
+                    if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))
+                        _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
+                    else
+                        _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
+                }
+                // 着点ボタンの状態がUIと異なる場合に更新
+                else if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                {
+                    item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalButton.IsRaised);
+
+                    // 音声再生
+                    if (item.ImageIndex == 1)
+                        _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
+                    else
+                        _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 列車番号の更新処理
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="retsuban"></param>
+        private void UpdateRetsuban(UIControlSetting item, DatabaseOperational.RetsubanData retsuban)
+        {
+            if (retsuban != null)
+                item.Retsuban = retsuban.Retsuban;
+            else
+                item.Retsuban = string.Empty;
+
+            SetControlsetting(item);
         }
 
         /// <summary>
@@ -503,7 +529,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="track"></param>
         /// <param name="alarm"></param>
         /// <returns></returns>
-        public bool IsTrackCircuitConditionMet(DatabaseOperational.TrackCircuitData track, ApproachingAlarmSetting alarm)
+        private bool IsTrackCircuitConditionMet(DatabaseOperational.TrackCircuitData track, ApproachingAlarmSetting alarm)
         {
             // 軌道回路条件が存在しない場合は条件を満たす
             if (track == null) return true;
@@ -518,13 +544,14 @@ namespace TatehamaInterlockingConsole.ViewModels
             else
                 return false;
         }
+
         /// <summary>
         /// 接近警報鳴動条件判定(転てつ器)
         /// </summary>
         /// <param name="point"></param>
         /// <param name="alarm"></param>
         /// <returns></returns>
-        public bool IsPointConditionMet(DatabaseOperational.SwitchData point, ApproachingAlarmSetting alarm)
+        private bool IsPointConditionMet(DatabaseOperational.SwitchData point, ApproachingAlarmSetting alarm)
         {
             // 転てつ器条件が存在しない場合は条件を満たす
             if (point == null) return true;
@@ -542,13 +569,14 @@ namespace TatehamaInterlockingConsole.ViewModels
             else
                 return false;
         }
+
         /// <summary>
         /// 接近警報鳴動条件判定(信号機)
         /// </summary>
         /// <param name="signal"></param>
         /// <param name="alarm"></param>
         /// <returns></returns>
-        public bool IsSignalConditionMet(DatabaseOperational.SignalData signal, ApproachingAlarmSetting alarm)
+        private bool IsSignalConditionMet(DatabaseOperational.SignalData signal, ApproachingAlarmSetting alarm)
         {
             // 信号機条件が存在しない場合は条件を満たす
             if (signal == null) return true;
@@ -563,13 +591,14 @@ namespace TatehamaInterlockingConsole.ViewModels
             else
                 return false;
         }
+
         /// <summary>
         /// 接近警報鳴動条件判定(列車番号)
         /// </summary>
         /// <param name="retsuban"></param>
         /// <param name="alarm"></param>
         /// <returns></returns>
-        public bool IsRetsubanConditionMet(DatabaseOperational.TrackCircuitData retsuban, ApproachingAlarmSetting alarm)
+        private bool IsRetsubanConditionMet(DatabaseOperational.TrackCircuitData retsuban, ApproachingAlarmSetting alarm)
         {
             // 列車番号条件が存在しない場合は条件を満たす
             if (retsuban == null) return true;

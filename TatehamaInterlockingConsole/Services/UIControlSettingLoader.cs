@@ -52,12 +52,14 @@ namespace TatehamaInterlockingConsole.Services
 
                     // 駅名称抽出
                     var stationName = DataHelper.ExtractStationNameFromFilePath(filePath);
+                    var stationNumber = DataHelper.GetStationNumberFromStationName(stationName);
                     // ImagePattern生成
                     var imagePattern = columns[(int)EnumData.ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList();
 
                     settings.Add(new UIControlSetting
                     {
                         StationName = stationName,
+                        StationNumber = stationNumber,
                         ControlType = columns[(int)EnumData.ColumnIndex.ControlType] != string.Empty ? columns[(int)EnumData.ColumnIndex.ControlType] : string.Empty,
                         UniqueName = columns[(int)EnumData.ColumnIndex.UniqueName],
                         ParentName = columns[(int)EnumData.ColumnIndex.ParentName],

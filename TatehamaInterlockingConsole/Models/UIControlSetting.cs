@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace TatehamaInterlockingConsole.Models
 {
@@ -12,6 +11,10 @@ namespace TatehamaInterlockingConsole.Models
         /// 駅名称
         /// </summary>
         public string StationName { get; set; }
+        /// <summary>
+        /// 駅番号
+        /// </summary>
+        public string StationNumber { get; set; }
         /// <summary>
         /// コントロール種類
         /// </summary>
