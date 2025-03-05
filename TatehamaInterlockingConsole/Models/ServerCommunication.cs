@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.AspNetCore.SignalR.Client;
-using Newtonsoft.Json;
 using OpenIddict.Abstractions;
 using OpenIddict.Client;
 using TatehamaInterlockingConsole.Manager;
@@ -107,12 +106,12 @@ namespace TatehamaInterlockingConsole.Models
                 when (exception.Error is OpenIddictConstants.Errors.AccessDenied)
             {
                 // 認証拒否(サーバーに入ってないとか、ロールがついてないetc...)
-                CustomMessage.Show("認証が拒否されました。\n司令主任に連絡してください。", "認証拒否", MessageBoxButton.OK, MessageBoxImage.Error);
+                CustomMessage.Show("認証が拒否されました。\n司令主任に連絡してください。", "認証拒否", exception, MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch
+            catch (Exception exception)
             {
                 // その他別な理由で認証失敗
-                var result = CustomMessage.Show("認証に失敗しました。\n再認証しますか？", "認証失敗", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                var result = CustomMessage.Show("認証に失敗しました。\n再認証しますか？", "認証失敗", exception, MessageBoxButton.YesNo, MessageBoxImage.Error);
                 if (result == MessageBoxResult.Yes)
                 {
                     _ = AuthenticateAsync();
@@ -142,10 +141,20 @@ namespace TatehamaInterlockingConsole.Models
                     Debug.WriteLine("Connected");
                     _dataManager.ServerConnected = true;
                 }
-                catch (Exception ex)
+                catch (Exception exception)
                 {
-                    Debug.WriteLine($"Connection Error!! {ex.Message}");
+                    Debug.WriteLine($"Connection Error!! {exception.Message}");
                     _dataManager.ServerConnected = false;
+
+                    var result = CustomMessage.Show("接続に失敗しました。\n再接続しますか？", "接続失敗", exception, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
 
@@ -216,12 +225,12 @@ namespace TatehamaInterlockingConsole.Models
                     }
                     else
                     {
-                        Debug.WriteLine("Failed to deserialize JSON.");
+                        Debug.WriteLine("Failed to receive Data.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"Error during JSON deserialization: {ex.Message}");
+                    Debug.WriteLine($"Error server receiving: {ex.Message}");
                 }
             }
             catch (Exception ex)
