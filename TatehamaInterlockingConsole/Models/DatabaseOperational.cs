@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace TatehamaInterlockingConsole.Models
@@ -58,7 +57,6 @@ namespace TatehamaInterlockingConsole.Models
             /// <summary>
             /// 軌道回路情報リスト
             /// </summary>
-            [JsonProperty("trackCircuitList")]
             public List<TrackCircuitData> TrackCircuits { get; set; }
 
             /// <summary>
@@ -69,7 +67,6 @@ namespace TatehamaInterlockingConsole.Models
             /// <summary>
             /// 信号機情報リスト
             /// </summary>
-            [JsonProperty("signalDataList")]
             public List<SignalData> Signals { get; set; }
 
             /// <summary>
@@ -152,7 +149,6 @@ namespace TatehamaInterlockingConsole.Models
             /// <summary>
             /// 在線状態    
             /// </summary>
-            [JsonProperty("On")]
             public bool On { get; set; } = false;
             /// <summary>
             /// 鎖錠状態
@@ -161,12 +157,10 @@ namespace TatehamaInterlockingConsole.Models
             /// <summary>
             /// 軌道回路を踏んだ列車の名前
             /// </summary>
-            [JsonProperty("Last")]
             public string Last { get; set; } = null;
             /// <summary>
             /// 軌道回路名称
             /// </summary>
-            [JsonProperty("Name")]
             public string Name { get; set; } = "";
 
             public override string ToString()
@@ -198,12 +192,10 @@ namespace TatehamaInterlockingConsole.Models
             /// <summary>
             /// 信号機名称
             /// </summary>
-            [JsonProperty("Name")]
             public string Name { get; init; } = "";
             /// <summary>
             /// 信号機現示
             /// </summary>
-            [JsonProperty("phase")]
             public EnumData.Phase Phase { get; init; } = EnumData.Phase.None;
         }
 
