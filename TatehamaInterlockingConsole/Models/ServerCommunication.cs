@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +26,7 @@ namespace TatehamaInterlockingConsole.Models
         private readonly DataUpdateViewModel _dataUpdateViewModel;
         private static HubConnection _connection;
         private static bool _isUpdateLoopRunning = false;
+        private const string HubConnectionName = "interlocking";
 
         /// <summary>
         /// サーバー接続状態変更イベント
@@ -102,11 +105,19 @@ namespace TatehamaInterlockingConsole.Models
                 // サーバー接続初期化
                 await InitializeConnection();
             }
-            catch (OpenIddictExceptions.ProtocolException exception)
-                when (exception.Error is OpenIddictConstants.Errors.AccessDenied)
+            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Message == OpenIddictConstants.Errors.AccessDenied)
             {
-                // 認証拒否(サーバーに入ってないとか、ロールがついてないetc...)
+                // ログインしたユーザーがサーバーにいないか、入鋏ロールがついてない
                 CustomMessage.Show("認証が拒否されました。\n司令主任に連絡してください。", "認証拒否", exception, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Message == OpenIddictConstants.Errors.ServerError)
+            {
+                // サーバーでトラブル発生
+                var result = CustomMessage.Show("認証時にサーバーでエラーが発生しました。\\n再認証しますか？", "サーバーエラー", exception, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                if (result == MessageBoxResult.Yes)
+                {
+                    _ = AuthenticateAsync();
+                }
             }
             catch (Exception exception)
             {
@@ -128,7 +139,7 @@ namespace TatehamaInterlockingConsole.Models
         {
             // HubConnectionの作成
             _connection = new HubConnectionBuilder()
-                .WithUrl($"{ServerAddress.SignalAddress}/hub/interlocking?access_token={_token}")
+                .WithUrl($"{ServerAddress.SignalAddress}/hub/{HubConnectionName}?access_token={_token}")
                 .WithAutomaticReconnect() // 自動再接続
                 .Build();
 
@@ -140,6 +151,12 @@ namespace TatehamaInterlockingConsole.Models
                     await _connection.StartAsync();
                     Debug.WriteLine("Connected");
                     _dataManager.ServerConnected = true;
+                }
+                catch (HttpRequestException exception) when (exception.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    // 該当Hubにアクセスするためのロールが無い
+                    CustomMessage.Show("接続が拒否されました。\n付与されたロールを確認の上、司令主任に連絡してください。", "ロール不一致", exception, MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
                 catch (Exception exception)
                 {
