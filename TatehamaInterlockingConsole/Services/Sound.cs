@@ -6,8 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TatehamaInterlockingConsole.Manager;
-using TatehamaInterlockingConsole.Models;
-using TatehamaInterlockingConsole.ViewModels;
 
 namespace TatehamaInterlockingConsole.Services
 {

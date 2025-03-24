@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Timers;
 using TatehamaInterlockingConsole.Factories;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Helpers;

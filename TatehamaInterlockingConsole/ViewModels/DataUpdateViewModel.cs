@@ -6,7 +6,6 @@ using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
-using static TatehamaInterlockingConsole.Models.DatabaseOperational;
 
 namespace TatehamaInterlockingConsole.ViewModels
 {

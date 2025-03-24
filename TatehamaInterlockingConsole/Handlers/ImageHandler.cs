@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Net.WebSockets;
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
