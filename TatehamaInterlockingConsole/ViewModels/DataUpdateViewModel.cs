@@ -6,6 +6,7 @@ using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
 using TatehamaInterlockingConsole.Services;
+using static TatehamaInterlockingConsole.Models.DatabaseOperational;
 
 namespace TatehamaInterlockingConsole.ViewModels
 {
@@ -73,10 +74,11 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <summary>
         /// サーバー受信毎にコントロール更新
         /// </summary>
-        public void UpdateControl(DatabaseOperational.DataFromServer dataFromServer)
+        public void UpdateControl(DatabaseOperational.DataFromServer dataFromServer, DatabaseOperational.DataFromServer differences)
         {
+
             // コントロール更新処理
-            var updateList = UpdateControlsetting(dataFromServer);
+            var updateList = UpdateControlsetting(differences);
 
             // 接近警報更新処理
             UpdateApproachingAlarm(dataFromServer);
@@ -115,8 +117,19 @@ namespace TatehamaInterlockingConsole.ViewModels
 
             try
             {
-                // 起動している駅ウィンドウのコントロール設定データ更新
-                foreach (var item in activeStationSettingList)
+                // サーバーから受信したデータに基づいて更新
+                var relevantSettings = activeStationSettingList.Where(item =>
+                    dataFromServer.TrackCircuits.Any(t => t.Name == item.ServerName) ||
+                    dataFromServer.Points.Any(p => p.Name == item.PointNameA || p.Name == item.PointNameB) ||
+                    dataFromServer.Directions.Any(d => d.Name == item.DirectionName) ||
+                    dataFromServer.Signals.Any(s => s.Name == item.ServerName) ||
+                    dataFromServer.PhysicalLevers.Any(l => l.Name == item.ServerName) ||
+                    dataFromServer.PhysicalButtons.Any(b => b.Name == item.ServerName) ||
+                    dataFromServer.Retsubans.Any(r => r.Name == item.ServerName) ||
+                    dataFromServer.Lamps.Any(l => l.ContainsKey(item.ServerName))
+                ).ToList();
+
+                foreach (var item in relevantSettings)
                 {
                     // コントロールと一致するサーバー情報のみ抽出
                     var trackCircuit = dataFromServer.TrackCircuits

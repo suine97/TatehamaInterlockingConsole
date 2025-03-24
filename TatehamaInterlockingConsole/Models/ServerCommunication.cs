@@ -56,8 +56,7 @@ namespace TatehamaInterlockingConsole.Models
         {
             while (true)
             {
-                var timer = Task.Delay(100);
-                await timer;
+                var timer = Task.Delay(50);
 
                 // サーバー接続状態変更イベント発火
                 ConnectionStatusChanged?.Invoke(_dataManager.ServerConnected);
@@ -70,6 +69,7 @@ namespace TatehamaInterlockingConsole.Models
                         ActiveStationsList = _dataManager.ActiveStationsList
                     });
                 }
+                await timer;
             }
         }
 
@@ -79,6 +79,10 @@ namespace TatehamaInterlockingConsole.Models
         /// <returns></returns>
         public async Task AuthenticateAsync()
         {
+            // サーバー接続初期化
+            await InitializeConnection();
+            return;
+
             try
             {
                 using var source = new CancellationTokenSource(TimeSpan.FromSeconds(90));
@@ -190,28 +194,15 @@ namespace TatehamaInterlockingConsole.Models
                 {
                     if (data != null)
                     {
-                        // 運用クラスに代入
-                        if (_dataManager.DataFromServer == null)
+                        var differences = _dataManager.DataFromServer;
+                        if (_dataManager.DataFromServer != null)
                         {
-                            _dataManager.DataFromServer = data;
+                            // 差分データを取得
+                            differences = data.GetDifferences(_dataManager.DataFromServer);
                         }
-                        else
-                        {
-                            // 変更があれば更新
-                            foreach (var property in typeof(DatabaseOperational.DataFromServer).GetProperties())
-                            {
-                                var newValue = property.GetValue(data);
-                                var oldValue = property.GetValue(_dataManager.DataFromServer);
-                                if (newValue != null && !newValue.Equals(oldValue))
-                                {
-                                    property.SetValue(_dataManager.DataFromServer, newValue);
-                                }
-                            }
-                        }
-                        // 認証情報を保存
                         _dataManager.Authentication ??= _dataManager.DataFromServer.Authentications;
                         // 方向てこ情報を保存
-                        if (data.Directions != null && !data.Directions.SequenceEqual(_dataManager.DataFromServer.Directions))
+                        if (data.Directions != null && _dataManager.DataFromServer.Directions != null && !data.Directions.SequenceEqual(_dataManager.DataFromServer.Directions))
                         {
                             _dataManager.DirectionStateList = data.Directions.Select(d => new DirectionStateList
                             {
@@ -221,7 +212,10 @@ namespace TatehamaInterlockingConsole.Models
                             }).ToList();
                         }
                         // コントロール更新処理
-                        _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
+                        _dataUpdateViewModel.UpdateControl(data, differences);
+
+                        // 最新のデータを保存
+                        _dataManager.DataFromServer = data;
                     }
                     else
                     {
@@ -230,7 +224,7 @@ namespace TatehamaInterlockingConsole.Models
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"Error server receiving: {ex.Message}");
+                    Debug.WriteLine($"Error server receiving: {ex.Message}{ex.StackTrace}");
                 }
             }
             catch (Exception ex)
