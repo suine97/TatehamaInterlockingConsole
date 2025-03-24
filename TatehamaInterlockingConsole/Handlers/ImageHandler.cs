@@ -128,8 +128,8 @@ namespace TatehamaInterlockingConsole.Handlers
             // サーバーへリクエスト送信
             if (control.ServerType != string.Empty)
             {
-                // 操作中判定
-                control.IsHandling = true;
+                //// 操作中判定
+                //control.IsHandling = true;
 
                 var dataToServer = new DatabaseOperational.LeverEventDataToServer
                 {
@@ -194,8 +194,8 @@ namespace TatehamaInterlockingConsole.Handlers
                     // サーバーへリクエスト送信
                     if (control.ServerType != string.Empty)
                     {
-                        // 操作中判定
-                        control.IsHandling = true;
+                        //// 操作中判定
+                        //control.IsHandling = true;
 
                         var dataToServer = new DatabaseOperational.LeverEventDataToServer
                         {
@@ -248,8 +248,8 @@ namespace TatehamaInterlockingConsole.Handlers
                     // サーバーへリクエスト送信
                     if (control.ServerType != string.Empty)
                     {
-                        // 操作中判定
-                        control.IsHandling = true;
+                        //// 操作中判定
+                        //control.IsHandling = true;
 
                         var dataToServer = new DatabaseOperational.LeverEventDataToServer
                         {
