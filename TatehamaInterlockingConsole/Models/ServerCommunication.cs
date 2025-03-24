@@ -82,10 +82,6 @@ namespace TatehamaInterlockingConsole.Models
         /// <returns></returns>
         public async Task AuthenticateAsync()
         {
-            // サーバー接続初期化
-            await InitializeConnection();
-            return;
-
             try
             {
                 using var source = new CancellationTokenSource(TimeSpan.FromSeconds(90));
