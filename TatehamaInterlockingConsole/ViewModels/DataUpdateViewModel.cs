@@ -75,7 +75,6 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// </summary>
         public void UpdateControl(DatabaseOperational.DataFromServer dataFromServer, DatabaseOperational.DataFromServer differences)
         {
-
             // コントロール更新処理
             var updateList = UpdateControlsetting(differences);
 
