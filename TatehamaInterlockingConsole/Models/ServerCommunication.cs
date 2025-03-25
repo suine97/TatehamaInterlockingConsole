@@ -105,12 +105,12 @@ namespace TatehamaInterlockingConsole.Models
                 // サーバー接続初期化
                 await InitializeConnection();
             }
-            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Message == OpenIddictConstants.Errors.AccessDenied)
+            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Error == OpenIddictConstants.Errors.AccessDenied)
             {
                 // ログインしたユーザーがサーバーにいないか、入鋏ロールがついてない
                 CustomMessage.Show("認証が拒否されました。\n司令主任に連絡してください。", "認証拒否", exception, MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Message == OpenIddictConstants.Errors.ServerError)
+            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Error == OpenIddictConstants.Errors.ServerError)
             {
                 // サーバーでトラブル発生
                 var result = CustomMessage.Show("認証時にサーバーでエラーが発生しました。\\n再認証しますか？", "サーバーエラー", exception, MessageBoxButton.YesNo, MessageBoxImage.Error);
