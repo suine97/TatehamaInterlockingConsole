@@ -207,15 +207,27 @@ namespace TatehamaInterlockingConsole.Models
                 {
                     if (data != null)
                     {
-                        var differences = _dataManager.DataFromServer;
-                        if (_dataManager.DataFromServer != null)
+                        // 運用クラスに代入
+                        if (_dataManager.DataFromServer == null)
                         {
-                            // 差分データを取得
-                            differences = data.GetDifferences(_dataManager.DataFromServer);
+                            _dataManager.DataFromServer = data;
+                        }
+                        else
+                        {
+                            // 変更があれば更新
+                            foreach (var property in typeof(DatabaseOperational.DataFromServer).GetProperties())
+                            {
+                                var newValue = property.GetValue(data);
+                                var oldValue = property.GetValue(_dataManager.DataFromServer);
+                                if (newValue != null && !newValue.Equals(oldValue))
+                                {
+                                    property.SetValue(_dataManager.DataFromServer, newValue);
+                                }
+                            }
                         }
                         _dataManager.Authentication ??= _dataManager.DataFromServer.Authentications;
                         // 方向てこ情報を保存
-                        if (data.Directions != null && _dataManager.DataFromServer.Directions != null && !data.Directions.SequenceEqual(_dataManager.DataFromServer.Directions))
+                        if (data.Directions != null && !data.Directions.SequenceEqual(_dataManager.DataFromServer.Directions))
                         {
                             _dataManager.DirectionStateList = data.Directions.Select(d => new DirectionStateList
                             {
@@ -225,10 +237,7 @@ namespace TatehamaInterlockingConsole.Models
                             }).ToList();
                         }
                         // コントロール更新処理
-                        _dataUpdateViewModel.UpdateControl(data, differences);
-
-                        // 最新のデータを保存
-                        _dataManager.DataFromServer = data;
+                        _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
                     }
                     else
                     {

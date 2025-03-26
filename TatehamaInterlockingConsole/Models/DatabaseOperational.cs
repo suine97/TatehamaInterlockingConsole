@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace TatehamaInterlockingConsole.Models
 {
@@ -94,51 +93,12 @@ namespace TatehamaInterlockingConsole.Models
             /// 表示灯情報リスト
             /// </summary>
             public List<Dictionary<string, bool>> Lamps { get; set; }
-
-            /// <summary>
-            /// 差分データを取得する
-            /// </summary>
-            /// <param name="oldData">前回のデータ</param>
-            /// <returns>変更があったデータのみを含む新しいDataFromServer</returns>
-            public DataFromServer GetDifferences(DataFromServer oldData)
-            {
-                return new DataFromServer
-                {
-                    Authentications = Authentications,
-                    TrackCircuits = GetListDifferences(TrackCircuits, oldData.TrackCircuits),
-                    Points = GetListDifferences(Points, oldData.Points),
-                    Signals = GetListDifferences(Signals, oldData.Signals),
-                    PhysicalLevers = GetListDifferences(PhysicalLevers, oldData.PhysicalLevers),
-                    PhysicalButtons = GetListDifferences(PhysicalButtons, oldData.PhysicalButtons),
-                    Directions = GetListDifferences(Directions, oldData.Directions),
-                    Retsubans = GetListDifferences(Retsubans, oldData.Retsubans),
-                    Lamps = GetListDifferences(Lamps, oldData.Lamps)
-                };
-            }
-
-            /// <summary>
-            /// リストの差分を取得する
-            /// </summary>
-            /// <typeparam name="T">リストの型</typeparam>
-            /// <param name="newList">新しいデータ</param>
-            /// <param name="oldList">古いデータ</param>
-            /// <returns>変更があったリスト（変更がない場合は空のリスト）</returns>
-            private List<T> GetListDifferences<T>(List<T> newList, List<T> oldList)
-            {
-                if (newList == null) return new List<T>();
-                if (oldList == null) return new List<T>(newList);
-
-                // 差分を取得
-                var differences = newList.Except(oldList).ToList();
-
-                return differences;
-            }
         }
 
         /// <summary>
         /// 認証データクラス
         /// </summary>
-        public class TraincrewRole : IEquatable<TraincrewRole>
+        public class TraincrewRole
         {
             /// <summary>
             /// 運転士
@@ -164,33 +124,12 @@ namespace TatehamaInterlockingConsole.Models
             /// 司令主任
             /// </summary>
             public required bool IsAdministrator { get; init; } = false;
-
-            public bool Equals(TraincrewRole other)
-            {
-                if (other == null) return false;
-                return IsDriver == other.IsDriver &&
-                       IsDriverManager == other.IsDriverManager &&
-                       IsConductor == other.IsConductor &&
-                       IsCommander == other.IsCommander &&
-                       IsSignalman == other.IsSignalman &&
-                       IsAdministrator == other.IsAdministrator;
-            }
-
-            public override bool Equals(object obj)
-            {
-                return Equals(obj as TraincrewRole);
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(IsDriver, IsDriverManager, IsConductor, IsCommander, IsSignalman, IsAdministrator);
-            }
         }
 
         /// <summary>
         /// 方向てこデータクラス
         /// </summary>
-        public class DirectionData : IEquatable<DirectionData>
+        public class DirectionData
         {
             /// <summary>
             /// 方向てこ名称
@@ -200,28 +139,12 @@ namespace TatehamaInterlockingConsole.Models
             /// 方向てこの値
             /// </summary>
             public EnumData.LNR State { get; set; } = EnumData.LNR.Left;
-
-            public bool Equals(DirectionData other)
-            {
-                if (other == null) return false;
-                return Name == other.Name && State == other.State;
-            }
-
-            public override bool Equals(object obj)
-            {
-                return Equals(obj as DirectionData);
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(Name, State);
-            }
         }
 
         /// <summary>
         /// 軌道回路データクラス
         /// </summary>
-        public class TrackCircuitData : IEquatable<TrackCircuitData>
+        public class TrackCircuitData
         {
             /// <summary>
             /// 在線状態    
@@ -244,28 +167,12 @@ namespace TatehamaInterlockingConsole.Models
             {
                 return $"{Name}";
             }
-
-            public bool Equals(TrackCircuitData other)
-            {
-                if (other == null) return false;
-                return On == other.On && Lock == other.Lock && Last == other.Last && Name == other.Name;
-            }
-
-            public override bool Equals(object obj)
-            {
-                return Equals(obj as TrackCircuitData);
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(On, Lock, Last, Name);
-            }
         }
 
         /// <summary>
         /// 転てつ器データクラス
         /// </summary>
-        public class SwitchData : IEquatable<SwitchData>
+        public class SwitchData
         {
             /// <summary>
             /// 転てつ器状態
@@ -275,28 +182,12 @@ namespace TatehamaInterlockingConsole.Models
             /// 転てつ器名称
             /// </summary>
             public string Name { get; set; } = "";
-
-            public bool Equals(SwitchData other)
-            {
-                if (other == null) return false;
-                return State == other.State && Name == other.Name;
-            }
-
-            public override bool Equals(object obj)
-            {
-                return Equals(obj as SwitchData);
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(State, Name);
-            }
         }
 
         /// <summary>
         /// 信号機データクラス
         /// </summary>
-        public class SignalData : IEquatable<SignalData>
+        public class SignalData
         {
             /// <summary>
             /// 信号機名称
@@ -306,28 +197,12 @@ namespace TatehamaInterlockingConsole.Models
             /// 信号機現示
             /// </summary>
             public EnumData.Phase Phase { get; init; } = EnumData.Phase.None;
-
-            public bool Equals(SignalData other)
-            {
-                if (other == null) return false;
-                return Name == other.Name && Phase == other.Phase;
-            }
-
-            public override bool Equals(object obj)
-            {
-                return Equals(obj as SignalData);
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(Name, Phase);
-            }
         }
 
         /// <summary>
         /// 列番データクラス
         /// </summary>
-        public class RetsubanData : IEquatable<RetsubanData>
+        public class RetsubanData
         {
             /// <summary>
             /// 列番名称
@@ -337,28 +212,12 @@ namespace TatehamaInterlockingConsole.Models
             /// 列番
             /// </summary>
             public string Retsuban { get; set; } = "";
-
-            public bool Equals(RetsubanData other)
-            {
-                if (other == null) return false;
-                return Name == other.Name && Retsuban == other.Retsuban;
-            }
-
-            public override bool Equals(object obj)
-            {
-                return Equals(obj as RetsubanData);
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(Name, Retsuban);
-            }
         }
 
         /// <summary>
         /// 物理てこデータクラス
         /// </summary>
-        public class LeverData : IEquatable<LeverData>
+        public class LeverData
         {
             /// <summary>
             /// 物理てこ名称
@@ -368,28 +227,12 @@ namespace TatehamaInterlockingConsole.Models
             /// 物理てこの状態
             /// </summary>
             public EnumData.LCR State { get; set; } = EnumData.LCR.Center;
-
-            public bool Equals(LeverData other)
-            {
-                if (other == null) return false;
-                return Name == other.Name && State == other.State;
-            }
-
-            public override bool Equals(object obj)
-            {
-                return Equals(obj as LeverData);
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(Name, State);
-            }
         }
 
         /// <summary>
         /// 着点ボタンデータクラス
         /// </summary>
-        public class DestinationButtonData : IEquatable<DestinationButtonData>
+        public class DestinationButtonData
         {
             /// <summary>
             /// 着点ボタン名称
@@ -403,22 +246,6 @@ namespace TatehamaInterlockingConsole.Models
             /// 着点ボタンの操作時間
             /// </summary>
             public DateTime OperatedAt { get; set; } = DateTime.MinValue;
-
-            public bool Equals(DestinationButtonData other)
-            {
-                if (other == null) return false;
-                return Name == other.Name && IsRaised == other.IsRaised && OperatedAt == other.OperatedAt;
-            }
-
-            public override bool Equals(object obj)
-            {
-                return Equals(obj as DestinationButtonData);
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(Name, IsRaised, OperatedAt);
-            }
         }
     }
 }

@@ -73,10 +73,10 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <summary>
         /// サーバー受信毎にコントロール更新
         /// </summary>
-        public void UpdateControl(DatabaseOperational.DataFromServer dataFromServer, DatabaseOperational.DataFromServer differences)
+        public void UpdateControl(DatabaseOperational.DataFromServer dataFromServer)
         {
             // コントロール更新処理
-            var updateList = UpdateControlsetting(differences);
+            var updateList = UpdateControlsetting(dataFromServer);
 
             // 接近警報更新処理
             UpdateApproachingAlarm(dataFromServer);
