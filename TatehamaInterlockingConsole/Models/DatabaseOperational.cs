@@ -105,7 +105,7 @@ namespace TatehamaInterlockingConsole.Models
                 return new DataFromServer
                 {
                     Authentications = Authentications,
-                    TrackCircuits = GetListDifferences(TrackCircuits, oldData.TrackCircuits),
+                    TrackCircuits = TrackCircuits,
                     Points = GetListDifferences(Points, oldData.Points),
                     Signals = GetListDifferences(Signals, oldData.Signals),
                     PhysicalLevers = GetListDifferences(PhysicalLevers, oldData.PhysicalLevers),
