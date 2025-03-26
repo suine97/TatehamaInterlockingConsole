@@ -73,11 +73,10 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <summary>
         /// サーバー受信毎にコントロール更新
         /// </summary>
-        public void UpdateControl(DatabaseOperational.DataFromServer dataFromServer, DatabaseOperational.DataFromServer differences)
+        public void UpdateControl(DatabaseOperational.DataFromServer dataFromServer)
         {
-
             // コントロール更新処理
-            var updateList = UpdateControlsetting(dataFromServer, differences);
+            var updateList = UpdateControlsetting(dataFromServer);
 
             // 接近警報更新処理
             UpdateApproachingAlarm(dataFromServer);
@@ -97,7 +96,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// サーバー情報を基にコントロールの状態更新
         /// </summary>
         /// <returns></returns>
-        private List<UIControlSetting> UpdateControlsetting(DatabaseOperational.DataFromServer dataFromServer, DatabaseOperational.DataFromServer differences)
+        private List<UIControlSetting> UpdateControlsetting(DatabaseOperational.DataFromServer dataFromServer)
         {
             // データ取得
             var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
@@ -116,16 +115,16 @@ namespace TatehamaInterlockingConsole.ViewModels
 
             try
             {
-                // differences に含まれるアイテムのみ処理
+                // サーバーから受信したデータに基づいて更新
                 var relevantSettings = activeStationSettingList.Where(item =>
-                    differences.TrackCircuits.Any(t => t.Name == item.ServerName) ||
-                    differences.Points.Any(p => p.Name == item.PointNameA || p.Name == item.PointNameB) ||
-                    differences.Directions.Any(d => d.Name == item.DirectionName) ||
-                    differences.Signals.Any(s => s.Name == item.ServerName) ||
-                    differences.PhysicalLevers.Any(l => l.Name == item.ServerName) ||
-                    differences.PhysicalButtons.Any(b => b.Name == item.ServerName) ||
-                    differences.Retsubans.Any(r => r.Name == item.ServerName) ||
-                    differences.Lamps.Any(l => l.ContainsKey(item.ServerName))
+                    dataFromServer.TrackCircuits.Any(t => t.Name == item.ServerName) ||
+                    dataFromServer.Points.Any(p => p.Name == item.PointNameA || p.Name == item.PointNameB) ||
+                    dataFromServer.Directions.Any(d => d.Name == item.DirectionName) ||
+                    dataFromServer.Signals.Any(s => s.Name == item.ServerName) ||
+                    dataFromServer.PhysicalLevers.Any(l => l.Name == item.ServerName) ||
+                    dataFromServer.PhysicalButtons.Any(b => b.Name == item.ServerName) ||
+                    dataFromServer.Retsubans.Any(r => r.Name == item.ServerName) ||
+                    dataFromServer.Lamps.Any(l => l.ContainsKey(item.ServerName))
                 ).ToList();
 
                 foreach (var item in relevantSettings)
@@ -433,27 +432,18 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             if (physicalLever != null)
             {
-                //// てこが操作中で、物理てこの状態がUIと同じ場合に更新
-                //if (item.IsHandling && physicalLever.State == EnumData.ConvertToLCR(item.ImageIndex))
-                //{
-                //    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
+                // てこが操作中で、物理てこの状態がUIと同じ場合に更新
+                if (item.IsHandling && physicalLever.State == EnumData.ConvertToLCR(item.ImageIndex))
+                {
+                    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
 
-                //    // 操作判定を解除
-                //    item.IsHandling = false;
-                //    // 音声再生
-                //    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
-                //}
-                //// てこが操作中ではなく、物理てこの状態がUIと異なる場合に更新
-                //else if (!item.IsHandling && physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex))
-                //{
-                //    item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
-
-                //    // 音声再生
-                //    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
-                //}
-
-                // 物理てこの状態がUIと異なる場合に更新
-                if (physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex))
+                    // 操作判定を解除
+                    item.IsHandling = false;
+                    // 音声再生
+                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                }
+                // てこが操作中ではなく、物理てこの状態がUIと異なる場合に更新
+                else if (!item.IsHandling && physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex))
                 {
                     item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
 
@@ -473,27 +463,18 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             if (physicalKeyLever != null)
             {
-                //// 鍵てこが操作中で、物理鍵てこの状態がUIと同じ場合に更新
-                //if (item.IsHandling && physicalKeyLever.State == EnumData.ConvertToLCR(item.ImageIndex))
-                //{
-                //    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
+                // 鍵てこが操作中で、物理鍵てこの状態がUIと同じ場合に更新
+                if (item.IsHandling && physicalKeyLever.State == EnumData.ConvertToLCR(item.ImageIndex))
+                {
+                    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
 
-                //    // 操作判定を解除
-                //    item.IsHandling = false;
-                //    // 音声再生
-                //    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
-                //}
-                //// 鍵てこが操作中ではなく、物理鍵てこの状態がUIと異なる場合に更新
-                //else if (!item.IsHandling && physicalKeyLever.State != EnumData.ConvertToLCR(item.ImageIndex))
-                //{
-                //    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
-
-                //    // 音声再生
-                //    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
-                //}
-
-                // 物理鍵てこの状態がUIと異なる場合に更新
-                if (physicalKeyLever.State != EnumData.ConvertToLCR(item.ImageIndex))
+                    // 操作判定を解除
+                    item.IsHandling = false;
+                    // 音声再生
+                    _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
+                }
+                // 鍵てこが操作中ではなく、物理鍵てこの状態がUIと異なる場合に更新
+                else if (!item.IsHandling && physicalKeyLever.State != EnumData.ConvertToLCR(item.ImageIndex))
                 {
                     item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
 
@@ -514,30 +495,18 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             if (physicalButton != null)
             {
-                //// 着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作が100ms以内の場合に音声再生
-                //if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex)
-                //    && (DateTime.Now - physicalButton.OperatedAt).TotalMilliseconds < 100d)
-                //{
-                //    // 音声再生
-                //    if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))
-                //        _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
-                //    else
-                //        _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
-                //}
-                //// 着点ボタンの状態がUIと異なる場合に更新
-                //else if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
-                //{
-                //    item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalButton.IsRaised);
-
-                //    // 音声再生
-                //    if (item.ImageIndex == 1)
-                //        _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
-                //    else
-                //        _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
-                //}
-
+                // 着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作が100ms以内の場合に音声再生
+                if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex)
+                    && (DateTime.Now - physicalButton.OperatedAt).TotalMilliseconds < 100d)
+                {
+                    // 音声再生
+                    if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))
+                        _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
+                    else
+                        _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
+                }
                 // 着点ボタンの状態がUIと異なる場合に更新
-                if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                else if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
                 {
                     item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalButton.IsRaised);
 
