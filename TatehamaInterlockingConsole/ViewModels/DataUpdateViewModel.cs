@@ -77,7 +77,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
 
             // コントロール更新処理
-            var updateList = UpdateControlsetting(differences);
+            var updateList = UpdateControlsetting(dataFromServer, differences);
 
             // 接近警報更新処理
             UpdateApproachingAlarm(dataFromServer);
@@ -97,7 +97,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// サーバー情報を基にコントロールの状態更新
         /// </summary>
         /// <returns></returns>
-        private List<UIControlSetting> UpdateControlsetting(DatabaseOperational.DataFromServer dataFromServer)
+        private List<UIControlSetting> UpdateControlsetting(DatabaseOperational.DataFromServer dataFromServer, DatabaseOperational.DataFromServer differences)
         {
             // データ取得
             var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
@@ -116,16 +116,16 @@ namespace TatehamaInterlockingConsole.ViewModels
 
             try
             {
-                // サーバーから受信したデータに基づいて更新
+                // differences に含まれるアイテムのみ処理
                 var relevantSettings = activeStationSettingList.Where(item =>
-                    dataFromServer.TrackCircuits.Any(t => t.Name == item.ServerName) ||
-                    dataFromServer.Points.Any(p => p.Name == item.PointNameA || p.Name == item.PointNameB) ||
-                    dataFromServer.Directions.Any(d => d.Name == item.DirectionName) ||
-                    dataFromServer.Signals.Any(s => s.Name == item.ServerName) ||
-                    dataFromServer.PhysicalLevers.Any(l => l.Name == item.ServerName) ||
-                    dataFromServer.PhysicalButtons.Any(b => b.Name == item.ServerName) ||
-                    dataFromServer.Retsubans.Any(r => r.Name == item.ServerName) ||
-                    dataFromServer.Lamps.Any(l => l.ContainsKey(item.ServerName))
+                    differences.TrackCircuits.Any(t => t.Name == item.ServerName) ||
+                    differences.Points.Any(p => p.Name == item.PointNameA || p.Name == item.PointNameB) ||
+                    differences.Directions.Any(d => d.Name == item.DirectionName) ||
+                    differences.Signals.Any(s => s.Name == item.ServerName) ||
+                    differences.PhysicalLevers.Any(l => l.Name == item.ServerName) ||
+                    differences.PhysicalButtons.Any(b => b.Name == item.ServerName) ||
+                    differences.Retsubans.Any(r => r.Name == item.ServerName) ||
+                    differences.Lamps.Any(l => l.ContainsKey(item.ServerName))
                 ).ToList();
 
                 foreach (var item in relevantSettings)
