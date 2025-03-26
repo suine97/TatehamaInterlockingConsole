@@ -649,7 +649,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             bool isEven = condition != null && condition.Name.Contains("偶数");
 
             // 列車番号が未設定、または[9999]の場合は条件を満たさない
-            if (string.IsNullOrEmpty(retsuban.Last) || retsuban.Last.Contains("9999"))
+            if (string.IsNullOrEmpty(retsuban.Last) || retsuban.Last.Contains("9999") || retsuban.Last.Contains("溝月"))
                 return false;
             // 列車番号と設定内容が偶数同士、または奇数同士の場合は条件を満たす
             else if (isEven == DataHelper.IsEvenNumberInString(retsuban.Last))
