@@ -93,6 +93,8 @@ namespace TatehamaInterlockingConsole.Services
                         KeyInserted = false,
                         Retsuban = string.Empty,
                         IsHandling = false,
+                        IsButtionRaised = false,
+                        IsButtionDroped = false,
                         Remark = columns[(int)EnumData.ColumnIndex.Remark],
                     });
                 }

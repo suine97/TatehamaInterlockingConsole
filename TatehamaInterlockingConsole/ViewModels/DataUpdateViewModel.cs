@@ -432,7 +432,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             if (physicalLever != null)
             {
-                // てこが操作中で、物理てこの状態がUIと同じ場合に更新
+                // てこが操作中で、物理てこの状態がUIとサーバーで同じ場合に更新
                 if (item.IsHandling && physicalLever.State == EnumData.ConvertToLCR(item.ImageIndex))
                 {
                     item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
@@ -442,7 +442,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                     // 音声再生
                     _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
                 }
-                // てこが操作中ではなく、物理てこの状態がUIと異なる場合に更新
+                // てこが操作中ではなく、物理てこの状態がUIとサーバーで異なる場合に更新
                 else if (!item.IsHandling && physicalLever.State != EnumData.ConvertToLCR(item.ImageIndex))
                 {
                     item.ImageIndex = EnumData.ConvertFromLCR(physicalLever.State);
@@ -463,7 +463,7 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             if (physicalKeyLever != null)
             {
-                // 鍵てこが操作中で、物理鍵てこの状態がUIと同じ場合に更新
+                // 鍵てこが操作中で、物理鍵てこの状態がUIとサーバーで同じ場合に更新
                 if (item.IsHandling && physicalKeyLever.State == EnumData.ConvertToLCR(item.ImageIndex))
                 {
                     item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
@@ -473,7 +473,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                     // 音声再生
                     _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
                 }
-                // 鍵てこが操作中ではなく、物理鍵てこの状態がUIと異なる場合に更新
+                // 鍵てこが操作中ではなく、物理鍵てこの状態がUIとサーバーで異なる場合に更新
                 else if (!item.IsHandling && physicalKeyLever.State != EnumData.ConvertToLCR(item.ImageIndex))
                 {
                     item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
@@ -495,23 +495,41 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             if (physicalButton != null)
             {
-                // 着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作が100ms以内の場合に音声再生
-                if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex)
+                // ボタンが[押し]操作中で、着点ボタンの状態がUIとサーバーで同じ場合に更新
+                if (item.IsButtionRaised && physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                {
+                    // [押し]操作判定を解除
+                    item.IsButtionRaised = false;
+
+                    // 音声再生
+                    _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
+                }
+                // ボタンが[離し]操作中で、着点ボタンの状態がUIとサーバーで同じ場合に更新
+                else if (item.IsButtionDroped && physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                {
+                    // [離し]操作判定を解除
+                    item.IsButtionDroped = false;
+
+                    // 音声再生
+                    _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
+                }
+                // ボタンが操作中ではなく、着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作が100ms以内の場合に音声再生
+                else if (!item.IsButtionRaised && !item.IsButtionDroped && physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex)
                     && (DateTime.Now - physicalButton.OperatedAt).TotalMilliseconds < 100d)
                 {
                     // 音声再生
-                    if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))
+                    if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(0))
                         _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
                     else
                         _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
                 }
-                // 着点ボタンの状態がUIと異なる場合に更新
-                else if (physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                // ボタンが操作中ではなく、着点ボタンの状態がUIとサーバーで異なる場合に更新
+                else if (!item.IsButtionRaised && !item.IsButtionDroped && physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
                 {
                     item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalButton.IsRaised);
 
                     // 音声再生
-                    if (item.ImageIndex == 1)
+                    if (item.ImageIndex == 0)
                         _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
                     else
                         _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);

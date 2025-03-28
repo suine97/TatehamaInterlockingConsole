@@ -258,7 +258,7 @@ namespace TatehamaInterlockingConsole.Models
         /// <summary>
         /// サーバーへ物理てこイベント送信用データをリクエスト
         /// </summary>
-        /// <param name="eventDataToServer"></param>
+        /// <param name="leverEventDataToServer"></param>
         /// <returns></returns>
         public async Task SendLeverEventDataRequestToServerAsync(DatabaseOperational.LeverEventDataToServer leverEventDataToServer)
         {
@@ -276,7 +276,7 @@ namespace TatehamaInterlockingConsole.Models
         /// <summary>
         /// サーバーへ着点ボタンイベント送信用データをリクエスト
         /// </summary>
-        /// <param name="eventDataToServer"></param>
+        /// <param name="buttonEventDataToServer"></param>
         /// <returns></returns>
         public async Task SendButtonEventDataRequestToServerAsync(DatabaseOperational.ButtonEventDataToServer buttonEventDataToServer)
         {

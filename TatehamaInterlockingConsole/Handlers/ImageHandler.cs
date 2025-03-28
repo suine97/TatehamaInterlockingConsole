@@ -92,7 +92,6 @@ namespace TatehamaInterlockingConsole.Handlers
         /// </summary>
         /// <param name="control"></param>
         /// <param name="isLeftClick"></param>
-        /// <param name="soundIndex"></param>
         private void HandleLeverImageMouseDown(UIControlSetting control, bool isLeftClick)
         {
             int newIndex;
@@ -153,7 +152,6 @@ namespace TatehamaInterlockingConsole.Handlers
         /// </summary>
         /// <param name="control"></param>
         /// <param name="isLeftClick"></param>
-        /// <param name="soundIndex"></param>
         private void HandleKeyImageMouseDown(UIControlSetting control, bool isLeftClick)
         {
             // Shiftキーが押されているかを判定
@@ -279,8 +277,6 @@ namespace TatehamaInterlockingConsole.Handlers
         /// ButtonImageマウスダウン処理
         /// </summary>
         /// <param name="control"></param>
-        /// <param name="isLeftClick"></param>
-        /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseDown(UIControlSetting control)
         {
             if (control.ImageIndex != 1)
@@ -290,6 +286,9 @@ namespace TatehamaInterlockingConsole.Handlers
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
                 {
+                    // ボタン操作中(押し)判定
+                    control.IsButtionRaised = true;
+
                     var dataToServer = new DatabaseOperational.ButtonEventDataToServer
                     {
                         DestinationButtonData = new DatabaseOperational.DestinationButtonData
@@ -321,8 +320,6 @@ namespace TatehamaInterlockingConsole.Handlers
         /// ButtonImageマウスアップ処理
         /// </summary>
         /// <param name="control"></param>
-        /// <param name="isLeftClick"></param>
-        /// <param name="soundIndex"></param>
         private void HandleButtonImageMouseUp(UIControlSetting control)
         {
             if (control.ImageIndex != 0)
@@ -332,6 +329,9 @@ namespace TatehamaInterlockingConsole.Handlers
                 // サーバーへリクエスト送信
                 if (control.ServerType != string.Empty)
                 {
+                    // ボタン操作中(離し)判定
+                    control.IsButtionDroped = true;
+
                     var dataToServer = new DatabaseOperational.ButtonEventDataToServer
                     {
                         DestinationButtonData = new DatabaseOperational.DestinationButtonData
