@@ -518,7 +518,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                     && (DateTime.Now - physicalButton.OperatedAt).TotalMilliseconds < 100d)
                 {
                     // 音声再生
-                    if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(0))
+                    if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))
                         _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
                     else
                         _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
@@ -529,7 +529,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                     item.ImageIndex = EnumData.ConvertFromRaiseDrop(physicalButton.IsRaised);
 
                     // 音声再生
-                    if (item.ImageIndex == 0)
+                    if (item.ImageIndex == 1)
                         _sound.SoundPlay($"push_{randomPushSoundIndex}", false);
                     else
                         _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
