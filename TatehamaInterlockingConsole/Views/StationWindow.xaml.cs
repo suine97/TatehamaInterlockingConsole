@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using TatehamaInterlockingConsole.Handlers;
 using TatehamaInterlockingConsole.ViewModels;
 
 namespace TatehamaInterlockingConsole.Views
@@ -16,6 +17,7 @@ namespace TatehamaInterlockingConsole.Views
             _viewModel = viewModel;
             DataContext = _viewModel;
             Loaded += OnLoaded;
+            PreviewMouseUp += OnPreviewMouseUp;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -26,6 +28,12 @@ namespace TatehamaInterlockingConsole.Views
                 Width = viewModel.WindowWidth;
                 Height = viewModel.WindowHeight;
             }
+        }
+
+        private void OnPreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // ImageHandlerのMouseUpイベントを呼び出し
+            ImageHandler.Instance?.OnPreviewMouseUp(sender, e);
         }
     }
 }

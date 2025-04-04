@@ -10,6 +10,7 @@ namespace TatehamaInterlockingConsole.Handlers
     {
         private readonly DataManager _dataManager = DataManager.Instance;
         private readonly ServerCommunication _serverCommunication;
+        private UIControlSetting strMouseDownSetting;
         public static ImageHandler Instance { get; private set; }
 
         /// <summary>
@@ -19,6 +20,7 @@ namespace TatehamaInterlockingConsole.Handlers
         public ImageHandler(ServerCommunication serverCommunication)
         {
             _serverCommunication = serverCommunication;
+            strMouseDownSetting = null;
             Instance = this;
         }
 
@@ -40,12 +42,18 @@ namespace TatehamaInterlockingConsole.Handlers
             {
                 HandleMouseDown(setting, isLeftClick: false);
             };
+        }
 
-            // マウスアップイベント
-            image.MouseUp += (s, e) =>
+        /// <summary>
+        /// StationWindowのPreviewMouseUpイベント処理
+        /// </summary>
+        public void OnPreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (strMouseDownSetting != null)
             {
-                HandleMouseUp(setting);
-            };
+                HandleMouseUp(strMouseDownSetting);
+                strMouseDownSetting = null;
+            }
         }
 
         /// <summary>
@@ -81,6 +89,7 @@ namespace TatehamaInterlockingConsole.Handlers
             {
                 case "ButtonImage":
                     HandleButtonImageMouseUp(control);
+                    strMouseDownSetting = null;
                     break;
                 default:
                     break;
@@ -288,6 +297,8 @@ namespace TatehamaInterlockingConsole.Handlers
                 {
                     // ボタン操作中(押し)判定
                     control.IsButtionRaised = true;
+
+                    strMouseDownSetting = control;
 
                     var dataToServer = new DatabaseOperational.ButtonEventDataToServer
                     {
