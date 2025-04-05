@@ -225,9 +225,11 @@ namespace TatehamaInterlockingConsole.Models
                                 }
                             }
                         }
+                        // 認証情報を保存
                         _dataManager.Authentication ??= _dataManager.DataFromServer.Authentications;
+
                         // 方向てこ情報を保存
-                        if (data.Directions != null && !data.Directions.SequenceEqual(_dataManager.DataFromServer.Directions))
+                        if (data.Directions != null)
                         {
                             _dataManager.DirectionStateList = data.Directions.Select(d => new DirectionStateList
                             {
@@ -236,8 +238,20 @@ namespace TatehamaInterlockingConsole.Models
                                 UpdateTime = DateTime.Now
                             }).ToList();
                         }
+
                         // コントロール更新処理
                         _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
+
+                        // 物理ボタン情報を前回の値として保存
+                        if (data.PhysicalButtons != null)
+                        {
+                            _dataManager.PhysicalButtonOldList = data.PhysicalButtons.Select(d => new DatabaseOperational.DestinationButtonData
+                            {
+                                Name = d.Name,
+                                IsRaised = d.IsRaised,
+                                OperatedAt = d.OperatedAt
+                            }).ToList();
+                        }
                     }
                     else
                     {

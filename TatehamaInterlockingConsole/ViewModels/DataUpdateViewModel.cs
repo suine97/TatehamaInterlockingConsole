@@ -102,6 +102,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             var allSettingList = new List<UIControlSetting>(_dataManager.AllControlSettingList);
             var activeStationsList = _dataManager.ActiveStationsList;
             var activeStationSettingList = allSettingList.Where(setting => activeStationsList.Contains(setting.StationNumber)).ToList();
+            var physicalButtonStateList = _dataManager.PhysicalButtonOldList;
             var directionStateList = _dataManager.DirectionStateList;
 
             // 音声再生用の乱数生成
@@ -196,7 +197,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                             UpdatePhysicalKeyLever(item, physicalKeyLever, randomSwitchSoundIndex);
                             break;
                         case "着点ボタン":
-                            UpdateDestinationButton(item, physicalButton, randomPushSoundIndex, randomPullSoundIndex);
+                            UpdateDestinationButton(item, physicalButton, physicalButtonStateList, randomPushSoundIndex, randomPullSoundIndex);
                             break;
                         case "列車番号":
                             UpdateRetsuban(item, retsuban);
@@ -491,10 +492,26 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="physicalButton"></param>
         /// <param name="randomPushSoundIndex"></param>
         /// <param name="randomPullSoundIndex"></param>
-        private void UpdateDestinationButton(UIControlSetting item, DatabaseOperational.DestinationButtonData physicalButton, string randomPushSoundIndex, string randomPullSoundIndex)
+        private void UpdateDestinationButton(UIControlSetting item, DatabaseOperational.DestinationButtonData physicalButton, List<DatabaseOperational.DestinationButtonData> physicalButtonOldList, string randomPushSoundIndex, string randomPullSoundIndex)
         {
             if (physicalButton != null)
             {
+                DatabaseOperational.DestinationButtonData physicalButtonOld;
+
+                if (physicalButtonOldList == null || physicalButtonOldList.Count == 0)
+                {
+                    physicalButtonOld = new DatabaseOperational.DestinationButtonData
+                    {
+                        Name = physicalButton.Name,
+                        IsRaised = physicalButton.IsRaised,
+                        OperatedAt = physicalButton.OperatedAt
+                    };
+                }
+                else
+                {
+                    physicalButtonOld = physicalButtonOldList.FirstOrDefault(d => d.Name == physicalButton.Name);
+                }
+
                 // ボタンが[押し]操作中で、着点ボタンの状態がUIとサーバーで同じ場合に更新
                 if (item.IsButtionRaised && physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex))
                 {
@@ -513,9 +530,9 @@ namespace TatehamaInterlockingConsole.ViewModels
                     // 音声再生
                     _sound.SoundPlay($"pull_{randomPullSoundIndex}", false);
                 }
-                // ボタンが操作中ではなく、着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作が100ms以内の場合に音声再生
+                // ボタンが操作中ではなく、着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作時間が変化した場合に音声再生
                 else if (!item.IsButtionRaised && !item.IsButtionDroped && physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex)
-                    && (DateTime.Now - physicalButton.OperatedAt).TotalMilliseconds < 100d)
+                    && (physicalButtonOld.OperatedAt != physicalButton.OperatedAt))
                 {
                     // 音声再生
                     if (physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(1))

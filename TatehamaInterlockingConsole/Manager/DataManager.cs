@@ -110,18 +110,34 @@ namespace TatehamaInterlockingConsole.Manager
             }
         }
 
-        private List<DirectionStateList> directionStateList;
+        private List<DatabaseOperational.DestinationButtonData> _physicalButtonOldList;
+        /// <summary>
+        /// 前回の物理ボタン状態を保持するリスト
+        /// </summary>
+        public List<DatabaseOperational.DestinationButtonData> PhysicalButtonOldList
+        {
+            get => _physicalButtonOldList;
+            set
+            {
+                if (_physicalButtonOldList != value)
+                {
+                    _physicalButtonOldList = value;
+                }
+            }
+        }
+
+        private List<DirectionStateList> _directionStateList;
         /// <summary>
         /// 方向てこ状態を保持するリスト
         /// </summary>
         public List<DirectionStateList> DirectionStateList
         {
-            get => directionStateList;
+            get => _directionStateList;
             set
             {
-                if (directionStateList != value)
+                if (_directionStateList != value)
                 {
-                    directionStateList = value;
+                    _directionStateList = value;
                 }
             }
         }
