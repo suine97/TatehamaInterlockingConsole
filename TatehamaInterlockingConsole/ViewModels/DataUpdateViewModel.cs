@@ -356,16 +356,16 @@ namespace TatehamaInterlockingConsole.ViewModels
             {
                 // A, B転てつ器条件が存在する場合
                 if (pointA != null && pointB != null)
-                    item.ImageIndex = (pointA.State == item.PointValueA && pointB.State == item.PointValueB) ? (trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0) : 0;
+                    item.ImageIndex = (pointA.State == item.PointValueA && pointB.State == item.PointValueB) ? trackCircuit.On ? 2 : (trackCircuit.Lock ? 1 : 0) : 0;
                 // B転てつ器条件のみ存在する場合
                 else if (pointB != null)
-                    item.ImageIndex = (pointB.State == item.PointValueB) ? (trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0) : 0;
+                    item.ImageIndex = (pointB.State == item.PointValueB) ? trackCircuit.On ? 2 : (trackCircuit.Lock ? 1 : 0) : 0;
                 // A転てつ器条件のみ存在する場合
                 else if (pointA != null)
-                    item.ImageIndex = (pointA.State == item.PointValueA) ? (trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0) : 0;
+                    item.ImageIndex = (pointA.State == item.PointValueA) ? trackCircuit.On ? 2 : (trackCircuit.Lock ? 1 : 0) : 0;
                 // 転てつ器条件なし
                 else
-                    item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
+                    item.ImageIndex = trackCircuit.On ? 2 : (trackCircuit.Lock ? 1 : 0);
             }
         }
 
