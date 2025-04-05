@@ -365,7 +365,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                     item.ImageIndex = (pointA.State == item.PointValueA) ? (trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0) : 0;
                 // 転てつ器条件なし
                 else
-                    item.ImageIndex = trackCircuit.On ? (trackCircuit.Lock ? 1 : 2) : 0;
+                    item.ImageIndex = trackCircuit.Lock ? 1 : trackCircuit.On ? 2 : 0;
             }
         }
 
