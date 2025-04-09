@@ -498,6 +498,7 @@ namespace TatehamaInterlockingConsole.ViewModels
             {
                 DatabaseOperational.DestinationButtonData physicalButtonOld;
 
+                // 前回受信の着点ボタン情報取得判定 
                 if (physicalButtonOldList == null || physicalButtonOldList.Count == 0)
                 {
                     physicalButtonOld = new DatabaseOperational.DestinationButtonData
@@ -509,7 +510,19 @@ namespace TatehamaInterlockingConsole.ViewModels
                 }
                 else
                 {
+                    // 前回受信の着点ボタン情報を取得
                     physicalButtonOld = physicalButtonOldList.FirstOrDefault(d => d.Name == physicalButton.Name);
+
+                    // 前回受信の着点ボタン情報が存在しない場合は新規作成
+                    if (physicalButtonOld == null)
+                    {
+                        physicalButtonOld = new DatabaseOperational.DestinationButtonData
+                        {
+                            Name = physicalButton.Name,
+                            IsRaised = physicalButton.IsRaised,
+                            OperatedAt = physicalButton.OperatedAt
+                        };
+                    }
                 }
 
                 // ボタンが[押し]操作中で、着点ボタンの状態がUIとサーバーで同じ場合に更新
