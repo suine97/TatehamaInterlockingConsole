@@ -34,7 +34,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                 {
                     DataContext = viewModel,
                     Title = titleText,
-                    Topmost = true
+                    Topmost = DataManager.Instance.IsTopMost,
                 };
                 window.Show();
             }

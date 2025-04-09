@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -63,6 +65,11 @@ namespace TatehamaInterlockingConsole.ViewModels
         public ICommand DecreaseTimeCommand { get; }
 
         /// <summary>
+        /// ウィンドウの最前面表示を切り替えるコマンド
+        /// </summary>
+        public ICommand CheckTopMostCommand { get; }
+
+        /// <summary>
         /// メイン画面に表示されるUI要素List
         /// </summary>
         public ObservableCollection<UIElement> MainElements { get; set; }
@@ -71,6 +78,22 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// 現在時刻を取得
         /// </summary>
         public DateTime CurrentTime => _dataManager.CurrentTime;
+
+        /// <summary>
+        /// ウィンドウの最前面表示フラグ
+        /// </summary>
+        public bool IsTopMost
+        {
+            get => _dataManager.IsTopMost;
+            set
+            {
+                if (_dataManager.IsTopMost != value)
+                {
+                    _dataManager.IsTopMost = value;
+                    OnPropertyChanged(nameof(IsTopMost));
+                }
+            }
+        }
 
         /// <summary>
         /// ウィンドウのタイトル
@@ -121,6 +144,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                     Title = "連動盤選択 | 連動盤 - ダイヤ運転会";
                     IncreaseTimeCommand = new RelayCommand(() => _timeService.IncreaseTime());
                     DecreaseTimeCommand = new RelayCommand(() => _timeService.DecreaseTime());
+                    CheckTopMostCommand = new RelayCommand(() => ToggleAllTopMost());
 
                     // フラグタイマーの初期化
                     StartFlagTimerAsync();
@@ -180,6 +204,49 @@ namespace TatehamaInterlockingConsole.ViewModels
 
             // 表示時間更新サービス開始
             _timeService.Start();
+        }
+
+        /// <summary>
+        /// 生成されている全てのフォームを取得し、一括でTopMostを設定するメソッド
+        /// </summary>
+        public void ToggleAllTopMost()
+        {
+            // StationFormのTopMostを設定
+            foreach (var stationName in _dataManager.ActiveStationsList)
+            {
+                var titleName = _dataManager.StationSettingList.FirstOrDefault(s => s.StationNumber == stationName).StationName;
+                var form = GetFormByTitleName(titleName);
+                if (form != null)
+                {
+                    form.Topmost = IsTopMost;
+                }
+            }
+
+            // メインフォームのTopMostを設定
+            var mainForm = GetFormByTitleName("連動盤選択");
+            if (mainForm != null)
+            {
+                mainForm.Topmost = IsTopMost;
+            }
+        }
+
+        /// <summary>
+        /// 指定した文字列をタイトルに含むフォームを取得するメソッド
+        /// </summary>
+        /// <param name="stationName">検索する駅名</param>
+        /// <returns></returns>
+        public Window GetFormByTitleName(string titleName)
+        {
+            var form = new Window();
+
+            // 該当する駅名を持つフォームを取得
+            if (!string.IsNullOrEmpty(titleName))
+            {
+                form = Application.Current.Windows
+                .OfType<Window>()
+                .FirstOrDefault(w => w.Title.Contains(titleName, StringComparison.OrdinalIgnoreCase));
+            }
+            return form;
         }
 
         /// <summary>

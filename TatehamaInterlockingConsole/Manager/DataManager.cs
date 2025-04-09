@@ -52,6 +52,11 @@ namespace TatehamaInterlockingConsole.Manager
         /// </summary>
         public bool ServerConnected { get; set; }
 
+        /// <summary>
+        /// ウィンドウの最前面表示フラグ
+        /// </summary>
+        public bool IsTopMost { get; set; }
+
         private DatabaseOperational.DataFromServer _dataFromServer;
         /// <summary>
         /// サーバー受信データ
@@ -171,6 +176,7 @@ namespace TatehamaInterlockingConsole.Manager
             ActiveAlarmsList = new();
             DirectionStateList = new();
             ApproachingAlarmConditionList = new();
+            IsTopMost = true;
         }
 
         /// <summary>
