@@ -214,39 +214,43 @@ namespace TatehamaInterlockingConsole.ViewModels
             // StationFormのTopMostを設定
             foreach (var stationName in _dataManager.ActiveStationsList)
             {
-                var titleName = _dataManager.StationSettingList.FirstOrDefault(s => s.StationNumber == stationName).StationName;
-                var form = GetFormByTitleName(titleName);
-                if (form != null)
+                var matchingStations = _dataManager.StationSettingList
+                    .Where(s => s.StationNumber == stationName)
+                    .Select(s => s.StationName);
+
+                foreach (var titleName in matchingStations)
                 {
-                    form.Topmost = IsTopMost;
+                    var forms = GetFormsByTitleName(titleName);
+                    foreach (var form in forms)
+                    {
+                        form.Topmost = IsTopMost;
+                    }
                 }
             }
 
             // メインフォームのTopMostを設定
-            var mainForm = GetFormByTitleName("連動盤選択");
-            if (mainForm != null)
+            var mainForms = GetFormsByTitleName("連動盤選択");
+            foreach (var mainForm in mainForms)
             {
                 mainForm.Topmost = IsTopMost;
             }
         }
 
         /// <summary>
-        /// 指定した文字列をタイトルに含むフォームを取得するメソッド
+        /// 指定した文字列をタイトルに含む全てのフォームを取得するメソッド
         /// </summary>
-        /// <param name="stationName">検索する駅名</param>
-        /// <returns></returns>
-        public Window GetFormByTitleName(string titleName)
+        /// <param name="titleName">検索するタイトル名</param>
+        /// <returns>該当するフォームのリスト</returns>
+        public IEnumerable<Window> GetFormsByTitleName(string titleName)
         {
-            var form = new Window();
-
-            // 該当する駅名を持つフォームを取得
-            if (!string.IsNullOrEmpty(titleName))
+            if (string.IsNullOrEmpty(titleName))
             {
-                form = Application.Current.Windows
-                .OfType<Window>()
-                .FirstOrDefault(w => w.Title.Contains(titleName, StringComparison.OrdinalIgnoreCase));
+                return Enumerable.Empty<Window>();
             }
-            return form;
+
+            return Application.Current.Windows
+                .OfType<Window>()
+                .Where(w => w.Title.Contains(titleName, StringComparison.OrdinalIgnoreCase));
         }
 
         /// <summary>
