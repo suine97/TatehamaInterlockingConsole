@@ -279,11 +279,11 @@ Image	TH75_46ƒT_W46ƒN_2		‹O“¹‰ñ˜H•\¦“”	TH75_46ƒT	TH75_W46	N					1640	368				
 Image	TH75_46ƒT_W46ƒR_1		‹O“¹‰ñ˜H•\¦“”	TH75_46ƒT	TH75_W46	R					1603	443											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68								
 Image	TH75_46ƒT_W46ƒR_2		‹O“¹‰ñ˜H•\¦“”	TH75_46ƒT	TH75_W46	R					1627	383											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68								
 Image	TH75_46ƒT_W46ƒR_3		‹O“¹‰ñ˜H•\¦“”	TH75_46ƒT	TH75_W46	R					1640	368											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_48T_W47N_W48R_1		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	N	TH75_W48	R			1503	488											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_48T_W47N_W48R_2		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	N	TH75_W48	R			1549	418											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68								
+Image	TH75_48T_W47N_W48R_1		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	N	TH75_W48	R			1503	428											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_48T_W47N_W48R_2		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	N	TH75_W48	R			1551	413											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68								
 Image	TH75_48T_W47N_W48R_3		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	N	TH75_W48	R			1576	368											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_48T_W47R_W48R_1		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	R	TH75_W48	R			1503	428											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH75_48T_W47R_W48R_2		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	R	TH75_W48	R			1549	418											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68								
+Image	TH75_48T_W47R_W48R_1		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	R	TH75_W48	R			1503	488											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH75_48T_W47R_W48R_2		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	R	TH75_W48	R			1551	413											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68								
 Image	TH75_48T_W47R_W48R_3		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W47	R	TH75_W48	R			1576	368											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH75_48T_W48N_1		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W48	N					1503	368											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH75_48T_W48N_2		‹O“¹‰ñ˜H•\¦“”	TH75_48T	TH75_W48	N					1576	368											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
@@ -328,22 +328,22 @@ Image	’â“d_R		ó‘Ô•\¦“”								154	45											"0,1"	0		"Image/Light/N.png,Ima
 Image	CTCŒÌá_R		ó‘Ô•\¦“”								202	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	½ù60•b_R		ó‘Ô•\¦“”								1294	927											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	½ù30•b_R		ó‘Ô•\¦“”								1256	927											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Retsuban	—ñ”ÔŠÙ•l1”Ôü		—ñÔ”Ô†								107	312														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔŠÙ•l2”Ôü		—ñÔ”Ô†								107	358														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔŠÙ•l3”Ôü		—ñÔ”Ô†								107	404														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔŠÙ•l4”Ôü		—ñÔ”Ô†								107	450														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ìã‚è‘æ2Ú‹ß		—ñÔ”Ô†								257	312														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ìã‚è‘æ1Ú‹ß		—ñÔ”Ô†								407	312														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ìã‚èê“à		—ñÔ”Ô†								1096	507														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ìTST		—ñÔ”Ô†								562	597														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì‰º‚èo”­		—ñÔ”Ô†								1096	644														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì5”Ôü		—ñÔ”Ô†								1252	417														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì6”Ôü		—ñÔ”Ô†								1252	477														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì1”Ôü		—ñÔ”Ô†								1771	357														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì2”Ôü		—ñÔ”Ô†								1771	537														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì3”Ôü		—ñÔ”Ô†								1771	597														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì‰º‚è‘æ1Ú‹ß		—ñÔ”Ô†								2255	684														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì‰º‚è‘æ2Ú‹ß		—ñÔ”Ô†								2405	684														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l1”Ôü		—ñÔ”Ô†	TH76_TTC_Track1							107	312														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l2”Ôü		—ñÔ”Ô†	TH76_TTC_Track2							107	358														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l3”Ôü		—ñÔ”Ô†	TH76_TTC_Track3							107	404														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l4”Ôü		—ñÔ”Ô†	TH76_TTC_Track4							107	450														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ìã‚è‘æ2Ú‹ß		—ñÔ”Ô†	TH75_TTC_Up2							257	312														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ìã‚è‘æ1Ú‹ß		—ñÔ”Ô†	TH75_TTC_Up1							407	312														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ìã‚èê“à		—ñÔ”Ô†	TH75_TTC_UpArr1							1096	507														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ìTST		—ñÔ”Ô†	TH75_TTC_TrackT							562	597														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì‰º‚èo”­		—ñÔ”Ô†	TH75_TTC_DownDep1							1096	644														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì5”Ôü		—ñÔ”Ô†	TH75_TTC_Track5							1252	417														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì6”Ôü		—ñÔ”Ô†	TH75_TTC_Track6							1252	477														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì1”Ôü		—ñÔ”Ô†	TH75_TTC_Track1							1771	357														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì2”Ôü		—ñÔ”Ô†	TH75_TTC_Track2							1771	537														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì3”Ôü		—ñÔ”Ô†	TH75_TTC_Track3							1771	597														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì‰º‚è‘æ1Ú‹ß		—ñÔ”Ô†	TH75_TTC_Down1							2255	684														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì‰º‚è‘æ2Ú‹ß		—ñÔ”Ô†	TH75_TTC_Down2							2405	684														Image/Retsuban/Retsuban-Window.png									
 																																			
 																																			
 																																			
