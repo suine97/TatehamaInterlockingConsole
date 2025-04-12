@@ -88,6 +88,11 @@ jobs:
             -p:PublishSingleFile=true \
             -p:EnableWindowsTargeting=true \
             --self-contained ${{ matrix.standalone }}
+      - name: Copy Necessary Files
+        run: |
+          cp -r ./exe/Image ./out/
+          cp -r ./exe/Sound ./out/
+          cp -r ./exe/TSV ./out/
       - name: Zip binaries
         run: |
           cd out
