@@ -118,15 +118,15 @@ namespace TatehamaInterlockingConsole.ViewModels
             {
                 // サーバーから受信したデータに基づいて更新
                 var relevantSettings = activeStationSettingList.Where(item =>
-                    dataFromServer.TrackCircuits.Any(t => t.Name == item.ServerName) ||
-                    dataFromServer.Points.Any(p => p.Name == item.PointNameA || p.Name == item.PointNameB) ||
-                    dataFromServer.Directions.Any(d => d.Name == item.DirectionName) ||
-                    dataFromServer.Signals.Any(s => s.Name == item.ServerName) ||
-                    dataFromServer.PhysicalLevers.Any(l => l.Name == item.ServerName) ||
-                    dataFromServer.PhysicalButtons.Any(b => b.Name == item.ServerName) ||
-                    dataFromServer.Retsubans.Any(r => r.Name == item.ServerName) ||
-                    dataFromServer.Lamps.Any(l => l.ContainsKey(item.ServerName))
-                ).ToList();
+                dataFromServer.TrackCircuits.Any(t => t.Name == item.ServerName) ||
+                dataFromServer.Points.Any(p => p.Name == item.PointNameA || p.Name == item.PointNameB) ||
+                dataFromServer.Directions.Any(d => d.Name == item.DirectionName) ||
+                dataFromServer.Signals.Any(s => s.Name == item.ServerName) ||
+                dataFromServer.PhysicalLevers.Any(l => l.Name == item.ServerName) ||
+                dataFromServer.PhysicalButtons.Any(b => b.Name == item.ServerName) ||
+                dataFromServer.Retsubans.Any(r => r.Name == item.ServerName) ||
+                dataFromServer.Lamps.ContainsKey(item.ServerName) // Fixed this line
+            ).ToList();
 
                 foreach (var item in relevantSettings)
                 {
@@ -149,8 +149,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                         .FirstOrDefault(b => b.Name == item.ServerName);
                     var retsuban = dataFromServer.Retsubans
                         .FirstOrDefault(r => r.Name == item.ServerName);
-                    var lamp = dataFromServer.Lamps
-                        .FirstOrDefault(l => l.ContainsKey(item.ServerName));
+                    var lamp = dataFromServer.Lamps.ContainsKey(item.ServerName) ? dataFromServer.Lamps[item.ServerName] : false;
 
                     // サーバー分類毎に処理
                     switch (item.ServerType)
@@ -172,9 +171,9 @@ namespace TatehamaInterlockingConsole.ViewModels
                             UpdateDirectionIndicator(item, trackCircuit, direction, directionStateList);
                             break;
                         case "状態表示灯":
-                            if (lamp != null && lamp.TryGetValue(item.ServerName, out bool lampValue))
+                            if (lamp != null && lamp)
                             {
-                                item.ImageIndex = 1;
+                                item.ImageIndex = lamp ? 1 : 0;
                             }
                             else
                             {

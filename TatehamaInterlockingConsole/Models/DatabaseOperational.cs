@@ -92,7 +92,7 @@ namespace TatehamaInterlockingConsole.Models
             /// <summary>
             /// 表示灯情報リスト
             /// </summary>
-            public List<Dictionary<string, bool>> Lamps { get; set; }
+            public Dictionary<string, bool> Lamps { get; set; }
         }
 
         /// <summary>
