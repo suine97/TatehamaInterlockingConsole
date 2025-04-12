@@ -58,8 +58,8 @@ Image	W27_PG		“]‚Ä‚ÂŠí•\¦“”		TH76_W27	N					574	45											0,1	0		Image/Light
 Image	W27_PY		“]‚Ä‚ÂŠí•\¦“”		TH76_W27	R					608	45											0,1	0		Image/Light/N.png,Image/Light/PY.png									
 TextBlock	W27_Label	W27									14	20	11	11				27	10	Transparent	#FFBCBCBC	W27													
 KeyImage	‰wˆµØŠ·		•¨—Œ®‚Ä‚±	TH76_81							1347	64										‰wˆµØŠ·	-1,1,-11,11	1	Image/Lever/LeverBase_LR.png	Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png	‰wˆµØŠ·‚ÍLR								
-Image	‰wˆµØŠ·_PY		‰wˆµØŠ·•\¦“”	TH76_81L							1345	45											0,1	0		Image/Light/N.png,Image/Light/PY.png									
-Image	‰wˆµØŠ·_PG		‰wˆµØŠ·•\¦“”	TH76_81R							1379	45											0,1	0		Image/Light/N.png,Image/Light/PG.png									
+Image	‰wˆµØŠ·_PY		‰wˆµØŠ·•\¦“”	TH76_81							1345	45											0,1	0		Image/Light/N.png,Image/Light/PY.png									
+Image	‰wˆµØŠ·_PG		‰wˆµØŠ·•\¦“”	TH76_81							1379	45											0,1	0		Image/Light/N.png,Image/Light/PG.png									
 Image	TH76_5LAT_1		‹O“¹‰ñ˜H•\¦“”	TH76_5LAT							167	346											0,1,2	0		Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png	0“x¦ˆÈ‰º0“xÈ—ª								
 Image	TH76_5LAT_2		‹O“¹‰ñ˜H•\¦“”	TH76_5LAT							411	346											0,1,2	0		Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png									
 Image	TH76_5LBT_1		‹O“¹‰ñ˜H•\¦“”	TH76_5LBT							167	466											0,1,2	0		Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png									
@@ -158,21 +158,21 @@ Image	TH75_50ƒT_1		‹O“¹‰ñ˜H•\¦“”	TH75_50ƒT							1265	406											0,1,2	0		
 Image	TH75_9LT_1		‹O“¹‰ñ˜H•\¦“”	TH75_9LT							1295	406											0,1,2	0		Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png									
 Image	TH75_27T_1		‹O“¹‰ñ˜H•\¦“”	‰º‚è27T							1331	406											0,1,2	0		Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png									
 Image	TH75_27T_2		‹O“¹‰ñ˜H•\¦“”	‰º‚è27T							1371	406											0,1,2	0		Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png									
-Image	’â“d_R		ó‘Ô•\¦“”	TH76_’â“d							54	45											0,1	0		Image/Light/N.png,Image/Light/R.png									
-Image	CTCŒÌá_R		ó‘Ô•\¦“”	TH76_CTCŒÌá							102	45											0,1	0		Image/Light/N.png,Image/Light/R.png									
+Image	’â“d_R		ó‘Ô•\¦“”	TH76_PWR-FAILURE							54	45											0,1	0		Image/Light/N.png,Image/Light/R.png									
+Image	CTCŒÌá_R		ó‘Ô•\¦“”	TH76_CTC-FAILURE							102	45											0,1	0		Image/Light/N.png,Image/Light/R.png									
 Image	½ù60•b_R		ó‘Ô•\¦“”	TH76_60TEK							696	747											0,1	0		Image/Light/N.png,Image/Light/R.png									
 Image	½ù30•b_R		ó‘Ô•\¦“”	TH76_30TEK							734	747											0,1	0		Image/Light/N.png,Image/Light/R.png									
-Retsuban	—ñ”ÔŠÙ•l1”Ôü		—ñÔ”Ô†	—ñ”ÔŠÙ•l1”Ôü							229	335														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔŠÙ•l2”Ôü		—ñÔ”Ô†	—ñ”ÔŠÙ•l2”Ôü							229	455														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔŠÙ•l3”Ôü		—ñÔ”Ô†	—ñ”ÔŠÙ•l3”Ôü							203	515														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔŠÙ•l4”Ôü		—ñÔ”Ô†	—ñ”ÔŠÙ•l4”Ôü							203	575														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔŠÙ•l‰º‚è‘æ1Ú‹ß		—ñÔ”Ô†	—ñ”ÔŠÙ•l‰º‚è‘æ1Ú‹ß							685	574														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”ÔŠÙ•l‰º‚è‘æ2Ú‹ß		—ñÔ”Ô†	—ñ”ÔŠÙ•l‰º‚è‘æ2Ú‹ß							835	574														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì‰º‚èo”­		—ñÔ”Ô†	—ñ”Ô‹î–ì‰º‚èo”­							985	574														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì5”Ôü		—ñÔ”Ô†	—ñ”Ô‹î–ì5”Ôü							1135	482														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì6”Ôü		—ñÔ”Ô†	—ñ”Ô‹î–ì6”Ôü							1135	528														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì3”Ôü		—ñÔ”Ô†	—ñ”Ô‹î–ì3”Ôü							1135	574														Image/Retsuban/Retsuban-Window.png									
-Retsuban	—ñ”Ô‹î–ì‰º‚è‘æ1Ú‹ß		—ñÔ”Ô†	—ñ”Ô‹î–ì‰º‚è‘æ1Ú‹ß							1285	574														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l1”Ôü		—ñÔ”Ô†	TH76_TTC_Track1							229	335														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l2”Ôü		—ñÔ”Ô†	TH76_TTC_Track2							229	455														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l3”Ôü		—ñÔ”Ô†	TH76_TTC_Track3							203	515														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l4”Ôü		—ñÔ”Ô†	TH76_TTC_Track4							203	575														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l‰º‚è‘æ1Ú‹ß		—ñÔ”Ô†	TH76_TTC_Down1							685	574														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”ÔŠÙ•l‰º‚è‘æ2Ú‹ß		—ñÔ”Ô†	TH76_TTC_Down2							835	574														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì‰º‚èo”­		—ñÔ”Ô†	TH75_TTC_DownDep1							985	574														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì5”Ôü		—ñÔ”Ô†	TH75_TTC_Track5							1135	482														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì6”Ôü		—ñÔ”Ô†	TH75_TTC_Track6							1135	528														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì3”Ôü		—ñÔ”Ô†	TH75_TTC_Track3							1135	574														Image/Retsuban/Retsuban-Window.png									
+Retsuban	—ñ”Ô‹î–ì‰º‚è‘æ1Ú‹ß		—ñÔ”Ô†	TH75_TTC_Down1							1285	574														Image/Retsuban/Retsuban-Window.png									
 																																			
 																																			
 																																			
