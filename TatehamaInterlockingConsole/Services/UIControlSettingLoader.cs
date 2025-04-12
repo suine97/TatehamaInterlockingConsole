@@ -27,76 +27,89 @@ namespace TatehamaInterlockingConsole.Services
 
                 var settings = new List<UIControlSetting>();
                 bool header = false;
-                foreach (var line in File.ReadAllLines(filePath, Encoding.GetEncoding("shift_jis")))
+
+                // ファイルのエンコーディングを判別
+                Encoding fileEncoding = ReadFileWithEncodingDetection(filePath);
+                string[] lines = File.ReadAllLines(filePath, fileEncoding);
+
+                foreach (var line in lines)
                 {
-                    // ヘッダー行はスキップ
-                    if (!header)
+                    try
                     {
-                        header = true;
+                        // ヘッダー行はスキップ
+                        if (!header)
+                        {
+                            header = true;
+                            continue;
+                        }
+
+                        // 行に何も無ければスキップ
+                        if (string.IsNullOrWhiteSpace(line))
+                        {
+                            continue;
+                        }
+
+                        var columns = line.Split('\t');
+
+                        // ControlTypeが未定義ならスキップ
+                        if (string.IsNullOrWhiteSpace(columns[(int)EnumData.ColumnIndex.ControlType]))
+                        {
+                            continue;
+                        }
+
+                        // 駅名称抽出
+                        var stationName = DataHelper.ExtractStationNameFromFilePath(filePath);
+                        var stationNumber = DataHelper.GetStationNumberFromStationName(stationName);
+                        // ImagePattern生成
+                        var imagePattern = columns[(int)EnumData.ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList();
+
+                        settings.Add(new UIControlSetting
+                        {
+                            StationName = stationName,
+                            StationNumber = stationNumber,
+                            ControlType = columns[(int)EnumData.ColumnIndex.ControlType] != string.Empty ? columns[(int)EnumData.ColumnIndex.ControlType] : string.Empty,
+                            UniqueName = columns[(int)EnumData.ColumnIndex.UniqueName],
+                            ParentName = columns[(int)EnumData.ColumnIndex.ParentName],
+                            ServerType = columns[(int)EnumData.ColumnIndex.ServerType],
+                            ServerName = columns[(int)EnumData.ColumnIndex.ServerName],
+                            PointNameA = columns[(int)EnumData.ColumnIndex.PointNameA],
+                            PointValueA = columns[(int)EnumData.ColumnIndex.PointValueA] == "N" ? EnumData.NRC.Normal : columns[(int)EnumData.ColumnIndex.PointValueA] == "R" ? EnumData.NRC.Reversed : EnumData.NRC.Center,
+                            PointNameB = columns[(int)EnumData.ColumnIndex.PointNameB],
+                            PointValueB = columns[(int)EnumData.ColumnIndex.PointValueB] == "N" ? EnumData.NRC.Normal : columns[(int)EnumData.ColumnIndex.PointValueB] == "R" ? EnumData.NRC.Reversed : EnumData.NRC.Center,
+                            DirectionName = columns[(int)EnumData.ColumnIndex.DirectionName],
+                            DirectionValue = columns[(int)EnumData.ColumnIndex.DirectionValue] == "L" ? EnumData.LNR.Left : columns[(int)EnumData.ColumnIndex.PointValueA] == "N" ? EnumData.LNR.Normal : EnumData.LNR.Right,
+                            X = double.TryParse(columns[(int)EnumData.ColumnIndex.X], out var x) ? x : 0,
+                            Y = double.TryParse(columns[(int)EnumData.ColumnIndex.Y], out var y) ? y : 0,
+                            RelativeX = double.TryParse(columns[(int)EnumData.ColumnIndex.X], out var relativeX) ? relativeX : 0,
+                            RelativeY = double.TryParse(columns[(int)EnumData.ColumnIndex.Y], out var relativeY) ? relativeY : 0,
+                            Width = double.TryParse(columns[(int)EnumData.ColumnIndex.Width], out var width) ? width : 0,
+                            Height = double.TryParse(columns[(int)EnumData.ColumnIndex.Height], out var height) ? height : 0,
+                            Angle = double.TryParse(columns[(int)EnumData.ColumnIndex.Angle], out var angle) ? angle : 0,
+                            AngleOriginX = double.TryParse(columns[(int)EnumData.ColumnIndex.AngleOriginX], out var angleX) ? angleX : 0.5,
+                            AngleOriginY = double.TryParse(columns[(int)EnumData.ColumnIndex.AngleOriginY], out var angleY) ? angleY : 0.5,
+                            Text = columns[(int)EnumData.ColumnIndex.Text],
+                            FontSize = double.TryParse(columns[(int)EnumData.ColumnIndex.FontSize], out var fontSize) ? fontSize : 10,
+                            BackgroundColor = columns[(int)EnumData.ColumnIndex.BackgroundColor],
+                            TextColor = columns[(int)EnumData.ColumnIndex.TextColor],
+                            ClickEventName = columns[(int)EnumData.ColumnIndex.ClickEventName],
+                            ImagePattern = imagePattern,
+                            ImagePatternSymbol = MapImagePatternsToSymbols(imagePattern),
+                            ImageIndex = int.TryParse(columns[(int)EnumData.ColumnIndex.ImageIndex], out var defaultImage) ? defaultImage : 0,
+                            BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)EnumData.ColumnIndex.BaseImagePath].Trim('"').Trim(),
+                            ImagePaths = CreateImagePaths(columns[(int)EnumData.ColumnIndex.ImagePattern], columns[(int)EnumData.ColumnIndex.ImagePath]),
+                            KeyInserted = false,
+                            Retsuban = string.Empty,
+                            IsHandling = false,
+                            IsButtionRaised = false,
+                            IsButtionDroped = false,
+                            Remark = columns[(int)EnumData.ColumnIndex.Remark],
+                        });
+                    }
+                    catch (DecoderFallbackException)
+                    {
+                        // デコードエラー時の処理
                         continue;
                     }
-
-                    // 行に何も無ければスキップ
-                    if (string.IsNullOrWhiteSpace(line))
-                    {
-                        continue;
-                    }
-
-                    var columns = line.Split('\t');
-
-                    // ControlTypeが未定義ならスキップ
-                    if (string.IsNullOrWhiteSpace(columns[(int)EnumData.ColumnIndex.ControlType]))
-                    {
-                        continue;
-                    }
-
-                    // 駅名称抽出
-                    var stationName = DataHelper.ExtractStationNameFromFilePath(filePath);
-                    var stationNumber = DataHelper.GetStationNumberFromStationName(stationName);
-                    // ImagePattern生成
-                    var imagePattern = columns[(int)EnumData.ColumnIndex.ImagePattern].Split(',').Select(pattern => pattern.Trim('"').Trim()).ToList();
-
-                    settings.Add(new UIControlSetting
-                    {
-                        StationName = stationName,
-                        StationNumber = stationNumber,
-                        ControlType = columns[(int)EnumData.ColumnIndex.ControlType] != string.Empty ? columns[(int)EnumData.ColumnIndex.ControlType] : string.Empty,
-                        UniqueName = columns[(int)EnumData.ColumnIndex.UniqueName],
-                        ParentName = columns[(int)EnumData.ColumnIndex.ParentName],
-                        ServerType = columns[(int)EnumData.ColumnIndex.ServerType],
-                        ServerName = columns[(int)EnumData.ColumnIndex.ServerName],
-                        PointNameA = columns[(int)EnumData.ColumnIndex.PointNameA],
-                        PointValueA = columns[(int)EnumData.ColumnIndex.PointValueA] == "N" ? EnumData.NRC.Normal : columns[(int)EnumData.ColumnIndex.PointValueA] == "R" ? EnumData.NRC.Reversed : EnumData.NRC.Center,
-                        PointNameB = columns[(int)EnumData.ColumnIndex.PointNameB],
-                        PointValueB = columns[(int)EnumData.ColumnIndex.PointValueB] == "N" ? EnumData.NRC.Normal : columns[(int)EnumData.ColumnIndex.PointValueB] == "R" ? EnumData.NRC.Reversed : EnumData.NRC.Center,
-                        DirectionName = columns[(int)EnumData.ColumnIndex.DirectionName],
-                        DirectionValue = columns[(int)EnumData.ColumnIndex.DirectionValue] == "L" ? EnumData.LNR.Left : columns[(int)EnumData.ColumnIndex.PointValueA] == "N" ? EnumData.LNR.Normal : EnumData.LNR.Right,
-                        X = double.TryParse(columns[(int)EnumData.ColumnIndex.X], out var x) ? x : 0,
-                        Y = double.TryParse(columns[(int)EnumData.ColumnIndex.Y], out var y) ? y : 0,
-                        RelativeX = double.TryParse(columns[(int)EnumData.ColumnIndex.X], out var relativeX) ? relativeX : 0,
-                        RelativeY = double.TryParse(columns[(int)EnumData.ColumnIndex.Y], out var relativeY) ? relativeY : 0,
-                        Width = double.TryParse(columns[(int)EnumData.ColumnIndex.Width], out var width) ? width : 0,
-                        Height = double.TryParse(columns[(int)EnumData.ColumnIndex.Height], out var height) ? height : 0,
-                        Angle = double.TryParse(columns[(int)EnumData.ColumnIndex.Angle], out var angle) ? angle : 0,
-                        AngleOriginX = double.TryParse(columns[(int)EnumData.ColumnIndex.AngleOriginX], out var angleX) ? angleX : 0.5,
-                        AngleOriginY = double.TryParse(columns[(int)EnumData.ColumnIndex.AngleOriginY], out var angleY) ? angleY : 0.5,
-                        Text = columns[(int)EnumData.ColumnIndex.Text],
-                        FontSize = double.TryParse(columns[(int)EnumData.ColumnIndex.FontSize], out var fontSize) ? fontSize : 10,
-                        BackgroundColor = columns[(int)EnumData.ColumnIndex.BackgroundColor],
-                        TextColor = columns[(int)EnumData.ColumnIndex.TextColor],
-                        ClickEventName = columns[(int)EnumData.ColumnIndex.ClickEventName],
-                        ImagePattern = imagePattern,
-                        ImagePatternSymbol = MapImagePatternsToSymbols(imagePattern),
-                        ImageIndex = int.TryParse(columns[(int)EnumData.ColumnIndex.ImageIndex], out var defaultImage) ? defaultImage : 0,
-                        BaseImagePath = AppDomain.CurrentDomain.BaseDirectory + columns[(int)EnumData.ColumnIndex.BaseImagePath].Trim('"').Trim(),
-                        ImagePaths = CreateImagePaths(columns[(int)EnumData.ColumnIndex.ImagePattern], columns[(int)EnumData.ColumnIndex.ImagePath]),
-                        KeyInserted = false,
-                        Retsuban = string.Empty,
-                        IsHandling = false,
-                        IsButtionRaised = false,
-                        IsButtionDroped = false,
-                        Remark = columns[(int)EnumData.ColumnIndex.Remark],
-                    });
                 }
                 return settings;
             }
@@ -105,6 +118,37 @@ namespace TatehamaInterlockingConsole.Services
                 CustomMessage.Show(ex.ToString(), "エラー");
                 return null;
             }
+        }
+
+        /// <summary>
+        /// ファイルのエンコード形式を判別する
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        static Encoding ReadFileWithEncodingDetection(string filePath)
+        {
+            byte[] bytes = File.ReadAllBytes(filePath);
+
+            // BOM付きUTF-8か判定
+            if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF)
+            {
+                return Encoding.UTF8;
+            }
+
+            // UTF-8として読み込めるか検証
+            try
+            {
+                var utf8String = Encoding.UTF8.GetString(bytes);
+                // 再エンコードしてバイト列が一致するか確認（UTF-8で問題なければそのまま採用）
+                if (Encoding.UTF8.GetBytes(utf8String).Length == bytes.Length)
+                {
+                    return Encoding.UTF8;
+                }
+            }
+            catch { }
+
+            // それ以外ならShift-JISとみなす
+            return Encoding.GetEncoding("shift_jis");
         }
 
         /// <summary>
