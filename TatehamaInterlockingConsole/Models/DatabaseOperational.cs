@@ -16,6 +16,9 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class ConstantDataToServer
         {
+            // Todo: 常時送信用のクラスと、操作した時用のクラスは分けたほうがよい
+            //       常時送信 =>駅名用
+            //       操作した時 => てこ・着点
             /// <summary>
             /// 常時送信用駅データリスト
             /// </summary>
@@ -100,6 +103,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class TraincrewRole
         {
+            // Todo: サーバーのTraincrewRoleクラスを使おう
             /// <summary>
             /// 運転士
             /// </summary>
@@ -131,6 +135,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class DirectionData
         {
+            // Todo: こいつが何を表すか理解できないのでレビュー不可
             /// <summary>
             /// 方向てこ名称
             /// </summary>
@@ -146,6 +151,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class TrackCircuitData
         {
+            // Todo: こいつが何を表すか理解できないのでレビュー不可
             /// <summary>
             /// 在線状態    
             /// </summary>
@@ -174,6 +180,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class SwitchData
         {
+            // Todo: TrackCircuitInfoを拡張したクラスを利用する
             /// <summary>
             /// 転てつ器状態
             /// </summary>
@@ -189,6 +196,8 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class SignalData
         {
+            // Todo: てこの状態と実際の状態をもたせたほうが良いのでは？
+            // Todo: NRCにしないと、状態が足りなくない？
             /// <summary>
             /// 信号機名称
             /// </summary>
@@ -204,6 +213,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class RetsubanData
         {
+            // Todo: SignalDataに統一したほうがよい？
             /// <summary>
             /// 列番名称
             /// </summary>
@@ -219,6 +229,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class LeverData
         {
+            // Todo: Mapでええんとちゃうか・・？
             /// <summary>
             /// 物理てこ名称
             /// </summary>
@@ -234,6 +245,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public class DestinationButtonData
         {
+            // Todo: これもMapでええんとちゃうか・・・
             /// <summary>
             /// 着点ボタン名称
             /// </summary>
