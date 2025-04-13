@@ -10,6 +10,7 @@ namespace TatehamaInterlockingConsole.Handlers
     {
         private readonly DataManager _dataManager = DataManager.Instance;
         private readonly ServerCommunication _serverCommunication;
+        private readonly Random _random = new();
         private UIControlSetting strMouseDownSetting;
         public static ImageHandler Instance { get; private set; }
 
@@ -73,6 +74,7 @@ namespace TatehamaInterlockingConsole.Handlers
                     break;
                 case "ButtonImage":
                     HandleButtonImageMouseDown(control);
+                    strMouseDownSetting = control;
                     break;
                 default:
                     break;
@@ -298,8 +300,6 @@ namespace TatehamaInterlockingConsole.Handlers
                     // ボタン操作中(押し)判定
                     control.IsButtionRaised = true;
 
-                    strMouseDownSetting = control;
-
                     var dataToServer = new DatabaseOperational.ButtonEventDataToServer
                     {
                         DestinationButtonData = new DatabaseOperational.DestinationButtonData
@@ -323,6 +323,10 @@ namespace TatehamaInterlockingConsole.Handlers
                         .RemoveAll(alarm => alarm.StationName == control.StationName && alarm.IsUpSide == control.UniqueName.Contains("上り"));
 
                     Sound.Instance.LoopSoundAllStop(control.StationName, control.UniqueName.Contains("上り"));
+
+                    // 音声再生
+                    string randomPushSoundIndex = _random.Next(1, 13).ToString("00");
+                    Sound.Instance.SoundPlay($"push_{randomPushSoundIndex}", false);
                 }
             }
         }
@@ -358,6 +362,13 @@ namespace TatehamaInterlockingConsole.Handlers
                     //    System.Windows.MessageBoxButton.OK,
                     //    System.Windows.MessageBoxImage.Information
                     //    );
+                }
+                // 接近ボタンの場合は音声再生
+                else if (control.UniqueName.Contains("接近"))
+                {
+                    // 音声再生
+                    string randomPullSoundIndex = _random.Next(1, 13).ToString("00");
+                    Sound.Instance.SoundPlay($"pull_{randomPullSoundIndex}", false);
                 }
             }
         }

@@ -29,6 +29,14 @@ namespace TatehamaInterlockingConsole.Services
         /// </summary>
         public Sound()
         {
+            
+        }　
+
+        /// <summary>
+        /// サウンド初期化メソッド　
+        /// </summary>
+        public void SoundInit()
+        {
             try
             {
                 // XAudio2とMasteringVoiceを初期化
@@ -105,7 +113,7 @@ namespace TatehamaInterlockingConsole.Services
         /// <summary>
         /// 音声ファイル読み込みメソッド
         /// </summary>
-        public void LoadSoundFiles()
+        private void LoadSoundFiles()
         {
             try
             {
@@ -233,7 +241,7 @@ namespace TatehamaInterlockingConsole.Services
         /// <summary>
         /// 既存の音声データをクリア
         /// </summary>
-        public void ClearSoundData()
+        private void ClearSoundData()
         {
             // すべてのSourceVoiceを停止して解放
             SoundAllStop();
@@ -244,7 +252,7 @@ namespace TatehamaInterlockingConsole.Services
         /// <summary>
         /// ループ音声再生メソッド
         /// </summary>
-        public void LoopSoundAllPlay()
+        private void LoopSoundAllPlay()
         {
             foreach (var voice in SoundSource.Keys.Where(s => s.Contains("TH") && s.Contains("loop")))
             {

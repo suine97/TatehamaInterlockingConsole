@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Models;
 
 namespace TatehamaInterlockingConsole.Services
@@ -22,15 +23,17 @@ namespace TatehamaInterlockingConsole.Services
         {
             try
             {
-                // EncodingProviderを登録
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
                 // ファイルパスを組み立てる
                 string filePath = Path.Combine(folderPath, fileName);
 
                 var Settings = new List<ApproachingAlarmSetting>();
                 bool header = false;
-                foreach (var line in File.ReadAllLines(filePath, Encoding.GetEncoding("shift_jis")))
+
+                // ファイルのエンコーディングを判別
+                Encoding fileEncoding = DataHelper.ReadFileWithEncodingDetection(filePath);
+                string[] lines = File.ReadAllLines(filePath, fileEncoding);
+
+                foreach (var line in lines)
                 {
                     // ヘッダー行はスキップ
                     if (!header)
@@ -98,18 +101,12 @@ namespace TatehamaInterlockingConsole.Services
         /// <returns></returns>
         private static string FormatToServerName(string formattedName, string type, string station)
         {
-            // 信号機なら番号を抽出して"所属駅名_信号機番号"に整形
-            if (type == "Signal")
+            // 転てつ器なら"[所属駅名]_W[転てつ器番号]"に整形
+            if (type == "Point")
             {
-                var number = new string(formattedName.TakeWhile(c => c != 'L' && c != 'R').ToArray());
-                return station + "_" + number;
+                return station + "_W" + formattedName;
             }
-            // 転てつ器なら"所属駅名_転てつ器番号"に整形
-            else if (type == "Point")
-            {
-                return station + "_" + formattedName;
-            }
-            // 軌道回路やその他種別ならそのまま
+            // 信号機・軌道回路・その他種別ならそのまま
             else
             {
                 return formattedName;
@@ -143,8 +140,10 @@ namespace TatehamaInterlockingConsole.Services
 
             if (strName.EndsWith("T"))
                 return "Track";
-            else if (strName.Contains("L") || strName.Contains("R"))
+            else if (strName.Contains("出発") || strName.Contains("場内") || strName.Contains("入換"))
                 return "Signal";
+            else if (strName.Contains("L") || strName.Contains("R"))
+                return "Direction";
             else if (int.TryParse(strName, out _))
                 return "Point";
             else if (strName.Contains("列番"))

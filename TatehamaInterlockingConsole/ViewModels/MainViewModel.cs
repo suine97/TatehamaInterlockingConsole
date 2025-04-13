@@ -158,6 +158,7 @@ namespace TatehamaInterlockingConsole.ViewModels
 
                     // 音声管理クラスのインスタンスを取得
                     _sound = Sound.Instance;
+                    _sound.SoundInit();
                     Volume = 100;
                     VolumeText = $"音量: {Volume}%";
                 }

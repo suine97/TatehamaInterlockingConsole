@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows;
 using TatehamaInterlockingConsole.Helpers;
@@ -125,8 +126,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                 dataFromServer.PhysicalLevers.Any(l => l.Name == item.ServerName) ||
                 dataFromServer.PhysicalButtons.Any(b => b.Name == item.ServerName) ||
                 dataFromServer.Retsubans.Any(r => r.Name == item.ServerName) ||
-                dataFromServer.Lamps.ContainsKey(item.ServerName) // Fixed this line
-            ).ToList();
+                dataFromServer.Lamps.ContainsKey(item.ServerName)
+                ).ToList();
 
                 foreach (var item in relevantSettings)
                 {
@@ -149,7 +150,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                         .FirstOrDefault(b => b.Name == item.ServerName);
                     var retsuban = dataFromServer.Retsubans
                         .FirstOrDefault(r => r.Name == item.ServerName);
-                    var lamp = dataFromServer.Lamps.ContainsKey(item.ServerName) ? dataFromServer.Lamps[item.ServerName] : false;
+                    var lamp = dataFromServer.Lamps
+                        .TryGetValue(item.ServerName, out bool value) ? value : false;
 
                     // サーバー分類毎に処理
                     switch (item.ServerType)
@@ -171,13 +173,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                             UpdateDirectionIndicator(item, trackCircuit, direction, directionStateList);
                             break;
                         case "状態表示灯":
-                            if (lamp != null && lamp)
                             {
                                 item.ImageIndex = lamp ? 1 : 0;
-                            }
-                            else
-                            {
-                                item.ImageIndex = 0;
                             }
                             break;
                         case "駅扱切換表示灯":
@@ -238,6 +235,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                 var conditionsTrack = new DatabaseOperational.TrackCircuitData();
                 var conditionsPoint = new DatabaseOperational.SwitchData();
                 var conditionsSignal = new DatabaseOperational.SignalData();
+                var conditionsDirection = new DatabaseOperational.DirectionData();
 
                 // 接近警報条件リストを処理
                 foreach (var alarm in approachingAlarmList)
@@ -254,16 +252,20 @@ namespace TatehamaInterlockingConsole.ViewModels
                     conditionsSignal = dataFromServer.Signals
                         .FirstOrDefault(p => alarm.ConditionsList
                         .Any(c => (c.Type == "Signal") && (c.Name == p.Name)));
+                    conditionsDirection = dataFromServer.Directions
+                        .FirstOrDefault(p => alarm.ConditionsList
+                        .Any(c => (c.Type == "Direction") && (c.Name == p.Name)));
 
                     // 各パラメータの接近警報鳴動条件を満たしているか判定
                     bool IsOnTrack = (OnTrack != null) && OnTrack.On;
                     bool IsTrackState = IsTrackCircuitConditionMet(conditionsTrack, alarm);
                     bool IsPointState = IsPointConditionMet(conditionsPoint, alarm);
                     bool IsSignalState = IsSignalConditionMet(conditionsSignal, alarm);
+                    bool IsDirectionState = IsDirectionConditionMet(conditionsDirection, alarm);
                     bool IsRetsubanState = IsRetsubanConditionMet(conditionsTrack, alarm);
 
                     // 接近警報鳴動条件が全て満たされている場合に鳴動判定
-                    if (IsOnTrack && IsTrackState && IsPointState && IsSignalState && IsRetsubanState)
+                    if (IsOnTrack && IsTrackState && IsPointState && IsSignalState && IsDirectionState && IsRetsubanState)
                         alarm.IsAlarmConditionMet = true;
                     else
                         alarm.IsAlarmConditionMet = false;
@@ -644,6 +646,31 @@ namespace TatehamaInterlockingConsole.ViewModels
 
             // 信号機と設定内容が定位同士、または反位同士の場合は条件を満たす
             if (isReverse == (signal.Phase != EnumData.Phase.R))
+                return true;
+            // それ以外は条件を満たさない
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 接近警報鳴動条件判定(方向てこ)
+        /// </summary>
+        /// <param name="direction"></param>
+        /// <param name="alarm"></param>
+        /// <returns></returns>
+        private bool IsDirectionConditionMet(DatabaseOperational.DirectionData direction, ApproachingAlarmSetting alarm)
+        {
+            // 方向てこ条件が存在しない場合は条件を満たす
+            if (direction == null) return true;
+
+            // 方向てこ条件を抽出
+            bool isReverse = alarm.ConditionsList.FirstOrDefault(p => p.Name == direction.Name).IsReversePosition;
+
+            // 方向てこと設定内容がR同士の場合は条件を満たす
+            if (isReverse == (direction.State == EnumData.LNR.Right))
+                return true;
+            // 方向てこと設定内容がL同士の場合は条件を満たす
+            else if (!isReverse == (direction.State == EnumData.LNR.Left))
                 return true;
             // それ以外は条件を満たさない
             else
