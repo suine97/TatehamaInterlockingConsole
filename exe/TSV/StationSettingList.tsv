@@ -1,18 +1,18 @@
 StationName	StationNumber	FileName	ViewName	UpSideAlarmName	UpSideAlarmType	DownSideAlarmName	DownSideAlarmType	DirectionAlarmName	DirectionAlarmType
-ŠÙ•l‰w	TH76	TH76_Tatehama_UIList	TH76_ŠÙ•l‰w_UIList	bz_310hz	Long	bz_610hz	Short	bz_310hz	Long
-‹î–ì‰w	TH75	TH75_Komano_UIList	TH75_‹î–ì‰w_UIList	bz_410hz	Long	bz_730hz	Short	bz_310hz	Long
-’Ãè‰w	TH71	TH71_Tsuzaki_UIList	TH71_’Ãè‰w_UIList	bz_510hz	Long	bz_830hz	Short	bz_310hz	Long
-•l‰€‰w	TH70	TH70_Hamazono_UIList	TH70_•l‰€‰w_UIList	bz_310hz	Long	bz_610hz	Short	bz_310hz	Long
-V–ìè‰w	TH67	TH67_Shin-Nozaki_UIList	TH67_V–ìè‰w_UIList	bz_410hz	Long	bz_730hz	Short	bz_310hz	Long
-]ƒmŒ´ŒŸÔ‹æ•\¦”Õ	TH66S	TH66S_Enohara-Inspection-Indicater_UIList	TH66S_]ƒmŒ´ŒŸÔ‹æ•\¦”Õ_UIList	bz_510hz	Long	bz_830hz	Short	bz_310hz	Long
+ŠÙ•l‰w	TH76	TH76_Tatehama_UIList	TH76_ŠÙ•l‰w_UIList	bz_310Hz	Long	bz_610Hz	Short	bz_310Hz	Long
+‹î–ì‰w	TH75	TH75_Komano_UIList	TH75_‹î–ì‰w_UIList	bz_410Hz	Long	bz_730Hz	Short	bz_310Hz	Long
+’Ãè‰w	TH71	TH71_Tsuzaki_UIList	TH71_’Ãè‰w_UIList	bz_510Hz	Long	bz_830Hz	Short	bz_310Hz	Long
+•l‰€‰w	TH70	TH70_Hamazono_UIList	TH70_•l‰€‰w_UIList	bz_310Hz	Long	bz_610Hz	Short	bz_310Hz	Long
+V–ìè‰w	TH67	TH67_Shin-Nozaki_UIList	TH67_V–ìè‰w_UIList	bz_410Hz	Long	bz_730Hz	Short	bz_310Hz	Long
+]ƒmŒ´ŒŸÔ‹æ•\¦”Õ	TH66S	TH66S_Enohara-Inspection-Indicater_UIList	TH66S_]ƒmŒ´ŒŸÔ‹æ•\¦”Õ_UIList	bz_510Hz	Long	bz_830Hz	Short	bz_310Hz	Long
 ]ƒmŒ´ŒŸÔ‹æ‘€ì”Õ	TH66S	TH66S_Enohara-Inspection-Switchboard_UIList	TH66S_]ƒmŒ´ŒŸÔ‹æ‘€ì”Õ_UIList						
-‘å“¹›‰w	TH65	TH65_Daidoji_UIList	TH65_‘å“¹›‰w_UIList	bz_310hz	Long	bz_610hz	Short	bz_530hz	Long
-“¡]‰w	TH64	TH64_Fujie_UIList	TH64_“¡]‰w_UIList	bz_410hz	Long	bz_730hz	Short	bz_630hz	Long
-…‰z‰w	TH63	TH63_Mizukoshi_UIList	TH63_…‰z‰w_UIList	bz_510hz	Long	bz_830hz	Short	bz_750hz	Long
-‚Œ©‘ò‰w	TH62	TH62_Takamizawa_UIList	TH62_‚Œ©‘ò‰w_UIList	bz_310hz	Long	bz_610hz	Short	bz_530hz	Long
-“ú–ìX‰w	TH61	TH61_Hinomori_UIList	TH61_“ú–ìX‰w_UIList	bz_410hz	Long	bz_730hz	Short	bz_630hz	Long
-¼ÔR‰w	TH59	TH59_Nishi-Akayama_UIList	TH59_¼ÔR‰w_UIList	bz_510hz	Long	bz_830hz	Short	bz_750hz	Long
-ÔR’¬‰w	TH58	TH58_Akayamacho_UIList	TH58_ÔR’¬‰w_UIList	bz_310hz	Long	bz_610hz	Short	bz_530hz	Long
+‘å“¹›‰w	TH65	TH65_Daidoji_UIList	TH65_‘å“¹›‰w_UIList	bz_310Hz	Long	bz_610Hz	Short	bz_530Hz	Long
+“¡]‰w	TH64	TH64_Fujie_UIList	TH64_“¡]‰w_UIList	bz_410Hz	Long	bz_730Hz	Short	bz_630Hz	Long
+…‰z‰w	TH63	TH63_Mizukoshi_UIList	TH63_…‰z‰w_UIList	bz_510Hz	Long	bz_830Hz	Short	bz_750Hz	Long
+‚Œ©‘ò‰w	TH62	TH62_Takamizawa_UIList	TH62_‚Œ©‘ò‰w_UIList	bz_310Hz	Long	bz_610Hz	Short	bz_530Hz	Long
+“ú–ìX‰w	TH61	TH61_Hinomori_UIList	TH61_“ú–ìX‰w_UIList	bz_410Hz	Long	bz_730Hz	Short	bz_630Hz	Long
+¼ÔR‰w	TH59	TH59_Nishi-Akayama_UIList	TH59_¼ÔR‰w_UIList	bz_510Hz	Long	bz_830Hz	Short	bz_750Hz	Long
+ÔR’¬‰w	TH58	TH58_Akayamacho_UIList	TH58_ÔR’¬‰w_UIList	bz_310Hz	Long	bz_610Hz	Short	bz_530Hz	Long
 									
 									
 									
