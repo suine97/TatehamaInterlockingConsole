@@ -319,10 +319,16 @@ namespace TatehamaInterlockingConsole.Handlers
                 // 接近ボタンの場合は接近警報停止処理
                 else if (control.UniqueName.Contains("接近"))
                 {
-                    _dataManager.ActiveAlarmsList
-                        .RemoveAll(alarm => alarm.StationName == control.StationName && alarm.IsUpSide == control.UniqueName.Contains("上り"));
+                    var StationName = control.StationName;
+                    if (StationName.Contains("江ノ原検車区"))
+                    {
+                        StationName = "江ノ原検車区表示盤";
+                    }
 
-                    Sound.Instance.LoopSoundAllStop(control.StationName, control.UniqueName.Contains("上り"));
+                    _dataManager.ActiveAlarmsList
+                        .RemoveAll(alarm => alarm.StationName == StationName && alarm.IsUpSide == control.UniqueName.Contains("上り"));
+
+                    Sound.Instance.LoopSoundAllStop(StationName, control.UniqueName.Contains("上り"));
 
                     // 音声再生
                     string randomPushSoundIndex = _random.Next(1, 13).ToString("00");
