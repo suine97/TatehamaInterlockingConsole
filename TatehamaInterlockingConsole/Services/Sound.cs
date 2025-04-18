@@ -67,22 +67,25 @@ namespace TatehamaInterlockingConsole.Services
 
                 var stationSettingList = DataManager.Instance.StationSettingList;
                 var directionStateList = DataManager.Instance.DirectionStateList;
+                var activeStationList = DataManager.Instance.ActiveStationsList;
 
                 // 接近警報鳴動処理
                 foreach (var activeAlarm in DataManager.Instance.ActiveAlarmsList)
                 {
                     var stationSetting = stationSettingList
                         .FirstOrDefault(s => s.StationName == activeAlarm.StationName);
+                    bool isPlay = activeStationList
+                        .Any(s => s == stationSetting.StationNumber);
 
                     if (stationSetting != null)
                     {
                         if (activeAlarm.IsUpSide)
                         {
-                            SetAlarmVolumeBasedOnType(stationSetting.UpSideAlarmType, stationSetting.UpSideAlarmName + "_loop");
+                            SetAlarmVolumeBasedOnType(stationSetting.UpSideAlarmType, stationSetting.UpSideAlarmName + "_loop", isPlay);
                         }
                         else
                         {
-                            SetAlarmVolumeBasedOnType(stationSetting.DownSideAlarmType, stationSetting.DownSideAlarmName + "_loop");
+                            SetAlarmVolumeBasedOnType(stationSetting.DownSideAlarmType, stationSetting.DownSideAlarmName + "_loop", isPlay);
                         }
                     }
                 }
@@ -92,18 +95,20 @@ namespace TatehamaInterlockingConsole.Services
                 {
                     var stationSetting = stationSettingList
                         .FirstOrDefault(s => s.StationNumber == direction.Name.Split('_')[0]);
+                    bool isPlay = activeStationList
+                        .Any(s => s == stationSetting.StationNumber);
 
                     if (stationSetting != null)
                     {
                         // 方向てこ状態が変化してから2秒以内なら処理
                         if ((DateTime.Now - direction.UpdateTime).TotalSeconds < 2.0d)
                         {
-                            SetAlarmVolumeBasedOnType(stationSetting.DirectionAlarmType, stationSetting.DirectionAlarmName + "_loop");
+                            SetAlarmVolumeBasedOnType(stationSetting.DirectionAlarmType, stationSetting.DirectionAlarmName + "_loop", isPlay);
                         }
                         // 2秒以上経過している場合は音声停止
                         else
                         {
-                            SetVolume(stationSetting.DirectionAlarmName + "_loop", 0.0f);
+                            SetAlarmVolumeBasedOnType(stationSetting.DirectionAlarmType, stationSetting.DirectionAlarmName + "_loop", false);
                         }
                     }
                 }
@@ -379,8 +384,10 @@ namespace TatehamaInterlockingConsole.Services
         /// </summary>
         /// <param name="alarmType"></param>
         /// <param name="alarmName"></param>
-        public void SetAlarmVolumeBasedOnType(string alarmType, string alarmName)
+        public void SetAlarmVolumeBasedOnType(string alarmType, string alarmName, bool isPlay)
         {
+            if (!isPlay) { SetVolume(alarmName, 0.0f); return; }
+
             if (alarmType.Equals("SHORT", StringComparison.CurrentCultureIgnoreCase))
             {
                 bool flagValue = DataManager.Instance.FlagValue;
