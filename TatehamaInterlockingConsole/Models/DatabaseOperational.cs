@@ -12,48 +12,10 @@ namespace TatehamaInterlockingConsole.Models
         public static DatabaseOperational Instance => _instance;
 
         /// <summary>
-        /// 常時送信用データクラス
-        /// </summary>
-        public class ConstantDataToServer
-        {
-            /// <summary>
-            /// 常時送信用駅データリスト
-            /// </summary>
-            public List<string> ActiveStationsList { get; set; }
-        }
-
-        /// <summary>
-        /// イベント送信用データクラス(物理てこ)
-        /// </summary>
-        public class LeverEventDataToServer
-        {
-            /// <summary>
-            /// 物理てこデータ
-            /// </summary>
-            public LeverData LeverData { get; set; }
-        }
-
-        /// <summary>
-        /// イベント送信用データクラス(着点ボタン)
-        /// </summary>
-        public class ButtonEventDataToServer
-        {
-            /// <summary>
-            /// 着点ボタンデータ
-            /// </summary>
-            public DestinationButtonData DestinationButtonData { get; set; }
-        }
-
-        /// <summary>
         /// 受信用データクラス
         /// </summary>
         public class DataFromServer
         {
-            /// <summary>
-            /// 認証情報リスト
-            /// </summary>
-            public TraincrewRole Authentications { get; set; }
-
             /// <summary>
             /// 軌道回路情報リスト
             /// </summary>
@@ -75,6 +37,11 @@ namespace TatehamaInterlockingConsole.Models
             public List<LeverData> PhysicalLevers { get; set; }
 
             /// <summary>
+            /// 物理鍵てこ情報リスト
+            /// </summary>
+            public List<KeyLeverData> PhysicalKeyLevers { get; set; }
+
+            /// <summary>
             /// 着点ボタン情報リスト
             /// </summary>
             public List<DestinationButtonData> PhysicalButtons { get; set; }
@@ -93,37 +60,6 @@ namespace TatehamaInterlockingConsole.Models
             /// 表示灯情報リスト
             /// </summary>
             public Dictionary<string, bool> Lamps { get; set; }
-        }
-
-        /// <summary>
-        /// 認証データクラス
-        /// </summary>
-        public class TraincrewRole
-        {
-            /// <summary>
-            /// 運転士
-            /// </summary>
-            public required bool IsDriver { get; init; } = false;
-            /// <summary>
-            /// 乗務助役
-            /// </summary>
-            public required bool IsDriverManager { get; init; } = false;
-            /// <summary>
-            /// 車掌
-            /// </summary>
-            public required bool IsConductor { get; init; } = false;
-            /// <summary>
-            /// 司令員
-            /// </summary>
-            public required bool IsCommander { get; init; } = false;
-            /// <summary>
-            /// 信号扱者
-            /// </summary>
-            public required bool IsSignalman { get; init; } = false;
-            /// <summary>
-            /// 司令主任
-            /// </summary>
-            public required bool IsAdministrator { get; init; } = false;
         }
 
         /// <summary>
@@ -227,6 +163,25 @@ namespace TatehamaInterlockingConsole.Models
             /// 物理てこの状態
             /// </summary>
             public EnumData.LCR State { get; set; } = EnumData.LCR.Center;
+        }
+
+        /// <summary>
+        /// 物理鍵てこデータクラス
+        /// </summary>
+        public class KeyLeverData
+        {
+            /// <summary>
+            /// 物理鍵てこ名称
+            /// </summary>
+            public string Name { get; set; } = "";
+            /// <summary>
+            /// 物理鍵てこの状態
+            /// </summary>
+            public EnumData.LNR State { get; set; } = EnumData.LNR.Normal;
+            /// <summary>
+            /// 物理鍵てこの鍵挿入状態
+            /// </summary>
+            public bool IsKeyInserted { get; set; } = false;
         }
 
         /// <summary>

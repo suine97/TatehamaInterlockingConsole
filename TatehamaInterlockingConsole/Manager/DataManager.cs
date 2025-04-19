@@ -70,19 +70,6 @@ namespace TatehamaInterlockingConsole.Manager
             }
         }
 
-        private DatabaseOperational.TraincrewRole _authentication;
-        /// <summary>
-        /// サーバー受信データ(認証情報)
-        /// </summary>
-        public DatabaseOperational.TraincrewRole Authentication
-        {
-            get => _authentication;
-            set
-            {
-                _authentication = value;
-            }
-        }
-
         private List<string> _activeStationsList;
         /// <summary>
         /// 起動しているウィンドウの駅名を保持するリスト

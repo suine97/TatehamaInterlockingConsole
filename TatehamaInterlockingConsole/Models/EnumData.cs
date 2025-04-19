@@ -174,7 +174,7 @@ namespace TatehamaInterlockingConsole.Models
         {
             if (value < 0)
                 return LNR.Left;
-            else if (value == 0)
+            else if (value == 0 || value == 10)
                 return LNR.Normal;
             else
                 return LNR.Right;

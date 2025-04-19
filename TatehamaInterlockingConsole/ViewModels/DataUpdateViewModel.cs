@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using TatehamaInterlockingConsole.Helpers;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
@@ -124,6 +125,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                 dataFromServer.Directions.Any(d => d.Name == item.DirectionName) ||
                 dataFromServer.Signals.Any(s => s.Name == item.ServerName) ||
                 dataFromServer.PhysicalLevers.Any(l => l.Name == item.ServerName) ||
+                dataFromServer.PhysicalKeyLevers.Any(l => l.Name == item.ServerName) ||
                 dataFromServer.PhysicalButtons.Any(b => b.Name == item.ServerName) ||
                 dataFromServer.Retsubans.Any(r => r.Name == item.ServerName) ||
                 dataFromServer.Lamps.ContainsKey(item.ServerName)
@@ -144,7 +146,7 @@ namespace TatehamaInterlockingConsole.ViewModels
                         .FirstOrDefault(s => s.Name == item.ServerName);
                     var physicalLever = dataFromServer.PhysicalLevers
                         .FirstOrDefault(l => l.Name == item.ServerName);
-                    var physicalKeyLever = dataFromServer.PhysicalLevers
+                    var physicalKeyLever = dataFromServer.PhysicalKeyLevers
                        .FirstOrDefault(l => l.Name == item.ServerName);
                     var physicalButton = dataFromServer.PhysicalButtons
                         .FirstOrDefault(b => b.Name == item.ServerName);
@@ -461,14 +463,28 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="item"></param>
         /// <param name="physicalKeyLever"></param>
         /// <param name="randomSwitchSoundIndex"></param>
-        private void UpdatePhysicalKeyLever(UIControlSetting item, DatabaseOperational.LeverData physicalKeyLever, string randomSwitchSoundIndex)
+        private void UpdatePhysicalKeyLever(UIControlSetting item, DatabaseOperational.KeyLeverData physicalKeyLever, string randomSwitchSoundIndex)
         {
             if (physicalKeyLever != null)
             {
                 // 鍵てこが操作中で、物理鍵てこの状態がUIとサーバーで同じ場合に更新
-                if (item.IsHandling && physicalKeyLever.State == EnumData.ConvertToLCR(item.ImageIndex))
+                if (item.IsHandling && physicalKeyLever.State == EnumData.ConvertToLNR(item.ImageIndex))
                 {
-                    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
+                    var newIndex = EnumData.ConvertFromLNR(physicalKeyLever.State);
+
+                    // 鍵挿入状態を反映
+                    if (item.KeyInserted)
+                    {
+                        if (newIndex >= 0)
+                        {
+                            newIndex -= 10;
+                        }
+                        else
+                        {
+                            newIndex += 10;
+                        }
+                    }
+                    item.ImageIndex = newIndex;
 
                     // 操作判定を解除
                     item.IsHandling = false;
@@ -476,9 +492,23 @@ namespace TatehamaInterlockingConsole.ViewModels
                     _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);
                 }
                 // 鍵てこが操作中ではなく、物理鍵てこの状態がUIとサーバーで異なる場合に更新
-                else if (!item.IsHandling && physicalKeyLever.State != EnumData.ConvertToLCR(item.ImageIndex))
+                else if (!item.IsHandling && physicalKeyLever.State != EnumData.ConvertToLNR(item.ImageIndex))
                 {
-                    item.ImageIndex = EnumData.ConvertFromLCR(physicalKeyLever.State);
+                    var newIndex = EnumData.ConvertFromLNR(physicalKeyLever.State);
+
+                    // 鍵挿入状態を反映
+                    if (item.KeyInserted)
+                    {
+                        if (newIndex >= 0)
+                        {
+                            newIndex -= 10;
+                        }
+                        else
+                        {
+                            newIndex += 10;
+                        }
+                    }
+                    item.ImageIndex = newIndex;
 
                     // 音声再生
                     _sound.SoundPlay($"switch_{randomSwitchSoundIndex}", false);

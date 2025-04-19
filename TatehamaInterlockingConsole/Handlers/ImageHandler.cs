@@ -141,16 +141,13 @@ namespace TatehamaInterlockingConsole.Handlers
                 // 操作中判定
                 control.IsHandling = true;
 
-                var dataToServer = new DatabaseOperational.LeverEventDataToServer
+                var leverData = new DatabaseOperational.LeverData
                 {
-                    LeverData = new DatabaseOperational.LeverData
-                    {
-                        Name = control.ServerName,
-                        State = EnumData.ConvertToLCR(control.ImageIndex)
-                    }
+                    Name = control.ServerName,
+                    State = EnumData.ConvertToLCR(control.ImageIndex)
                 };
-                _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(dataToServer);
-                //CustomMessage.Show($"Name: {dataToServer.LeverData.Name} State: {dataToServer.LeverData.State}",
+                _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(leverData);
+                //CustomMessage.Show($"Name: {leverData.Name} State: {leverData.State}",
                 //    "サーバー送信",
                 //    System.Windows.MessageBoxButton.OK,
                 //    System.Windows.MessageBoxImage.Information
@@ -167,120 +164,104 @@ namespace TatehamaInterlockingConsole.Handlers
         {
             // Shiftキーが押されているかを判定
             bool isShiftPressed = (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Shift) == System.Windows.Input.ModifierKeys.Shift;
-            // 司令主任権限
-            bool isAdministrator = _dataManager.Authentication?.IsAdministrator ?? false;
-
-            // 司令主任権限がある場合のみ処理
-            if (isAdministrator)
+            if (isShiftPressed)
             {
-                if (isShiftPressed)
+                // Shiftキーが押されている場合、KeyInsertedを切り替え
+                if (control.KeyInserted)
                 {
-                    // Shiftキーが押されている場合、KeyInsertedを切り替え
-                    if (control.KeyInserted)
+                    if (control.ImageIndex >= 0)
                     {
-                        if (control.ImageIndex >= 0)
-                        {
-                            control.ImageIndex -= 10;
-                        }
-                        else
-                        {
-                            control.ImageIndex += 10;
-                        }
+                        control.ImageIndex -= 10;
                     }
                     else
                     {
-                        if (control.ImageIndex >= 0)
-                        {
-                            control.ImageIndex += 10;
-                        }
-                        else
-                        {
-                            control.ImageIndex -= 10;
-                        }
-                    }
-                    control.KeyInserted = !control.KeyInserted;
-
-                    // サーバーへリクエスト送信
-                    if (control.ServerType != string.Empty)
-                    {
-                        // 操作中判定
-                        control.IsHandling = true;
-
-                        var dataToServer = new DatabaseOperational.LeverEventDataToServer
-                        {
-                            LeverData = new DatabaseOperational.LeverData
-                            {
-                                Name = control.ServerName,
-                                State = EnumData.ConvertToLCR(control.ImageIndex)
-                            }
-                        };
-                        _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(dataToServer);
-                        //CustomMessage.Show($"Name: {dataToServer.LeverData.Name} State: {dataToServer.LeverData.State}",
-                        //    "サーバー送信",
-                        //    System.Windows.MessageBoxButton.OK,
-                        //    System.Windows.MessageBoxImage.Information
-                        //    );
+                        control.ImageIndex += 10;
                     }
                 }
-                else if (control.KeyInserted)
+                else
                 {
-                    int newIndex;
-
-                    // LRパターンのみ別処理
-                    if (control.ImagePatternSymbol == "KeyLR")
+                    if (control.ImageIndex >= 0)
                     {
-                        if (control.ImageIndex == -11 && !isLeftClick)
-                        {
-                            newIndex = 11;
-                        }
-                        else if (control.ImageIndex == 11 && isLeftClick)
-                        {
-                            newIndex = -11;
-                        }
-                        else
-                        {
-                            return;
-                        }
+                        control.ImageIndex += 10;
                     }
                     else
                     {
-                        int change = isLeftClick ? -1 : 1;
-                        newIndex = control.ImageIndex + change;
-
-                        if (!IsValidIndex(control.ImagePatternSymbol, newIndex))
-                        {
-                            return;
-                        }
+                        control.ImageIndex -= 10;
                     }
-                    control.ImageIndex = newIndex;
+                }
+                control.KeyInserted = !control.KeyInserted;
 
-                    // サーバーへリクエスト送信
-                    if (control.ServerType != string.Empty)
+                // サーバーへリクエスト送信
+                if (control.ServerType != string.Empty)
+                {
+                    // 操作中判定
+                    control.IsHandling = true;
+
+                    var keyLeverData = new DatabaseOperational.KeyLeverData
                     {
-                        // 操作中判定
-                        control.IsHandling = true;
-
-                        var dataToServer = new DatabaseOperational.LeverEventDataToServer
-                        {
-                            LeverData = new DatabaseOperational.LeverData
-                            {
-                                Name = control.ServerName,
-                                State = EnumData.ConvertToLCR(control.ImageIndex)
-                            }
-                        };
-                        _ = _serverCommunication.SendLeverEventDataRequestToServerAsync(dataToServer);
-                        //CustomMessage.Show($"Name: {dataToServer.LeverData.Name} State: {dataToServer.LeverData.State}",
-                        //    "サーバー送信",
-                        //    System.Windows.MessageBoxButton.OK,
-                        //    System.Windows.MessageBoxImage.Information
-                        //    );
-                    }
+                        Name = control.ServerName,
+                        State = EnumData.ConvertToLNR(control.ImageIndex),
+                        IsKeyInserted = control.KeyInserted
+                    };
+                    _ = _serverCommunication.SendKeyLeverEventDataRequestToServerAsync(keyLeverData);
+                    //CustomMessage.Show($"Name: {keyLeverData.Name} State: {keyLeverData.State} Key: {keyLeverData.IsKeyInserted}",
+                    //    "サーバー送信",
+                    //    System.Windows.MessageBoxButton.OK,
+                    //    System.Windows.MessageBoxImage.Information
+                    //    );
                 }
             }
-            // 司令主任権限がない場合は操作無効
-            else
+            else if (control.KeyInserted)
             {
+                int newIndex;
 
+                // LRパターンのみ別処理
+                if (control.ImagePatternSymbol == "KeyLR")
+                {
+                    if (control.ImageIndex == -11 && !isLeftClick)
+                    {
+                        newIndex = 11;
+                    }
+                    else if (control.ImageIndex == 11 && isLeftClick)
+                    {
+                        newIndex = -11;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    int change = isLeftClick ? -1 : 1;
+                    newIndex = control.ImageIndex + change;
+
+                    if (!IsValidIndex(control.ImagePatternSymbol, newIndex))
+                    {
+                        return;
+                    }
+                }
+                control.ImageIndex = newIndex;
+
+                // サーバーへリクエスト送信
+                if (control.ServerType != string.Empty)
+                {
+                    // 操作中判定
+                    control.IsHandling = true;
+
+                    var keyLeverData = new DatabaseOperational.KeyLeverData
+                    {
+                        Name = control.ServerName,
+                        State = EnumData.ConvertToLNR(control.ImageIndex),
+                        IsKeyInserted = control.KeyInserted
+                    };
+                    _ = _serverCommunication.SendKeyLeverEventDataRequestToServerAsync(keyLeverData);
+                    //CustomMessage.Show($"Name: {keyLeverData.Name} State: {keyLeverData.State} Key: {keyLeverData.IsKeyInserted}",
+                    //    "サーバー送信",
+                    //    System.Windows.MessageBoxButton.OK,
+                    //    System.Windows.MessageBoxImage.Information
+                    //    );
+                }
             }
         }
 
@@ -300,17 +281,14 @@ namespace TatehamaInterlockingConsole.Handlers
                     // ボタン操作中(押し)判定
                     control.IsButtionRaised = true;
 
-                    var dataToServer = new DatabaseOperational.ButtonEventDataToServer
+                    var destinationButtonData = new DatabaseOperational.DestinationButtonData
                     {
-                        DestinationButtonData = new DatabaseOperational.DestinationButtonData
-                        {
-                            Name = control.ServerName,
-                            IsRaised = EnumData.ConvertToRaiseDrop(control.ImageIndex),
-                            OperatedAt = DateTime.Now
-                        }
+                        Name = control.ServerName,
+                        IsRaised = EnumData.ConvertToRaiseDrop(control.ImageIndex),
+                        OperatedAt = DateTime.Now
                     };
-                    _ = _serverCommunication.SendButtonEventDataRequestToServerAsync(dataToServer);
-                    //CustomMessage.Show($"Name: {dataToServer.DestinationButtonData.Name} State: {dataToServer.DestinationButtonData.IsRaised}",
+                    _ = _serverCommunication.SendButtonEventDataRequestToServerAsync(destinationButtonData);
+                    //CustomMessage.Show($"Name: {destinationButtonData.Name} State: {destinationButtonData.IsRaised}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
                     //    System.Windows.MessageBoxImage.Information
@@ -353,17 +331,14 @@ namespace TatehamaInterlockingConsole.Handlers
                     // ボタン操作中(離し)判定
                     control.IsButtionDroped = true;
 
-                    var dataToServer = new DatabaseOperational.ButtonEventDataToServer
+                    var destinationButtonData = new DatabaseOperational.DestinationButtonData
                     {
-                        DestinationButtonData = new DatabaseOperational.DestinationButtonData
-                        {
-                            Name = control.ServerName,
-                            IsRaised = EnumData.ConvertToRaiseDrop(control.ImageIndex),
-                            OperatedAt = DateTime.Now
-                        }
+                        Name = control.ServerName,
+                        IsRaised = EnumData.ConvertToRaiseDrop(control.ImageIndex),
+                        OperatedAt = DateTime.Now
                     };
-                    _ = _serverCommunication.SendButtonEventDataRequestToServerAsync(dataToServer);
-                    //CustomMessage.Show($"Name: {dataToServer.DestinationButtonData.Name} State: {dataToServer.DestinationButtonData.IsRaised}",
+                    _ = _serverCommunication.SendButtonEventDataRequestToServerAsync(destinationButtonData);
+                    //CustomMessage.Show($"Name: {destinationButtonData.Name} State: {destinationButtonData.IsRaised}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
                     //    System.Windows.MessageBoxImage.Information

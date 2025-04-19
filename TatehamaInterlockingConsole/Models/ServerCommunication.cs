@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -67,10 +68,7 @@ namespace TatehamaInterlockingConsole.Models
                 // サーバー接続中ならデータ送信
                 if (_dataManager.ServerConnected)
                 {
-                    await SendConstantDataRequestToServerAsync(new DatabaseOperational.ConstantDataToServer
-                    {
-                        ActiveStationsList = _dataManager.ActiveStationsList
-                    });
+                    await SendConstantDataRequestToServerAsync(_dataManager.ActiveStationsList);
                 }
                 await timer;
             }
@@ -195,14 +193,14 @@ namespace TatehamaInterlockingConsole.Models
         /// <summary>
         /// サーバーへ常時送信用データをリクエスト
         /// </summary>
-        /// <param name="constantDataToServer"></param>
+        /// <param name="activeStationsList"></param>
         /// <returns></returns>
-        public async Task SendConstantDataRequestToServerAsync(DatabaseOperational.ConstantDataToServer constantDataToServer)
+        public async Task SendConstantDataRequestToServerAsync(List<string> activeStationsList)
         {
             try
             {
                 // サーバーメソッドの呼び出し
-                var data = await _connection.InvokeAsync<DatabaseOperational.DataFromServer>("SendData_Interlocking", constantDataToServer);
+                var data = await _connection.InvokeAsync<DatabaseOperational.DataFromServer>("SendData_Interlocking", activeStationsList);
                 try
                 {
                     if (data != null)
@@ -215,7 +213,7 @@ namespace TatehamaInterlockingConsole.Models
                         else
                         {
                             // 変更があれば更新
-                            foreach (var property in typeof(DatabaseOperational.DataFromServer).GetProperties())
+                            foreach (var property in data.GetType().GetProperties())
                             {
                                 var newValue = property.GetValue(data);
                                 var oldValue = property.GetValue(_dataManager.DataFromServer);
@@ -225,8 +223,6 @@ namespace TatehamaInterlockingConsole.Models
                                 }
                             }
                         }
-                        // 認証情報を保存
-                        _dataManager.Authentication ??= _dataManager.DataFromServer.Authentications;
 
                         // 方向てこ情報を保存
                         if (data.Directions != null)
@@ -272,14 +268,86 @@ namespace TatehamaInterlockingConsole.Models
         /// <summary>
         /// サーバーへ物理てこイベント送信用データをリクエスト
         /// </summary>
-        /// <param name="leverEventDataToServer"></param>
+        /// <param name="leverData"></param>
         /// <returns></returns>
-        public async Task SendLeverEventDataRequestToServerAsync(DatabaseOperational.LeverEventDataToServer leverEventDataToServer)
+        public async Task SendLeverEventDataRequestToServerAsync(DatabaseOperational.LeverData leverData)
         {
             try
             {
                 // サーバーメソッドの呼び出し
-                await _connection.InvokeAsync<string>("SetPhysicalLeverData", leverEventDataToServer);
+                var data = await _connection.InvokeAsync<DatabaseOperational.LeverData>("SetPhysicalLeverData", leverData);
+                try
+                {
+                    if (data != null)
+                    {
+                        // 変更があれば更新
+                        foreach (var property in data.GetType().GetProperties())
+                        {
+                            var newValue = property.GetValue(data);
+                            var oldValue = property.GetValue(_dataManager.DataFromServer);
+                            if (newValue != null && !newValue.Equals(oldValue))
+                            {
+                                property.SetValue(_dataManager.DataFromServer, newValue);
+                            }
+                        }
+
+                        // コントロール更新処理
+                        _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Failed to receive Data.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error server receiving: {ex.Message}{ex.StackTrace}");
+                }
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine($"Failed to send event data to server: {exception.Message}");
+            }
+        }
+
+        /// <summary>
+        /// サーバーへ物理鍵てこイベント送信用データをリクエスト
+        /// </summary>
+        /// <param name="keyLeverData"></param>
+        /// <returns></returns>
+        public async Task SendKeyLeverEventDataRequestToServerAsync(DatabaseOperational.KeyLeverData keyLeverData)
+        {
+            try
+            {
+                // サーバーメソッドの呼び出し
+                var data = await _connection.InvokeAsync<DatabaseOperational.KeyLeverData>("SetPhysicalKeyLeverData", keyLeverData);
+                try
+                {
+                    if (data != null)
+                    {
+                        // 変更があれば更新
+                        foreach (var property in data.GetType().GetProperties())
+                        {
+                            var newValue = property.GetValue(data);
+                            var oldValue = property.GetValue(_dataManager.DataFromServer);
+                            if (newValue != null && !newValue.Equals(oldValue))
+                            {
+                                property.SetValue(_dataManager.DataFromServer, newValue);
+                            }
+                        }
+
+                        // コントロール更新処理
+                        _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Failed to receive Data.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error server receiving: {ex.Message}{ex.StackTrace}");
+                }
             }
             catch (Exception exception)
             {
@@ -290,14 +358,75 @@ namespace TatehamaInterlockingConsole.Models
         /// <summary>
         /// サーバーへ着点ボタンイベント送信用データをリクエスト
         /// </summary>
-        /// <param name="buttonEventDataToServer"></param>
+        /// <param name="buttonData"></param>
         /// <returns></returns>
-        public async Task SendButtonEventDataRequestToServerAsync(DatabaseOperational.ButtonEventDataToServer buttonEventDataToServer)
+        public async Task SendButtonEventDataRequestToServerAsync(DatabaseOperational.DestinationButtonData buttonData)
         {
             try
             {
                 // サーバーメソッドの呼び出し
-                await _connection.InvokeAsync("SetDestinationButtonState", buttonEventDataToServer);
+                var data = await _connection.InvokeAsync<DatabaseOperational.DestinationButtonData>("SetDestinationButtonState", buttonData);
+                try
+                {
+                    if (data != null)
+                    {
+                        // 変更があれば更新
+                        foreach (var property in data.GetType().GetProperties())
+                        {
+                            var newValue = property.GetValue(data);
+                            var oldValue = property.GetValue(_dataManager.DataFromServer);
+                            if (newValue != null && !newValue.Equals(oldValue))
+                            {
+                                property.SetValue(_dataManager.DataFromServer, newValue);
+                            }
+                        }
+
+                        // コントロール更新処理
+                        _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
+
+                        // 物理ボタン情報を前回の値として保存
+                        if (_dataManager.PhysicalButtonOldList != null)
+                        {
+                            var existingButton = _dataManager.PhysicalButtonOldList
+                                .FirstOrDefault(b => b.Name == data.Name);
+
+                            if (existingButton != null)
+                            {
+                                existingButton.IsRaised = data.IsRaised;
+                                existingButton.OperatedAt = data.OperatedAt;
+                            }
+                            else
+                            {
+                                _dataManager.PhysicalButtonOldList.Add(new DatabaseOperational.DestinationButtonData
+                                {
+                                    Name = data.Name,
+                                    IsRaised = data.IsRaised,
+                                    OperatedAt = data.OperatedAt
+                                });
+                            }
+                        }
+                        else
+                        {
+                            _dataManager.PhysicalButtonOldList = new List<DatabaseOperational.DestinationButtonData>
+                            {
+                                new DatabaseOperational.DestinationButtonData
+                                {
+                                    Name = data.Name,
+                                    IsRaised = data.IsRaised,
+                                    OperatedAt = data.OperatedAt
+                                }
+                            };
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Failed to receive Data.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error server receiving: {ex.Message}{ex.StackTrace}");
+                }
             }
             catch (Exception exception)
             {
