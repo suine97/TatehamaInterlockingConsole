@@ -382,26 +382,34 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="directionStateList"></param>
         private void UpdateDirectionIndicator(UIControlSetting item, DatabaseOperational.TrackCircuitData trackCircuit, DatabaseOperational.DirectionData direction, List<DirectionStateList> directionStateList)
         {
-            if (trackCircuit != null)
+            if (trackCircuit != null || direction != null)
             {
-                // 方向てこ条件あり
-                if (direction != null)
-                {
-                    var directionState = directionStateList.FirstOrDefault(d => d.Name == direction.Name);
+                var directionState = directionStateList.FirstOrDefault(d => d.Name == direction.Name);
 
-                    // 方向てこ状態が変化してから2秒以内なら赤点灯
-                    if ((DateTime.Now - directionState.UpdateTime).TotalMilliseconds < 2000d)
-                        item.ImageIndex = 2;
-                    // それ以外
-                    else if (direction.State == item.DirectionValue)
-                        item.ImageIndex = trackCircuit.On ? 2 : 1;
+                // 方向てこ条件あり
+                if (item.DirectionValue != EnumData.LNR.Normal)
+                {
+                    if (direction.State == item.DirectionValue)
+                    {
+                        // 方向てこ状態が変化してから2秒以内なら赤点灯
+                        if ((DateTime.Now - directionState.UpdateTime).TotalMilliseconds < 2000d)
+                            item.ImageIndex = 2;
+                        // それ以外
+                        else
+                            item.ImageIndex = trackCircuit.On ? 2 : 1;
+                    }
                     else
                         item.ImageIndex = 0;
                 }
                 // 方向てこ条件なし
                 else
                 {
-                    item.ImageIndex = trackCircuit.On ? 2 : 1;
+                    // 方向てこ状態が変化してから2秒以内なら赤点灯
+                    if ((DateTime.Now - directionState.UpdateTime).TotalMilliseconds < 2000d)
+                        item.ImageIndex = 2;
+                    // それ以外
+                    else
+                        item.ImageIndex = trackCircuit.On ? 2 : 1;
                 }
             }
         }
