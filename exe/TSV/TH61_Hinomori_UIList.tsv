@@ -103,8 +103,9 @@ Image	241T_1		軌道回路表示灯	下り241T							1287	385											"0,1,2"	0		"Image
 Image	245T_1		軌道回路表示灯	下り245T							1317	385											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	249T_1		軌道回路表示灯	下り249T							1347	385											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH59_12LT_1		軌道回路表示灯	TH59_12LT							1377	385											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	停電_R		状態表示灯	TH61_PWR-FAILURE							152	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	CTC故障_R		状態表示灯	TH61_CTC-FAILURE							200	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	転てつ不良_R		状態表示灯	TH61_W-FAILURE							162	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	停電_R		状態表示灯	TH61_PWR-FAILURE							220	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTC故障_R		状態表示灯	TH61_CTC-FAILURE							278	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠60秒_R		状態表示灯	TH61_60TEK							696	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠30秒_R		状態表示灯	TH61_30TEK							734	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Retsuban	列番高見沢1番線		列車番号	TH62_TTC_Track1							112	201														Image/Retsuban/Retsuban-Window.png									

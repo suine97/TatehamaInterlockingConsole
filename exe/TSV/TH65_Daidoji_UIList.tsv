@@ -349,8 +349,9 @@ Image	TH64_22T_W22N_1		軌道回路表示灯	TH64_22T	TH64_W22	N					2454	291										
 Image	TH64_22T_W22N_2		軌道回路表示灯	TH64_22T	TH64_W22	N					2484	291											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH64_22T_W22R_1		軌道回路表示灯	TH64_22T	TH64_W22	R					2466	246											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
 Image	TH64_22T_W22R_2		軌道回路表示灯	TH64_22T	TH64_W22	R					2484	291											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	停電_R		状態表示灯	TH65_PWR-FAILURE							154	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	CTC故障_R		状態表示灯	TH65_CTC-FAILURE							202	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	転てつ不良_R		状態表示灯	TH65_W-FAILURE							164	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	停電_R		状態表示灯	TH65_PWR-FAILURE							222	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTC故障_R		状態表示灯	TH65_CTC-FAILURE							280	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠60秒_R		状態表示灯	TH65_60TEK							1256	927											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠30秒_R		状態表示灯	TH65_30TEK							1294	927											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Retsuban	列番江ノ原信号場13番線		列車番号	TH66S_TTC_Track13							24	227														Image/Retsuban/Retsuban-Window.png									

@@ -34,7 +34,7 @@ Image	W22_PG		“]‚Ä‚ÂŠí•\¦“”		TH64_W22	N					1405	45											"0,1"	0		"Image/L
 Image	W22_PY		“]‚Ä‚ÂŠí•\¦“”		TH64_W22	R					1439	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 TextBlock	W22_Label	W22									14	20	11	11				22	10	Transparent	#FFBCBCBC	P22													
 KeyImage	‰ğ•ú98		•¨—Œ®‚Ä‚±	TH64_98							54	64										‰ğ•ú98	"0,1,10,11"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/KeyLever_KeyOFF_N.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_N.png,Image/Lever/KeyLever_KeyON_R.png"	•ûŒü‚Ä‚±‰ğ•ú‚ÍNR								
-Image	‰ğ•ú98_PY		‰ğ•ú‚Ä‚±	TH64_98							69	31											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
+Image	‰ğ•ú98_PY		‰ğ•ú•\¦“”	TH64_98							69	31											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 KeyImage	‰wˆµØŠ·		•¨—Œ®‚Ä‚±	TH64_81							1729	64										‰wˆµØŠ·	"-1,1,-11,11"	1	Image/Lever/LeverBase_LR.png	"Image/Lever/KeyLever_KeyOFF_L.png,Image/Lever/KeyLever_KeyOFF_R.png,Image/Lever/KeyLever_KeyON_L.png,Image/Lever/KeyLever_KeyON_R.png"	‰wˆµØŠ·‚ÍLR								
 Image	‰wˆµØŠ·_PY		‰wˆµØŠ·•\¦“”	TH64_81							1727	45											"0,1"	0		"Image/Light/N.png,Image/Light/PY.png"									
 Image	‰wˆµØŠ·_PG		‰wˆµØŠ·•\¦“”	TH64_81							1761	45											"0,1"	0		"Image/Light/N.png,Image/Light/PG.png"									
@@ -140,8 +140,9 @@ Image	TH63_22ƒT_W22ƒN_2		‹O“¹‰ñ˜H•\¦“”	TH63_22ƒT	TH63_W22	N					1832	329				
 Image	TH63_22ƒT_W22ƒR_1		‹O“¹‰ñ˜H•\¦“”	TH63_22ƒT	TH63_W22	R					1824	309											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112“x								
 Image	TH63_22ƒT_W22ƒR_2		‹O“¹‰ñ˜H•\¦“”	TH63_22ƒT	TH63_W22	R					1832	329											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	MT1T_1		‹O“¹‰ñ˜H•\¦“”	MT1T							1857	329											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	’â“d_R		ó‘Ô•\¦“”	TH64_PWR-FAILURE							152	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	CTCŒÌá_R		ó‘Ô•\¦“”	TH64_CTC-FAILURE							200	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	“]‚Ä‚Â•s—Ç_R		ó‘Ô•\¦“”	TH64_W-FAILURE							162	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	’â“d_R		ó‘Ô•\¦“”	TH64_PWR-FAILURE							220	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTCŒÌá_R		ó‘Ô•\¦“”	TH64_CTC-FAILURE							278	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	½ù60•b_R		ó‘Ô•\¦“”	TH64_60TEK							936	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	½ù30•b_R		ó‘Ô•\¦“”	TH64_30TEK							974	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Retsuban	—ñ”Ô‘å“¹›ã‚èê“à		—ñÔ”Ô†	TH65_TTC_UpArr1							54	133														Image/Retsuban/Retsuban-Window.png									

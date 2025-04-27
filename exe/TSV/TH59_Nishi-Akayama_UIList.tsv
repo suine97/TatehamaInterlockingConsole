@@ -89,8 +89,9 @@ Image	TH58_25T_W25R_1		軌道回路表示灯	TH58_25T	TH58_W25	R					1297	318										
 Image	TH58_25T_W25R_2		軌道回路表示灯	TH58_25T	TH58_W25	R					1334	298											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
 Image	TH58_25T_W25R_3		軌道回路表示灯	TH58_25T	TH58_W25	R					1352	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH58_9LT_1		軌道回路表示灯	TH58_9LT							1377	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	停電_R		状態表示灯	TH59_PWR-FAILURE							54	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	CTC故障_R		状態表示灯	TH59_CTC-FAILURE							102	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	転てつ不良_R		状態表示灯	TH59_W-FAILURE							64	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	停電_R		状態表示灯	TH59_PWR-FAILURE							122	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTC故障_R		状態表示灯	TH59_CTC-FAILURE							180	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠60秒_R		状態表示灯	TH59_60TEK							696	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠30秒_R		状態表示灯	TH59_30TEK							734	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Retsuban	列番西赤山上り第2接近		列車番号	TH59_TTC_Up2							24	120														Image/Retsuban/Retsuban-Window.png									

@@ -110,8 +110,9 @@ Image	TH61_2RAT_1		軌道回路表示灯	TH61_2RAT							1748	244											"0,1,2"	0		
 Image	TH61_2RAT_2		軌道回路表示灯	TH61_2RAT							1830	244											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH61_6LT_1		軌道回路表示灯	TH61_6LT							1748	364											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH61_6LT_2		軌道回路表示灯	TH61_6LT							1830	364											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	停電_R		状態表示灯	TH62_PWR-FAILURE							152	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	CTC故障_R		状態表示灯	TH62_CTC-FAILURE							200	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	転てつ不良_R		状態表示灯	TH62_W-FAILURE							162	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	停電_R		状態表示灯	TH62_PWR-FAILURE							220	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTC故障_R		状態表示灯	TH62_CTC-FAILURE							278	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠60秒_R		状態表示灯	TH62_60TEK							936	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠30秒_R		状態表示灯	TH62_30TEK							974	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Retsuban	列番水越1番線		列車番号	TH63_TTC_Track1							155	100														Image/Retsuban/Retsuban-Window.png									

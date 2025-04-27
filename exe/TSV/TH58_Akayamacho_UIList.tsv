@@ -151,8 +151,9 @@ Image	AS1T_10L_2		方向てこ表示灯	AS1T							1529	365											"0,1,2"	0		"Image
 Image	AS1T_10R_1		方向てこ表示灯	AS1T							1589	323											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
 Image	AS1T_10R_2		方向てこ表示灯	AS1T							1589	365											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
 Image	AS2T_1		軌道回路表示灯	AS2T							1618	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	停電_R		状態表示灯	TH58_PWR-FAILURE							152	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
-Image	CTC故障_R		状態表示灯	TH58_CTC-FAILURE							200	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	転てつ不良_R		状態表示灯	TH58_W-FAILURE							162	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	停電_R		状態表示灯	TH58_PWR-FAILURE							220	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
+Image	CTC故障_R		状態表示灯	TH58_CTC-FAILURE							278	45											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠60秒_R		状態表示灯	TH58_60TEK							936	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Image	鎖錠30秒_R		状態表示灯	TH58_30TEK							974	567											"0,1"	0		"Image/Light/N.png,Image/Light/R.png"									
 Retsuban	列番西赤山1番線		列車番号	TH59_TTC_Track1							63	188														Image/Retsuban/Retsuban-Window.png									
