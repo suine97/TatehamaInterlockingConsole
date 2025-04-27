@@ -52,8 +52,8 @@ Image	TH59_21ƒT_W21ƒR_1		‹O“¹‰ñ˜H•\¦“”	TH59_21ƒT	TH59_W21	R					774	236					
 Image	TH59_21ƒT_W21ƒR_2		‹O“¹‰ñ˜H•\¦“”	TH59_21ƒT	TH59_W21	R					835	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	NA1T_1		‹O“¹‰ñ˜H•\¦“”	NA1T							869	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	NA1T_2		‹O“¹‰ñ˜H•\¦“”	NA1T							909	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	NA1T_14L_1		•ûŒü‚Ä‚±•\¦“”	NA1T							885	274											"0,1,2"	0		"Image/Light/AlN.png,Image/Light/AlY.png,Image/Light/AlR.png"	Al								
-Image	NA1T_14R_1		•ûŒü‚Ä‚±•\¦“”	NA1T							885	238											"0,1,2"	0		"Image/Light/ArN.png,Image/Light/ArY.png,Image/Light/ArR.png"	Ar								
+Image	NA1T_14L_1		•ûŒü‚Ä‚±•\¦“”	NA1T					TH59_14F	L	885	274											"0,1,2"	0		"Image/Light/AlN.png,Image/Light/AlY.png,Image/Light/AlR.png"	Al								
+Image	NA1T_14R_1		•ûŒü‚Ä‚±•\¦“”	NA1T					TH59_14F	R	885	238											"0,1,2"	0		"Image/Light/ArN.png,Image/Light/ArY.png,Image/Light/ArR.png"	Ar								
 Image	NA2T_1		‹O“¹‰ñ˜H•\¦“”	NA2T							949	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	NA2T_2		‹O“¹‰ñ˜H•\¦“”	NA2T							989	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH58_2RT_1		‹O“¹‰ñ˜H•\¦“”	TH58_2RT							1024	258											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									

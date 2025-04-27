@@ -93,12 +93,12 @@ Image	TH59_21ロT_W21N_2		軌道回路表示灯	TH59_21ロT	TH59_W21	N					218	346							
 Image	TH59_21ロT_W21R_1		軌道回路表示灯	TH59_21ロT	TH59_W21	R					210	326											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112度								
 Image	TH59_21ロT_W21R_2		軌道回路表示灯	TH59_21ロT	TH59_W21	R					218	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	NA1T_1		軌道回路表示灯	NA1T							243	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	NA2T_1		方向てこ表示灯	NA2T					TH58_1	N	273	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	NA2T_2		方向てこ表示灯	NA2T					TH58_1	N	333	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	NA2T_1L_1		方向てこ表示灯	NA2T					TH58_1	L	274	323											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	NA2T_1L_2		方向てこ表示灯	NA2T					TH58_1	L	274	365											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	NA2T_1R_1		方向てこ表示灯	NA2T					TH58_1	R	334	323											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	NA2T_1R_2		方向てこ表示灯	NA2T					TH58_1	R	334	365											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	NA2T_1		方向てこ表示灯	NA2T					TH58_1F	N	273	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA2T_2		方向てこ表示灯	NA2T					TH58_1F	N	333	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	NA2T_1L_1		方向てこ表示灯	NA2T					TH58_1F	L	274	323											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	NA2T_1L_2		方向てこ表示灯	NA2T					TH58_1F	L	274	365											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	NA2T_1R_1		方向てこ表示灯	NA2T					TH58_1F	R	334	323											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	NA2T_1R_2		方向てこ表示灯	NA2T					TH58_1F	R	334	365											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
 Image	TH58_2RT_1		軌道回路表示灯	TH58_2RT							427	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH58_2RT_2		軌道回路表示灯	TH58_2RT							485	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH58_21T_W21N_1		軌道回路表示灯	TH58_21T	TH58_W21	N					529	346											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									

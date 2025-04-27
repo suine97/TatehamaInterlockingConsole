@@ -63,12 +63,12 @@ Image	TH62_22T_W22N_2		軌道回路表示灯	TH62_22T	TH62_W22	N					297	325											
 Image	TH62_22T_W22R_1		軌道回路表示灯	TH62_22T	TH62_W22	R					279	365											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68度								
 Image	TH62_22T_W22R_2		軌道回路表示灯	TH62_22T	TH62_W22	R					297	325											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH1T_1		軌道回路表示灯	TH1T							322	325											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH2T_1		方向てこ表示灯	TH2T					TH61_1	N	352	325											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH2T_2		方向てこ表示灯	TH2T					TH61_1	N	412	325											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH2T_1L_1		方向てこ表示灯	TH2T					TH61_1	L	353	302											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
-Image	TH2T_1L_2		方向てこ表示灯	TH2T					TH61_1	L	353	344											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH2T_1R_1		方向てこ表示灯	TH2T					TH61_1	R	413	302											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
-Image	TH2T_1R_2		方向てこ表示灯	TH2T					TH61_1	R	413	344											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH2T_1		方向てこ表示灯	TH2T					TH61_1F	N	352	325											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH2T_2		方向てこ表示灯	TH2T					TH61_1F	N	412	325											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH2T_1L_1		方向てこ表示灯	TH2T					TH61_1F	L	353	302											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH2T_1L_2		方向てこ表示灯	TH2T					TH61_1F	L	353	344											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH2T_1R_1		方向てこ表示灯	TH2T					TH61_1F	R	413	302											"0,1,2"	0		"Image/Light/135N.png,Image/Light/135Y.png,Image/Light/135R.png"	135度								
+Image	TH2T_1R_2		方向てこ表示灯	TH2T					TH61_1F	R	413	344											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
 Image	TH61_2RT_1		軌道回路表示灯	TH61_2RT							490	325											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH61_2RT_2		軌道回路表示灯	TH61_2RT							542	325											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH61_21イT_W21イN_1		軌道回路表示灯	TH61_21イT	TH61_W21	N					570	325											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
