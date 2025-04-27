@@ -382,35 +382,30 @@ namespace TatehamaInterlockingConsole.ViewModels
         /// <param name="directionStateList"></param>
         private void UpdateDirectionIndicator(UIControlSetting item, DatabaseOperational.TrackCircuitData trackCircuit, DatabaseOperational.DirectionData direction, List<DirectionStateList> directionStateList)
         {
-            if (trackCircuit != null || direction != null)
+            if ((trackCircuit != null) && (direction != null))
             {
                 var directionState = directionStateList.FirstOrDefault(d => d.Name == direction.Name);
 
                 // 方向てこ条件あり
-                if (item.DirectionValue != EnumData.LNR.Normal)
-                {
-                    if (direction.State == item.DirectionValue)
-                    {
-                        // 方向てこ状態が変化してから2秒以内なら赤点灯
-                        if ((DateTime.Now - directionState.UpdateTime).TotalMilliseconds < 2000d)
-                            item.ImageIndex = 2;
-                        // それ以外
-                        else
-                            item.ImageIndex = trackCircuit.On ? 2 : 1;
-                    }
-                    else
-                        item.ImageIndex = 0;
-                }
-                // 方向てこ条件なし
-                else
+                if ((item.DirectionValue != EnumData.LNR.Normal) && (direction.State == item.DirectionValue))
                 {
                     // 方向てこ状態が変化してから2秒以内なら赤点灯
-                    if ((DateTime.Now - directionState.UpdateTime).TotalMilliseconds < 2000d)
-                        item.ImageIndex = 2;
-                    // それ以外
-                    else
-                        item.ImageIndex = trackCircuit.On ? 2 : 1;
+                    item.ImageIndex = (DateTime.Now - directionState.UpdateTime).TotalSeconds < 2.0d ? 2 : (trackCircuit.On ? 2 : 1);
                 }
+                // 方向てこ条件なし
+                else if (item.DirectionValue == EnumData.LNR.Normal)
+                {
+                    // 方向てこ状態が変化してから2秒以内なら赤点灯
+                    item.ImageIndex = (DateTime.Now - directionState.UpdateTime).TotalSeconds < 2.0d ? 2 : (trackCircuit.On ? 2 : 1);
+                }
+                else
+                {
+                    item.ImageIndex = 0;
+                }
+            }
+            else
+            {
+                item.ImageIndex = trackCircuit?.On == true ? 2 : 1;
             }
         }
 
