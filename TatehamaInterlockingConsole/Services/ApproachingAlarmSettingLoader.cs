@@ -109,7 +109,7 @@ namespace TatehamaInterlockingConsole.Services
             // 方向てこなら"[所属駅名]_[てこ番号]"に整形
             else if (type == "Direction")
             {
-                return station + "_" + formattedName;
+                return station + "_" + formattedName.Replace("L", "").Replace("R", "");
             }
             // 信号機・軌道回路・その他種別ならそのまま
             else
