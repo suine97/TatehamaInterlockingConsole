@@ -13,6 +13,7 @@ using OpenIddict.Client;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.ViewModels;
+using TatehamaATS_v1;
 
 namespace TatehamaInterlockingConsole.Models
 {
@@ -80,6 +81,11 @@ namespace TatehamaInterlockingConsole.Models
         /// <returns></returns>
         public async Task AuthenticateAsync()
         {
+            if (ServerAddress.IsDebug)
+            {
+                await InitializeConnection();
+                return;
+            }
             try
             {
                 using var source = new CancellationTokenSource(TimeSpan.FromSeconds(90));
