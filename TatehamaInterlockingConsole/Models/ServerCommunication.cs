@@ -13,7 +13,6 @@ using OpenIddict.Client;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Services;
 using TatehamaInterlockingConsole.ViewModels;
-using TatehamaATS_v1;
 
 namespace TatehamaInterlockingConsole.Models
 {
