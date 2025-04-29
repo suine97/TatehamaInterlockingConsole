@@ -613,8 +613,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                     }
                 }
 
-                // ボタンが[押し]操作中で、着点ボタンの状態がUIとサーバーで異なる場合に更新
-                if (item.IsButtionRaised && physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                // ボタンが[押し]操作中で、着点ボタンの状態がUIとサーバーで同じ場合に更新
+                if (item.IsButtionRaised && physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex))
                 {
                     // [押し]操作判定を解除
                     item.IsButtionRaised = false;
@@ -622,8 +622,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                     // 音声再生
                     _sound.SoundPlay($"push_{randomIndex["push"]}", false);
                 }
-                // ボタンが[離し]操作中で、着点ボタンの状態がUIとサーバーで異なる場合に更新
-                else if (item.IsButtionDroped && physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex))
+                // ボタンが[離し]操作中で、着点ボタンの状態がUIとサーバーで同じ場合に更新
+                else if (item.IsButtionDroped && physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex))
                 {
                     // [離し]操作判定を解除
                     item.IsButtionDroped = false;
@@ -631,8 +631,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                     // 音声再生
                     _sound.SoundPlay($"pull_{randomIndex["pull"]}", false);
                 }
-                // ボタンが操作中ではなく、着点ボタンの状態がUIとサーバーで異なる、かつ直前の操作時間が変化した場合に音声再生
-                else if (!item.IsButtionRaised && !item.IsButtionDroped && physicalButton.IsRaised != EnumData.ConvertToRaiseDrop(item.ImageIndex)
+                // ボタンが操作中ではなく、着点ボタンの状態がUIとサーバーで同じ、かつ直前の操作時間が変化した場合に音声再生
+                else if (!item.IsButtionRaised && !item.IsButtionDroped && physicalButton.IsRaised == EnumData.ConvertToRaiseDrop(item.ImageIndex)
                     && (physicalButtonOld.OperatedAt != physicalButton.OperatedAt))
                 {
                     // 音声再生

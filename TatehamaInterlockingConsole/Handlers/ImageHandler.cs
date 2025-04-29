@@ -282,6 +282,8 @@ namespace TatehamaInterlockingConsole.Handlers
                     // ボタン操作中(押し)判定
                     control.IsButtionRaised = true;
 
+                    control.ImageIndex = newIndex;
+
                     var destinationButtonData = new DatabaseOperational.DestinationButtonData
                     {
                         Name = control.ServerName,
@@ -298,6 +300,8 @@ namespace TatehamaInterlockingConsole.Handlers
                 // 接近ボタンの場合は接近警報停止処理
                 else if (control.UniqueName.Contains("接近"))
                 {
+                    control.ImageIndex = newIndex;
+
                     var StationName = control.StationName;
                     if (StationName.Contains("江ノ原検車区"))
                     {
@@ -334,6 +338,8 @@ namespace TatehamaInterlockingConsole.Handlers
                     // ボタン操作中(離し)判定
                     control.IsButtionDroped = true;
 
+                    control.ImageIndex = newIndex;
+
                     var destinationButtonData = new DatabaseOperational.DestinationButtonData
                     {
                         Name = control.ServerName,
@@ -350,6 +356,8 @@ namespace TatehamaInterlockingConsole.Handlers
                 // 接近ボタンの場合は音声再生
                 else if (control.UniqueName.Contains("接近"))
                 {
+                    control.ImageIndex = newIndex;
+
                     // 音声再生
                     string randomPullSoundIndex = _random.Next(1, 13).ToString("00");
                     Sound.Instance.SoundPlay($"pull_{randomPullSoundIndex}", false);
