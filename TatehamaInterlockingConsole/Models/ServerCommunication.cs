@@ -242,6 +242,7 @@ namespace TatehamaInterlockingConsole.Models
                                     {
                                         existingDirection.State = d.State;
                                         existingDirection.UpdateTime = DateTime.Now;
+                                        existingDirection.IsAlarmPlayed = false;
                                     }
                                     return existingDirection;
                                 }
@@ -252,7 +253,8 @@ namespace TatehamaInterlockingConsole.Models
                                     {
                                         Name = d.Name,
                                         State = d.State,
-                                        UpdateTime = DateTime.Now
+                                        UpdateTime = DateTime.Now,
+                                        IsAlarmPlayed = false
                                     };
                                 }
                             }).ToList();
