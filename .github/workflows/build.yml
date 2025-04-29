@@ -41,7 +41,7 @@ jobs:
           if [ -n "${latest_tag}" ]; then
             today=$(date +%Y%m%d)
             if [[ $latest_tag == $today* ]]; then
-              n=$(echo $latest_tag | awk -F. '{print $4}')
+              n=$(echo $latest_tag | awk -F_ '{print $2}')
               n=$((n + 1))
             else
               n=1
