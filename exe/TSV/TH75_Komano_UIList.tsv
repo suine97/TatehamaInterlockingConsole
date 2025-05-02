@@ -166,10 +166,10 @@ Image	TH76_21ƒT_W21ƒR_1		‹O“¹‰ñ˜H•\¦“”	TH76_21ƒT	TH76_W21	R					242	768					
 Image	TH76_21ƒT_W21ƒR_2		‹O“¹‰ñ˜H•\¦“”	TH76_21ƒT	TH76_W21	R					290	788											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_21ƒT_W21ƒR_3		‹O“¹‰ñ˜H•\¦“”	TH76_21ƒT	TH76_W21	R					330	724											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68								
 Image	TH76_22T_W22N_1		‹O“¹‰ñ˜H•\¦“”	TH76_22T	TH76_W22	N					232	548											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_22T_W22N_2		‹O“¹‰ñ˜H•\¦“”	TH76_22T	TH76_W22	N					276	548											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_22T_W22N_3		‹O“¹‰ñ˜H•\¦“”	TH76_22T	TH76_W22	N					321	548											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_22T_W22N_2		‹O“¹‰ñ˜H•\¦“”	TH76_22T	TH76_W22	N					261	588											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112								
 Image	TH76_22T_W22R_1		‹O“¹‰ñ˜H•\¦“”	TH76_22T	TH76_W22	R					232	548											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
-Image	TH76_22T_W22R_2		‹O“¹‰ñ˜H•\¦“”	TH76_22T	TH76_W22	R					261	588											"0,1,2"	0		"Image/Light/112N.png,Image/Light/112Y.png,Image/Light/112R.png"	112								
+Image	TH76_22T_W22R_2		‹O“¹‰ñ˜H•\¦“”	TH76_22T	TH76_W22	R					276	548											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
+Image	TH76_22T_W22R_3		‹O“¹‰ñ˜H•\¦“”	TH76_22T	TH76_W22	R					321	548											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH76_23T_W23N_W24ƒN_1		‹O“¹‰ñ˜H•\¦“”	TH76_23T	TH76_W23	N	TH76_W24	N			282	683											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68								
 Image	TH76_23T_W23N_W24ƒN_2		‹O“¹‰ñ˜H•\¦“”	TH76_23T	TH76_W23	N	TH76_W24	N			294	653											"0,1,2"	0		"Image/Light/68N.png,Image/Light/68Y.png,Image/Light/68R.png"	68								
 Image	TH76_23T_W23R_W24ƒN_1		‹O“¹‰ñ˜H•\¦“”	TH76_23T	TH76_W23	R	TH76_W24	N			236	668											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
