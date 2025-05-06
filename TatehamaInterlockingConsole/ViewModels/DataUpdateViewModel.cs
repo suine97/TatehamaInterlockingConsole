@@ -473,8 +473,20 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             if (physicalKeyLever != null)
             {
+                // 鍵てこが操作中で、認証に失敗した場合に更新
+                if (item.IsHandling && !item.IsAuthentication)
+                {
+                    // 操作判定を解除
+                    item.IsHandling = false;
+                    // 認証情報を初期化
+                    item.IsAuthentication = true;
+
+                    // 音声再生
+                    _sound.SoundPlay($"keychain_{randomIndex["keychain"]}", false);
+                    _sound.SoundPlay($"reject_{randomIndex["reject"]}", false);
+                }
                 // 鍵てこが操作中で、物理鍵てこの状態がUIとサーバーで異なる場合に更新
-                if (item.IsHandling
+                else if (item.IsHandling
                     && (physicalKeyLever.State != EnumData.ConvertToLNR(item.ImageIndex) || physicalKeyLever.IsKeyInserted != item.KeyInserted))
                 {
                     // 操作判定を解除

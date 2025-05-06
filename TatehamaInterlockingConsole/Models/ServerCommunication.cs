@@ -340,43 +340,18 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         /// <param name="keyLeverData"></param>
         /// <returns></returns>
-        public async Task SendKeyLeverEventDataRequestToServerAsync(DatabaseOperational.KeyLeverData keyLeverData)
+        public async Task<bool> SendKeyLeverEventDataRequestToServerAsync(DatabaseOperational.KeyLeverData keyLeverData)
         {
             try
             {
                 // サーバーメソッドの呼び出し
-                var data = await _connection.InvokeAsync<DatabaseOperational.KeyLeverData>("SetPhysicalKeyLeverData", keyLeverData);
-                try
-                {
-                    if (data != null)
-                    {
-                        // 変更があれば更新
-                        foreach (var property in data.GetType().GetProperties())
-                        {
-                            var newValue = property.GetValue(data);
-                            var oldValue = property.GetValue(_dataManager.DataFromServer);
-                            if (newValue != null && !newValue.Equals(oldValue))
-                            {
-                                property.SetValue(_dataManager.DataFromServer, newValue);
-                            }
-                        }
-
-                        // コントロール更新処理
-                        _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
-                    }
-                    else
-                    {
-                        Debug.WriteLine("Failed to receive Data.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"Error server receiving: {ex.Message}{ex.StackTrace}");
-                }
+                var data = await _connection.InvokeAsync<bool>("SetPhysicalKeyLeverData", keyLeverData);
+                return data;
             }
             catch (Exception exception)
             {
                 Debug.WriteLine($"Failed to send event data to server: {exception.Message}");
+                return false;
             }
         }
 

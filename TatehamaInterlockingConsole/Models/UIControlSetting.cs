@@ -160,6 +160,10 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public bool IsButtionDroped { get; set; }
         /// <summary>
+        /// 認証判定
+        /// </summary>
+        public bool IsAuthentication { get; set; }
+        /// <summary>
         /// 備考欄
         /// </summary>
         public string Remark { get; set; }

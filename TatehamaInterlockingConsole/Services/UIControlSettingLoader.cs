@@ -99,6 +99,7 @@ namespace TatehamaInterlockingConsole.Services
                             IsHandling = false,
                             IsButtionRaised = false,
                             IsButtionDroped = false,
+                            IsAuthentication = true,
                             Remark = columns[(int)EnumData.ColumnIndex.Remark],
                         });
                     }

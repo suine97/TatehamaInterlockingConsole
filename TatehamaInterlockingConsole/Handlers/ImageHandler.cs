@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using TatehamaInterlockingConsole.Manager;
 using TatehamaInterlockingConsole.Models;
@@ -159,7 +160,7 @@ namespace TatehamaInterlockingConsole.Handlers
         /// </summary>
         /// <param name="control"></param>
         /// <param name="isLeftClick"></param>
-        private void HandleKeyImageMouseDown(UIControlSetting control, bool isLeftClick)
+        private async Task HandleKeyImageMouseDown(UIControlSetting control, bool isLeftClick)
         {
             int newIndex = control.ImageIndex;
             bool newKeyInserted = control.KeyInserted;
@@ -205,7 +206,7 @@ namespace TatehamaInterlockingConsole.Handlers
                         State = EnumData.ConvertToLNR(newIndex),
                         IsKeyInserted = newKeyInserted
                     };
-                    _ = _serverCommunication.SendKeyLeverEventDataRequestToServerAsync(keyLeverData);
+                    control.IsAuthentication = await _serverCommunication.SendKeyLeverEventDataRequestToServerAsync(keyLeverData);
                     //CustomMessage.Show($"Name: {keyLeverData.Name} State: {keyLeverData.State} Key: {keyLeverData.IsKeyInserted}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
@@ -254,7 +255,7 @@ namespace TatehamaInterlockingConsole.Handlers
                         State = EnumData.ConvertToLNR(newIndex),
                         IsKeyInserted = newKeyInserted
                     };
-                    _ = _serverCommunication.SendKeyLeverEventDataRequestToServerAsync(keyLeverData);
+                    control.IsAuthentication = await _serverCommunication.SendKeyLeverEventDataRequestToServerAsync(keyLeverData);
                     //CustomMessage.Show($"Name: {keyLeverData.Name} State: {keyLeverData.State} Key: {keyLeverData.IsKeyInserted}",
                     //    "サーバー送信",
                     //    System.Windows.MessageBoxButton.OK,
