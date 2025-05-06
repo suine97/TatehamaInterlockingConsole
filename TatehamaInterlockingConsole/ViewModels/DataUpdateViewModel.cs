@@ -666,8 +666,6 @@ namespace TatehamaInterlockingConsole.ViewModels
                 item.Retsuban = retsuban.Retsuban;
             else
                 item.Retsuban = string.Empty;
-
-            SetControlsetting(item);
         }
 
         /// <summary>
