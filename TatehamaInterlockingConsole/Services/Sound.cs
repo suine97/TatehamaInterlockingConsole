@@ -101,7 +101,7 @@ namespace TatehamaInterlockingConsole.Services
                     if (stationSetting != null)
                     {
                         // 方向てこ状態が変化してから2秒以内なら処理
-                        if ((DateTime.Now - direction.UpdateTime).TotalSeconds < 2.0d)
+                        if ((DateTime.Now - direction.UpdateTime).Seconds < 2.0d)
                         {
                             SetAlarmVolumeBasedOnType(stationSetting.DirectionAlarmType, stationSetting.DirectionAlarmName + "_loop", isPlay);
                             direction.IsAlarmPlayed = true;
