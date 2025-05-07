@@ -68,7 +68,9 @@ namespace TatehamaInterlockingConsole.Models
                 // サーバー接続中ならデータ送信
                 if (_dataManager.ServerConnected)
                 {
-                    await SendConstantDataRequestToServerAsync(_dataManager.ActiveStationsList);
+                    // サーバー送信用に駅データ整形
+                    List<string> sendStationData = SendStationData.GenerateSendStationData(_dataManager.ActiveStationsList);
+                    await SendConstantDataRequestToServerAsync(sendStationData);
                 }
                 await timer;
             }
