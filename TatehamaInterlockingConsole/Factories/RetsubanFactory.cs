@@ -98,8 +98,38 @@ namespace TatehamaInterlockingConsole.Factories
         {
             var imagePaths = new string[6];
 
+            // 溝月レイルのみ別処理
+            if (retsuban.Contains("溝月"))
+            {
+                // 先頭文字の画像
+                var headSymbolKey_MZ = "16dot_Mizo";
+                if (_dataManager.RetsubanImagePathDictionary.TryGetValue(headSymbolKey_MZ, out var headKey_MZ))
+                {
+                    imagePaths[0] = headKey_MZ;
+                }
+
+                // 数字部分の画像
+                for (int i = 0; i < 4; i++)
+                {
+                    var charKey_MZ = "7seg_Null";
+                    if (_dataManager.RetsubanImagePathDictionary.TryGetValue(charKey_MZ, out var digitKey_MZ))
+                    {
+                        imagePaths[i + 1] = digitKey_MZ;
+                    }
+                }
+
+                // 接尾文字の画像
+                var tailSymbolKey_MZ = "16dot_Tsuki";
+                if (_dataManager.RetsubanImagePathDictionary.TryGetValue(tailSymbolKey_MZ, out var tailKey_MZ))
+                {
+                    imagePaths[5] = tailKey_MZ;
+                }
+
+                return imagePaths;
+            }
+
             // 正規表現パターンの定義
-            var pattern = @"([回試臨]?)([0-9]{0,4})(A|B|C|K|X|AX|BX|CX|KX)?$";
+            var pattern = @"([回試臨]?)([0-9]{0,4})(A|B|C|K|X|Y|Z|AX|BX|CX|KX|AY|BY|CY|KY|AZ|BZ|CZ|KZ)?$";
             var match = Regex.Match(retsuban, pattern);
 
             if (!match.Success) return imagePaths;
@@ -157,10 +187,20 @@ namespace TatehamaInterlockingConsole.Factories
             if (tail == "C") return "16dot_C";
             if (tail == "K") return "16dot_K";
             if (tail == "X") return "16dot_X";
+            if (tail == "Y") return "16dot_Y";
+            if (tail == "Z") return "16dot_Z";
             if (tail == "AX") return "16dot_AX";
             if (tail == "BX") return "16dot_BX";
             if (tail == "CX") return "16dot_CX";
             if (tail == "KX") return "16dot_KX";
+            if (tail == "AY") return "16dot_AY";
+            if (tail == "BY") return "16dot_BY";
+            if (tail == "CY") return "16dot_CY";
+            if (tail == "KY") return "16dot_KY";
+            if (tail == "AZ") return "16dot_AZ";
+            if (tail == "BZ") return "16dot_BZ";
+            if (tail == "CZ") return "16dot_CZ";
+            if (tail == "KZ") return "16dot_KZ";
             return "16dot_Null";
         }
 
