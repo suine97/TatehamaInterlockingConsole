@@ -132,34 +132,64 @@ namespace TatehamaInterlockingConsole.Factories
             var pattern = @"([回試臨]?)([0-9]{0,4})(A|B|C|K|X|Y|Z|AX|BX|CX|KX|AY|BY|CY|KY|AZ|BZ|CZ|KZ)?$";
             var match = Regex.Match(retsuban, pattern);
 
-            if (!match.Success) return imagePaths;
-
-            // 先頭文字の画像
-            var headSymbolKey = GetHeadSymbolKey(match.Groups[1].Value);
-            if (_dataManager.RetsubanImagePathDictionary.TryGetValue(headSymbolKey, out var headKey))
+            // マッチしない場合は、接尾文字に「？」を設定
+            if (retsuban.Length > 0 && match.Length == 0)
             {
-                imagePaths[0] = headKey;
-            }
-
-            // 数字部分の画像
-            var digits = match.Groups[2].Value.PadLeft(4, ' ');
-            for (int i = 0; i < digits.Length; i++)
-            {
-                var charKey = digits[i] == ' ' ? "7seg_Null" : $"7seg_{digits[i]}";
-                if (_dataManager.RetsubanImagePathDictionary.TryGetValue(charKey, out var digitKey))
+                // 先頭文字の画像
+                var headSymbolKey_MZ = "16dot_Null";
+                if (_dataManager.RetsubanImagePathDictionary.TryGetValue(headSymbolKey_MZ, out var headKey_MZ))
                 {
-                    imagePaths[i + 1] = digitKey;
+                    imagePaths[0] = headKey_MZ;
                 }
-            }
 
-            // 接尾文字の画像
-            var tailSymbolKey = GetTailSymbolKey(match.Groups[3].Value);
-            if (_dataManager.RetsubanImagePathDictionary.TryGetValue(tailSymbolKey, out var tailKey))
+                // 数字部分の画像
+                for (int i = 0; i < 4; i++)
+                {
+                    var charKey_MZ = "7seg_Null";
+                    if (_dataManager.RetsubanImagePathDictionary.TryGetValue(charKey_MZ, out var digitKey_MZ))
+                    {
+                        imagePaths[i + 1] = digitKey_MZ;
+                    }
+                }
+
+                // 接尾文字の画像
+                var tailSymbolKey_Q = "16dot_Question";
+                if (_dataManager.RetsubanImagePathDictionary.TryGetValue(tailSymbolKey_Q, out var tailKey_Q))
+                {
+                    imagePaths[5] = tailKey_Q;
+                }
+
+                return imagePaths;
+            }
+            else
             {
-                imagePaths[5] = tailKey;
-            }
+                // 先頭文字の画像
+                var headSymbolKey = GetHeadSymbolKey(match.Groups[1].Value);
+                if (_dataManager.RetsubanImagePathDictionary.TryGetValue(headSymbolKey, out var headKey))
+                {
+                    imagePaths[0] = headKey;
+                }
 
-            return imagePaths;
+                // 数字部分の画像
+                var digits = match.Groups[2].Value.PadLeft(4, ' ');
+                for (int i = 0; i < digits.Length; i++)
+                {
+                    var charKey = digits[i] == ' ' ? "7seg_Null" : $"7seg_{digits[i]}";
+                    if (_dataManager.RetsubanImagePathDictionary.TryGetValue(charKey, out var digitKey))
+                    {
+                        imagePaths[i + 1] = digitKey;
+                    }
+                }
+
+                // 接尾文字の画像
+                var tailSymbolKey = GetTailSymbolKey(match.Groups[3].Value);
+                if (_dataManager.RetsubanImagePathDictionary.TryGetValue(tailSymbolKey, out var tailKey))
+                {
+                    imagePaths[5] = tailKey;
+                }
+
+                return imagePaths;
+            }
         }
 
         /// <summary>
