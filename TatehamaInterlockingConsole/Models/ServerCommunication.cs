@@ -354,8 +354,9 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var data = await _connection.InvokeAsync<bool>("SetPhysicalKeyLeverData", keyLeverData);
-                return data;
+                var data = await _connection.InvokeAsync<DatabaseOperational.KeyLeverData>("SetPhysicalKeyLeverData", keyLeverData);
+                // Todo: 仮でTrue
+                return true;
             }
             catch (Exception exception)
             {
