@@ -213,7 +213,7 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         /// <param name="data">サーバーから受信されたデータ</param>
         /// <returns></returns>
-        public void OnReceiveDataFromServer(DatabaseOperational.DataFromServer data)
+        private void OnReceiveDataFromServer(DatabaseOperational.DataFromServer data)
         {
             try
             {
