@@ -313,13 +313,15 @@ namespace TatehamaInterlockingConsole.Models
                     if (data != null)
                     {
                         // 変更があれば更新
+                        var lever = _dataManager.DataFromServer
+                            .PhysicalLevers.FirstOrDefault(l => l.Name == data.Name);
                         foreach (var property in data.GetType().GetProperties())
                         {
                             var newValue = property.GetValue(data);
-                            var oldValue = property.GetValue(_dataManager.DataFromServer);
+                            var oldValue = property.GetValue(lever);
                             if (newValue != null && !newValue.Equals(oldValue))
                             {
-                                property.SetValue(_dataManager.DataFromServer, newValue);
+                                property.SetValue(lever, newValue);
                             }
                         }
 
@@ -378,17 +380,6 @@ namespace TatehamaInterlockingConsole.Models
                 {
                     if (data != null)
                     {
-                        // 変更があれば更新
-                        foreach (var property in data.GetType().GetProperties())
-                        {
-                            var newValue = property.GetValue(data);
-                            var oldValue = property.GetValue(_dataManager.DataFromServer);
-                            if (newValue != null && !newValue.Equals(oldValue))
-                            {
-                                property.SetValue(_dataManager.DataFromServer, newValue);
-                            }
-                        }
-
                         // コントロール更新処理
                         _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
 
