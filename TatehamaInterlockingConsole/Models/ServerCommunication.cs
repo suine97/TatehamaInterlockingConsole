@@ -103,15 +103,19 @@ namespace TatehamaInterlockingConsole.Models
                 // サーバー接続初期化
                 await InitializeConnection();
             }
-            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Error == OpenIddictConstants.Errors.AccessDenied)
+            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Error ==
+                                                                           OpenIddictConstants.Errors.AccessDenied)
             {
                 // ログインしたユーザーがサーバーにいないか、入鋏ロールがついてない
-                CustomMessage.Show("認証が拒否されました。\n司令主任に連絡してください。", "認証拒否", exception, MessageBoxButton.OK, MessageBoxImage.Error);
+                CustomMessage.Show("認証が拒否されました。\n司令主任に連絡してください。", "認証拒否", exception, MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
-            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Error == OpenIddictConstants.Errors.ServerError)
+            catch (OpenIddictExceptions.ProtocolException exception) when (exception.Error ==
+                                                                           OpenIddictConstants.Errors.ServerError)
             {
                 // サーバーでトラブル発生
-                var result = CustomMessage.Show("認証時にサーバーでエラーが発生しました。\\n再認証しますか？", "サーバーエラー", exception, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                var result = CustomMessage.Show("認証時にサーバーでエラーが発生しました。\\n再認証しますか？", "サーバーエラー", exception,
+                    MessageBoxButton.YesNo, MessageBoxImage.Error);
                 if (result == MessageBoxResult.Yes)
                 {
                     _ = AuthenticateAsync();
@@ -120,7 +124,8 @@ namespace TatehamaInterlockingConsole.Models
             catch (Exception exception)
             {
                 // その他別な理由で認証失敗
-                var result = CustomMessage.Show("認証に失敗しました。\n再認証しますか？", "認証失敗", exception, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                var result = CustomMessage.Show("認証に失敗しました。\n再認証しますか？", "認証失敗", exception, MessageBoxButton.YesNo,
+                    MessageBoxImage.Error);
                 if (result == MessageBoxResult.Yes)
                 {
                     _ = AuthenticateAsync();
@@ -138,7 +143,8 @@ namespace TatehamaInterlockingConsole.Models
             // HubConnectionの作成
             _connection = new HubConnectionBuilder()
                 .WithUrl($"{ServerAddress.SignalAddress}/hub/{HubConnectionName}?access_token={_token}")
-                .WithAutomaticReconnect() // 自動再接続
+                .WithAutomaticReconnect(Enumerable.Range(0, 10000).Select(x => TimeSpan.FromSeconds(5))
+                    .ToArray()) // 自動再接続
                 .Build();
 
             // サーバー接続
@@ -153,7 +159,8 @@ namespace TatehamaInterlockingConsole.Models
                 catch (HttpRequestException exception) when (exception.StatusCode == HttpStatusCode.Forbidden)
                 {
                     // 該当Hubにアクセスするためのロールが無い
-                    CustomMessage.Show("接続が拒否されました。\n付与されたロールを確認の上、司令主任に連絡してください。", "ロール不一致", exception, MessageBoxButton.OK, MessageBoxImage.Error);
+                    CustomMessage.Show("接続が拒否されました。\n付与されたロールを確認の上、司令主任に連絡してください。", "ロール不一致", exception,
+                        MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 catch (Exception exception)
@@ -161,7 +168,8 @@ namespace TatehamaInterlockingConsole.Models
                     Debug.WriteLine($"Connection Error!! {exception.Message}");
                     _dataManager.ServerConnected = false;
 
-                    var result = CustomMessage.Show("接続に失敗しました。\n再接続しますか？", "接続失敗", exception, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                    var result = CustomMessage.Show("接続に失敗しました。\n再接続しますか？", "接続失敗", exception, MessageBoxButton.YesNo,
+                        MessageBoxImage.Error);
                     if (result == MessageBoxResult.Yes)
                     {
                         continue;
@@ -176,6 +184,14 @@ namespace TatehamaInterlockingConsole.Models
             _connection.On<DatabaseOperational.DataFromServer>("ReceiveData", OnReceiveDataFromServer);
 
             // 再接続イベントのハンドリング
+            _connection.Closed += async (exception) =>
+            {
+                _dataManager.ServerConnected = false;
+                Debug.WriteLine("Disconnected");
+                Debug.WriteLine(exception);
+                await _connection.StartAsync();
+            };
+
             _connection.Reconnecting += exception =>
             {
                 _dataManager.ServerConnected = false;
@@ -201,78 +217,77 @@ namespace TatehamaInterlockingConsole.Models
         {
             try
             {
-                if (data != null)
+                if (data == null)
                 {
-                    // 運用クラスに代入
-                    if (_dataManager.DataFromServer == null)
-                    {
-                        _dataManager.DataFromServer = data;
-                    }
-                    else
-                    {
-                        // 変更があれば更新
-                        foreach (var property in data.GetType().GetProperties())
-                        {
-                            var newValue = property.GetValue(data);
-                            var oldValue = property.GetValue(_dataManager.DataFromServer);
-                            if (newValue != null && !newValue.Equals(oldValue))
-                            {
-                                property.SetValue(_dataManager.DataFromServer, newValue);
-                            }
-                        }
-                    }
+                    Debug.WriteLine("Failed to receive Data.");
+                    return;
+                }
 
-                    // 方向てこ情報を保存
-                    if (data.Directions != null)
-                    {
-                        _dataManager.DirectionStateList = data.Directions.Select(d =>
-                        {
-                            var existingDirection =
-                                _dataManager.DirectionStateList?.FirstOrDefault(ds => ds.Name == d.Name);
-                            if (existingDirection != null)
-                            {
-                                // 値が変更されている場合のみ更新
-                                if (existingDirection.State != d.State)
-                                {
-                                    existingDirection.State = d.State;
-                                    existingDirection.UpdateTime = DateTime.Now;
-                                    existingDirection.IsAlarmPlayed = false;
-                                }
-
-                                return existingDirection;
-                            }
-                            else
-                            {
-                                // 新しいデータの場合は追加
-                                return new DirectionStateList
-                                {
-                                    Name = d.Name,
-                                    State = d.State,
-                                    UpdateTime = DateTime.Now,
-                                    IsAlarmPlayed = false
-                                };
-                            }
-                        }).ToList();
-                    }
-
-                    // コントロール更新処理
-                    _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
-
-                    // 物理ボタン情報を前回の値として保存
-                    if (data.PhysicalButtons != null)
-                    {
-                        _dataManager.PhysicalButtonOldList = data.PhysicalButtons.Select(d =>
-                            new DatabaseOperational.DestinationButtonData
-                            {
-                                Name = d.Name,
-                                IsRaised = d.IsRaised,
-                                OperatedAt = d.OperatedAt
-                            }).ToList();
-                    }
+                // 運用クラスに代入
+                if (_dataManager.DataFromServer == null)
+                {
+                    _dataManager.DataFromServer = data;
                 }
                 else
                 {
-                    Debug.WriteLine("Failed to receive Data.");
+                    // 変更があれば更新
+                    foreach (var property in data.GetType().GetProperties())
+                    {
+                        var newValue = property.GetValue(data);
+                        var oldValue = property.GetValue(_dataManager.DataFromServer);
+                        if (newValue != null && !newValue.Equals(oldValue))
+                        {
+                            property.SetValue(_dataManager.DataFromServer, newValue);
+                        }
+                    }
+                }
+
+                // 方向てこ情報を保存
+                if (data.Directions != null)
+                {
+                    _dataManager.DirectionStateList = data.Directions.Select(d =>
+                    {
+                        var existingDirection =
+                            _dataManager.DirectionStateList?.FirstOrDefault(ds => ds.Name == d.Name);
+                        if (existingDirection != null)
+                        {
+                            // 値が変更されている場合のみ更新
+                            if (existingDirection.State != d.State)
+                            {
+                                existingDirection.State = d.State;
+                                existingDirection.UpdateTime = DateTime.Now;
+                                existingDirection.IsAlarmPlayed = false;
+                            }
+
+                            return existingDirection;
+                        }
+                        else
+                        {
+                            // 新しいデータの場合は追加
+                            return new DirectionStateList
+                            {
+                                Name = d.Name,
+                                State = d.State,
+                                UpdateTime = DateTime.Now,
+                                IsAlarmPlayed = false
+                            };
+                        }
+                    }).ToList();
+                }
+
+                // コントロール更新処理
+                _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
+
+                // 物理ボタン情報を前回の値として保存
+                if (data.PhysicalButtons != null)
+                {
+                    _dataManager.PhysicalButtonOldList = data.PhysicalButtons.Select(d =>
+                        new DatabaseOperational.DestinationButtonData
+                        {
+                            Name = d.Name,
+                            IsRaised = d.IsRaised,
+                            OperatedAt = d.OperatedAt
+                        }).ToList();
                 }
             }
             catch (Exception ex)
@@ -291,7 +306,8 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var data = await _connection.InvokeAsync<DatabaseOperational.LeverData>("SetPhysicalLeverData", leverData);
+                var data = await _connection.InvokeAsync<DatabaseOperational.LeverData>(
+                    "SetPhysicalLeverData", leverData);
                 try
                 {
                     if (data != null)
@@ -356,7 +372,8 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var data = await _connection.InvokeAsync<DatabaseOperational.DestinationButtonData>("SetDestinationButtonState", buttonData);
+                var data = await _connection.InvokeAsync<DatabaseOperational.DestinationButtonData>(
+                    "SetDestinationButtonState", buttonData);
                 try
                 {
                     if (data != null)
