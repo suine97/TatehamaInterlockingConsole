@@ -64,14 +64,6 @@ namespace TatehamaInterlockingConsole.Models
 
                 // サーバー接続状態変更イベント発火
                 ConnectionStatusChanged?.Invoke(_dataManager.ServerConnected);
-
-                // サーバー接続中ならデータ送信
-                if (_dataManager.ServerConnected)
-                {
-                    // サーバー送信用に駅データ整形
-                    List<string> sendStationData = SendStationData.GenerateSendStationData(_dataManager.ActiveStationsList);
-                    await SendConstantDataRequestToServerAsync(sendStationData);
-                }
                 await timer;
             }
         }
@@ -87,6 +79,7 @@ namespace TatehamaInterlockingConsole.Models
                 await InitializeConnection();
                 return;
             }
+
             try
             {
                 using var source = new CancellationTokenSource(TimeSpan.FromSeconds(90));
@@ -180,6 +173,8 @@ namespace TatehamaInterlockingConsole.Models
                 }
             }
 
+            _connection.On<DatabaseOperational.DataFromServer>("ReceiveData", OnReceiveDataFromServer);
+
             // 再接続イベントのハンドリング
             _connection.Reconnecting += exception =>
             {
@@ -198,97 +193,91 @@ namespace TatehamaInterlockingConsole.Models
         }
 
         /// <summary>
-        /// サーバーへ常時送信用データをリクエスト
+        /// サーバーからデータが来たときの処理
         /// </summary>
-        /// <param name="activeStationsList"></param>
+        /// <param name="data">サーバーから受信されたデータ</param>
         /// <returns></returns>
-        public async Task SendConstantDataRequestToServerAsync(List<string> activeStationsList)
+        public void OnReceiveDataFromServer(DatabaseOperational.DataFromServer data)
         {
             try
             {
-                // サーバーメソッドの呼び出し
-                var data = await _connection.InvokeAsync<DatabaseOperational.DataFromServer>("SendData_Interlocking", activeStationsList);
-                try
+                if (data != null)
                 {
-                    if (data != null)
+                    // 運用クラスに代入
+                    if (_dataManager.DataFromServer == null)
                     {
-                        // 運用クラスに代入
-                        if (_dataManager.DataFromServer == null)
+                        _dataManager.DataFromServer = data;
+                    }
+                    else
+                    {
+                        // 変更があれば更新
+                        foreach (var property in data.GetType().GetProperties())
                         {
-                            _dataManager.DataFromServer = data;
-                        }
-                        else
-                        {
-                            // 変更があれば更新
-                            foreach (var property in data.GetType().GetProperties())
+                            var newValue = property.GetValue(data);
+                            var oldValue = property.GetValue(_dataManager.DataFromServer);
+                            if (newValue != null && !newValue.Equals(oldValue))
                             {
-                                var newValue = property.GetValue(data);
-                                var oldValue = property.GetValue(_dataManager.DataFromServer);
-                                if (newValue != null && !newValue.Equals(oldValue))
-                                {
-                                    property.SetValue(_dataManager.DataFromServer, newValue);
-                                }
+                                property.SetValue(_dataManager.DataFromServer, newValue);
                             }
                         }
+                    }
 
-                        // 方向てこ情報を保存
-                        if (data.Directions != null)
+                    // 方向てこ情報を保存
+                    if (data.Directions != null)
+                    {
+                        _dataManager.DirectionStateList = data.Directions.Select(d =>
                         {
-                            _dataManager.DirectionStateList = data.Directions.Select(d =>
+                            var existingDirection =
+                                _dataManager.DirectionStateList?.FirstOrDefault(ds => ds.Name == d.Name);
+                            if (existingDirection != null)
                             {
-                                var existingDirection = _dataManager.DirectionStateList?.FirstOrDefault(ds => ds.Name == d.Name);
-                                if (existingDirection != null)
+                                // 値が変更されている場合のみ更新
+                                if (existingDirection.State != d.State)
                                 {
-                                    // 値が変更されている場合のみ更新
-                                    if (existingDirection.State != d.State)
-                                    {
-                                        existingDirection.State = d.State;
-                                        existingDirection.UpdateTime = DateTime.Now;
-                                        existingDirection.IsAlarmPlayed = false;
-                                    }
-                                    return existingDirection;
+                                    existingDirection.State = d.State;
+                                    existingDirection.UpdateTime = DateTime.Now;
+                                    existingDirection.IsAlarmPlayed = false;
                                 }
-                                else
+
+                                return existingDirection;
+                            }
+                            else
+                            {
+                                // 新しいデータの場合は追加
+                                return new DirectionStateList
                                 {
-                                    // 新しいデータの場合は追加
-                                    return new DirectionStateList
-                                    {
-                                        Name = d.Name,
-                                        State = d.State,
-                                        UpdateTime = DateTime.Now,
-                                        IsAlarmPlayed = false
-                                    };
-                                }
-                            }).ToList();
-                        }
+                                    Name = d.Name,
+                                    State = d.State,
+                                    UpdateTime = DateTime.Now,
+                                    IsAlarmPlayed = false
+                                };
+                            }
+                        }).ToList();
+                    }
 
-                        // コントロール更新処理
-                        _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
+                    // コントロール更新処理
+                    _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
 
-                        // 物理ボタン情報を前回の値として保存
-                        if (data.PhysicalButtons != null)
-                        {
-                            _dataManager.PhysicalButtonOldList = data.PhysicalButtons.Select(d => new DatabaseOperational.DestinationButtonData
+                    // 物理ボタン情報を前回の値として保存
+                    if (data.PhysicalButtons != null)
+                    {
+                        _dataManager.PhysicalButtonOldList = data.PhysicalButtons.Select(d =>
+                            new DatabaseOperational.DestinationButtonData
                             {
                                 Name = d.Name,
                                 IsRaised = d.IsRaised,
                                 OperatedAt = d.OperatedAt
                             }).ToList();
-                        }
-                    }
-                    else
-                    {
-                        Debug.WriteLine("Failed to receive Data.");
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    Debug.WriteLine($"Error server receiving: {ex.Message}{ex.StackTrace}");
+                    Debug.WriteLine("Failed to receive Data.");
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Failed to send constant data to server: {ex.Message}");
+                Debug.WriteLine($"Error server receiving: {ex.Message}{ex.StackTrace}");
             }
         }
 
