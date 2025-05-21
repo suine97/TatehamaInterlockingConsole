@@ -183,15 +183,6 @@ namespace TatehamaInterlockingConsole.Models
 
             _connection.On<DatabaseOperational.DataFromServer>("ReceiveData", OnReceiveDataFromServer);
 
-            // 再接続イベントのハンドリング
-            _connection.Closed += async (exception) =>
-            {
-                _dataManager.ServerConnected = false;
-                Debug.WriteLine("Disconnected");
-                Debug.WriteLine(exception);
-                await _connection.StartAsync();
-            };
-
             _connection.Reconnecting += exception =>
             {
                 _dataManager.ServerConnected = false;
