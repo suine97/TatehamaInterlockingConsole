@@ -60,7 +60,7 @@ namespace TatehamaInterlockingConsole.Models
         {
             while (true)
             {
-                var timer = Task.Delay(50);
+                var timer = Task.Delay(500);
 
                 // サーバー接続状態変更イベント発火
                 ConnectionStatusChanged?.Invoke(_dataManager.ServerConnected);
