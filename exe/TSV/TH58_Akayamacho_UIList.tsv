@@ -6,7 +6,9 @@ Image	Hook										1361	10														Image/Hook/Hook_Base.png
 LeverImage	1L		物理てこ	TH58_1							289	323										1L	"-1,1"	-1	Image/Lever/LeverBase_LR.png	"Image/Lever/Lever_White_L.png,Image/Lever/Lever_White_R.png"	1Lは方向てこ　白LR								
 TextBlock	1L_Label	1L									14	20	11	11				1	10	Transparent	#FFBCBCBC	1L													
 LeverImage	2R		物理てこ	TH58_2							354	323										2R	"0,1"	0	Image/Lever/LeverBase_NR.png	"Image/Lever/Lever_Red_N.png,Image/Lever/Lever_Red_R.png"	0代X=てこ赤(X)N(X)　例：2R=てこ赤NR								
-Image	2R_G		信号機表示灯	赤山町上り場内2R							420	321											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PYは灯色"								
+Image	2RA_G		信号機表示灯	赤山町上り場内2RA							412	285											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"	"G,Y,R,PG,PYは灯色"								
+Image	2RB_G		信号機表示灯	赤山町上り場内2RB							420	303											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
+Image	2RC_G		信号機表示灯	赤山町上り場内2RC							412	321											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
 TextBlock	2R_Label	2R									14	20	11	11				2	10	Transparent	#FFBCBCBC	2R													
 LeverImage	3L		物理てこ	TH58_3							687	243										3L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Red_L.png,Image/Lever/Lever_Red_N.png"									
 Image	3L_G		信号機表示灯	赤山町下り出発3L							651	249											"0,1"	0		"Image/Light/N.png,Image/Light/G.png"									
@@ -35,10 +37,10 @@ LeverImage	31R		物理てこ	TH58_31							983	243										31R	"0,1"	0	Image/Lever/
 Image	31R_Y		信号機表示灯	赤山町入換31R							1100	240											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	31R_Label	31R									14	20	11	11				31	10	Transparent	#FFBCBCBC	31R													
 LeverImage	32L		物理てこ	TH58_32							1294	183										32L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
-Image	32L_Y		信号機表示灯	赤山町入換32R							1265	222											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	32L_Y		信号機表示灯	赤山町入換32L							1265	222											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	32L_Label	32L									14	20	11	11				32	10	Transparent	#FFBCBCBC	32L													
 LeverImage	33L		物理てこ	TH58_33							1294	243										33L	"-1,0"	0	Image/Lever/LeverBase_LN.png	"Image/Lever/Lever_Green_L.png,Image/Lever/Lever_Green_N.png"									
-Image	33L_Y		信号機表示灯	赤山町入換33R							1265	280											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
+Image	33L_Y		信号機表示灯	赤山町入換33L							1265	280											"0,1"	0		"Image/Light/N.png,Image/Light/Y.png"									
 TextBlock	33L_Label	33L									14	20	11	11				33	10	Transparent	#FFBCBCBC	33L													
 ButtonImage	T		着点ボタン	TH58_TP							449	336										T	"0,1"	0	Image/Button/ArrivalButton_Base.png	"Image/Button/ArrivalButton_White_OFF.png,Image/Button/ArrivalButton_White_ON.png"									
 TextBlock	T_Label	T									5	23	15	12				T	10	Transparent	#FFBCBCBC	T													
