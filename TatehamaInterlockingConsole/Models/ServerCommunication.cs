@@ -143,7 +143,7 @@ namespace TatehamaInterlockingConsole.Models
             // HubConnectionの作成
             _connection = new HubConnectionBuilder()
                 .WithUrl($"{ServerAddress.SignalAddress}/hub/{HubConnectionName}?access_token={_token}")
-                .WithAutomaticReconnect(Enumerable.Range(0, 10000).Select(x => TimeSpan.FromSeconds(5))
+                .WithAutomaticReconnect(Enumerable.Range(0, 721).Select(x => TimeSpan.FromSeconds(x == 0 ? 0 : 5))
                     .ToArray()) // 自動再接続
                 .Build();
 
