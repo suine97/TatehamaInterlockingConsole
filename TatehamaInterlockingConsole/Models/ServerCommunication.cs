@@ -345,7 +345,38 @@ namespace TatehamaInterlockingConsole.Models
             try
             {
                 // サーバーメソッドの呼び出し
-                var data = await _connection.InvokeAsync<DatabaseOperational.KeyLeverData>("SetPhysicalKeyLeverData", keyLeverData);
+                var data = await _connection.InvokeAsync<DatabaseOperational.KeyLeverData>(
+                    "SetPhysicalKeyLeverData", keyLeverData);
+                try
+                {
+                    if (data != null)
+                    {
+                        // 変更があれば更新
+                        var keyLever = _dataManager.DataFromServer
+                            .PhysicalKeyLevers.FirstOrDefault(l => l.Name == data.Name);
+                        foreach (var property in data.GetType().GetProperties())
+                        {
+                            var newValue = property.GetValue(data);
+                            var oldValue = property.GetValue(keyLever);
+                            if (newValue != null && !newValue.Equals(oldValue))
+                            {
+                                property.SetValue(keyLever, newValue);
+                            }
+                        }
+
+                        // コントロール更新処理
+                        _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Failed to receive Data.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error server receiving: {ex.Message}{ex.StackTrace}");
+                }
+
                 // Todo: 仮でTrue
                 return true;
             }
