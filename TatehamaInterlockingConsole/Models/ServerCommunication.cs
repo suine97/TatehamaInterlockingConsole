@@ -342,6 +342,7 @@ namespace TatehamaInterlockingConsole.Models
         /// <returns></returns>
         public async Task<bool> SendKeyLeverEventDataRequestToServerAsync(DatabaseOperational.KeyLeverData keyLeverData)
         {
+            bool isResult = true;
             try
             {
                 // サーバーメソッドの呼び出し
@@ -354,6 +355,13 @@ namespace TatehamaInterlockingConsole.Models
                         // 変更があれば更新
                         var keyLever = _dataManager.DataFromServer
                             .PhysicalKeyLevers.FirstOrDefault(l => l.Name == data.Name);
+
+                        // 鍵挿入・非挿入操作の応答に変化が無ければ認証拒否として処理
+                        if (data.IsKeyInserted == keyLever.IsKeyInserted)
+                        {
+                            isResult = false;
+                        }
+
                         foreach (var property in data.GetType().GetProperties())
                         {
                             var newValue = property.GetValue(data);
@@ -366,6 +374,8 @@ namespace TatehamaInterlockingConsole.Models
 
                         // コントロール更新処理
                         _dataUpdateViewModel.UpdateControl(_dataManager.DataFromServer);
+
+                        
                     }
                     else
                     {
@@ -376,8 +386,6 @@ namespace TatehamaInterlockingConsole.Models
                 {
                     Debug.WriteLine($"Error server receiving: {ex.Message}{ex.StackTrace}");
                 }
-
-                // Todo: 仮でTrue
                 return true;
             }
             catch (Exception exception)

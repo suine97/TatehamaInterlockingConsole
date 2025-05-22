@@ -97,6 +97,7 @@ namespace TatehamaInterlockingConsole.Services
                             KeyInserted = false,
                             Retsuban = string.Empty,
                             IsHandling = false,
+                            IsKeyHandling = false,
                             IsButtionRaised = false,
                             IsButtionDroped = false,
                             IsAuthentication = true,

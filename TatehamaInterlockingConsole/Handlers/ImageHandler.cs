@@ -199,6 +199,8 @@ namespace TatehamaInterlockingConsole.Handlers
                 {
                     // 操作中判定
                     control.IsHandling = true;
+                    // 鍵抜き差し操作中判定
+                    control.IsKeyHandling = true;
 
                     var keyLeverData = new DatabaseOperational.KeyLeverData
                     {

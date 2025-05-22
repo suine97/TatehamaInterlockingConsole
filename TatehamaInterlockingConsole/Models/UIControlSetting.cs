@@ -152,6 +152,10 @@ namespace TatehamaInterlockingConsole.Models
         /// </summary>
         public bool IsHandling { get; set; }
         /// <summary>
+        /// 鍵抜き差し操作中判定
+        /// </summary>
+        public bool IsKeyHandling { get; set; }
+        /// <summary>
         /// ボタン操作中判定(押し)
         /// </summary>
         public bool IsButtionRaised { get; set; }

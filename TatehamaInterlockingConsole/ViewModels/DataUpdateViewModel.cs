@@ -473,11 +473,13 @@ namespace TatehamaInterlockingConsole.ViewModels
         {
             if (physicalKeyLever != null)
             {
-                // 鍵てこが操作中で、認証に失敗した場合に更新
-                if (item.IsHandling && !item.IsAuthentication)
+                // 鍵てこが鍵抜き差し操作中で、認証に失敗した場合に更新
+                if (item.IsHandling && item.IsKeyHandling && !item.IsAuthentication)
                 {
                     // 操作判定を解除
                     item.IsHandling = false;
+                    // 鍵抜き差し操作判定を解除
+                    item.IsKeyHandling = false;
                     // 認証情報を初期化
                     item.IsAuthentication = true;
 
@@ -491,6 +493,8 @@ namespace TatehamaInterlockingConsole.ViewModels
                 {
                     // 操作判定を解除
                     item.IsHandling = false;
+                    // 鍵抜き差し操作判定を解除
+                    item.IsKeyHandling = false;
 
                     var newIndex = EnumData.ConvertFromLNR(physicalKeyLever.State);
 
