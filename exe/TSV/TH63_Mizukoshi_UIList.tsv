@@ -63,6 +63,7 @@ Image	FMT_11L_1		方向てこ表示灯	FMT					TH63_11F	L	408	340											"0,1,2"	0		
 Image	FMT_11R_1		方向てこ表示灯	FMT					TH63_11F	R	408	304											"0,1,2"	0		"Image/Light/ArN.png,Image/Light/ArY.png,Image/Light/ArR.png"	Ar								
 Image	TH63_21イT_W21イN_1		軌道回路表示灯	TH63_21イT	TH63_W21	N					466	324											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH63_21イT_W21イN_2		軌道回路表示灯	TH63_21イT	TH63_W21	N					548	278											"0,1,2"	0		"Image/Light/45N.png,Image/Light/45Y.png,Image/Light/45R.png"	45度								
+Image	TH63_21イT_W21イN_3		軌道回路表示灯	TH63_21イT	TH63_W21	N					624	264											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH63_21イT_W21イR_1		軌道回路表示灯	TH63_21イT	TH63_W21	R					466	324											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH63_21イT_W21イR_2		軌道回路表示灯	TH63_21イT	TH63_W21	R					531	324											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
 Image	TH63_21ロT_W21ロN_1		軌道回路表示灯	TH63_21ロT	TH63_W21	N					624	324											"0,1,2"	0		"Image/Light/0N.png,Image/Light/0Y.png,Image/Light/0R.png"									
